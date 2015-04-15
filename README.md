@@ -40,6 +40,10 @@ Then you can kickstart tmux by running:
 
     $ mux start smsf-check
 
+### Coding Guidelines
+
+We follow this ES6 style guide: https://github.com/elierotenberg/coding-styles/blob/master/es6.md
+
 ## Deployment
 
 `smsf-check` is deployed by Heroku, make sure you have the Heroku Toolbet
@@ -58,3 +62,21 @@ Once logged in, add the `heroku` Git remote:
 You can now deploy simply by pushing to the `heroku` remote:
 
     $ git push heroku master
+
+## Services, Tools, and Frameworks Used
+
+### Services
+
+* [Heroku - Cloud Application Platform](https://www.heroku.com/)
+* [Mandrill - Transactional Email from MailChimp](https://mandrill.com/)
+
+### Tools
+
+* [Node - A platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications](https://nodejs.org/)
+* [ES6 Javascript - via Babel](https://github.com/lukehoban/es6features)
+* [Less.js - Less extends CSS with dynamic behavior such as variables, mixins, operations and functions](http://lesscss.org)
+* [Jade - Template Engine](http://jade-lang.com)
+
+### Frameworks
+
+* [KeystoneJS - Node.js cms and web application platform built on Express and MongoDB](http://keystonejs.com/)
