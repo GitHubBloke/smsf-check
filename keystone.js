@@ -2,6 +2,9 @@
 // customising the .env file in your project's root folder.
 require('dotenv').load();
 
+// Enable es6
+require("babel/register");
+
 // Require keystone
 var keystone = require('keystone');
 
