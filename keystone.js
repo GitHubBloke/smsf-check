@@ -2,8 +2,11 @@
 // customising the .env file in your project's root folder.
 require('dotenv').load();
 
+// Monitor app with New Relic
+require('newrelic');
+
 // Enable es6
-require("babel/register");
+require('babel/register');
 
 // Require keystone
 var keystone = require('keystone');
