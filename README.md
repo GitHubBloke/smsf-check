@@ -76,6 +76,7 @@ You can now deploy simply by pushing to the `heroku` remote:
 * [ES6 Javascript - via Babel](https://github.com/lukehoban/es6features)
 * [Less.js - Less extends CSS with dynamic behavior such as variables, mixins, operations and functions](http://lesscss.org)
 * [Jade - Template Engine](http://jade-lang.com)
+* [MongoDB - Open-source document database](https://www.mongodb.org)
 
 ### Frameworks
 
