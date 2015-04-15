@@ -15,6 +15,8 @@ variables locally when the server is started. To get started create a new
 required by the server for it to run:
 
     MANDRILL_API_KEY=NY8RRKyv1Bure9bdP8-TOQ
+    NEW_RELIC_LICENSE_KEY=xxxxxxxxxxxxxxxx (optional)
+    NEW_RELIC_LOG=stdout (optional)
 
 Note: Some of those are test or dummy values, as your supervisor for actual
 values you can use.
@@ -69,6 +71,7 @@ You can now deploy simply by pushing to the `heroku` remote:
 
 * [Heroku - Cloud Application Platform](https://www.heroku.com/)
 * [Mandrill - Transactional Email from MailChimp](https://mandrill.com/)
+* [New Relic - Application performance management](http://newrelic.com)
 
 ### Tools
 
