@@ -1,0 +1,10 @@
+name: smsf-check
+root: ~/Work/JimmyMakesThings/smsf-check
+
+windows:
+  - services:
+    - nodemon keystone
+  - vim:
+    - vim
+  - bash:
+
