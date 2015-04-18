@@ -17,6 +17,7 @@ required by the server for it to run:
     MANDRILL_API_KEY=NY8RRKyv1Bure9bdP8-TOQ
     NEW_RELIC_LICENSE_KEY=xxxxxxxxxxxxxxxx (optional)
     NEW_RELIC_LOG=stdout (optional)
+    PAPERTRAIL_API_TOKEN=xxxxxxxxxxxxxxxx (optional)
     SEGMENT_WRITE_KEY=xxxxxxxxxxxxxxxx (optional)
 
 Note: Some of those are test or dummy values, as your supervisor for actual
@@ -75,6 +76,7 @@ You can now deploy simply by pushing to the `heroku` remote:
 * [New Relic - Application performance management](http://newrelic.com)
 * [Segment - Segment is the single hub to collect, translate and route your customer data](https://segment.com)
 * [Mixpanel - Business analytics service](https://mixpanel.com)
+* [Papertrail - The log management service](https://papertrailapp.com)
 
 ### Tools
 
