@@ -9,7 +9,8 @@
     "keystone": "^0.3.6",
     "newrelic": "^1.18.2",
     "underscore": "~1.7.0",
-    "winston": "^1.0.0"
+    "winston": "^1.0.0",
+    "winston-sentry": "0.0.7"
   },
   "devDependencies": {
     "gulp": "~3.7.0",
