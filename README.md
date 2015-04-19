@@ -19,6 +19,7 @@ required by the server for it to run:
     NEW_RELIC_LOG=stdout (optional)
     PAPERTRAIL_API_TOKEN=xxxxxxxxxxxxxxxx (optional)
     SEGMENT_WRITE_KEY=xxxxxxxxxxxxxxxx (optional)
+    SENTRY_DSN=https://xxxxxxxxxxxxxxxx (optional)
 
 Note: Some of those are test or dummy values, as your supervisor for actual
 values you can use.
