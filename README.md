@@ -78,6 +78,7 @@ You can now deploy simply by pushing to the `heroku` remote:
 * [Segment - Segment is the single hub to collect, translate and route your customer data](https://segment.com)
 * [Mixpanel - Business analytics service](https://mixpanel.com)
 * [Papertrail - The log management service](https://papertrailapp.com)
+* [Sentry - Gives you insight into the errors that affect your customers](https://www.getsentry.com/welcome/)
 
 ### Tools
 
