@@ -18,6 +18,7 @@
  * http://expressjs.com/api.html#app.VERB
  */
 
+import expressWinston from 'express-winston';
 import keystone from 'keystone';
 
 import logger from '../logger';
@@ -38,10 +39,8 @@ const routes = {
 export default function(app) {
   app.get('/', routes.views.index);
 
-  app.use((err, req, res, next) => {
-    logger.error(err.message, err);
-    res.sendStatus(500);
-  });
+  app.use(expressWinston.errorLogger({ winstonInstance: logger }));
+  app.use((err, req, res, next) => { res.sendStatus(500); });
 
   // NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
   // app.get('/protected', middleware.requireUser, routes.views.protected);
