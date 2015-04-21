@@ -8,7 +8,7 @@
  * modules in your project's /lib directory.
  */
 
-var _ = require('underscore');
+var _ = require('lodash');
 
 
 /**
