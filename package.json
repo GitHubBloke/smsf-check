@@ -16,7 +16,9 @@
   },
   "devDependencies": {
     "gulp": "~3.7.0",
+    "gulp-browserify": "^0.5.1",
     "gulp-jshint": "~1.9.0",
+    "gulp-livereload": "^3.8.0",
     "gulp-watch": "~0.6.5",
     "jshint-stylish": "~0.1.3"
   },

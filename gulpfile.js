@@ -1,28 +1,51 @@
 var gulp = require('gulp'),
   jshint = require('gulp-jshint'),
   jshintReporter = require('jshint-stylish'),
-  watch = require('gulp-watch');
+  livereload = require('gulp-livereload'),
+  browserify = require('gulp-browserify'),
+  spawn = require('child_process').spawn;
 
-/*
- * Create variables for our project paths so we can change in one place
- */
 var paths = {
-  'src':['./models/**/*.js','./routes/**/*.js', 'keystone.js', 'package.json']
+  'src': [ './models/**/*.js','./routes/**/*.js', 'keystone.js', 'package.json' ],
+  'js': [ './src/app.js' ],
 };
 
+var keystoneProcess = null;
 
-// gulp lint
-gulp.task('lint', function(){
-  gulp.src(paths.src)
-    .pipe(jshint())
-    .pipe(jshint.reporter(jshintReporter));
+gulp.task('keystone', function() {
+  if (keystoneProcess) { keystoneProcess.kill(); }
 
+  keystoneProcess = spawn('env', ['node', 'keystone'], {
+    detached: false,
+    stdio: [ 'ignore', process.stdout, process.stderr ],
+  });
+
+  keystoneProcess.unref();
+
+  setTimeout(function() {
+    livereload.changed(0);
+  }, 3000);
 });
 
-// gulp watcher for lint
-gulp.task('watch:lint', function () {
-  gulp.src(paths.src)
-    .pipe(watch())
+gulp.task('lint', function(){
+  gulp.src(paths.src.concat(paths.js))
     .pipe(jshint())
     .pipe(jshint.reporter(jshintReporter));
+});
+
+gulp.task('browserify', function () {
+  gulp.src(paths.js)
+    .pipe(browserify({ debug : !gulp.env.production }))
+    .pipe(gulp.dest('./public/js'));
+});
+
+gulp.task('sendLivereloadChanged', function () {
+  livereload.changed();
+});
+
+// development watcher
+gulp.task('watch', ['keystone'], function () {
+  livereload.listen();
+  gulp.watch(paths.src, ['lint', 'keystone']);
+  gulp.watch(paths.js, ['lint', 'browserify', 'sendLivereloadChanged']);
 });
