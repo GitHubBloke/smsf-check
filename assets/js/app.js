@@ -1,1 +1,2 @@
-import React from 'react';
+import jQuery from 'jquery';
+window.jQuery = jQuery;
