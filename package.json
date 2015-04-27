@@ -15,6 +15,7 @@
     "winston-sentry": "0.0.7"
   },
   "devDependencies": {
+    "bower": "^1.4.1",
     "gulp": "~3.7.0",
     "gulp-browserify": "^0.5.1",
     "gulp-jshint": "~1.9.0",
