@@ -1,22 +1,40 @@
-var gulp = require('gulp'),
-  jshint = require('gulp-jshint'),
-  jshintReporter = require('jshint-stylish'),
-  livereload = require('gulp-livereload'),
-  browserify = require('gulp-browserify'),
-  spawn = require('child_process').spawn;
+var babelify = require('babelify');
+var browserify = require('browserify');
+var buffer = require('vinyl-buffer');
+var debowerify = require('debowerify');
+var gulp = require('gulp');
+var gutil = require('gulp-util');
+var jshint = require('gulp-jshint');
+var jshintReporter = require('jshint-stylish');
+var livereload = require('gulp-livereload');
+var source = require('vinyl-source-stream');
+var sourcemaps = require('gulp-sourcemaps');
+var spawn = require('child_process').spawn;
 
 var paths = {
   'src': [ './models/**/*.js','./routes/**/*.js', 'keystone.js', 'package.json' ],
-  'js': [ './assets/js/**/*.js' ],
+  'js': [ './assets/js/app.js' ],
 };
 
 var keystoneProcess = null;
 
-gulp.task('build', function () {
-  gulp.src(paths.js)
-    .pipe(browserify({ debug : !gulp.env.production }))
-    .pipe(gulp.dest('./public/js'));
+gulp.task('javascript', function () {
+  var b = browserify({
+    entries: paths.js,
+    debug: !gulp.env.production,
+    transform: [babelify, debowerify]
+  });
+
+  return b.bundle()
+    .pipe(source('app.js'))
+    .pipe(buffer())
+    .pipe(sourcemaps.init({ loadMaps: true }))
+      .on('error', gutil.log)
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest('./public/js/'));
 });
+
+gulp.task('build', ['javascript']);
 
 gulp.task('keystone', function() {
   if (keystoneProcess) { keystoneProcess.kill(); }
@@ -46,5 +64,5 @@ gulp.task('sendLivereloadChanged', function () {
 gulp.task('watch', ['keystone'], function () {
   livereload.listen();
   gulp.watch(paths.src, ['lint', 'keystone']);
-  gulp.watch(paths.js, ['lint', 'build', 'sendLivereloadChanged']);
+  gulp.watch(paths.js, ['lint', 'javascript', 'sendLivereloadChanged']);
 });
