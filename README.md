@@ -7,6 +7,11 @@ Begin by first installing node dependencies:
 
     $ npm install
 
+Bower is required as well:
+
+    $ npm install -g bower
+    $ bower install
+
 ### Environment Variables
 
 To help with development, `smsf-check` uses `dotenv` to setup environment
