@@ -1,15 +1,15 @@
 {
   "bitwise": true,
-  "camelcase": true,
+  "camelcase": false,
   "curly": false,  /* custom */
   "eqeqeq": true,
-  "es3": true,
+  "es3": false,
   "forin": true,
   "freeze": true,
   "immed": true,
   "indent": 1,  /* custom */
-  "latedef": true,
-  "newcap": true,
+  "latedef": false,
+  "newcap": false,
   "noarg": true,
   "noempty": true,
   "nonbsp": true,
@@ -29,7 +29,7 @@
   "boss": true,  /* custom */
   "debug": false,
   "eqnull": true,  /* custom */
-  "esnext": false,
+  "esnext": true,
   "evil": false,
   "expr": false,
   "funcscope": false,
