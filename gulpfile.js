@@ -7,10 +7,16 @@ var gulp = require('gulp'),
 
 var paths = {
   'src': [ './models/**/*.js','./routes/**/*.js', 'keystone.js', 'package.json' ],
-  'js': [ './src/app.js' ],
+  'js': [ './assets/js/**/*.js' ],
 };
 
 var keystoneProcess = null;
+
+gulp.task('build', function () {
+  gulp.src(paths.js)
+    .pipe(browserify({ debug : !gulp.env.production }))
+    .pipe(gulp.dest('./public/js'));
+});
 
 gulp.task('keystone', function() {
   if (keystoneProcess) { keystoneProcess.kill(); }
@@ -33,19 +39,12 @@ gulp.task('lint', function(){
     .pipe(jshint.reporter(jshintReporter));
 });
 
-gulp.task('browserify', function () {
-  gulp.src(paths.js)
-    .pipe(browserify({ debug : !gulp.env.production }))
-    .pipe(gulp.dest('./public/js'));
-});
-
 gulp.task('sendLivereloadChanged', function () {
   livereload.changed();
 });
 
-// development watcher
 gulp.task('watch', ['keystone'], function () {
   livereload.listen();
   gulp.watch(paths.src, ['lint', 'keystone']);
-  gulp.watch(paths.js, ['lint', 'browserify', 'sendLivereloadChanged']);
+  gulp.watch(paths.js, ['lint', 'build', 'sendLivereloadChanged']);
 });
