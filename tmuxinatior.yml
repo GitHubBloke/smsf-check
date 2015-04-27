@@ -3,7 +3,7 @@ root: ~/Work/JimmyMakesThings/smsf-check
 
 windows:
   - services:
-    - nodemon keystone
+    - gulp keystone
   - vim:
     - vim
   - bash:
