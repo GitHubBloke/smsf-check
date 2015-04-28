@@ -37,7 +37,7 @@ gulp.task('browserify', function() {
     .pipe(gulp.dest('./public/js/'));
 });
 
-gulp.task('build', ['javascript']);
+gulp.task('build', ['browserify']);
 
 gulp.task('keystone', function() {
   if (keystoneProcess) { keystoneProcess.kill(); }
