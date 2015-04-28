@@ -13,15 +13,16 @@ var sourcemaps = require('gulp-sourcemaps');
 var spawn = require('child_process').spawn;
 
 var paths = {
-  src: [ './models/**/*.js', './routes/**/*.js', 'keystone.js' ],
-  js: [ './assets/js/app.js' ],
+  node: [ './models/**/*.js', './routes/**/*.js', '*.js' ],
+  browserify: [ './assets/js/app.js' ],
+  lint: [ './models/**/*.js', './routes/**/*.js', '*.js', './assets/js/**/*.js' ],
 };
 
 var keystoneProcess = null;
 
-gulp.task('javascript', function () {
+gulp.task('browserify', function () {
   var b = browserify({
-    entries: paths.js,
+    entries: paths.browserify,
     debug: !gulp.env.production,
     transform: [babelify, debowerify]
   });
@@ -53,7 +54,7 @@ gulp.task('keystone', function() {
 });
 
 gulp.task('lint', function () {
-  return gulp.src(paths.src)
+  return gulp.src(paths.lint)
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failOnError());
@@ -65,6 +66,6 @@ gulp.task('sendLivereloadChanged', function () {
 
 gulp.task('watch', ['keystone'], function () {
   livereload.listen();
-  gulp.watch(paths.src, ['lint', 'keystone']);
-  gulp.watch(paths.js, ['lint', 'javascript', 'sendLivereloadChanged']);
+  gulp.watch(paths.node, ['lint', 'keystone']);
+  gulp.watch(paths.js, ['lint', 'browserify', 'sendLivereloadChanged']);
 });
