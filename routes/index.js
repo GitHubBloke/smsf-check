@@ -37,7 +37,7 @@ const routes = {
 
 // Setup Route Bindings
 export default function(app) {
-  app.get('/', routes.views.index);
+  app.get('*', routes.views.index);
 
   app.use(expressWinston.errorLogger({ winstonInstance: logger }));
 

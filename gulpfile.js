@@ -14,13 +14,14 @@ var spawn = require('child_process').spawn;
 
 var paths = {
   node: [ './models/**/*.js', './routes/**/*.js', '*.js' ],
-  browserify: [ './assets/js/app.js' ],
+  client: [ './assets/**/*.js' ],
+  browserify: [ './assets/js/main.js' ],
   lint: [ './models/**/*.js', './routes/**/*.js', '*.js', './assets/js/**/*.js' ],
 };
 
 var keystoneProcess = null;
 
-gulp.task('browserify', function () {
+gulp.task('browserify', function() {
   var b = browserify({
     entries: paths.browserify,
     debug: !gulp.env.production,
@@ -28,7 +29,7 @@ gulp.task('browserify', function () {
   });
 
   return b.bundle()
-    .pipe(source('app.js'))
+    .pipe(source('main.js'))
     .pipe(buffer())
     .pipe(sourcemaps.init({ loadMaps: true }))
       .on('error', gutil.log)
@@ -53,19 +54,19 @@ gulp.task('keystone', function() {
   }, 3000);
 });
 
-gulp.task('lint', function () {
+gulp.task('lint', function() {
   return gulp.src(paths.lint)
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failOnError());
 });
 
-gulp.task('sendLivereloadChanged', function () {
+gulp.task('sendLivereloadChanged', function() {
   livereload.changed();
 });
 
-gulp.task('watch', ['keystone'], function () {
+gulp.task('watch', ['keystone'], function() {
   livereload.listen();
   gulp.watch(paths.node, ['lint', 'keystone']);
-  gulp.watch(paths.js, ['lint', 'browserify', 'sendLivereloadChanged']);
+  gulp.watch(paths.client, ['lint', 'browserify', 'sendLivereloadChanged']);
 });

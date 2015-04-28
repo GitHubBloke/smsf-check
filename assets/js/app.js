@@ -1,11 +1,15 @@
-import React from 'react';
-import Router, { Router, RouteHandler, Link } from 'react-router';
+import React, { Component } from 'react';
+import { RouteHandler } from 'react-router';
 
-const routes = (
-  <Route handler={App}>
-  </Route>
-);
+import Footer from './Footer';
 
-Router.run(routes, function (Handler) {
-  React.render(<Handler/>, document.getElementById('container'));
-});
+export default class App extends Component {
+  render() {
+    return (
+      <div>
+        <RouteHandler/>
+        <Footer/>
+      </div>
+    );
+  }
+}
