@@ -41,6 +41,16 @@ gulp.task('keystone', function() {
   var stdioOptions = [ 'ignore', process.stdout, process.stderr ];
   keystoneProcess = spawn('env', ['node', 'keystone'], { detached: false, stdio: stdioOptions });
   keystoneProcess.unref();
+
+  var livereloadTimer = setInterval(function() {
+    http.get({ host: 'localhost', port: 3000, path: '/' }, function(res) {
+      livereload.changed('/');
+      clearInterval(livereloadTimer);
+      console.log('Site reloaded after server restarted...');
+    }).on('error', function(e) {
+      console.log('Reloading site but not yet ready, retrying in 1 second...');
+    });
+  }, 1000);
 });
 
 gulp.task('watch', [ 'keystone' ], function() {
