@@ -60,9 +60,7 @@ gulp.task('watch', [ 'keystone' ], function() {
 
   gulp.watch(paths.less).on('change', function(event) {
     paths.css.forEach(function(path) {
-      http.get({ host: 'localhost', port: 3000, path: path }, function() {
-        livereload.changed(path);
-      });
+      livereload.changed(path);
     });
   });
 
