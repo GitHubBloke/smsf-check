@@ -2,6 +2,7 @@ var babelify = require('babelify');
 var browserify = require('browserify');
 var buffer = require('vinyl-buffer');
 var debowerify = require('debowerify');
+var eslint = require('gulp-eslint');
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var jshint = require('gulp-jshint');
@@ -12,8 +13,8 @@ var sourcemaps = require('gulp-sourcemaps');
 var spawn = require('child_process').spawn;
 
 var paths = {
-  'src': [ './models/**/*.js','./routes/**/*.js', 'keystone.js', 'package.json' ],
-  'js': [ './assets/js/app.js' ],
+  src: [ './models/**/*.js', './routes/**/*.js', 'keystone.js' ],
+  js: [ './assets/js/app.js' ],
 };
 
 var keystoneProcess = null;
@@ -51,10 +52,11 @@ gulp.task('keystone', function() {
   }, 3000);
 });
 
-gulp.task('lint', function(){
-  gulp.src(paths.src.concat(paths.js))
-    .pipe(jshint())
-    .pipe(jshint.reporter(jshintReporter));
+gulp.task('lint', function () {
+  return gulp.src(paths.src)
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failOnError());
 });
 
 gulp.task('sendLivereloadChanged', function () {
