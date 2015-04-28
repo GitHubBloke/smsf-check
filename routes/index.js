@@ -41,9 +41,9 @@ export default function(app) {
 
   app.use(expressWinston.errorLogger({ winstonInstance: logger }));
 
-  /*eslint-disable handle-callback-err */
+  /* eslint-disable handle-callback-err */
   app.use((err, req, res, next) => { res.sendStatus(500); });
-  /*eslint-enable handle-callback-err */
+  /* eslint-enable handle-callback-err */
 
   // NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
   // app.get('/protected', middleware.requireUser, routes.views.protected);

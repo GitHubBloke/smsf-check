@@ -3,7 +3,7 @@
 require('dotenv').load();
 
 // Monitor app with New Relic
-require('newrelic');
+if (process.env.NEW_RELIC_LICENSE_KEY) { require('newrelic'); }
 
 // Enable es6
 require('babel/register');
@@ -16,7 +16,6 @@ var keystone = require('keystone');
 // and documentation.
 
 keystone.init({
-
   'name': 'SMSF Health Check',
   'brand': 'SMSF Health Check',
 
@@ -32,8 +31,7 @@ keystone.init({
   'session': true,
   'auth': true,
   'user model': 'User',
-  'cookie secret': '5R(+[4Vaibu}i)zZ^eg:/"bR5{fGtw(JWa|qKbb:3y]M1|n{b7k{~SB*345:03y!'
-
+  'cookie secret': '5R(+[4Vaibu}i)zZ^eg:/"bR5{fGtw(JWa|qKbb:3y]M1|n{b7k{~SB*345:03y!',
 });
 
 // Load your project's Models
@@ -48,7 +46,7 @@ keystone.set('locals', {
   _: require('lodash'),
   env: keystone.get('env'),
   utils: keystone.utils,
-  editable: keystone.content.editable
+  editable: keystone.content.editable,
 });
 
 // Load your project's Routes
@@ -68,9 +66,9 @@ keystone.set('email locals', {
     'buttons': {
       'color': '#fff',
       'background_color': '#2697de',
-      'border_color': '#1a7cb7'
-    }
-  }
+      'border_color': '#1a7cb7',
+    },
+  },
 });
 
 // Setup replacement rules for emails, to automate the handling of differences
@@ -81,10 +79,10 @@ keystone.set('email locals', {
 
 keystone.set('email rules', [{
   find: '/images/',
-  replace: (keystone.get('env') === 'production') ? 'http://www.your-server.com/images/' : 'http://localhost:3000/images/'
+  replace: (keystone.get('env') === 'production') ? 'http://www.your-server.com/images/' : 'http://localhost:3000/images/',
 }, {
   find: '/keystone/',
-  replace: (keystone.get('env') === 'production') ? 'http://www.your-server.com/keystone/' : 'http://localhost:3000/keystone/'
+  replace: (keystone.get('env') === 'production') ? 'http://www.your-server.com/keystone/' : 'http://localhost:3000/keystone/',
 }]);
 
 // Load your project's email test routes
@@ -94,7 +92,7 @@ keystone.set('email tests', require('./routes/emails'));
 // Configure the navigation bar in Keystone's Admin UI
 
 keystone.set('nav', {
-  'users': 'users'
+  'users': 'users',
 });
 
 // Start Keystone to connect to your database and initialise the web server
