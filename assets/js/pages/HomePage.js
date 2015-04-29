@@ -5,7 +5,7 @@ export default class HomePage extends Component {
   render() {
     return (
       <div>
-        <div className='container text-center prepend-xs-2 append-xs-2'>
+        <div className='container text-center prepend-xs-2 append-xs-3'>
           <h1>SMSF Health Check</h1>
           <h3>
             Welcome to the SuperIQ SMSF Health Check tool.
