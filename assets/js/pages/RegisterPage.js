@@ -28,11 +28,11 @@ export default class RegisterPage extends Component {
                 <input type='text' className='form-control input-lg' placeholder="Your fund's ABN..." />
               </div>
               <div className='form-group col-md-12 prepend-xs-tiny append-xs-tiny text-left'>
-                <label class='checkbox-inline'>
+                <label>
                   <input type='checkbox' value='true' />&nbsp;
                   I consent to SuperIQ using my data to compare my fund to other funds.
                 </label>
-                <label class='checkbox-inline'>
+                <label>
                   <input type='checkbox' value='true' />&nbsp;
                   I would like to receive additional information from SuperIQ via email.
                 </label>
