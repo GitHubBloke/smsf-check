@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { RouteHandler } from 'react-router';
 
+import locals from '../utils/locals';
+
 export default class PrivacyPage extends Component {
   render() {
     return (
-      <div>
+      <DocumentTitle title={`${locals.name} - Privacy Policy`}>
         <div className='container prepend-xs-2 append-xs-3'>
           <h1 className='text-center append-xs-3'>Privacy Policy</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin auctor felis diam. Nam ac eleifend metus. Nullam congue neque sem, vitae consectetur tortor lacinia vitae. Pellentesque interdum urna id ipsum aliquet, nec volutpat nisl iaculis. Phasellus in semper nunc, quis hendrerit dolor. Pellentesque in risus pharetra, feugiat nibh non, malesuada turpis. Pellentesque lorem elit, maximus eget eleifend a, rutrum sit amet lorem. Etiam eleifend lacus velit, quis vulputate velit sagittis quis.</p>
@@ -17,7 +19,7 @@ export default class PrivacyPage extends Component {
 
           <p>Sed a elementum nulla. Phasellus vel urna justo. Curabitur id justo orci. Cras et accumsan nisi. Donec eu urna tincidunt felis egestas laoreet vel vel quam. Nullam viverra porta arcu. Sed vel augue lobortis, posuere urna sed, dictum ligula. Mauris a gravida lectus. Praesent nec auctor ligula, ut condimentum augue. Morbi dapibus sed risus id malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec pretium sem. Aliquam consectetur et lectus scelerisque gravida. Aliquam dapibus lobortis leo, in fringilla ante. Nulla egestas nisl a dui ornare, non rutrum ante tincidunt. Aliquam erat volutpat.</p>
         </div>
-      </div>
+      </DocumentTitle>
     );
   }
 }

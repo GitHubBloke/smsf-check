@@ -17,7 +17,7 @@ var keystone = require('keystone');
 
 keystone.init({
   'name': 'SMSF Health Check',
-  'brand': 'SMSF Health Check',
+  'brand': 'SuperIQ',
 
   'less': 'public',
   'static': 'public',
@@ -47,6 +47,17 @@ keystone.set('locals', {
   env: keystone.get('env'),
   utils: keystone.utils,
   editable: keystone.content.editable,
+
+  JSON: JSON,
+  keystone: keystone,
+});
+
+// Setup common client side global variables.
+
+keystone.set('client locals', {
+  env: keystone.get('env'),
+  name: keystone.get('name'),
+  brand: keystone.get('brand'),
 });
 
 // Load your project's Routes

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import DocumentTitle from 'react-document-title';
 import { Link } from 'react-router';
 
-import DocumentTitle from 'react-document-title';
+import locals from '../utils/locals';
 
 export default class LoginPage extends Component {
   render() {
     return (
-      <DocumentTitle title='SMSF Health Check - Login'>
+      <DocumentTitle title={`${locals.name} - Login`}>
         <div>
           <h1>Log In</h1>
           <div className='prepend-xs-2 append-xs-1 clearfix'>
