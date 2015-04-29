@@ -8,7 +8,8 @@
  * modules in your project's /lib directory.
  */
 
-var _ = require('lodash');
+import _ from 'lodash';
+import keystone from 'keystone';
 
 
 /**
@@ -19,52 +20,48 @@ var _ = require('lodash');
   or replace it with your own templates / logic.
 */
 
-exports.initLocals = function(req, res, next) {
-
-  var locals = res.locals;
+export function initLocals(req, res, next) {
+  const { locals } = res;
+  const clientLocals = keystone.get('client locals');
 
   locals.navLinks = [
-    { label: 'Home', key: 'home', href: '/' }
+    { label: 'Home', key: 'home', href: '/' },
   ];
 
   locals.user = req.user;
+  clientLocals.user = _.pick(locals.user, 'name', 'email', 'isAdmin');
 
   next();
-
-};
+}
 
 
 /**
   Fetches and clears the flashMessages before a view is rendered
 */
 
-exports.flashMessages = function(req, res, next) {
-
-  var flashMessages = {
+export function flashMessages(req, res, next) {
+  const messages = {
     info: req.flash('info'),
     success: req.flash('success'),
     warning: req.flash('warning'),
     error: req.flash('error')
   };
 
-  res.locals.messages = _.any(flashMessages, function(msgs) { return msgs.length; }) ? flashMessages : false;
+  res.locals.messages = _.any(messages, function(msgs) { return msgs.length; }) ? messages : false;
 
   next();
-
-};
+}
 
 
 /**
   Prevents people from accessing protected pages when they're not signed in
  */
 
-exports.requireUser = function(req, res, next) {
-
+export function requireUser(req, res, next) {
   if (!req.user) {
     req.flash('error', 'Please sign in to access this page.');
     res.redirect('/keystone/signin');
   } else {
     next();
   }
-
-};
+}

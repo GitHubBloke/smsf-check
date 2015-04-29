@@ -35,6 +35,7 @@ html
 
     //- JAVASCRIPT
 
+    // Expose client locals to the client side
     script(type="text/javascript").
       window.locals = !{JSON.stringify(keystone.get('client locals'))};
 

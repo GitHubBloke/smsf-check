@@ -33,10 +33,14 @@ keystone.pre('render', flashMessages);
 // Import Route Controllers
 const routes = {
   views: importRoutes('./views'),
+  api: importRoutes('./api'),
 };
 
 // Setup Route Bindings
 export default function(app) {
+  app.post('/api/signin', routes.api.session.signin);
+  app.post('/api/signout', routes.api.session.signout);
+
   app.get('*', routes.views.index);
 
   app.use(expressWinston.errorLogger({ winstonInstance: logger }));
@@ -44,8 +48,4 @@ export default function(app) {
   /* eslint-disable handle-callback-err */
   app.use((err, req, res, next) => { res.sendStatus(500); });
   /* eslint-enable handle-callback-err */
-
-  // NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
-  // app.get('/protected', middleware.requireUser, routes.views.protected);
-
 }
