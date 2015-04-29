@@ -4,11 +4,12 @@ export default class Footer extends Component {
   render() {
     return (
       <footer>
-        <div className='container'>
+        <div className='container prepend-md-2 append-md-2'>
           <span className='h1 text-muted'>SuperIQ Logo</span>
-          <span className='text-muted'>
+          &nbsp;&nbsp;
+          <small className='text-muted'>
             &copy; {new Date().getFullYear()} SuperIQ. All rights reserved.
-          </span>
+          </small>
         </div>
       </footer>
     );

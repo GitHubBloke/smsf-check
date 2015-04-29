@@ -5,7 +5,7 @@ export default class HomePage extends Component {
   render() {
     return (
       <div>
-        <div className='container text-center'>
+        <div className='container text-center prepend-md-2 append-md-2'>
           <h1>SMSF Health Check</h1>
           <h3>
             Welcome to the SuperIQ SMSF Health Check tool.
@@ -13,14 +13,17 @@ export default class HomePage extends Component {
             SMSFs to see how your fund stacks up.
           </h3>
 
-          <div className='row'>
+          <div className='row prepend-md-2 append-md-2'>
             <div className='col-md-4'>
+              <img src='http://placehold.it/100x100' width='100' />
               <h4>Know your data is safe with bank-level security.</h4>
             </div>
             <div className='col-md-4'>
+              <img src='http://placehold.it/100x100' width='100' />
               <h4>Provide as much or as little information as you like and still see results.</h4>
             </div>
             <div className='col-md-4'>
+              <img src='http://placehold.it/100x100' width='100' />
               <h4>Compare your fund to over 11,000 funds from ATO and SuperIQ databases.</h4>
             </div>
           </div>
