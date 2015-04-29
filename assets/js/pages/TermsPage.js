@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import DocumentTitle from 'react-document-title';
 import { RouteHandler } from 'react-router';
 
 import locals from '../utils/locals';
