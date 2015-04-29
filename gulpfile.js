@@ -21,7 +21,8 @@ var paths = {
   browserify: [ './assets/js/main.js' ],
   lint: [ './models/**/*.js', './routes/**/*.js', '*.js', './assets/js/**/*.js' ],
   less: [ './public/styles/**/*.less' ],
-  css: [ '/styles/site.css' ]
+  css: [ '/styles/site.css' ],
+  jade: [ './templates/**/*.jade' ]
 };
 
 var keystoneProcess = null;
@@ -63,6 +64,8 @@ gulp.task('watch', [ 'keystone' ], function() {
       livereload.changed(path);
     });
   });
+
+  gulp.watch(paths.jade).on('change', livereload.changed);
 
   process.stdin.resume();
 
