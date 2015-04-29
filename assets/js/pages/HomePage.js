@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { RouteHandler } from 'react-router';
 
-export default class Home extends Component {
+export default class HomePage extends Component {
   render() {
     return (
       <div>
