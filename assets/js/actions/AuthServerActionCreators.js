@@ -1,12 +1,16 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import ActionTypes from '../constants/ActionTypes';
 
+import router from '../router';
+
 export default {
   handleSigninSuccess(response) {
     AppDispatcher.handleServerAction({
       type: ActionTypes.SIGNIN_SUCCESS,
       response,
     });
+
+    router.transitionTo('members');
   },
 
   handleSigninError(err) {
@@ -22,6 +26,8 @@ export default {
       type: ActionTypes.SIGNOUT_SUCCESS,
       response,
     });
+
+    router.transitionTo('/');
   },
 
   handleSignoutError(err) {

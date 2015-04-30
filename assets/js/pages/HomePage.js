@@ -31,7 +31,7 @@ export default class HomePage extends Component {
           </div>
 
           <div className="well well-lg text-center">
-            <RouteHandler/>
+            <RouteHandler {...this.props}/>
           </div>
         </div>
       </div>

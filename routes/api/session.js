@@ -20,7 +20,7 @@ export function signin(req, res) {
     (user) => {
       if (!user) { return res.sendStatus(403); }
       session.signin({ email: user.email, password: req.body.password }, req, res,
-        (user) => res.json(_.pick(req.user, 'name', 'email', 'isAdmin')),
+        (user) => res.json({ user: _.pick(req.user, 'name', 'email', 'isAdmin') }),
         onError
       );
     },

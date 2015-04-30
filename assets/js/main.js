@@ -1,8 +1,7 @@
 import React from 'react';
-import Router, { Route } from 'react-router';
 
-import routes from './routes';
+import router from './router';
 
-Router.run(routes, Router.HistoryLocation, function (Handler) {
-  React.render(<Handler/>, document.getElementById('container'));
+router.run((Handler, state) => {
+  React.render(<Handler {...state}/>, document.getElementById('container'));
 });

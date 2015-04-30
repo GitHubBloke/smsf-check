@@ -5,7 +5,7 @@ import PayloadSources from '../constants/PayloadSources';
 
 const AppDispatcher = _.assign(new Dispatcher(), {
   handleServerAction(action) {
-    console.log('server action', action);
+    console.log('Server action', action);
 
     if (!action.type) {
       throw new Error('Empty action.type: you likely mistyped the action.');
@@ -18,7 +18,7 @@ const AppDispatcher = _.assign(new Dispatcher(), {
   },
 
   handleViewAction(action) {
-    console.log('view action', action);
+    console.log('View action', action);
 
     if (!action.type) {
       throw new Error('Empty action.type: you likely mistyped the action.');

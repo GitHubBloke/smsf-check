@@ -5,8 +5,6 @@ import AuthStore from '../stores/AuthStore';
 
 export default {
   signin(email, password) {
-    //if (AuthStore.loggedIn(email)) { return; }
-
     AppDispatcher.handleViewAction({
       type: ActionTypes.SIGNIN,
       email,

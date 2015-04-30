@@ -1,5 +1,5 @@
 import React from 'react';
-import Router, { Route, RouteHandler, DefaultRoute } from 'react-router';
+import { Route, DefaultRoute } from 'react-router';
 
 import App from './App';
 import HomePage from './pages/HomePage';

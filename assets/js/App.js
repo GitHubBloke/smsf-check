@@ -10,7 +10,7 @@ export default class App extends Component {
     return (
       <DocumentTitle title={locals.name}>
         <div>
-          <RouteHandler/>
+          <RouteHandler {...this.props}/>
           <Footer/>
         </div>
       </DocumentTitle>

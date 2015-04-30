@@ -3,7 +3,13 @@ import AppDispatcher from '../dispatcher/AppDispatcher';
 import { createStore } from '../utils/StoreUtils';
 import locals from '../utils/locals';
 
+let loggingIn;
+
 const AuthStore = createStore({
+  loggingIn() {
+    return loggingIn;
+  },
+
   loggedIn(email) {
     if (!email) {
       return !!locals.user;
@@ -24,12 +30,19 @@ AuthStore.dispatchToken = AppDispatcher.register((payload) => {
   const user = response && response.user;
 
   switch (action.type) {
+    case ActionTypes.SIGNIN:
+      loggingIn = true;
+      AuthStore.emitChange();
+      break;
+
     case ActionTypes.SIGNIN_SUCCESS:
+      loggingIn = false;
       locals.user = user;
       AuthStore.emitChange();
       break;
 
     case ActionTypes.SIGNOUT_SUCCESS:
+      loggingIn = false;
       delete locals.user;
       AuthStore.emitChange();
       break;
