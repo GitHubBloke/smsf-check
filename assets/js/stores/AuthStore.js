@@ -51,6 +51,10 @@ AuthStore.dispatchToken = AppDispatcher.register((payload) => {
       error = err;
       break;
 
+    case ActionTypes.CLEAR_SIGNIN_ERROR:
+      error = void 0;
+      break;
+
     case ActionTypes.SIGNOUT_SUCCESS:
       delete locals.user;
       break;

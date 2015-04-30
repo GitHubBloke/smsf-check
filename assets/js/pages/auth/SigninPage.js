@@ -20,6 +20,10 @@ class SigninPage extends BaseComponent {
     React.findDOMNode(this.refs.email).focus();
   }
 
+  componentWillUnmount() {
+    AuthActionCreators.clearError();
+  }
+
   render() {
     const { email, password } = this.state;
     const { signingIn, error } = this.props;
