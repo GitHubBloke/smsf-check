@@ -3,7 +3,7 @@ import AppDispatcher from '../dispatcher/AppDispatcher';
 import { createStore } from '../utils/StoreUtils';
 import locals from '../utils/locals';
 
-let signingIn;
+let signingIn, signingOut;
 let error;
 
 const AuthStore = createStore({
@@ -17,6 +17,10 @@ const AuthStore = createStore({
     } else {
       return locals.user && locals.user.email === email;
     }
+  },
+
+  signingOut() {
+    return signingOut;
   },
 
   getUser() {
@@ -55,8 +59,17 @@ AuthStore.dispatchToken = AppDispatcher.register((payload) => {
       error = void 0;
       break;
 
+    case ActionTypes.SIGNOUT:
+      signingOut = true;
+      break;
+
     case ActionTypes.SIGNOUT_SUCCESS:
+      signingOut = false;
       delete locals.user;
+      break;
+
+    case ActionTypes.SIGNOUT_ERROR:
+      signingOut = false;
       break;
 
     default:

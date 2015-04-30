@@ -28,8 +28,6 @@ export default {
       type: ActionTypes.SIGNOUT_SUCCESS,
       response,
     });
-
-    router.transitionTo('/');
   },
 
   handleSignoutError(err) {
