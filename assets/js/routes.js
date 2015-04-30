@@ -7,6 +7,7 @@ import PrivacyPage from './pages/PrivacyPage';
 import TermsPage from './pages/TermsPage';
 
 import SigninPage from './pages/auth/SigninPage';
+import SignoutPage from './pages/auth/SignoutPage';
 import RegisterPage from './pages/auth/RegisterPage';
 
 import MembersPage from './pages/steps/MembersPage';
@@ -19,6 +20,7 @@ export default (
     </Route>
 
     <Route name='members' handler={MembersPage} />
+    <Route name='signout' handler={SignoutPage} />
 
     <Route name='terms' handler={TermsPage} />
     <Route name='privacy' handler={PrivacyPage} />
