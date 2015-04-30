@@ -53,7 +53,7 @@ keystone.set('locals', {
 });
 
 // Setup common client side global variables.
-
+//
 keystone.set('client locals', {
   env: keystone.get('env'),
   name: keystone.get('name'),
