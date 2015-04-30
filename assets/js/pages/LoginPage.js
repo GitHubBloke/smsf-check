@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import AuthActionCreators from '../actions/AuthActionCreators';
 import AuthStore from '../stores/AuthStore';
 import BaseComponent from '../utils/BaseComponent';
-import connectToStores from '../utils/connectToStores';
+import { connectToStores } from '../utils/StoreUtils';
 import locals from '../utils/locals';
 
 class LoginPage extends BaseComponent {
