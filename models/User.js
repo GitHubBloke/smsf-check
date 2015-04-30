@@ -10,12 +10,12 @@ User.add({
   password: { type: Types.Password, initial: true, required: true },
 }, 'Fund', {
   fund: {
-    name: { type: String, required: true, initial: true },
-    abn: { type: String, requied: true, initial: true },
+    name: { type: String, label: 'Name', required: true, initial: true },
+    abn: { type: String, label: 'ABN', requied: true, initial: true },
   },
 }, 'Notifications', {
   notifications: {
-    newsletter: { type: Boolean, label: 'Receive newsletter' },
+    newsletter: { type: Boolean, label: `Receive additional information from ${keystone.get('brand')} via email` },
   },
 }, 'Permissions', {
   isAdmin: { type: Boolean, label: 'Can access Keystone', index: true }
