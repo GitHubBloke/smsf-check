@@ -15,16 +15,16 @@ export default class HomePage extends BaseComponent {
           SMSFs to see how your fund stacks up.
         </h3>
 
-        <div className='row prepend-xs-2 append-xs-2'>
-          <div className='col-md-4'>
+        <div className='row prepend-xs-2'>
+          <div className='col-md-4 append-xs-2'>
             <img src='http://placehold.it/100x100' width='100' />
             <h4>Know your data is safe with bank-level security.</h4>
           </div>
-          <div className='col-md-4'>
+          <div className='col-md-4 append-xs-2'>
             <img src='http://placehold.it/100x100' width='100' />
             <h4>Provide as much or as little information as you like and still see results.</h4>
           </div>
-          <div className='col-md-4'>
+          <div className='col-md-4 append-xs-2'>
             <img src='http://placehold.it/100x100' width='100' />
             <h4>Compare your fund to over 11,000 funds from ATO and {locals.brand} databases.</h4>
           </div>
