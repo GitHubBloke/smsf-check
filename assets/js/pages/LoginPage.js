@@ -36,7 +36,7 @@ class LoginPage extends BaseComponent {
             </div>
           </div>
           <button className='btn btn-default btn-lg append-xs-1' type='submit'>
-            {this.props.loggingIn ? 'Please wait...' : 'Log In to your Health Check'}
+            {loggingIn ? 'Please wait...' : 'Log In to your Health Check'}
           </button>
           <p className='append-xs-none'>Need an account? <Link to='app'>Register</Link></p>
         </form>
