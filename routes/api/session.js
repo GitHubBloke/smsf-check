@@ -22,7 +22,7 @@ export function signin(req, res) {
     (user) => {
       if (!user) { return onError(); }
       session.signin({ email: user.email, password: req.body.password }, req, res,
-        (user) => res.json({ user: _.pick(req.user, 'name', 'email', 'isAdmin') }),
+        (user) => res.json({ user: user.toJSON() }),
         onError
       );
     },

@@ -38,10 +38,7 @@ export function initLocals(req, res, next) {
   ];
 
   locals.user = req.user;
-
-  locals.client = _.assign({}, clientLocals, {
-    user: locals.user && _.pick(locals.user, 'name', 'email', 'isAdmin'),
-  });
+  locals.client = _.assign({}, clientLocals, { user: locals.user });
 
   next();
 }

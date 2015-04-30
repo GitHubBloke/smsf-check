@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import keystone from 'keystone';
 
 const { Field: { Types } } = keystone;
@@ -23,6 +24,15 @@ User.add({
 
 User.schema.virtual('canAccessKeystone').get(function() {
   return this.isAdmin;
+});
+
+User.schema.set('toJSON', {
+  transform(doc, ret) {
+    ret.id = ret._id;
+    ret.name.full = doc.name.full;
+    ret = _.omit(ret, '_id', '__v', 'password');
+    return ret;
+  },
 });
 
 User.defaultColumns = 'name, email, fund, isAdmin';
