@@ -41,6 +41,8 @@ export default function(app) {
   app.post('/api/signin', routes.api.session.signin);
   app.post('/api/signout', routes.api.session.signout);
 
+  app.post('/api/users', routes.api.users.create);
+
   app.get('*', routes.views.index);
 
   app.use(expressWinston.errorLogger({ winstonInstance: logger }));
