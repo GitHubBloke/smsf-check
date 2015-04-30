@@ -6,7 +6,7 @@ import HomePage from './pages/HomePage';
 import PrivacyPage from './pages/PrivacyPage';
 import TermsPage from './pages/TermsPage';
 
-import LoginPage from './pages/auth/LoginPage';
+import SigninPage from './pages/auth/SigninPage';
 import RegisterPage from './pages/auth/RegisterPage';
 
 import MembersPage from './pages/steps/MembersPage';
@@ -15,7 +15,7 @@ export default (
   <Route name='app' path='/' handler={App}>
     <Route handler={HomePage}>
       <DefaultRoute handler={RegisterPage} />
-      <Route name='login' handler={LoginPage} />
+      <Route name='signin' handler={SigninPage} />
     </Route>
 
     <Route name='members' handler={MembersPage} />

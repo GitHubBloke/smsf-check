@@ -2,9 +2,9 @@ import React from 'react';
 import DocumentTitle from 'react-document-title';
 import { Link } from 'react-router';
 
-import { requireUnauth } from '../utils/AuthUtils';
-import BaseComponent from '../utils/BaseComponent';
-import locals from '../utils/locals';
+import { requireUnauth } from '../../utils/AuthUtils';
+import BaseComponent from '../../utils/BaseComponent';
+import locals from '../../utils/locals';
 
 class RegisterPage extends BaseComponent {
   render() {
@@ -40,7 +40,7 @@ class RegisterPage extends BaseComponent {
             </div>
           </div>
           <button className='btn btn-default btn-lg append-xs-1' type='submit'>Register your fund now</button>
-          <p className='append-xs-none'>Already registered? <Link to='login'>Log In</Link></p>
+          <p className='append-xs-none'>Already registered? <Link to='signin'>Log In</Link></p>
         </form>
       </DocumentTitle>
     );

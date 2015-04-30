@@ -3,14 +3,14 @@ import AppDispatcher from '../dispatcher/AppDispatcher';
 import { createStore } from '../utils/StoreUtils';
 import locals from '../utils/locals';
 
-let loggingIn;
+let signingIn;
 
 const AuthStore = createStore({
-  loggingIn() {
-    return loggingIn;
+  signingIn() {
+    return signingIn;
   },
 
-  loggedIn(email) {
+  signedIn(email) {
     if (!email) {
       return !!locals.user;
     } else {
@@ -31,16 +31,16 @@ AuthStore.dispatchToken = AppDispatcher.register((payload) => {
 
   switch (action.type) {
     case ActionTypes.SIGNIN:
-      loggingIn = true;
+      signingIn = true;
       break;
 
     case ActionTypes.SIGNIN_SUCCESS:
-      loggingIn = false;
+      signingIn = false;
       locals.user = user;
       break;
 
     case ActionTypes.SIGNIN_ERROR:
-      loggingIn = false;
+      signingIn = false;
       break;
 
     case ActionTypes.SIGNOUT_SUCCESS:

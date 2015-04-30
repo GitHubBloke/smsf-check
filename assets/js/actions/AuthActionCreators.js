@@ -14,7 +14,7 @@ export default {
   },
 
   signout() {
-    if (!AuthStore.loggedIn()) { return; }
+    if (!AuthStore.signedIn()) { return; }
     AppDispatcher.handleViewAction({ type: ActionTypes.SIGNOUT });
     AuthAPI.signout();
   },

@@ -7,8 +7,8 @@ import BaseComponent from './BaseComponent';
 export function requireAuth(Component) {
   class Authenticated extends BaseComponent {
     static willTransitionTo(transition) {
-      if (!AuthStore.loggedIn()) {
-        transition.redirect('login', {}, { next: transition.path });
+      if (!AuthStore.signedIn()) {
+        transition.redirect('signin', {}, { next: transition.path });
       }
     }
 
@@ -23,7 +23,7 @@ export function requireAuth(Component) {
 export function requireUnauth(Component) {
   class Unauthenticated extends BaseComponent {
     static willTransitionTo(transition) {
-      if (AuthStore.loggedIn()) {
+      if (AuthStore.signedIn()) {
         const user = AuthStore.getUser();
         AuthServerActionCreators.handleSigninSuccess({ user });
       }
