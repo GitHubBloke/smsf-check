@@ -32,21 +32,26 @@ AuthStore.dispatchToken = AppDispatcher.register((payload) => {
   switch (action.type) {
     case ActionTypes.SIGNIN:
       loggingIn = true;
-      AuthStore.emitChange();
       break;
 
     case ActionTypes.SIGNIN_SUCCESS:
       loggingIn = false;
       locals.user = user;
-      AuthStore.emitChange();
+      break;
+
+    case ActionTypes.SIGNIN_ERROR:
+      loggingIn = false;
       break;
 
     case ActionTypes.SIGNOUT_SUCCESS:
-      loggingIn = false;
       delete locals.user;
-      AuthStore.emitChange();
       break;
+
+    default:
+      return;
   }
+
+  AuthStore.emitChange();
 });
 
 export default AuthStore;
