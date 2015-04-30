@@ -16,6 +16,10 @@ class SigninPage extends BaseComponent {
     this.state = { email: '', password: '' };
   }
 
+  componentDidMount() {
+    React.findDOMNode(this.refs.email).focus();
+  }
+
   render() {
     const { email, password } = this.state;
     const { signingIn } = this.props;
@@ -26,7 +30,7 @@ class SigninPage extends BaseComponent {
           <h1>Log In</h1>
           <div className='prepend-xs-2 append-xs-1 clearfix'>
             <div className='form-group col-md-6'>
-              <input type='text' className='form-control input-lg' placeholder='Enter your email...'
+              <input ref='email' type='text' className='form-control input-lg' placeholder='Enter your email...'
                 value={email} onChange={this._handleInputChange.bind(this, 'email')}
                 disabled={signingIn} />
             </div>
