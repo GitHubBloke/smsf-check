@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import DocumentTitle from 'react-document-title';
 
+import BaseComponent from '../utils/BaseComponent';
 import locals from '../utils/locals';
 
-export default class PrivacyPage extends Component {
+export default class PrivacyPage extends BaseComponent {
   render() {
     return (
       <DocumentTitle title={`${locals.name} - Privacy Policy`}>

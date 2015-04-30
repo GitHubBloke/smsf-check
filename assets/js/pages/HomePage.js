@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { RouteHandler } from 'react-router';
 
+import BaseComponent from '../utils/BaseComponent';
 import locals from '../utils/locals';
 
-export default class HomePage extends Component {
+export default class HomePage extends BaseComponent {
   render() {
     return (
       <div>
