@@ -12,6 +12,9 @@ User.add({
     name: { type: String, required: true, initial: true },
     abn: { type: String, requied: true, initial: true },
   },
+  notifications: {
+    newsletter: { type: Boolean },
+  },
 }, 'Permissions', {
   isAdmin: { type: Boolean, label: 'Can access Keystone', index: true }
 });
