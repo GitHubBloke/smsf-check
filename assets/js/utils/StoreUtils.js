@@ -30,7 +30,6 @@ export function createStore(spec) {
   return store;
 }
 
-
 export function connectToStores(Component, stores, pickProps, getState) {
   const StoreConnector = React.createClass({
     getStateFromStores(props) {

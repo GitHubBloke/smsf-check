@@ -10,7 +10,8 @@ export default {
       response,
     });
 
-    router.transitionTo('members');
+    const query = router.getCurrentQuery();
+    router.replaceWith((query && query.next) || 'members');
   },
 
   handleSigninError(err) {

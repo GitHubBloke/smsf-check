@@ -2,10 +2,11 @@ import React from 'react';
 import DocumentTitle from 'react-document-title';
 import { Link } from 'react-router';
 
+import { requireUnauth } from '../utils/AuthUtils';
 import BaseComponent from '../utils/BaseComponent';
 import locals from '../utils/locals';
 
-export default class RegisterPage extends BaseComponent {
+class RegisterPage extends BaseComponent {
   render() {
     return (
       <DocumentTitle title={`${locals.name} - Register`}>
@@ -45,3 +46,5 @@ export default class RegisterPage extends BaseComponent {
     );
   }
 }
+
+export default requireUnauth(RegisterPage);

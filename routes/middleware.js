@@ -29,7 +29,7 @@ export function initLocals(req, res, next) {
   ];
 
   locals.user = req.user;
-  clientLocals.user = _.pick(locals.user, 'name', 'email', 'isAdmin');
+  if (locals.user) { clientLocals.user = _.pick(locals.user, 'name', 'email', 'isAdmin'); }
 
   next();
 }
