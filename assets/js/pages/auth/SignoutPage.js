@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 
 import AuthActionCreators from '../../actions/AuthActionCreators';
 import AuthStore from '../../stores/AuthStore';
@@ -21,7 +22,9 @@ class SignoutPage extends BaseComponent {
 
     return (
       <div className='container text-center prepend-xs-2 append-xs-3'>
-        <h1 className='text-center append-xs-3'>{locals.name}</h1>
+        <h1 className='text-center append-xs-3'>
+          <Link to='/'>{locals.name}</Link>
+        </h1>
         {signingOut ?
           <p className='text-muted'>Please wait... currently signing you out of {locals.name}.</p> :
           <p className='text-muted'>You are now signed out of {locals.name}.</p>}
