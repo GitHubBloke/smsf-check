@@ -11,6 +11,15 @@
 import _ from 'lodash';
 import keystone from 'keystone';
 
+/**
+  Disable caching
+**/
+
+export function removeCache(req, res, next) {
+  res.set('cache-control', 'no-cache, max-age=0');
+  res.set('pragma', 'no-cache');
+  next();
+}
 
 /**
   Initialises the standard view locals

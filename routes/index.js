@@ -22,12 +22,12 @@ import expressWinston from 'express-winston';
 import keystone from 'keystone';
 
 import logger from '../logger';
-import { initLocals, flashMessages } from './middleware';
+import { removeCache, initLocals, flashMessages } from './middleware';
 
 const importRoutes = keystone.importer(__dirname);
 
 // Common Middleware
-keystone.pre('routes', initLocals);
+keystone.pre('routes', initLocals, removeCache);
 keystone.pre('render', flashMessages);
 
 // Import Route Controllers
