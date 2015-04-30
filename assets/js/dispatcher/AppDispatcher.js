@@ -28,7 +28,7 @@ const AppDispatcher = _.assign(new Dispatcher(), {
       source: PayloadSources.VIEW_ACTION,
       action,
     });
-  }
+  },
 });
 
 export default AppDispatcher;

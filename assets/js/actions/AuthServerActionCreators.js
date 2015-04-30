@@ -17,7 +17,7 @@ export default {
     console.log(err);
 
     AppDispatcher.handleServerAction({
-      type: ActionTypes.SIGNIN_ERROR
+      type: ActionTypes.SIGNIN_ERROR,
     });
   },
 
@@ -34,7 +34,7 @@ export default {
     console.log(err);
 
     AppDispatcher.handleServerAction({
-      type: ActionTypes.SIGNOUT_ERROR
+      type: ActionTypes.SIGNOUT_ERROR,
     });
   },
 };
