@@ -3,10 +3,11 @@ import { Route, DefaultRoute } from 'react-router';
 
 import App from './App';
 import HomePage from './pages/HomePage';
-import LoginPage from './pages/LoginPage';
 import PrivacyPage from './pages/PrivacyPage';
-import RegisterPage from './pages/RegisterPage';
 import TermsPage from './pages/TermsPage';
+
+import LoginPage from './pages/auth/LoginPage';
+import RegisterPage from './pages/auth/RegisterPage';
 
 import MembersPage from './pages/steps/MembersPage';
 

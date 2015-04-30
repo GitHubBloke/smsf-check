@@ -2,11 +2,11 @@ import React, { PropTypes } from 'react';
 import DocumentTitle from 'react-document-title';
 import { Link } from 'react-router';
 
-import AuthActionCreators from '../actions/AuthActionCreators';
-import AuthStore from '../stores/AuthStore';
-import BaseComponent from '../utils/BaseComponent';
-import locals from '../utils/locals';
-import { connectToStores } from '../utils/StoreUtils';
+import AuthActionCreators from '../../actions/AuthActionCreators';
+import AuthStore from '../../stores/AuthStore';
+import BaseComponent from '../../utils/BaseComponent';
+import locals from '../../utils/locals';
+import { connectToStores } from '../../utils/StoreUtils';
 
 class LoginPage extends BaseComponent {
   constructor(props) {
