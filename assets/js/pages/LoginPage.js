@@ -35,7 +35,7 @@ class LoginPage extends BaseComponent {
                 disabled={loggingIn} />
             </div>
           </div>
-          <button className='btn btn-default btn-lg append-xs-1' type='submit'>
+          <button className='btn btn-default btn-lg append-xs-1' type='submit' disabled={loggingIn}>
             {loggingIn ? 'Please wait...' : 'Log In to your Health Check'}
           </button>
           <p className='append-xs-none'>Need an account? <Link to='app'>Register</Link></p>
