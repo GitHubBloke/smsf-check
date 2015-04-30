@@ -11,6 +11,8 @@
     "lodash": "^3.7.0",
     "newrelic": "^1.18.2",
     "react-document-title": "^1.0.2",
+    "superagent": "^1.2.0",
+    "superagent-prefix": "0.0.2",
     "winston": "^1.0.0",
     "winston-sentry": "0.0.7"
   },
