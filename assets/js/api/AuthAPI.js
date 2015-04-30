@@ -12,7 +12,7 @@ export default {
       .send({ email, password })
       .end((err, res) => {
         if (err || !res.status === 200) {
-          return AuthServerActionCreators.handleSigninError(err || 'Forbidden');
+          return AuthServerActionCreators.handleSigninError(res.body);
         }
 
         AuthServerActionCreators.handleSigninSuccess(res.body);
@@ -25,7 +25,7 @@ export default {
       .use(prefixer)
       .end((err, res) => {
         if (err || !res.status === 200) {
-          return AuthServerActionCreators.handleSignoutError(err);
+          return AuthServerActionCreators.handleSignoutError(res.body);
         }
 
         AuthServerActionCreators.handleSignoutSuccess();

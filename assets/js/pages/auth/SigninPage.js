@@ -22,11 +22,12 @@ class SigninPage extends BaseComponent {
 
   render() {
     const { email, password } = this.state;
-    const { signingIn } = this.props;
+    const { signingIn, error } = this.props;
 
     return (
       <DocumentTitle title={`${locals.name} - Login`}>
         <form onSubmit={this._signin}>
+          {error && <div className='alert alert-danger'>{error.message}</div>}
           <h1>Log In</h1>
           <div className='prepend-xs-2 append-xs-1 clearfix'>
             <div className='form-group col-md-6'>
@@ -59,8 +60,8 @@ class SigninPage extends BaseComponent {
   }
 }
 
-SigninPage.propTypes = { signingIn: PropTypes.bool };
-SigninPage.defaultProps = { signingIn: false };
+SigninPage.propTypes = { signingIn: PropTypes.bool, error: PropTypes.object };
+SigninPage.defaultProps = { signingIn: false, error: void 0 };
 
 function pickProps({ params }) {
   return { params };
@@ -68,7 +69,8 @@ function pickProps({ params }) {
 
 function getState({ params }) {
   const signingIn = AuthStore.signingIn();
-  return { signingIn };
+  const error = AuthStore.getError();
+  return { signingIn, error };
 }
 
 export default requireUnauth(connectToStores(SigninPage,

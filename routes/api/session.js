@@ -7,18 +7,20 @@ const User = keystone.list('User');
 
 export function signin(req, res) {
   if (!req.body.email || !req.body.password) {
-    logger.error({ message: 'Missing email or password' });
-    return res.sendStatus(400);
+    const error = { message: 'Both email address and password are required' };
+    logger.error(error);
+    return res.status(400).json(error);
   }
 
   const onError = (err) => {
-    logger.error(err);
-    res.sendStatus(403);
+    const error = { message: (err && err.message) || 'The password you entered is incorrect.' };
+    logger.error(error);
+    return res.status(403).json(error);
   };
 
   User.model.findOne({ email: req.body.email }).exec().then(
     (user) => {
-      if (!user) { return res.sendStatus(403); }
+      if (!user) { return onError(); }
       session.signin({ email: user.email, password: req.body.password }, req, res,
         (user) => res.json({ user: _.pick(req.user, 'name', 'email', 'isAdmin') }),
         onError

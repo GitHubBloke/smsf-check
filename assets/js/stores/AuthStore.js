@@ -4,6 +4,7 @@ import { createStore } from '../utils/StoreUtils';
 import locals from '../utils/locals';
 
 let signingIn;
+let error;
 
 const AuthStore = createStore({
   signingIn() {
@@ -21,26 +22,33 @@ const AuthStore = createStore({
   getUser() {
     return locals.user;
   },
+
+  getError() {
+    return error;
+  }
 });
 
 AuthStore.dispatchToken = AppDispatcher.register((payload) => {
   const { action } = payload;
-  const { response } = action;
+  const { response, err } = action;
 
   const user = response && response.user;
 
   switch (action.type) {
     case ActionTypes.SIGNIN:
       signingIn = true;
+      error = void 0;
       break;
 
     case ActionTypes.SIGNIN_SUCCESS:
       signingIn = false;
       locals.user = user;
+      error = void 0;
       break;
 
     case ActionTypes.SIGNIN_ERROR:
       signingIn = false;
+      error = err;
       break;
 
     case ActionTypes.SIGNOUT_SUCCESS:
