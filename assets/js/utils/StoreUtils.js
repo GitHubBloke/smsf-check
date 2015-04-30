@@ -5,7 +5,7 @@ import shallowEqual from 'react/lib/shallowEqual';
 const CHANGE_EVENT = 'change';
 
 export function createStore(spec) {
-  var store = _.assign({
+  const store = _.assign({
     emitChange() {
       this.emit(CHANGE_EVENT);
     },
@@ -19,7 +19,7 @@ export function createStore(spec) {
     }
   }, spec, EventEmitter.prototype);
 
-  _.each(store, function (val, key) {
+  _.each(store, (val, key) => {
     if (_.isFunction(val)) {
       store[key] = store[key].bind(store);
     }
