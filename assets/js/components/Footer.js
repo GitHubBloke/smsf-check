@@ -11,7 +11,7 @@ class Footer extends BaseComponent {
     const { signedIn } = this.props;
 
     return (
-      <footer>
+      <footer className='bg-gray clearfix'>
         <div className='container prepend-xs-2 append-xs-2'>
           <Link to='app' className='h1 text-muted'>{locals.brand} Logo</Link>
           &nbsp;&nbsp;

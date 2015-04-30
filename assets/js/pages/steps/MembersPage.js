@@ -9,7 +9,7 @@ export default class MembersPage extends BaseComponent {
     return (
       <DocumentTitle title={`${locals.name} - Member Details`}>
         <div>
-          <div>
+          <div className='bg-gray clearfix'>
             <div className='container prepend-xs-1 append-xs-1'>
               <h2 className='prepend-xs-tiny'>
                 <span className='label label-default'>1/10</span>

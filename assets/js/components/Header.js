@@ -10,7 +10,7 @@ export default class Header extends BaseComponent {
     const { user } = this.props;
 
     return (
-      <header>
+      <header className='bg-dark clearfix'>
         <div className='clearfix'>
           <div className='container prepend-xs-1 append-xs-1'>
             <h1 className='prepend-xs-tiny pull-left'>{locals.name}</h1>
