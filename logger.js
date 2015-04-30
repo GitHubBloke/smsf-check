@@ -5,6 +5,7 @@ const transports = [
   new (winston.transports.Console)({
     colorize: true,
     timestamp: true,
+    json: true,
   }),
 ];
 
