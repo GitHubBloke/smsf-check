@@ -54,10 +54,6 @@ class SigninPage extends BaseComponent {
     );
   }
 
-  _handleInputChange(name, e) {
-    this.setState({ [name]: e.target.value });
-  }
-
   _signin(e) {
     AuthActionCreators.signin(this.state.email, this.state.password);
     e.preventDefault();
