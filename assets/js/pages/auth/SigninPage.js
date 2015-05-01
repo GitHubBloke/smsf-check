@@ -19,6 +19,10 @@ class SigninPage extends BaseComponent {
     };
   }
 
+  componentWillMount() {
+    AuthActionCreators.clearSigninError();
+  }
+
   componentDidMount() {
     React.findDOMNode(this.refs.email).focus();
   }

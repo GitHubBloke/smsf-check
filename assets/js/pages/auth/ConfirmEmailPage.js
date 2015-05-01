@@ -21,6 +21,10 @@ class ConfirmEmailPage extends BaseComponent {
     };
   }
 
+  componentWillMount() {
+    UserActionCreators.clearResetPasswordError();
+  }
+
   componentDidMount() {
     React.findDOMNode(this.refs.password).focus();
   }

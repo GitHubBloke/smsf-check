@@ -25,6 +25,10 @@ class RegisterPage extends BaseComponent {
     };
   }
 
+  componentWillMount() {
+    UserActionCreators.clearSignup();
+  }
+
   componentDidMount() {
     React.findDOMNode(this.refs.firstName).focus();
   }
