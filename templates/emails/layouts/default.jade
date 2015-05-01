@@ -1,0 +1,37 @@
+include ../mixins/button
+
+doctype strict
+head
+  meta(http-equiv="Content-Type", content="text/html; charset=utf-8")
+  meta(name="viewport" content="width=device-width")
+  include /layouts/styles/ink
+  include /layouts/styles/default
+  include styles
+
+body: table.body: tr: td(class="center", align="center", valign="top"): center
+
+  //- HEADER
+  table.row.row-header: tr: td(align="center").center: center
+    table.container: tr: td.wrapper.last
+      block header
+        p
+
+  //- BODY
+  table.row.row-body: tr: td(align="center").center: center
+    table.container: tr: td
+      block body
+        table.row: tr: td.wrapper.last
+          table.twelve.columns: tr
+            td.text-pad
+              block body-contents
+            td.expander
+
+  //- FOOTER
+  table.row.row-footer: tr: td(align="center").center: center
+    table.container: tr: td
+      block footer
+        table.row: tr: td.wrapper.last
+          table.twelve.columns: tr
+            td.text-pad
+              block footer-contents
+            td.expander

@@ -1,17 +1,14 @@
 import _ from 'lodash';
 import async from 'async';
 import keystone, { session } from 'keystone';
-import generatePassword from 'password-generator';
 
 import logger from '../../logger';
 
 const User = keystone.list('User');
 
 export function create(req, res) {
-  let user;
-
   const doc = _.pick(req.body, 'name', 'email', 'fund', 'notifications');
-  doc.password = generatePassword(30, false);
+  let user;
 
   async.series([
     (cb) => {

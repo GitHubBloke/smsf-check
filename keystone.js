@@ -32,6 +32,9 @@ keystone.init({
   'auth': true,
   'user model': 'User',
   'cookie secret': '5R(+[4Vaibu}i)zZ^eg:/"bR5{fGtw(JWa|qKbb:3y]M1|n{b7k{~SB*345:03y!',
+
+  'siq business address': 'Level 6, 110 Walker St North Sydney NSW 2060',
+  'siq noreply email': 'noreply@superiq.com.au',
 });
 
 // Load your project's Models
@@ -87,6 +90,9 @@ keystone.set('email locals', {
       border_color: '#1a7cb7',
     },
   },
+
+  name: keystone.get('name'),
+  business_address: keystone.get('siq business address'),
 });
 
 // Setup replacement rules for emails, to automate the handling of differences

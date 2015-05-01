@@ -11,5 +11,22 @@
  * can be previewed at /keystone/test-email/{key}
  */
 
+import keystone from 'keystone';
+
+const User = keystone.list('User');
+
+const user = new User.model({
+  name: { first: 'Test', last: 'User' },
+  email: 'test@test.com',
+  resetPasswordKey: keystone.utils.randomString([16, 24]),
+});
+
 export default {
+  'confirm-email': (req, res, cb) => {
+    cb(null, { user });
+  },
+
+  'forgotten-password': (req, res, cb) => {
+    cb(null, { user });
+  },
 };
