@@ -6,6 +6,7 @@ import App from './App';
 import HomePage from './pages/HomePage';
 import ToolPage from './pages/ToolPage';
 
+import ConfirmEmailPage from './pages/auth/ConfirmEmailPage';
 import RegisterPage from './pages/auth/RegisterPage';
 import SigninPage from './pages/auth/SigninPage';
 import SignoutPage from './pages/auth/SignoutPage';
@@ -22,6 +23,7 @@ export default (
     <Route handler={HomePage}>
       <DefaultRoute handler={RegisterPage} />
       <Route name='signin' handler={SigninPage} />
+      <Route name='confirm-email' path='/confirm-email/:resetPasswordKey' handler={ConfirmEmailPage} />
     </Route>
 
     <Route handler={ToolPage}>

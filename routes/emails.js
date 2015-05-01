@@ -26,7 +26,7 @@ export default {
     cb(null, { user });
   },
 
-  'forgotten-password': (req, res, cb) => {
+  'reset-password': (req, res, cb) => {
     cb(null, { user });
   },
 };

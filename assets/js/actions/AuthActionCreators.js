@@ -18,8 +18,7 @@ export default {
     AuthAPI.signout();
   },
 
-  clearError() {
-    if (!AuthStore.getError()) { return; }
+  clearSigninError() {
     AppDispatcher.handleViewAction({ type: ActionTypes.CLEAR_SIGNIN_ERROR });
   },
 };

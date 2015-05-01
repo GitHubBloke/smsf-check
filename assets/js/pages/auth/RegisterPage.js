@@ -135,7 +135,7 @@ function pickProps({ params }) {
 
 function getState({ params }) {
   const signingUp = UserStore.signingUp();
-  const registeredUser = UserStore.registeredUser();
+  const registeredUser = UserStore.getRegisteredUser();
   const signupError = UserStore.getSignupError();
   return { signingUp, registeredUser, signupError };
 }

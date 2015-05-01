@@ -19,4 +19,18 @@ export default {
       }
     );
   },
+
+  resetPassword(resetPasswordKey, password) {
+    request.post('/reset-password')
+      .use(prefixer)
+      .send({ resetPasswordKey, password })
+      .end((err, res) => {
+        if (err || !res.status === 200) {
+          return UserServerActionCreators.handleResetPasswordError(res.body);
+        }
+
+        UserServerActionCreators.handleResetPasswordSuccess(res.body);
+      }
+    );
+  },
 };

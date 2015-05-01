@@ -2,9 +2,13 @@ extends layouts/default
 
 block body-contents
   - var link = host + '/confirm-email/' + user.resetPasswordKey;
+
   include ./includes/greeting
 
-  p.text-larger We're ready to activate your #{name} account.
+  p.text-larger
+    | We're ready to activate your#{' '}
+    strong= name
+    |  account.
   p.text-larger Begin by following the link below to create your own password:
 
   a.text-larger(href=link)= link

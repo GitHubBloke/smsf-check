@@ -24,7 +24,7 @@ class SigninPage extends BaseComponent {
   }
 
   componentWillUnmount() {
-    AuthActionCreators.clearError();
+    AuthActionCreators.clearSigninError();
   }
 
   render() {

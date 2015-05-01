@@ -5,21 +5,32 @@ import AppDispatcher from '../dispatcher/AppDispatcher';
 import { createStore } from '../utils/StoreUtils';
 import locals from '../utils/locals';
 
-let signingUp;
-let registeredUser;
-let signupError;
+let signingUp, registeredUser, signupError;
+let resetingPassword, resetPasswordError, newPassword;
 
 const UserStore = createStore({
   signingUp() {
     return signingUp;
   },
 
-  registeredUser() {
+  getRegisteredUser() {
     return registeredUser;
   },
 
   getSignupError() {
     return signupError;
+  },
+
+  resetingPassword() {
+    return resetingPassword;
+  },
+
+  getNewPassword() {
+    return newPassword;
+  },
+
+  getResetPasswordError() {
+    return resetPasswordError;
   },
 });
 
@@ -49,6 +60,26 @@ UserStore.dispatchToken = AppDispatcher.register((payload) => {
     case ActionTypes.CLEAR_USER_SIGNUP:
       registeredUser = void 0;
       signupError = void 0;
+      break;
+
+    case ActionTypes.USER_RESET_PASSWORD:
+      newPassword = action.password;
+      resetingPassword = true;
+      resetPasswordError = void 0;
+      break;
+
+    case ActionTypes.USER_RESET_PASSWORD_SUCCESS:
+      resetingPassword = false;
+      resetPasswordError = void 0;
+      break;
+
+    case ActionTypes.USER_RESET_PASSWORD_ERROR:
+      resetingPassword = false;
+      resetPasswordError = err;
+      break;
+
+    case ActionTypes.CLEAR_USER_RESET_PASSWORD_ERROR:
+      resetPasswordError = void 0;
       break;
 
     default:

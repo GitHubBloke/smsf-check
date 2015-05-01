@@ -42,6 +42,7 @@ export default function(app) {
   app.post('/api/signout', routes.api.session.signout);
 
   app.post('/api/users', routes.api.users.create);
+  app.post('/api/users/reset-password', routes.api.users.resetPassword);
 
   app.get('*', routes.views.index);
 

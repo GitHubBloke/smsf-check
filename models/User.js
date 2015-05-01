@@ -9,7 +9,7 @@ User.add({
   name: { type: Types.Name, required: true, index: true },
   email: { type: Types.Email, initial: true, required: true, index: true },
   password: { type: Types.Password, initial: true, required: true },
-  resetPasswordKey: { type: String, hidden: true },
+  resetPasswordKey: { type: String, hidden: true, index: true },
 }, 'Fund', {
   fund: {
     name: { type: String, label: 'Name', required: true, initial: true },
@@ -30,7 +30,6 @@ User.schema.virtual('canAccessKeystone').get(function() {
 
 User.schema.pre('save', function(next) {
   this.wasNew = this.isNew;
-  this.password = keystone.utils.randomString([16, 24]);
   next();
 });
 
@@ -52,7 +51,7 @@ User.schema.methods.resetPassword = function(cb = () => {}) {
   user.save(function(err) {
     if (err) { return cb(err); }
 
-    new keystone.Email(user.isVerified ? 'forgotten-password' : 'confirm-email').send({
+    new keystone.Email(user.isVerified ? 'reset-password' : 'confirm-email').send({
       to: user,
       from: { name: keystone.get('brand'), email: keystone.get('siq noreply email') },
       subject,

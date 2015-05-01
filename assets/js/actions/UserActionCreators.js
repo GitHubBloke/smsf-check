@@ -16,4 +16,18 @@ export default {
   clearSignup() {
     AppDispatcher.handleViewAction({ type: ActionTypes.CLEAR_USER_SIGNUP });
   },
+
+  resetPassword(resetPasswordKey, password) {
+    AppDispatcher.handleViewAction({
+      type: ActionTypes.USER_RESET_PASSWORD,
+      resetPasswordKey,
+      password,
+    });
+
+    UserAPI.resetPassword(resetPasswordKey, password);
+  },
+
+  clearResetPasswordError() {
+    AppDispatcher.handleViewAction({ type: ActionTypes.CLEAR_USER_RESET_PASSWORD_ERROR });
+  },
 };

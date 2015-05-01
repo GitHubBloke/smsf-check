@@ -22,16 +22,16 @@ const AuthStore = createStore({
     }
   },
 
+  getSigninError() {
+    return error;
+  },
+
   signingOut() {
     return signingOut;
   },
 
   getUser() {
     return currentUser;
-  },
-
-  getError() {
-    return error;
   },
 });
 
