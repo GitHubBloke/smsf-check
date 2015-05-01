@@ -12,7 +12,7 @@ class RegisterPage extends BaseComponent {
     super(props);
     this._bind('_handleSubmit');
     this.state = {
-      data: new Immutable.fromJS({
+      data: Immutable.fromJS({
         name: { first: '', last: '' },
         email: '',
         fund: { name: '', abn: '' },

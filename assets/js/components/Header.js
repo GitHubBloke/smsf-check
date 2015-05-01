@@ -14,7 +14,7 @@ export default class Header extends BaseComponent {
         <div className='clearfix'>
           <div className='container prepend-xs-1 append-xs-1'>
             <h1 className='prepend-xs-tiny pull-left'>{locals.name}</h1>
-            <h4 className='pull-right text-muted prepend-xs-1'>{user.name.first}'s Report</h4>
+            <h4 className='pull-right text-muted prepend-xs-1'>{user.getIn(['name', 'first'])}'s Report</h4>
           </div>
         </div>
       </header>

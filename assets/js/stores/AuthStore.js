@@ -1,9 +1,12 @@
+import Immutable from 'immutable';
+
 import ActionTypes from '../constants/ActionTypes';
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import { createStore } from '../utils/StoreUtils';
 import locals from '../utils/locals';
 
 let signingIn, signingOut;
+let currentUser = Immutable.fromJS(locals.user);
 let error;
 
 const AuthStore = createStore({
@@ -13,9 +16,9 @@ const AuthStore = createStore({
 
   signedIn(email) {
     if (!email) {
-      return !!locals.user;
+      return !!currentUser;
     } else {
-      return locals.user && locals.user.email === email;
+      return currentUser && currentUser.get('email') === email;
     }
   },
 
@@ -24,7 +27,7 @@ const AuthStore = createStore({
   },
 
   getUser() {
-    return locals.user;
+    return currentUser;
   },
 
   getError() {
@@ -46,7 +49,7 @@ AuthStore.dispatchToken = AppDispatcher.register((payload) => {
 
     case ActionTypes.SIGNIN_SUCCESS:
       signingIn = false;
-      locals.user = user;
+      currentUser = Immutable.fromJS(user);
       error = void 0;
       break;
 
@@ -65,7 +68,7 @@ AuthStore.dispatchToken = AppDispatcher.register((payload) => {
 
     case ActionTypes.SIGNOUT_SUCCESS:
       signingOut = false;
-      delete locals.user;
+      currentUser = void 0;
       break;
 
     case ActionTypes.SIGNOUT_ERROR:
