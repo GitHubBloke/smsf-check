@@ -7,14 +7,18 @@ export default class BaseComponent extends Component {
   }
 
   _handleInputChange(name, e) {
-    const map = {};
-    hoops.setIn(map, name, e.target.value);
-    this.setState(map);
+    const value = e.target.value;
+    const path = name.split('.');
+    this.setState((prev) => ({
+      data: prev.data.setIn(path, value),
+    }));
   }
 
   _handleCheckboxToggled(name, e) {
-    const map = {};
-    hoops.setIn(map, name, e.target.checked);
-    this.setState(map);
+    const checked = e.target.checked;
+    const path = name.split('.');
+    this.setState((prev) => ({
+      data: prev.data.setIn(path, checked),
+    }));
   }
 }

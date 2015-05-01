@@ -1,3 +1,4 @@
+import Immutable from 'immutable';
 import React, { PropTypes } from 'react';
 import DocumentTitle from 'react-document-title';
 import { Link } from 'react-router';
@@ -13,7 +14,9 @@ class SigninPage extends BaseComponent {
   constructor(props) {
     super(props);
     this._bind('_handleSubmit');
-    this.state = { email: '', password: '' };
+    this.state = {
+      data: Immutable.fromJS({ email: '', password: '' }),
+    };
   }
 
   componentDidMount() {
@@ -25,7 +28,7 @@ class SigninPage extends BaseComponent {
   }
 
   render() {
-    const { email, password } = this.state;
+    const { data } = this.state;
     const { signingIn, error } = this.props;
 
     return (
@@ -36,12 +39,12 @@ class SigninPage extends BaseComponent {
           <div className='prepend-xs-2 append-xs-1 clearfix'>
             <div className='form-group col-md-6'>
               <input ref='email' type='text' className='form-control input-lg' placeholder='Enter your email...'
-                value={email} onChange={this._handleInputChange.bind(this, 'email')}
+                value={data.get('email')} onChange={this._handleInputChange.bind(this, 'email')}
                 disabled={signingIn} />
             </div>
             <div className='form-group col-md-6'>
               <input type='password' className='form-control input-lg' placeholder='Enter your password...'
-                value={password} onChange={this._handleInputChange.bind(this, 'password')}
+                value={data.get('password')} onChange={this._handleInputChange.bind(this, 'password')}
                 disabled={signingIn} />
             </div>
           </div>
@@ -55,7 +58,7 @@ class SigninPage extends BaseComponent {
   }
 
   _handleSubmit(e) {
-    AuthActionCreators.signin(this.state.email, this.state.password);
+    AuthActionCreators.signin(this.state.data.get('email'), this.state.data.get('password'));
     e.preventDefault();
   }
 }
