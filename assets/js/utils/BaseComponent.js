@@ -1,3 +1,4 @@
+import hoops from 'hoops';
 import { Component } from 'react';
 
 export default class BaseComponent extends Component {
@@ -6,10 +7,14 @@ export default class BaseComponent extends Component {
   }
 
   _handleInputChange(name, e) {
-    this.setState({ [name]: e.target.value });
+    const map = {};
+    hoops.setIn(map, name, e.target.value);
+    this.setState(map);
   }
 
   _handleCheckboxToggled(name, e) {
-    this.setState({ [name]: e.target.checked });
+    const map = {};
+    hoops.setIn(map, name, e.target.checked);
+    this.setState(map);
   }
 }

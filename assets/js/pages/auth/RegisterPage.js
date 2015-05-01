@@ -9,7 +9,14 @@ import locals from '../../utils/locals';
 class RegisterPage extends BaseComponent {
   constructor(props) {
     super(props);
-    this.state = { doesConsent: false };
+    this._bind('_handleSubmit');
+    this.state = {
+      name: { first: '', last: '' },
+      email: '',
+      fund: { name: '', abn: '' },
+      doesConsent: false,
+      notifications: { newsletter: false },
+    };
   }
 
   componentDidMount() {
@@ -17,27 +24,32 @@ class RegisterPage extends BaseComponent {
   }
 
   render() {
-    const { doesConsent } = this.state;
+    const { name, email, fund, doesConsent, notifications } = this.state;
 
     return (
       <DocumentTitle title={`${locals.name} - Register`}>
-        <form>
+        <form onSubmit={this._handleSubmit}>
           <p>So we can remember who you are, and identify your fund, please enter the details below.</p>
           <div className='prepend-xs-2 append-xs-1 clearfix'>
             <div className='form-group col-md-6'>
-              <input ref='firstName' type='text' className='form-control input-lg' placeholder='Enter your first name...' />
+              <input ref='firstName' type='text' className='form-control input-lg' placeholder='Enter your first name...'
+                value={name.first} onChange={this._handleInputChange.bind(this, 'name.first')} />
             </div>
             <div className='form-group col-md-6'>
-              <input type='text' className='form-control input-lg' placeholder='Enter your last name...' />
+              <input type='text' className='form-control input-lg' placeholder='Enter your last name...'
+                value={name.last} onChange={this._handleInputChange.bind(this, 'name.last')} />
             </div>
             <div className='form-group col-md-12'>
-              <input type='text' className='form-control input-lg' placeholder='Enter your email address...' />
+              <input type='email' className='form-control input-lg' placeholder='Enter your email address...'
+                value={email} onChange={this._handleInputChange.bind(this, 'email')} />
             </div>
             <div className='form-group col-md-12'>
-              <input type='text' className='form-control input-lg' placeholder='The name of your fund...' />
+              <input type='text' className='form-control input-lg' placeholder='The name of your fund...'
+                value={fund.name} onChange={this._handleInputChange.bind(this, 'fund.name')} />
             </div>
             <div className='form-group col-md-12'>
-              <input type='text' className='form-control input-lg' placeholder="Your fund's ABN..." />
+              <input type='text' className='form-control input-lg' placeholder="Your fund's ABN..."
+                value={fund.abn} onChange={this._handleInputChange.bind(this, 'fund.abn')} />
             </div>
             <div className='form-group col-md-12 prepend-xs-tiny append-xs-tiny text-left'>
               <label>
@@ -47,7 +59,10 @@ class RegisterPage extends BaseComponent {
                 I consent to SuperIQ using my data to compare my fund to other funds.
               </label>
               <label>
-                <input type='checkbox' value='true' />&nbsp;
+                <input type='checkbox'
+                  checked={notifications.newsletter}
+                  onChange={this._handleCheckboxToggled.bind(this, 'notifications.newsletter')} />
+                &nbsp;
                 I would like to receive additional information from SuperIQ via email.
               </label>
             </div>
@@ -60,6 +75,10 @@ class RegisterPage extends BaseComponent {
         </form>
       </DocumentTitle>
     );
+  }
+
+  _handleSubmit(e) {
+    e.preventDefault();
   }
 }
 

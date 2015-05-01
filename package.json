@@ -8,6 +8,8 @@
     "dotenv": "~0.4.0",
     "express-winston": "^0.3.0",
     "flux": "^2.0.3",
+    "hoops": "^0.2.1",
+    "immutable": "^3.7.2",
     "keystone": "^0.3.6",
     "lodash": "^3.7.0",
     "newrelic": "^1.18.2",

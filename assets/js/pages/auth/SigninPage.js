@@ -12,7 +12,7 @@ import { connectToStores } from '../../utils/StoreUtils';
 class SigninPage extends BaseComponent {
   constructor(props) {
     super(props);
-    this._bind('_signin');
+    this._bind('_handleSubmit');
     this.state = { email: '', password: '' };
   }
 
@@ -30,7 +30,7 @@ class SigninPage extends BaseComponent {
 
     return (
       <DocumentTitle title={`${locals.name} - Login`}>
-        <form onSubmit={this._signin}>
+        <form onSubmit={this._handleSubmit}>
           {error && <div className='alert alert-danger'>{error.message}</div>}
           <h1>Log In</h1>
           <div className='prepend-xs-2 append-xs-1 clearfix'>
@@ -54,7 +54,7 @@ class SigninPage extends BaseComponent {
     );
   }
 
-  _signin(e) {
+  _handleSubmit(e) {
     AuthActionCreators.signin(this.state.email, this.state.password);
     e.preventDefault();
   }
