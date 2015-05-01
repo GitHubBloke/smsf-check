@@ -5,9 +5,8 @@ import AppDispatcher from '../dispatcher/AppDispatcher';
 import { createStore } from '../utils/StoreUtils';
 import locals from '../utils/locals';
 
-let signingIn, signingOut;
+let signingIn, signinError, signingOut;
 let currentUser = Immutable.fromJS(locals.user);
-let error;
 
 const AuthStore = createStore({
   signingIn() {
@@ -23,7 +22,7 @@ const AuthStore = createStore({
   },
 
   getSigninError() {
-    return error;
+    return signinError;
   },
 
   signingOut() {
@@ -44,22 +43,22 @@ AuthStore.dispatchToken = AppDispatcher.register((payload) => {
   switch (action.type) {
     case ActionTypes.SIGNIN:
       signingIn = true;
-      error = void 0;
+      signinError = void 0;
       break;
 
     case ActionTypes.SIGNIN_SUCCESS:
       signingIn = false;
       currentUser = Immutable.fromJS(user);
-      error = void 0;
+      signinError = void 0;
       break;
 
     case ActionTypes.SIGNIN_ERROR:
       signingIn = false;
-      error = err;
+      signinError = err;
       break;
 
     case ActionTypes.CLEAR_SIGNIN_ERROR:
-      error = void 0;
+      signinError = void 0;
       break;
 
     case ActionTypes.SIGNOUT:

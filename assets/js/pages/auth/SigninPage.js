@@ -29,7 +29,7 @@ class SigninPage extends BaseComponent {
 
   render() {
     const { data } = this.state;
-    const { signingIn, error } = this.props;
+    const { submitting, error } = this.props;
 
     return (
       <DocumentTitle title={`${locals.name} - Login`}>
@@ -40,16 +40,16 @@ class SigninPage extends BaseComponent {
             <div className='form-group col-md-6'>
               <input ref='email' type='text' className='form-control input-lg' placeholder='Enter your email...'
                 value={data.get('email')} onChange={this._handleInputChange.bind(this, 'email')}
-                disabled={signingIn} />
+                disabled={submitting} />
             </div>
             <div className='form-group col-md-6'>
               <input type='password' className='form-control input-lg' placeholder='Enter your password...'
                 value={data.get('password')} onChange={this._handleInputChange.bind(this, 'password')}
-                disabled={signingIn} />
+                disabled={submitting} />
             </div>
           </div>
-          <button className='btn btn-default btn-lg append-xs-1' type='submit' disabled={signingIn}>
-            {signingIn ? 'Please wait...' : 'Log In to your Health Check'}
+          <button className='btn btn-default btn-lg append-xs-1' type='submit' disabled={submitting}>
+            {submitting ? 'Please wait...' : 'Log In to your Health Check'}
           </button>
           <p className='append-xs-none'>Need an account? <Link to='app'>Register</Link></p>
         </form>
@@ -64,20 +64,20 @@ class SigninPage extends BaseComponent {
 }
 
 SigninPage.propTypes = {
-  signingIn: PropTypes.bool,
+  submitting: PropTypes.bool,
   error: PropTypes.shape({ message: PropTypes.string }),
 };
 
-SigninPage.defaultProps = { signingIn: false, error: void 0 };
+SigninPage.defaultProps = { submitting: false, error: void 0 };
 
 function pickProps({ params }) {
   return { params };
 }
 
 function getState({ params }) {
-  const signingIn = AuthStore.signingIn();
-  const error = AuthStore.getError();
-  return { signingIn, error };
+  const submitting = AuthStore.signingIn();
+  const error = AuthStore.getSigninError();
+  return { submitting, error };
 }
 
 export default requireUnauth(connectToStores(SigninPage,
