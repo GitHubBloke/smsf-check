@@ -32,7 +32,7 @@ const AuthStore = createStore({
 
   getError() {
     return error;
-  }
+  },
 });
 
 AuthStore.dispatchToken = AppDispatcher.register((payload) => {

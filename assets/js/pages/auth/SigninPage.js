@@ -63,7 +63,11 @@ class SigninPage extends BaseComponent {
   }
 }
 
-SigninPage.propTypes = { signingIn: PropTypes.bool, error: PropTypes.object };
+SigninPage.propTypes = {
+  signingIn: PropTypes.bool,
+  error: PropTypes.shape({ message: PropTypes.string }),
+};
+
 SigninPage.defaultProps = { signingIn: false, error: void 0 };
 
 function pickProps({ params }) {
