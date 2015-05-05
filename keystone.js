@@ -119,6 +119,11 @@ keystone.set('nav', {
   'users': 'users',
 });
 
+// Fix this bug: http://tech.vg.no/2013/10/02/ios7-bug-shows-white-page-when-getting-304-not-modified-from-server/
+
+keystone.app.disable('etag');
+keystone.app.disable('x-powered-by');
+
 // Start Keystone to connect to your database and initialise the web server
 
 keystone.start();
