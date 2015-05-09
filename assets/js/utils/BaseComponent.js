@@ -5,19 +5,20 @@ export default class BaseComponent extends Component {
      methods.forEach((method) => { this[method] = this[method].bind(this); });
   }
 
-  _handleInputChange(name, e) {
-    const value = e.target.value;
-    const path = name.split('.');
+  _setState(path, value, cb) {
     this.setState((prev) => ({
-      data: prev.data.setIn(path, value),
-    }));
+      data: prev.data.setIn(path.split('.'), value),
+    }), cb);
+  }
+
+  _handleInputChange(name, modifier = v => v, e) {
+    const value = e.target.value;
+    this._setState(name, modifier(value));
   }
 
   _handleCheckboxToggled(name, e) {
     const checked = e.target.checked;
-    const path = name.split('.');
-    this.setState((prev) => ({
-      data: prev.data.setIn(path, checked),
-    }));
+    this._setState(name, checked);
   }
 }
+
