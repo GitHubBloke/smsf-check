@@ -1,5 +1,7 @@
 import React from 'react';
 import { Grid } from 'react-bootstrap';
+import { FormattedMessage as FM, IntlMixin } from '../shims/ReactIntl';
+import reactMixin from 'react-mixin';
 import DocumentTitle from 'react-document-title';
 
 import BaseComponent from '../utils/BaseComponent';
@@ -8,9 +10,12 @@ import locals from '../utils/locals';
 export default class PrivacyPage extends BaseComponent {
   render() {
     return (
-      <DocumentTitle title={`${locals.name} - Privacy Policy`}>
+      <DocumentTitle title={`${locals.name} - ${this.formatMessage(this.getIntlMessage('privacy.title'))}`}>
         <Grid className='prepend-xs-2 append-xs-3'>
-          <h1 className='text-center append-xs-3'>Privacy Policy</h1>
+          <h1 className='text-center append-xs-3'>
+            <FM message={this.getIntlMessage('privacy.heading')} />
+          </h1>
+
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin auctor felis diam. Nam ac eleifend metus. Nullam congue neque sem, vitae consectetur tortor lacinia vitae. Pellentesque interdum urna id ipsum aliquet, nec volutpat nisl iaculis. Phasellus in semper nunc, quis hendrerit dolor. Pellentesque in risus pharetra, feugiat nibh non, malesuada turpis. Pellentesque lorem elit, maximus eget eleifend a, rutrum sit amet lorem. Etiam eleifend lacus velit, quis vulputate velit sagittis quis.</p>
 
           <p>Duis et quam ac urna blandit pellentesque at id justo. Sed ut libero ante. Duis in tortor mollis, faucibus justo in, faucibus magna. Integer luctus massa a venenatis maximus. Mauris ornare elit augue. Nam et ullamcorper libero. Curabitur aliquam nisl nec sapien luctus eleifend sed sed nulla.</p>
@@ -25,3 +30,5 @@ export default class PrivacyPage extends BaseComponent {
     );
   }
 }
+
+reactMixin.onClass(PrivacyPage, IntlMixin);

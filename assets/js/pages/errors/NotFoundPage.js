@@ -1,5 +1,7 @@
 import React from 'react';
 import { Grid } from 'react-bootstrap';
+import { FormattedMessage as FM, IntlMixin } from '../../shims/ReactIntl';
+import reactMixin from 'react-mixin';
 import DocumentTitle from 'react-document-title';
 
 import BaseComponent from '../../utils/BaseComponent';
@@ -8,17 +10,21 @@ import locals from '../../utils/locals';
 export default class NotFoundPage extends BaseComponent {
   render() {
     return (
-      <DocumentTitle title={`${locals.name} - 404 Not Found`}>
+      <DocumentTitle title={`${locals.name} - ${this.formatMessage(this.getIntlMessage('notFound.title'))}`}>
         <Grid className='text-center prepend-xs-2 append-xs-3'>
           <h1 className='append-xs-3'>404</h1>
-          <h3 className='append-xs-2'>Sorry, the page you tried cannot be found.</h3>
+          <h3 className='append-xs-2'>
+            <FM message={this.getIntlMessage('notFound.heading')} />
+          </h3>
           <p className='text-muted'>
-            You may have typed the address incorrectly or you may have used an outdated link.
+            <FM message={this.getIntlMessage('notFound.incorrect')} />
             <br/>
-            If you found a broken link from another site or from our site, please contact us.
+            <FM message={this.getIntlMessage('notFound.contactUs')} />
           </p>
         </Grid>
       </DocumentTitle>
     );
   }
 }
+
+reactMixin.onClass(NotFoundPage, IntlMixin);

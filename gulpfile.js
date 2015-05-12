@@ -88,7 +88,10 @@ function bundle(watch) {
   var b = browserify(_.assign({}, watchify.args, {
     entries: paths.browserify,
     debug: watch,
-    transform: [babelify, debowerify]
+    transform: [
+      babelify.configure({ ignore: /react-intl/ }),
+      debowerify
+    ]
   }));
 
   if (watch) {

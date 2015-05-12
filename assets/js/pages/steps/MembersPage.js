@@ -8,7 +8,7 @@ import locals from '../../utils/locals';
 export default class MembersPage extends BaseComponent {
   render() {
     return (
-      <DocumentTitle title={`${locals.name} - Member Details`}>
+      <DocumentTitle title={`${locals.name} - ${this.formatMessage(this.getIntlMessage('members.title'))}`}>
         <div>
           <div className='bg-gray clearfix'>
             <Grid className='prepend-xs-1 append-xs-1'>

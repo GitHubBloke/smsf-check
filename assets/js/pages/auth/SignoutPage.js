@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Grid } from 'react-bootstrap';
+import { FormattedMessage as FM, IntlMixin } from '../../shims/ReactIntl';
+import reactMixin from 'react-mixin';
 import { Link } from 'react-router';
 
 import AuthActionCreators from '../../actions/AuthActionCreators';
@@ -27,12 +29,18 @@ class SignoutPage extends BaseComponent {
           <Link to='/'>{locals.name}</Link>
         </h1>
         {signingOut ?
-          <p className='text-muted'>Please wait... currently signing you out of {locals.name}.</p> :
-          <p className='text-muted'>You are now signed out of {locals.name}.</p>}
+          <p className='text-muted'>
+            <FM message={this.getIntlMessage('signout.signingOut')} name={locals.name} />
+          </p> :
+          <p className='text-muted'>
+            <FM message={this.getIntlMessage('signout.signedOut')} name={locals.name} />
+          </p>}
       </Grid>
     );
   }
 }
+
+reactMixin.onClass(SignoutPage, IntlMixin);
 
 SignoutPage.propTypes = { signingOut: PropTypes.bool };
 SignoutPage.defaultProps = { signingOut: false };

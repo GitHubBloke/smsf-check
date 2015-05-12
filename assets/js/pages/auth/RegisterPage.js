@@ -2,6 +2,8 @@ import Immutable, { Map } from 'immutable';
 import React, { PropTypes } from 'react';
 import { Col, Button, Input } from 'react-bootstrap';
 import DocumentTitle from 'react-document-title';
+import { FormattedMessage as FM, IntlMixin } from '../../shims/ReactIntl';
+import reactMixin from 'react-mixin';
 import { Link } from 'react-router';
 
 import { requireUnauth } from '../../utils/AuthUtils';
@@ -41,7 +43,7 @@ class RegisterPage extends BaseComponent {
   render() {
     const { registeredUser } = this.props;
     return (
-      <DocumentTitle title={`${locals.name} - Register`}>
+      <DocumentTitle title={`${locals.name} - ${this.formatMessage(this.getIntlMessage('register.title'))}`}>
         {registeredUser ? this.renderSuccess() : this.renderForm()}
       </DocumentTitle>
     );
@@ -54,43 +56,45 @@ class RegisterPage extends BaseComponent {
     return (
       <form autoComplete='off' noValidate onSubmit={this._handleSubmit}>
         {error && <div className='alert alert-danger'>{error.message}</div>}
-        <p>
-          So we can remember who you are, and identify your fund, please enter the details below.<br/>
-          Your information will never be used for any purposes outside of this helpful tool.
-        </p>
+        <p><FM message={this.getIntlMessage('register.intro')} /></p>
         <div className='prepend-xs-2 append-xs-1 clearfix'>
           <Col md={6}>
-            <Input ref='firstName' type='text' placeholder='Enter your first name...' bsSize='large'
+            <Input ref='firstName' type='text' bsSize='large'
+              placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.firstName.placeholder'))}
               value={data.getIn(['name', 'first'])} onChange={this._handleInputChange.bind(this, 'name.first')}
               disabled={submitting} />
           </Col>
           <Col md={6}>
-            <Input type='text' placeholder='Enter your last name...' bsSize='large'
+            <Input type='text' bsSize='large'
+              placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.lastName.placeholder'))}
               value={data.getIn(['name', 'last'])} onChange={this._handleInputChange.bind(this, 'name.last')}
               disabled={submitting} />
           </Col>
           <Col md={12}>
-            <Input type='email' placeholder='Enter your email address...' bsSize='large'
+            <Input type='email' bsSize='large'
+              placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.email.placeholder'))}
               value={data.get('email')} onChange={this._handleInputChange.bind(this, 'email')}
               disabled={submitting} />
           </Col>
           <Col md={12}>
-            <Input type='text' placeholder='The name of your fund...' bsSize='large'
+            <Input type='text' bsSize='large'
+              placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.fundName.placeholder'))}
               value={data.getIn(['fund', 'name'])} onChange={this._handleInputChange.bind(this, 'fund.name')}
               disabled={submitting} />
           </Col>
           <Col md={12}>
-            <Input type='text' placeholder="Your fund's ABN..." bsSize='large'
+            <Input type='text' bsSize='large'
+              placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.fundAbn.placeholder'))}
               value={data.getIn(['fund', 'abn'])} onChange={this._handleInputChange.bind(this, 'fund.abn')}
               disabled={submitting} />
           </Col>
           <Col md={12} className='append-xs-tiny text-left'>
             <Input type='checkbox'
-              label={`I consent to ${locals.brand} using my data to compare my fund to other funds.`}
+              label={this.formatMessage(this.getIntlMessage('shared.fields.user.doesConsent.label'), { brand: locals.brand })}
               checked={data.get('doesConsent')} onChange={this._handleCheckboxToggled.bind(this, 'doesConsent')}
               disabled={submitting} />
             <Input type='checkbox'
-              label={`I would like to receive additional information from ${locals.brand} via email.`}
+              label={this.formatMessage(this.getIntlMessage('shared.fields.user.notifications.label'), { brand: locals.brand })}
               checked={data.getIn(['notifications', 'newsletter'])}
               onChange={this._handleCheckboxToggled.bind(this, 'notifications.newsletter')}
               disabled={submitting} />
@@ -99,16 +103,25 @@ class RegisterPage extends BaseComponent {
         <Button bsStyle='default' bsSize='large' className='append-xs-1'
           componentClass='button' type='submit'
           disabled={submitting || !data.get('doesConsent')}>
-          {submitting ? 'Please wait...' : 'Register'}
+          {submitting ?
+            this.formatMessage(this.getIntlMessage('register.submit.loadingLabel')) :
+            this.formatMessage(this.getIntlMessage('register.submit.actionLabel'))}
         </Button>
-        <p className='append-xs-none'>Already registered? <Link to='signin'>Log In</Link></p>
+        <p className='append-xs-none'>
+          <FM message={this.getIntlMessage('register.already.note')} />{' '}
+          <Link to='signin'>
+            <FM message={this.getIntlMessage('register.already.actionLabel')} />
+          </Link>
+        </p>
       </form>
     );
   }
 
   renderSuccess() {
     return (
-      <p className='append-xs-none'>Thankyou for signing up. We've sent you an email with instructions on how to log in.</p>
+      <p className='append-xs-none'>
+        <FM message={this.getIntlMessage('register.sucessful')} />{' '}
+      </p>
     );
   }
 
@@ -117,6 +130,8 @@ class RegisterPage extends BaseComponent {
     e.preventDefault();
   }
 }
+
+reactMixin.onClass(RegisterPage, IntlMixin);
 
 RegisterPage.propTypes = {
   submitting: PropTypes.bool,

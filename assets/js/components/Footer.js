@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Grid } from 'react-bootstrap';
+import { FormattedMessage as FM, IntlMixin } from '../shims/ReactIntl';
+import reactMixin from 'react-mixin';
 import { Link } from 'react-router';
 
 import AuthStore from '../stores/AuthStore';
@@ -14,21 +16,24 @@ class Footer extends BaseComponent {
     return (
       <footer className='bg-gray clearfix'>
         <Grid className='prepend-xs-2 append-xs-2'>
-          <Link to='app' className='h1 text-muted'>{locals.brand} Logo</Link>
+          <Link to='app' className='h1 text-muted'>{locals.brand}</Link>
           &nbsp;&nbsp;
           <small className='text-muted'>
-            &copy; {new Date().getFullYear()} {locals.brand}. All rights reserved.
+            <FM message={this.getIntlMessage('footer.copyright')}
+              year={new Date().getFullYear()} brand={locals.brand} />
           </small>
           <ul className='list-inline pull-right small prepend-xs-1 append-xs-none'>
-            <li><Link to='terms'>Terms of Use</Link></li>
-            <li><Link to='privacy'>Privacy Policy</Link></li>
-            {signedIn && <li><Link to='signout'>Sign Out</Link></li>}
+            <li><Link to='terms'><FM message={this.getIntlMessage('footer.links.terms')} /></Link></li>
+            <li><Link to='privacy'><FM message={this.getIntlMessage('footer.links.privacy')} /></Link></li>
+            {signedIn && <li><Link to='signout'><FM message={this.getIntlMessage('footer.links.signOut')} /></Link></li>}
           </ul>
         </Grid>
       </footer>
     );
   }
 }
+
+reactMixin.onClass(Footer, IntlMixin);
 
 Footer.propTypes = { signedIn: PropTypes.bool };
 Footer.defaultProps = { signedIn: false };
