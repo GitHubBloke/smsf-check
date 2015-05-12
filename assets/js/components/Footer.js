@@ -20,7 +20,7 @@ class Footer extends BaseComponent {
             &copy; {new Date().getFullYear()} {locals.brand}. All rights reserved.
           </small>
           <ul className='list-inline pull-right small prepend-xs-1 append-xs-none'>
-            <li><Link to='terms'>Terms &amp; Conditions</Link></li>
+            <li><Link to='terms'>Terms of Use</Link></li>
             <li><Link to='privacy'>Privacy Policy</Link></li>
             {signedIn && <li><Link to='signout'>Sign Out</Link></li>}
           </ul>

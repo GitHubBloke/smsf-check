@@ -12,8 +12,8 @@ User.add({
   resetPasswordKey: { type: String, hidden: true, index: true },
 }, 'Fund', {
   fund: {
-    name: { type: String, label: 'Name', required: true, initial: true },
-    abn: { type: String, label: 'ABN', requied: true, initial: true },
+    name: { type: String, label: 'Name' },
+    abn: { type: String, label: 'ABN' },
   },
 }, 'Notifications', {
   notifications: {

@@ -54,7 +54,10 @@ class RegisterPage extends BaseComponent {
     return (
       <form autoComplete='off' noValidate onSubmit={this._handleSubmit}>
         {error && <div className='alert alert-danger'>{error.message}</div>}
-        <p>So we can remember who you are, and identify your fund, please enter the details below.</p>
+        <p>
+          So we can remember who you are, and identify your fund, please enter the details below.<br/>
+          Your information will never be used for any purposes outside of this helpful tool.
+        </p>
         <div className='prepend-xs-2 append-xs-1 clearfix'>
           <Col md={6}>
             <Input ref='firstName' type='text' placeholder='Enter your first name...' bsSize='large'

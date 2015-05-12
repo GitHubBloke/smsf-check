@@ -11,7 +11,7 @@ export default class HomePage extends BaseComponent {
       <Grid className='text-center prepend-xs-2 append-xs-3'>
         <h1>{locals.name}</h1>
         <h3>
-          Welcome to the {locals.brand} {locals.name}.
+          Welcome to the {locals.brand} SMSF Health Check tool, <strong>{locals.name}</strong>.
           Compare your current fund to thousands of others
           SMSFs to see how your fund stacks up.
         </h3>
@@ -23,7 +23,7 @@ export default class HomePage extends BaseComponent {
           </Col>
           <Col md={4} className='append-xs-2'>
             <img src='http://placehold.it/100x100' width='100' />
-            <h4>Provide as much or as little information as you like and still see results.</h4>
+            <h4>Provide as much or as little information as you like and still receive great general advice.</h4>
           </Col>
           <Col md={4} className='append-xs-2'>
             <img src='http://placehold.it/100x100' width='100' />
