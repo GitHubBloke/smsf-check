@@ -1,4 +1,5 @@
 import React from 'react';
+import { Grid } from 'react-bootstrap';
 import DocumentTitle from 'react-document-title';
 
 import BaseComponent from '../utils/BaseComponent';
@@ -8,7 +9,7 @@ export default class PrivacyPage extends BaseComponent {
   render() {
     return (
       <DocumentTitle title={`${locals.name} - Privacy Policy`}>
-        <div className='container prepend-xs-2 append-xs-3'>
+        <Grid className='prepend-xs-2 append-xs-3'>
           <h1 className='text-center append-xs-3'>Privacy Policy</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin auctor felis diam. Nam ac eleifend metus. Nullam congue neque sem, vitae consectetur tortor lacinia vitae. Pellentesque interdum urna id ipsum aliquet, nec volutpat nisl iaculis. Phasellus in semper nunc, quis hendrerit dolor. Pellentesque in risus pharetra, feugiat nibh non, malesuada turpis. Pellentesque lorem elit, maximus eget eleifend a, rutrum sit amet lorem. Etiam eleifend lacus velit, quis vulputate velit sagittis quis.</p>
 
@@ -19,7 +20,7 @@ export default class PrivacyPage extends BaseComponent {
           <p>Integer tempor elementum convallis. Sed posuere finibus iaculis. Etiam tempus elit ex, et vehicula lorem lobortis at. Morbi volutpat ullamcorper lacus, et molestie elit bibendum ut. Cras ac malesuada tortor. Nunc at dolor id nibh dignissim rutrum at sit amet sem. Nullam non tincidunt massa, vitae elementum eros. Etiam dignissim massa et lorem tempus pharetra. Nulla suscipit, erat non auctor tristique, ex elit tristique nunc, sit amet fringilla arcu ipsum id eros. Mauris augue lacus, iaculis eu fermentum sit amet, tempus id ex. Sed finibus faucibus libero id euismod. Cras lacinia viverra dui, nec blandit urna posuere luctus. Integer at eleifend sapien. Quisque sollicitudin libero et odio molestie cursus.</p>
 
           <p>Sed a elementum nulla. Phasellus vel urna justo. Curabitur id justo orci. Cras et accumsan nisi. Donec eu urna tincidunt felis egestas laoreet vel vel quam. Nullam viverra porta arcu. Sed vel augue lobortis, posuere urna sed, dictum ligula. Mauris a gravida lectus. Praesent nec auctor ligula, ut condimentum augue. Morbi dapibus sed risus id malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec pretium sem. Aliquam consectetur et lectus scelerisque gravida. Aliquam dapibus lobortis leo, in fringilla ante. Nulla egestas nisl a dui ornare, non rutrum ante tincidunt. Aliquam erat volutpat.</p>
-        </div>
+        </Grid>
       </DocumentTitle>
     );
   }

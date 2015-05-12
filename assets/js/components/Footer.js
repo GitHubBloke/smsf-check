@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { Grid } from 'react-bootstrap';
 import { Link } from 'react-router';
 
 import AuthStore from '../stores/AuthStore';
@@ -12,7 +13,7 @@ class Footer extends BaseComponent {
 
     return (
       <footer className='bg-gray clearfix'>
-        <div className='container prepend-xs-2 append-xs-2'>
+        <Grid className='prepend-xs-2 append-xs-2'>
           <Link to='app' className='h1 text-muted'>{locals.brand} Logo</Link>
           &nbsp;&nbsp;
           <small className='text-muted'>
@@ -23,7 +24,7 @@ class Footer extends BaseComponent {
             <li><Link to='privacy'>Privacy Policy</Link></li>
             {signedIn && <li><Link to='signout'>Sign Out</Link></li>}
           </ul>
-        </div>
+        </Grid>
       </footer>
     );
   }

@@ -1,5 +1,6 @@
 import Immutable from 'immutable';
 import React, { PropTypes } from 'react';
+import { Button, Input } from 'react-bootstrap';
 import DocumentTitle from 'react-document-title';
 import { Link } from 'react-router';
 
@@ -26,7 +27,7 @@ class ConfirmEmailPage extends BaseComponent {
   }
 
   componentDidMount() {
-    React.findDOMNode(this.refs.password).focus();
+    this.refs.password.getInputDOMNode().focus();
   }
 
   componentWillUnmount() {
@@ -39,21 +40,24 @@ class ConfirmEmailPage extends BaseComponent {
 
     return (
       <DocumentTitle title={`${locals.name} - Confirm Email Address`}>
-        <form onSubmit={this._handleSubmit}>
+        <form autoComplete='off' noValidate onSubmit={this._handleSubmit}>
           {error && <div className='alert alert-danger'>{error.message}</div>}
           <h1 className='append-xs-2'>Welcome to {locals.name}</h1>
           <p>Please select a password for your new account</p>
           <div className='prepend-xs-2 append-xs-1 clearfix'>
-            <div className='form-group text-center col-md-6 col-md-offset-3'>
-              <input ref='password'
-                type='password' className='form-control input-lg' placeholder='Create your password...'
+            <Col md={6} mdOffset={3}>
+              <Input ref='password'
+                bsSize='large' groupClassName='text-center'
+                type='password' placeholder='Create your password...'
                 value={data.get('password')} onChange={this._handleInputChange.bind(this, 'password')}
                 disabled={submitting} />
-            </div>
+            </Col>
           </div>
-          <button className='btn btn-default btn-lg append-xs-1' type='submit' disabled={submitting}>
+          <Button bsStyle='default' bsSize='large' className='append-xs-1'
+            componentClass='button'
+            type='submit' disabled={submitting}>
             {submitting ? 'Please wait...' : 'Log In to your Health Check'}
-          </button>
+          </Button>
         </form>
       </DocumentTitle>
     );

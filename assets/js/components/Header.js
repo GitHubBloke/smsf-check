@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { Grid } from 'react-bootstrap';
 
 import AuthStore from '../stores/AuthStore';
 import BaseComponent from '../utils/BaseComponent';
@@ -12,10 +13,10 @@ export default class Header extends BaseComponent {
     return (
       <header className='bg-dark clearfix'>
         <div className='clearfix'>
-          <div className='container prepend-xs-1 append-xs-1'>
+          <Grid className='prepend-xs-1 append-xs-1'>
             <h1 className='prepend-xs-tiny pull-left'>{locals.name}</h1>
             <h4 className='pull-right text-muted prepend-xs-1'>{user.getIn(['name', 'first'])}'s Report</h4>
-          </div>
+          </Grid>
         </div>
       </header>
     );

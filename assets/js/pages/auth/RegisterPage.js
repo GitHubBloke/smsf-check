@@ -1,5 +1,6 @@
 import Immutable, { Map } from 'immutable';
 import React, { PropTypes } from 'react';
+import { Col, Button, Input } from 'react-bootstrap';
 import DocumentTitle from 'react-document-title';
 import { Link } from 'react-router';
 
@@ -30,7 +31,7 @@ class RegisterPage extends BaseComponent {
   }
 
   componentDidMount() {
-    React.findDOMNode(this.refs.firstName).focus();
+    this.refs.firstName.getInputDOMNode().focus();
   }
 
   componentWillUnmount() {
@@ -51,56 +52,52 @@ class RegisterPage extends BaseComponent {
     const { submitting, registeredUser, error } = this.props;
 
     return (
-      <form onSubmit={this._handleSubmit}>
+      <form autoComplete='off' noValidate onSubmit={this._handleSubmit}>
         {error && <div className='alert alert-danger'>{error.message}</div>}
         <p>So we can remember who you are, and identify your fund, please enter the details below.</p>
         <div className='prepend-xs-2 append-xs-1 clearfix'>
-          <div className='form-group col-md-6'>
-            <input ref='firstName' type='text' className='form-control input-lg' placeholder='Enter your first name...'
+          <Col md={6}>
+            <Input ref='firstName' type='text' placeholder='Enter your first name...' bsSize='large'
               value={data.getIn(['name', 'first'])} onChange={this._handleInputChange.bind(this, 'name.first')}
               disabled={submitting} />
-          </div>
-          <div className='form-group col-md-6'>
-            <input type='text' className='form-control input-lg' placeholder='Enter your last name...'
+          </Col>
+          <Col md={6}>
+            <Input type='text' placeholder='Enter your last name...' bsSize='large'
               value={data.getIn(['name', 'last'])} onChange={this._handleInputChange.bind(this, 'name.last')}
               disabled={submitting} />
-          </div>
-          <div className='form-group col-md-12'>
-            <input type='email' className='form-control input-lg' placeholder='Enter your email address...'
+          </Col>
+          <Col md={12}>
+            <Input type='email' placeholder='Enter your email address...' bsSize='large'
               value={data.get('email')} onChange={this._handleInputChange.bind(this, 'email')}
               disabled={submitting} />
-          </div>
-          <div className='form-group col-md-12'>
-            <input type='text' className='form-control input-lg' placeholder='The name of your fund...'
+          </Col>
+          <Col md={12}>
+            <Input type='text' placeholder='The name of your fund...' bsSize='large'
               value={data.getIn(['fund', 'name'])} onChange={this._handleInputChange.bind(this, 'fund.name')}
               disabled={submitting} />
-          </div>
-          <div className='form-group col-md-12'>
-            <input type='text' className='form-control input-lg' placeholder="Your fund's ABN..."
+          </Col>
+          <Col md={12}>
+            <Input type='text' placeholder="Your fund's ABN..." bsSize='large'
               value={data.getIn(['fund', 'abn'])} onChange={this._handleInputChange.bind(this, 'fund.abn')}
               disabled={submitting} />
-          </div>
-          <div className='form-group col-md-12 prepend-xs-tiny append-xs-tiny text-left'>
-            <label>
-              <input type='checkbox'
-                checked={data.get('doesConsent')} onChange={this._handleCheckboxToggled.bind(this, 'doesConsent')}
-                disabled={submitting} />
-              &nbsp;
-              I consent to {locals.brand} using my data to compare my fund to other funds.
-            </label>
-            <label>
-              <input type='checkbox'
-                checked={data.getIn(['notifications', 'newsletter'])}
-                onChange={this._handleCheckboxToggled.bind(this, 'notifications.newsletter')}
-                disabled={submitting} />
-              &nbsp;
-              I would like to receive additional information from {locals.brand} via email.
-            </label>
-          </div>
+          </Col>
+          <Col md={12} className='append-xs-tiny text-left'>
+            <Input type='checkbox'
+              label={`I consent to ${locals.brand} using my data to compare my fund to other funds.`}
+              checked={data.get('doesConsent')} onChange={this._handleCheckboxToggled.bind(this, 'doesConsent')}
+              disabled={submitting} />
+            <Input type='checkbox'
+              label={`I would like to receive additional information from ${locals.brand} via email.`}
+              checked={data.getIn(['notifications', 'newsletter'])}
+              onChange={this._handleCheckboxToggled.bind(this, 'notifications.newsletter')}
+              disabled={submitting} />
+          </Col>
         </div>
-        <button className='btn btn-default btn-lg append-xs-1' type='submit' disabled={submitting || !data.get('doesConsent')}>
-          {submitting ? 'Please wait...' : 'Register now'}
-        </button>
+        <Button bsStyle='default' bsSize='large' className='append-xs-1'
+          componentClass='button' type='submit'
+          disabled={submitting || !data.get('doesConsent')}>
+          {submitting ? 'Please wait...' : 'Register'}
+        </Button>
         <p className='append-xs-none'>Already registered? <Link to='signin'>Log In</Link></p>
       </form>
     );

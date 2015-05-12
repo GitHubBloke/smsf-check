@@ -1,5 +1,6 @@
 import Immutable from 'immutable';
 import React, { PropTypes } from 'react';
+import { Col, Button, Input } from 'react-bootstrap';
 import DocumentTitle from 'react-document-title';
 import { Link } from 'react-router';
 
@@ -24,7 +25,7 @@ class SigninPage extends BaseComponent {
   }
 
   componentDidMount() {
-    React.findDOMNode(this.refs.email).focus();
+    this.refs.email.getInputDOMNode().focus();
   }
 
   componentWillUnmount() {
@@ -41,20 +42,22 @@ class SigninPage extends BaseComponent {
           {error && <div className='alert alert-danger'>{error.message}</div>}
           <h1>Log In</h1>
           <div className='prepend-xs-2 append-xs-1 clearfix'>
-            <div className='form-group col-md-6'>
-              <input ref='email' type='text' className='form-control input-lg' placeholder='Enter your email...'
+            <Col md={6}>
+              <Input ref='email' type='email' placeholder='Enter your email...' bsSize='large'
                 value={data.get('email')} onChange={this._handleInputChange.bind(this, 'email')}
                 disabled={submitting} />
-            </div>
-            <div className='form-group col-md-6'>
-              <input type='password' className='form-control input-lg' placeholder='Enter your password...'
+            </Col>
+            <Col md={6}>
+              <Input type='password' placeholder='Enter your password...' bsSize='large'
                 value={data.get('password')} onChange={this._handleInputChange.bind(this, 'password')}
                 disabled={submitting} />
-            </div>
+            </Col>
           </div>
-          <button className='btn btn-default btn-lg append-xs-1' type='submit' disabled={submitting}>
+          <Button bsStyle='default' bsSize='large' className='append-xs-1'
+            componentClass='button' type='submit'
+            disabled={submitting}>
             {submitting ? 'Please wait...' : 'Log In to your Health Check'}
-          </button>
+          </Button>
           <p className='append-xs-none'>Need an account? <Link to='app'>Register</Link></p>
         </form>
       </DocumentTitle>
