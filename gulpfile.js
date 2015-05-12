@@ -1,3 +1,5 @@
+require('dotenv').load();
+
 var _ = require('lodash');
 var babelify = require('babelify');
 var browserify = require('browserify');
@@ -20,7 +22,7 @@ var paths = {
   client: [ './assets/**/*.js' ],
   browserify: [ './assets/js/main.js' ],
   lint: [ './models/**/*.js', './routes/**/*.js', '*.js', './assets/js/**/*.js' ],
-  less: [ './public/styles/**/*.less' ],
+  less: [ './public/styles/**/*.less', './themes/**/*.less' ],
   css: [ '/styles/site.css' ],
   jade: [ './templates/**/*.jade' ]
 };
@@ -93,6 +95,8 @@ function bundle(watch) {
       debowerify
     ]
   }));
+
+  b.require('./themes/' + process.env.APP_THEME, { expose: 'theme' });
 
   if (watch) {
     b = watchify(b);

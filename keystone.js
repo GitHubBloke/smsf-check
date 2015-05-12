@@ -8,18 +8,26 @@ if (process.env.NEW_RELIC_LICENSE_KEY) { require('newrelic'); }
 // Enable es6
 require('babel/register');
 
-// Require keystone
+// Require modules
+var _ = require('lodash');
 var keystone = require('keystone');
+
+// Load theme configuration
+var themeConfig = require('./themes/' + process.env.APP_THEME + '/theme');
 
 // Initialise Keystone with your project's configuration.
 // See http://keystonejs.com/guide/config for available options
 // and documentation.
 
-keystone.init({
-  'name': 'IQ Compare',
-  'brand': 'SuperIQ',
-
+keystone.init(_.assign({
   'less': 'public',
+  'less middleware options': {
+    preprocess: {
+      importPaths: function(paths) {
+        paths.push(__dirname + '/themes/' + process.env.APP_THEME + '/less');
+      }
+    }
+  },
   'static': 'public',
   'favicon': 'public/favicon.ico',
   'views': 'templates/views',
@@ -32,10 +40,7 @@ keystone.init({
   'auth': true,
   'user model': 'User',
   'cookie secret': '5R(+[4Vaibu}i)zZ^eg:/"bR5{fGtw(JWa|qKbb:3y]M1|n{b7k{~SB*345:03y!',
-
-  'siq business address': 'Level 6, 110 Walker St North Sydney NSW 2060',
-  'siq noreply email': 'noreply@superiq.com.au',
-});
+}, themeConfig));
 
 // Load your project's Models
 
