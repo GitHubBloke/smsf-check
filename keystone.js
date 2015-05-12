@@ -16,7 +16,7 @@ var keystone = require('keystone');
 // and documentation.
 
 keystone.init({
-  'name': 'SMSF Health Check',
+  'name': 'IQ Compare',
   'brand': 'SuperIQ',
 
   'less': 'public',
