@@ -1,0 +1,13 @@
+include ../mixins/tracking
+include ../mixins/webfont
+
+block js
+  +webfont({ families: [ 'Montserrat:400,700:latin' ] })
+
+  if segment_write_key
+    +segment(segment_write_key)
+
+  script(type="text/javascript").
+    window.locals = !{JSON.stringify(locals.client)};
+
+  script(src="/js/main.js")

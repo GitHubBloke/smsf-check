@@ -61,6 +61,8 @@ keystone.set('locals', {
 
   JSON: JSON,
   keystone: keystone,
+
+  segment_write_key: process.env.SEGMENT_WRITE_KEY,
 });
 
 // Setup common client side global variables.
