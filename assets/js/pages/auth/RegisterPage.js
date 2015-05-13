@@ -1,10 +1,12 @@
+import classNames from 'classnames';
 import Immutable, { Map } from 'immutable';
 import Joi from 'joi';
 import React, { PropTypes } from 'react';
-import { Col, Button, Input } from 'react-bootstrap';
+import { Button, Col, Input } from 'react-bootstrap';
 import DocumentTitle from 'react-document-title';
 import { FormattedMessage as FM } from '../../shims/ReactIntl';
 import { Link } from 'react-router';
+import Select from 'react-select';
 
 import { requireUnauth } from '../../utils/AuthUtils';
 import locals from '../../utils/locals';
@@ -21,7 +23,7 @@ class RegisterPage extends Validatable {
       data: Immutable.fromJS({
         name: { first: '', last: '' },
         email: '',
-        fund: { name: '', abn: '' },
+        fund: { name: void 0, abn: void 0 },
         doesConsent: false,
         notifications: { newsletter: false },
       }),
@@ -81,18 +83,22 @@ class RegisterPage extends Validatable {
               {...this.getErrorProps('email')} />
           </Col>
           <Col md={12}>
-            <Input type='text' bsSize='large'
-              placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.fundName.placeholder'))}
-              valueLink={this.linkState('fund.name')}
-              disabled={submitting}
-              {...this.getErrorProps('fund.name')} />
+            <div className={classNames({ 'form-group': true, 'has-error': this.hasError('fund.name') })}>
+              <Select name='fundName' options={[]}
+                placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.fundName.placeholder'))}
+                {...this.valueLink('fund.name')}
+                disabled={submitting} />
+              <span className='help-block'>{this.getErrorProps('fund.name').help}</span>
+            </div>
           </Col>
           <Col md={12}>
-            <Input type='text' bsSize='large'
-              placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.fundAbn.placeholder'))}
-              valueLink={this.linkState('fund.abn')}
-              disabled={submitting}
-              {...this.getErrorProps('fund.abn')} />
+            <div className={classNames({ 'form-group': true, 'has-error': this.hasError('fund.abn') })}>
+              <Select name='fundAbn' options={[]}
+                placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.fundAbn.placeholder'))}
+                {...this.valueLink('fund.abn')}
+                disabled={submitting} />
+              <span className='help-block'>{this.getErrorProps('fund.abn').help}</span>
+            </div>
           </Col>
           <Col md={12} className='append-xs-tiny text-left'>
             <Input type='checkbox'
@@ -128,7 +134,7 @@ class RegisterPage extends Validatable {
   renderSuccess() {
     return (
       <p className='append-xs-none'>
-        <FM message={this.getIntlMessage('register.sucessful')} />{' '}
+        <FM message={this.getIntlMessage('register.sucessful')} />
       </p>
     );
   }
@@ -164,8 +170,14 @@ RegisterPage.schema = {
   },
   email: Joi.string().email().required().label('Email address'),
   fund: {
-    name: Joi.string().required().label('Fund name'),
-    abn: Joi.string().required().label('Fund ABN'),
+    name: Joi.string()
+      .required()
+      .options({ language: { any: { required: 'must be selected from the list of funds' } } })
+      .label('Fund name'),
+    abn: Joi.string()
+      .required()
+      .options({ language: { any: { required: 'must be selected from the list of funds' } } })
+      .label('Fund ABN'),
   },
 };
 

@@ -8,16 +8,27 @@ export default class Validatable extends BaseComponent {
     super(props);
   }
 
+  hasError(path) {
+    return !!this._getError(path);
+  }
+
   getErrorProps(path) {
+    const help = this._getErrorMessage(path);
+    if (!help) { return {}; }
     return {
-      help: this._getErrorMessage(path),
+      help,
       bsStyle: this._getBsStyle(path),
     };
   }
 
-  _getErrorMessage(path) {
+  _getError(path) {
     const error = this.state.data.get('errors');
-    const message = (_.find(error, { path }) || {}).message;
+    return _.find(error, { path });
+  }
+
+  _getErrorMessage(path) {
+    const error = this._getError(path);
+    const message = (error || {}).message;
     if (message) { return message.replace(/"/g, ''); }
     return message;
   }

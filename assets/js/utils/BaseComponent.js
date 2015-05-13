@@ -3,6 +3,10 @@ import { IntlMixin } from '../shims/ReactIntl';
 import reactMixin from 'react-mixin';
 
 export default class BaseComponent extends Component {
+  bind(...methods) {
+     methods.forEach((method) => { this[method] = this[method].bind(this); });
+  }
+
   linkState(path, modifier) {
     return {
       value: this.state.data.getIn(path.split('.')),
@@ -10,8 +14,11 @@ export default class BaseComponent extends Component {
     };
   }
 
-  bind(...methods) {
-     methods.forEach((method) => { this[method] = this[method].bind(this); });
+  valueLink(path) {
+    return {
+      value: this.state.data.getIn(path.split('.')),
+      onChange: (value) => this._setState(path, value),
+    };
   }
 
   _setState(path, value, cb) {
