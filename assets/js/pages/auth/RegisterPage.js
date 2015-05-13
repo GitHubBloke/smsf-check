@@ -61,31 +61,31 @@ class RegisterPage extends BaseComponent {
           <Col md={6}>
             <Input ref='firstName' type='text' bsSize='large'
               placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.firstName.placeholder'))}
-              value={data.getIn(['name', 'first'])} onChange={this._handleInputChange.bind(this, 'name.first')}
+              value={data.getIn(['name', 'first'])} onChange={this._handleInputChange.bind(this, 'name.first', void 0)}
               disabled={submitting} />
           </Col>
           <Col md={6}>
             <Input type='text' bsSize='large'
               placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.lastName.placeholder'))}
-              value={data.getIn(['name', 'last'])} onChange={this._handleInputChange.bind(this, 'name.last')}
+              value={data.getIn(['name', 'last'])} onChange={this._handleInputChange.bind(this, 'name.last', void 0)}
               disabled={submitting} />
           </Col>
           <Col md={12}>
             <Input type='email' bsSize='large'
               placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.email.placeholder'))}
-              value={data.get('email')} onChange={this._handleInputChange.bind(this, 'email')}
+              value={data.get('email')} onChange={this._handleInputChange.bind(this, 'email', void 0)}
               disabled={submitting} />
           </Col>
           <Col md={12}>
             <Input type='text' bsSize='large'
               placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.fundName.placeholder'))}
-              value={data.getIn(['fund', 'name'])} onChange={this._handleInputChange.bind(this, 'fund.name')}
+              value={data.getIn(['fund', 'name'])} onChange={this._handleInputChange.bind(this, 'fund.name', void 0)}
               disabled={submitting} />
           </Col>
           <Col md={12}>
             <Input type='text' bsSize='large'
               placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.fundAbn.placeholder'))}
-              value={data.getIn(['fund', 'abn'])} onChange={this._handleInputChange.bind(this, 'fund.abn')}
+              value={data.getIn(['fund', 'abn'])} onChange={this._handleInputChange.bind(this, 'fund.abn', void 0)}
               disabled={submitting} />
           </Col>
           <Col md={12} className='append-xs-tiny text-left'>

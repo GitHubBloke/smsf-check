@@ -27,7 +27,8 @@ var paths = {
   lint: [ './models/**/*.js', './routes/**/*.js', '*.js', './assets/js/**/*.js' ],
   less: [ './public/styles/**/*.less', themeDir + '/**/*.less' ],
   css: [ '/styles/site.css' ],
-  jade: [ './templates/**/*.jade' ]
+  jade: [ './templates/**/*.jade' ],
+  fonts: [ './assets/components/ionicons/fonts/**/*' ],
 };
 
 var keystoneProcess = null;
@@ -39,7 +40,7 @@ gulp.task('lint', function() {
 });
 
 gulp.task('browserify', function() { return bundle(); });
-gulp.task('build', [ 'browserify' ]);
+gulp.task('build', [ 'browserify', 'fonts' ]);
 
 gulp.task('keystone', function() {
   if (keystoneProcess) { keystoneProcess.kill(); }
@@ -57,6 +58,10 @@ gulp.task('keystone', function() {
       console.log('Reloading site but not yet ready, retrying in 1 second...');
     });
   }, 1000);
+});
+
+gulp.task('fonts', function() {
+  return gulp.src(paths.fonts).pipe(gulp.dest('./public/fonts'));
 });
 
 gulp.task('watch', [ 'keystone' ], function() {

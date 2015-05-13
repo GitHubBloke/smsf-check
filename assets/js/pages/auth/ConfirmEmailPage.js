@@ -56,7 +56,7 @@ class ConfirmEmailPage extends BaseComponent {
             <Col md={6} mdOffset={3}>
               <Input ref='password' type='password' bsSize='large'
                 placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.password.placeholder'))}
-                value={data.get('password')} onChange={this._handleInputChange.bind(this, 'password')}
+                value={data.get('password')} onChange={this._handleInputChange.bind(this, 'password', void 0)}
                 disabled={submitting} />
             </Col>
           </div>

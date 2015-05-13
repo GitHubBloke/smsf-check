@@ -47,13 +47,13 @@ class SigninPage extends BaseComponent {
             <Col md={6}>
               <Input ref='email' type='email' bsSize='large'
                 placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.email.placeholder'))}
-                value={data.get('email')} onChange={this._handleInputChange.bind(this, 'email')}
+                value={data.get('email')} onChange={this._handleInputChange.bind(this, 'email', void 0)}
                 disabled={submitting} />
             </Col>
             <Col md={6}>
               <Input type='password' bsSize='large'
                 placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.password.placeholder'))}
-                value={data.get('password')} onChange={this._handleInputChange.bind(this, 'password')}
+                value={data.get('password')} onChange={this._handleInputChange.bind(this, 'password', void 0)}
                 disabled={submitting} />
             </Col>
           </div>
