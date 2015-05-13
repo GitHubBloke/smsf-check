@@ -9,30 +9,32 @@ import locals from '../utils/locals';
 export default class HomePage extends BaseComponent {
   render() {
     return (
-      <Grid className='text-center prepend-xs-2 append-xs-3'>
-        <h1><Link to='app'>{locals.name}</Link></h1>
-        <h3>
-          <FM message={this.getIntlMessage('home.intro')}
-            name={<strong>{locals.name}</strong>}
-            brand={locals.brand} />
-        </h3>
+      <Grid className='prepend-xs-2 append-xs-3'>
+        <div className='text-center'>
+          <h1><Link to='app'>{locals.name}</Link></h1>
+          <h3>
+            <FM message={this.getIntlMessage('home.intro')}
+              name={<strong>{locals.name}</strong>}
+              brand={locals.brand} />
+          </h3>
 
-        <Row className='prepend-xs-2'>
-          <Col md={4} className='append-xs-2'>
-            <img src='http://placehold.it/100x100' width='100' />
-            <h4><FM message={this.getIntlMessage('home.features.safeData')} /></h4>
-          </Col>
-          <Col md={4} className='append-xs-2'>
-            <img src='http://placehold.it/100x100' width='100' />
-            <h4><FM message={this.getIntlMessage('home.features.greatAdvice')} /></h4>
-          </Col>
-          <Col md={4} className='append-xs-2'>
-            <img src='http://placehold.it/100x100' width='100' />
-            <h4><FM message={this.getIntlMessage('home.features.compare')} /></h4>
-          </Col>
-        </Row>
+          <Row className='prepend-xs-2'>
+            <Col md={4} className='append-xs-2'>
+              <img src='http://placehold.it/100x100' width='100' />
+              <h4><FM message={this.getIntlMessage('home.features.safeData')} /></h4>
+            </Col>
+            <Col md={4} className='append-xs-2'>
+              <img src='http://placehold.it/100x100' width='100' />
+              <h4><FM message={this.getIntlMessage('home.features.greatAdvice')} /></h4>
+            </Col>
+            <Col md={4} className='append-xs-2'>
+              <img src='http://placehold.it/100x100' width='100' />
+              <h4><FM message={this.getIntlMessage('home.features.compare')} /></h4>
+            </Col>
+          </Row>
+        </div>
 
-        <Well bsSize='large' className='text-center'>
+        <Well bsSize='large'>
           <RouteHandler {...this.props}/>
         </Well>
       </Grid>

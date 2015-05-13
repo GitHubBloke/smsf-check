@@ -1,4 +1,5 @@
 import Immutable, { Map } from 'immutable';
+import Joi from 'joi';
 import React, { PropTypes } from 'react';
 import { Col, Button, Input } from 'react-bootstrap';
 import DocumentTitle from 'react-document-title';
@@ -6,13 +7,13 @@ import { FormattedMessage as FM } from '../../shims/ReactIntl';
 import { Link } from 'react-router';
 
 import { requireUnauth } from '../../utils/AuthUtils';
-import BaseComponent from '../../utils/BaseComponent';
 import locals from '../../utils/locals';
 import { connectToStores } from '../../utils/StoreUtils';
 import UserActionCreators from '../../actions/UserActionCreators';
 import UserStore from '../../stores/UserStore';
+import Validatable from '../../utils/Validatable';
 
-class RegisterPage extends BaseComponent {
+class RegisterPage extends Validatable {
   constructor(props) {
     super(props);
     this.bind('_handleSubmit');
@@ -55,37 +56,42 @@ class RegisterPage extends BaseComponent {
     return (
       <form autoComplete='off' noValidate onSubmit={this._handleSubmit}>
         {error && <div className='alert alert-danger'>{error.message}</div>}
-        <p><FM message={this.getIntlMessage('register.intro')} /></p>
+        <p className='text-center'><FM message={this.getIntlMessage('register.intro')} /></p>
         <div className='prepend-xs-2 append-xs-1 clearfix'>
           <Col md={6}>
             <Input ref='firstName' type='text' bsSize='large'
               placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.firstName.placeholder'))}
               valueLink={this.linkState('name.first')}
-              disabled={submitting} />
+              disabled={submitting}
+              {...this.getErrorProps('name.first')} />
           </Col>
           <Col md={6}>
             <Input type='text' bsSize='large'
               placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.lastName.placeholder'))}
               valueLink={this.linkState('name.last')}
-              disabled={submitting} />
+              disabled={submitting}
+              {...this.getErrorProps('name.last')} />
           </Col>
           <Col md={12}>
             <Input type='email' bsSize='large'
               placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.email.placeholder'))}
               valueLink={this.linkState('email')}
-              disabled={submitting} />
+              disabled={submitting}
+              {...this.getErrorProps('email')} />
           </Col>
           <Col md={12}>
             <Input type='text' bsSize='large'
               placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.fundName.placeholder'))}
               valueLink={this.linkState('fund.name')}
-              disabled={submitting} />
+              disabled={submitting}
+              {...this.getErrorProps('fund.name')} />
           </Col>
           <Col md={12}>
             <Input type='text' bsSize='large'
               placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.fundAbn.placeholder'))}
               valueLink={this.linkState('fund.abn')}
-              disabled={submitting} />
+              disabled={submitting}
+              {...this.getErrorProps('fund.abn')} />
           </Col>
           <Col md={12} className='append-xs-tiny text-left'>
             <Input type='checkbox'
@@ -98,19 +104,21 @@ class RegisterPage extends BaseComponent {
               disabled={submitting} />
           </Col>
         </div>
-        <Button bsStyle='default' bsSize='large' className='append-xs-1'
-          componentClass='button' type='submit'
-          disabled={submitting || !data.get('doesConsent')}>
-          {submitting ?
-            this.formatMessage(this.getIntlMessage('register.submit.loadingLabel')) :
-            this.formatMessage(this.getIntlMessage('register.submit.actionLabel'))}
-        </Button>
-        <p className='append-xs-none'>
-          <FM message={this.getIntlMessage('register.already.note')} />{' '}
-          <Link to='signin'>
-            <FM message={this.getIntlMessage('register.already.actionLabel')} />
-          </Link>
-        </p>
+        <div className='text-center'>
+          <Button bsStyle='default' bsSize='large' className='append-xs-1'
+            componentClass='button' type='submit'
+            disabled={submitting || !data.get('doesConsent')}>
+            {submitting ?
+              this.formatMessage(this.getIntlMessage('register.submit.loadingLabel')) :
+              this.formatMessage(this.getIntlMessage('register.submit.actionLabel'))}
+          </Button>
+          <p className='append-xs-none'>
+            <FM message={this.getIntlMessage('register.already.note')} />{' '}
+            <Link to='signin'>
+              <FM message={this.getIntlMessage('register.already.actionLabel')} />
+            </Link>
+          </p>
+        </div>
       </form>
     );
   }
@@ -124,7 +132,10 @@ class RegisterPage extends BaseComponent {
   }
 
   _handleSubmit(e) {
-    UserActionCreators.signup(this.state.data.toJS());
+    if (this.validate()) {
+      UserActionCreators.signup(this.state.data.toJS());
+    }
+
     e.preventDefault();
   }
 }
@@ -142,6 +153,18 @@ RegisterPage.defaultProps = {
   submitting: false,
   registeredUser: void 0,
   error: void 0
+};
+
+RegisterPage.schema = {
+  name: {
+    first: Joi.string().required().label('First name'),
+    last: Joi.string().required().label('Last name'),
+  },
+  email: Joi.string().email().required().label('Email address'),
+  fund: {
+    name: Joi.string().required().label('Fund name'),
+    abn: Joi.string().required().label('Fund ABN'),
+  },
 };
 
 function pickProps({ params }) {
