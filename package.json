@@ -19,6 +19,7 @@
     "react-document-title": "^1.0.2",
     "react-intl": "^1.2.0",
     "react-mixin": "^1.2.2",
+    "react-select": "^0.4.9",
     "superagent": "^1.2.0",
     "superagent-prefix": "0.0.2",
     "winston": "^1.0.0",
