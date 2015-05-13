@@ -55,8 +55,9 @@ class RegisterPage extends Validatable {
 
     return (
       <form autoComplete='off' noValidate onSubmit={this._handleSubmit}>
-        {error && <div className='alert alert-danger'>{error.message}</div>}
+        {error && <div className='alert alert-danger text-center'>{error.message}</div>}
         <p className='text-center'><FM message={this.getIntlMessage('register.intro')} /></p>
+
         <div className='prepend-xs-2 append-xs-1 clearfix'>
           <Col md={6}>
             <Input ref='firstName' type='text' bsSize='large'
@@ -104,6 +105,7 @@ class RegisterPage extends Validatable {
               disabled={submitting} />
           </Col>
         </div>
+
         <div className='text-center'>
           <Button bsStyle='default' bsSize='large' className='append-xs-1'
             componentClass='button' type='submit'

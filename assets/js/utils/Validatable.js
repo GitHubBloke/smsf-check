@@ -27,9 +27,12 @@ export default class Validatable extends BaseComponent {
   }
 
   validate() {
-    return Joi.validate(this.state.data.toJS(), this.constructor.schema, { abortEarly: false }, (err, value) => {
-      this._setState('errors', err.details);
+    const result = Joi.validate(this.state.data.toJS(), this.constructor.schema, {
+      abortEarly: false,
+      allowUnknown: true
     });
+    this._setState('errors', result.error ? result.error.details : []);
+    return !result.error;
   }
 }
 

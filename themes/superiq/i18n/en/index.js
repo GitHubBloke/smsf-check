@@ -80,6 +80,7 @@ export default {
           lastName: { placeholder: 'Enter your last name...' },
           email: { placeholder: 'Enter your email address...' },
           password: { placeholder: 'Enter your password...' },
+          passwordConfirmation: { placeholder: 'Confirm your password...' },
           fundName: { placeholder: 'The name of your fund...' },
           fundAbn: { placeholder: 'Your fund\'s ABN...' },
 
