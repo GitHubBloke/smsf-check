@@ -13,7 +13,8 @@ var _ = require('lodash');
 var keystone = require('keystone');
 
 // Load theme configuration
-var themeConfig = require('./themes/' + process.env.APP_THEME + '/theme');
+var themeDir = './themes/' + process.env.APP_THEME;
+var themeConfig = require(themeDir + '/theme');
 
 // Initialise Keystone with your project's configuration.
 // See http://keystonejs.com/guide/config for available options
@@ -28,7 +29,7 @@ keystone.init(_.assign({
       }
     }
   },
-  'static': 'public',
+  'static': [ 'public', 'themes/' + process.env.APP_THEME + '/public' ],
   'favicon': 'public/favicon.ico',
   'views': 'templates/views',
   'view engine': 'jade',
@@ -40,6 +41,8 @@ keystone.init(_.assign({
   'auth': true,
   'user model': 'User',
   'cookie secret': '5R(+[4Vaibu}i)zZ^eg:/"bR5{fGtw(JWa|qKbb:3y]M1|n{b7k{~SB*345:03y!',
+
+  'theme directory': themeDir,
 }, themeConfig));
 
 // Load your project's Models

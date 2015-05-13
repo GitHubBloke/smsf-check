@@ -5,6 +5,7 @@ var babelify = require('babelify');
 var browserify = require('browserify');
 var buffer = require('vinyl-buffer');
 var debowerify = require('debowerify');
+var es = require('event-stream');
 var eslint = require('gulp-eslint');
 var gulp = require('gulp');
 var gutil = require('gulp-util');
@@ -17,12 +18,14 @@ var sourcemaps = require('gulp-sourcemaps');
 var spawn = require('child_process').spawn;
 var watchify = require('watchify');
 
+var themeDir = './themes/' + process.env.APP_THEME;
+
 var paths = {
   node: [ './models/**/*.js', './routes/**/*.js', '*.js' ],
   client: [ './assets/**/*.js' ],
   browserify: [ './assets/js/main.js' ],
   lint: [ './models/**/*.js', './routes/**/*.js', '*.js', './assets/js/**/*.js' ],
-  less: [ './public/styles/**/*.less', './themes/**/*.less' ],
+  less: [ './public/styles/**/*.less', themeDir + '/**/*.less' ],
   css: [ '/styles/site.css' ],
   jade: [ './templates/**/*.jade' ]
 };
@@ -96,7 +99,7 @@ function bundle(watch) {
     ]
   }));
 
-  b.require('./themes/' + process.env.APP_THEME, { expose: 'theme' });
+  b.require(themeDir + '/i18n', { expose: 'i18n' });
 
   if (watch) {
     b = watchify(b);
