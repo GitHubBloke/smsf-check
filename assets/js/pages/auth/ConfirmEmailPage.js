@@ -2,8 +2,7 @@ import Immutable from 'immutable';
 import React, { PropTypes } from 'react';
 import { Button, Col, Input } from 'react-bootstrap';
 import DocumentTitle from 'react-document-title';
-import { FormattedMessage as FM, IntlMixin } from '../../shims/ReactIntl';
-import reactMixin from 'react-mixin';
+import { FormattedMessage as FM } from '../../shims/ReactIntl';
 import { Link } from 'react-router';
 
 import AuthActionCreators from '../../actions/AuthActionCreators';
@@ -18,7 +17,7 @@ import UserStore from '../../stores/UserStore';
 class ConfirmEmailPage extends BaseComponent {
   constructor(props) {
     super(props);
-    this._bind('_handleSubmit');
+    this.bind('_handleSubmit');
     this.state = {
       data: Immutable.fromJS({ password: '', passwordConfirmation: '' }),
     };
@@ -56,7 +55,7 @@ class ConfirmEmailPage extends BaseComponent {
             <Col md={6} mdOffset={3}>
               <Input ref='password' type='password' bsSize='large'
                 placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.password.placeholder'))}
-                value={data.get('password')} onChange={this._handleInputChange.bind(this, 'password', void 0)}
+                valueLink={this.linkState('password')}
                 disabled={submitting} />
             </Col>
           </div>
@@ -82,8 +81,6 @@ class ConfirmEmailPage extends BaseComponent {
     e.preventDefault();
   }
 }
-
-reactMixin.onClass(ConfirmEmailPage, IntlMixin);
 
 ConfirmEmailPage.propTypes = {
   submitting: PropTypes.bool,

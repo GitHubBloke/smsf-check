@@ -1,7 +1,16 @@
 import { Component } from 'react';
+import { IntlMixin } from '../shims/ReactIntl';
+import reactMixin from 'react-mixin';
 
 export default class BaseComponent extends Component {
-  _bind(...methods) {
+  linkState(path, modifier) {
+    return {
+      value: this.state.data.getIn(path.split('.')),
+      requestChange: (newValue) => this._setState(path, newValue),
+    };
+  }
+
+  bind(...methods) {
      methods.forEach((method) => { this[method] = this[method].bind(this); });
   }
 
@@ -10,15 +19,6 @@ export default class BaseComponent extends Component {
       data: prev.data.setIn(path.split('.'), value),
     }), cb);
   }
-
-  _handleInputChange(name, modifier = v => v, e) {
-    const value = e.target.value;
-    this._setState(name, modifier(value));
-  }
-
-  _handleCheckboxToggled(name, e) {
-    const checked = e.target.checked;
-    this._setState(name, checked);
-  }
 }
 
+reactMixin.onClass(BaseComponent, IntlMixin);

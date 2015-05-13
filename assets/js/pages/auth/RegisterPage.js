@@ -2,8 +2,7 @@ import Immutable, { Map } from 'immutable';
 import React, { PropTypes } from 'react';
 import { Col, Button, Input } from 'react-bootstrap';
 import DocumentTitle from 'react-document-title';
-import { FormattedMessage as FM, IntlMixin } from '../../shims/ReactIntl';
-import reactMixin from 'react-mixin';
+import { FormattedMessage as FM } from '../../shims/ReactIntl';
 import { Link } from 'react-router';
 
 import { requireUnauth } from '../../utils/AuthUtils';
@@ -16,7 +15,7 @@ import UserStore from '../../stores/UserStore';
 class RegisterPage extends BaseComponent {
   constructor(props) {
     super(props);
-    this._bind('_handleSubmit');
+    this.bind('_handleSubmit');
     this.state = {
       data: Immutable.fromJS({
         name: { first: '', last: '' },
@@ -61,42 +60,41 @@ class RegisterPage extends BaseComponent {
           <Col md={6}>
             <Input ref='firstName' type='text' bsSize='large'
               placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.firstName.placeholder'))}
-              value={data.getIn(['name', 'first'])} onChange={this._handleInputChange.bind(this, 'name.first', void 0)}
+              valueLink={this.linkState('name.first')}
               disabled={submitting} />
           </Col>
           <Col md={6}>
             <Input type='text' bsSize='large'
               placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.lastName.placeholder'))}
-              value={data.getIn(['name', 'last'])} onChange={this._handleInputChange.bind(this, 'name.last', void 0)}
+              valueLink={this.linkState('name.last')}
               disabled={submitting} />
           </Col>
           <Col md={12}>
             <Input type='email' bsSize='large'
               placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.email.placeholder'))}
-              value={data.get('email')} onChange={this._handleInputChange.bind(this, 'email', void 0)}
+              valueLink={this.linkState('email')}
               disabled={submitting} />
           </Col>
           <Col md={12}>
             <Input type='text' bsSize='large'
               placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.fundName.placeholder'))}
-              value={data.getIn(['fund', 'name'])} onChange={this._handleInputChange.bind(this, 'fund.name', void 0)}
+              valueLink={this.linkState('fund.name')}
               disabled={submitting} />
           </Col>
           <Col md={12}>
             <Input type='text' bsSize='large'
               placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.fundAbn.placeholder'))}
-              value={data.getIn(['fund', 'abn'])} onChange={this._handleInputChange.bind(this, 'fund.abn', void 0)}
+              valueLink={this.linkState('fund.abn')}
               disabled={submitting} />
           </Col>
           <Col md={12} className='append-xs-tiny text-left'>
             <Input type='checkbox'
               label={this.formatMessage(this.getIntlMessage('shared.fields.user.doesConsent.label'), { brand: locals.brand })}
-              checked={data.get('doesConsent')} onChange={this._handleCheckboxToggled.bind(this, 'doesConsent')}
+              checkedLink={this.linkState('doesConsent')}
               disabled={submitting} />
             <Input type='checkbox'
               label={this.formatMessage(this.getIntlMessage('shared.fields.user.notifications.label'), { brand: locals.brand })}
-              checked={data.getIn(['notifications', 'newsletter'])}
-              onChange={this._handleCheckboxToggled.bind(this, 'notifications.newsletter')}
+              checkedLink={this.linkState('notifications.newsletter')}
               disabled={submitting} />
           </Col>
         </div>
@@ -130,8 +128,6 @@ class RegisterPage extends BaseComponent {
     e.preventDefault();
   }
 }
-
-reactMixin.onClass(RegisterPage, IntlMixin);
 
 RegisterPage.propTypes = {
   submitting: PropTypes.bool,

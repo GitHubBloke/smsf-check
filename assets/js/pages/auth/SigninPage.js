@@ -2,8 +2,7 @@ import Immutable from 'immutable';
 import React, { PropTypes } from 'react';
 import { Col, Button, Input } from 'react-bootstrap';
 import DocumentTitle from 'react-document-title';
-import { FormattedMessage as FM, IntlMixin } from '../../shims/ReactIntl';
-import reactMixin from 'react-mixin';
+import { FormattedMessage as FM } from '../../shims/ReactIntl';
 import { Link } from 'react-router';
 
 import AuthActionCreators from '../../actions/AuthActionCreators';
@@ -16,7 +15,7 @@ import { connectToStores } from '../../utils/StoreUtils';
 class SigninPage extends BaseComponent {
   constructor(props) {
     super(props);
-    this._bind('_handleSubmit');
+    this.bind('_handleSubmit');
     this.state = {
       data: Immutable.fromJS({ email: '', password: '' }),
     };
@@ -47,13 +46,13 @@ class SigninPage extends BaseComponent {
             <Col md={6}>
               <Input ref='email' type='email' bsSize='large'
                 placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.email.placeholder'))}
-                value={data.get('email')} onChange={this._handleInputChange.bind(this, 'email', void 0)}
+                valueLink={this.linkState('email')}
                 disabled={submitting} />
             </Col>
             <Col md={6}>
               <Input type='password' bsSize='large'
                 placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.password.placeholder'))}
-                value={data.get('password')} onChange={this._handleInputChange.bind(this, 'password', void 0)}
+                valueLink={this.linkState('password')}
                 disabled={submitting} />
             </Col>
           </div>
@@ -80,8 +79,6 @@ class SigninPage extends BaseComponent {
     e.preventDefault();
   }
 }
-
-reactMixin.onClass(SigninPage, IntlMixin);
 
 SigninPage.propTypes = {
   submitting: PropTypes.bool,

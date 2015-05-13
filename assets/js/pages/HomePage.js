@@ -1,7 +1,6 @@
 import React from 'react';
 import { Col, Grid, Row, Well } from 'react-bootstrap';
-import { FormattedMessage as FM, IntlMixin } from '../shims/ReactIntl';
-import reactMixin from 'react-mixin';
+import { FormattedMessage as FM } from '../shims/ReactIntl';
 import { Link, RouteHandler } from 'react-router';
 
 import BaseComponent from '../utils/BaseComponent';
@@ -40,5 +39,3 @@ export default class HomePage extends BaseComponent {
     );
   }
 }
-
-reactMixin.onClass(HomePage, IntlMixin);

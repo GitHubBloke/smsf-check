@@ -1,7 +1,6 @@
 import React from 'react';
 import { Grid } from 'react-bootstrap';
-import { FormattedMessage as FM, IntlMixin } from '../shims/ReactIntl';
-import reactMixin from 'react-mixin';
+import { FormattedMessage as FM } from '../shims/ReactIntl';
 import DocumentTitle from 'react-document-title';
 
 import BaseComponent from '../utils/BaseComponent';
@@ -30,5 +29,3 @@ export default class TermsPage extends BaseComponent {
     );
   }
 }
-
-reactMixin.onClass(TermsPage, IntlMixin);

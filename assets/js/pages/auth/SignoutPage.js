@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Grid } from 'react-bootstrap';
-import { FormattedMessage as FM, IntlMixin } from '../../shims/ReactIntl';
-import reactMixin from 'react-mixin';
+import { FormattedMessage as FM } from '../../shims/ReactIntl';
 import { Link } from 'react-router';
 
 import AuthActionCreators from '../../actions/AuthActionCreators';
@@ -39,8 +38,6 @@ class SignoutPage extends BaseComponent {
     );
   }
 }
-
-reactMixin.onClass(SignoutPage, IntlMixin);
 
 SignoutPage.propTypes = { signingOut: PropTypes.bool };
 SignoutPage.defaultProps = { signingOut: false };

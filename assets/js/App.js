@@ -6,7 +6,6 @@ import { RouteHandler } from 'react-router';
 import BaseComponent from './utils/BaseComponent';
 import Footer from './components/Footer';
 import locals from './utils/locals';
-import { IntlMixin, FormattedNumber } from './shims/ReactIntl';
 
 export default class App extends BaseComponent {
   render() {
@@ -20,5 +19,3 @@ export default class App extends BaseComponent {
     );
   }
 }
-
-reactMixin.onClass(App, IntlMixin);
