@@ -14,10 +14,13 @@ export default class BaseComponent extends Component {
     };
   }
 
-  valueLink(path) {
+  valueLink(path, onChange = () => {}) {
     return {
       value: this.state.data.getIn(path.split('.')),
-      onChange: (value) => this._setState(path, value),
+      onChange: (...args) => {
+        onChange(...args);
+        return this._setState(path, args[0]);
+      },
     };
   }
 

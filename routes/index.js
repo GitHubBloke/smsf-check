@@ -44,6 +44,8 @@ export default function(app) {
   app.post('/api/users', routes.api.users.create);
   app.post('/api/users/reset-password', routes.api.users.resetPassword);
 
+  app.get('/api/abn/lookup', routes.api.abn.lookup);
+
   app.get('*', routes.views.index);
 
   app.use(expressWinston.errorLogger({ winstonInstance: logger }));
