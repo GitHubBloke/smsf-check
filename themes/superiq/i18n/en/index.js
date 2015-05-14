@@ -35,9 +35,9 @@ export default {
 
     confirmEmail: {
       title: 'Confirm Your Email Address',
-      heading: 'Welcome to {name}',
-      subHeading: 'Please select a password for your new account',
-      submit: { actionLabel: 'Log In to your Health Check', loadingLabel: 'Please wait...', },
+      heading: 'Begin your {name} journey',
+      subHeading: 'Select a password for your account below and start comparing your fund to 11,000 others.',
+      submit: { actionLabel: 'Create my {name} password', loadingLabel: 'Please wait...', },
     },
 
     register: {
@@ -53,6 +53,9 @@ export default {
     signin: {
       title: 'Log In',
       heading: 'Log In to your Health Check',
+      subHeading:
+        `Please enter the details below to access your {name} account.<br>
+         Your information will never be used for any purposes outside of this helpful tool.`,
       submit: { actionLabel: 'Log In Now', loadingLabel: 'Please wait...', },
       needAccount: { note: 'Need an account?', actionLabel: 'Register', },
     },

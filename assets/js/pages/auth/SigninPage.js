@@ -36,22 +36,28 @@ class SigninPage extends Validatable {
 
     return (
       <DocumentTitle title={`${locals.name} - ${this.formatMessage(this.getIntlMessage('signin.title'))}`}>
-        <form id='signin' className='prepend-xs-tiny append-xs-tiny' onSubmit={this._handleSubmit}>
+        <form className='append-xs-tiny' onSubmit={this._handleSubmit}>
           {error && <div className='alert alert-danger text-center'>{error.message}</div>}
-          <h2 className='text-center prepend-xs-none'><FM message={this.getIntlMessage('signin.heading')} /></h2>
-          <p className='text-center'><FHM message={this.getIntlMessage('register.intro')} /></p>
-          <hr/>
+
+          <div className='text-center prepend-xs-tiny append-xs-2'>
+            <h2 className='prepend-xs-none'>
+              <FM message={this.getIntlMessage('signin.heading')} name={locals.name} />
+            </h2>
+            <p><FHM message={this.getIntlMessage('signin.subHeading')} name={locals.name} /></p>
+          </div>
 
           <div className='prepend-xs-1 append-xs-1 clearfix'>
             <Row>
-              <Col md={8}>
+              <Col md={8} mdOffset={4}>
                 <Input type='email' bsSize='large' className='input-lg'
                   placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.email.placeholder'))}
                   valueLink={this.linkState('email')}
                   disabled={submitting}
                   {...this.getErrorProps('email')} />
               </Col>
-              <Col md={8}>
+            </Row>
+            <Row>
+              <Col md={8} mdOffset={4}>
                 <Input type='password' bsSize='large' className='input-lg'
                   placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.password.placeholder'))}
                   valueLink={this.linkState('password')}
