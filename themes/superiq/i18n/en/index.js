@@ -79,7 +79,7 @@ export default {
 
     shared: {
       navbar: {
-        signin: { actionLabel: 'Log in' },
+        signin: { actionLabel: 'Log In' },
       },
 
       fields: {
