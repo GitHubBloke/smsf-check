@@ -1,9 +1,10 @@
 import React from 'react';
-import { Button, Col, Grid, Nav, Navbar, NavItem, Row, Well } from 'react-bootstrap';
+import { Button, Col, Grid, Nav, NavItem, Row, Well } from 'react-bootstrap';
 import { FormattedMessage as FM } from '../shims/ReactIntl';
-import { Link, RouteHandler } from 'react-router';
+import { RouteHandler } from 'react-router';
 
 import BaseComponent from '../utils/BaseComponent';
+import Header from '../components/Header';
 import Icon, { IconStack } from '../components/Icon';
 import locals from '../utils/locals';
 
@@ -11,12 +12,7 @@ export default class HomePage extends BaseComponent {
   render() {
     return (
       <div>
-        <Navbar className='append-xs-none' staticTop
-          brand={<span><Link to='app' className='logo'>{locals.name}</Link></span>}>
-          <Link to='signin' className='btn btn-primary btn-lg btn--wide navbar-btn navbar-right'>
-            Log in
-          </Link>
-        </Navbar>
+        <Header />
 
         <div className='hero text-inverse'>
           <Grid>

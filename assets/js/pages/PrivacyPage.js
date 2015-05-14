@@ -1,30 +1,39 @@
 import React from 'react';
-import { Grid } from 'react-bootstrap';
+import { Col, Grid, Row } from 'react-bootstrap';
 import { FormattedMessage as FM } from '../shims/ReactIntl';
 import DocumentTitle from 'react-document-title';
 
 import BaseComponent from '../utils/BaseComponent';
+import Header from '../components/Header';
 import locals from '../utils/locals';
 
 export default class PrivacyPage extends BaseComponent {
   render() {
     return (
       <DocumentTitle title={`${locals.name} - ${this.formatMessage(this.getIntlMessage('privacy.title'))}`}>
-        <Grid className='prepend-xs-2 append-xs-3'>
-          <h1 className='text-center append-xs-3'>
-            <FM message={this.getIntlMessage('privacy.heading')} />
-          </h1>
+        <div>
+          <Header />
+          <Grid className='prepend-xs-3 append-xs-3'>
+            <h2 className='text-center prepend-xs-tiny append-xs-2'>
+              <FM message={this.getIntlMessage('privacy.heading')} />
+            </h2>
 
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin auctor felis diam. Nam ac eleifend metus. Nullam congue neque sem, vitae consectetur tortor lacinia vitae. Pellentesque interdum urna id ipsum aliquet, nec volutpat nisl iaculis. Phasellus in semper nunc, quis hendrerit dolor. Pellentesque in risus pharetra, feugiat nibh non, malesuada turpis. Pellentesque lorem elit, maximus eget eleifend a, rutrum sit amet lorem. Etiam eleifend lacus velit, quis vulputate velit sagittis quis.</p>
+            <Row>
+              <Col md={12} mdOffset={2}>
+                <h4 className='text-primary'>Your privacy</h4>
+                <p>SuperIQ Pty limited ("SuperIQ” has created this Privacy Policy to respect the confidentiality of information and the privacy of individuals. SuperIQ is bound by the Australian Privacy Principles contained in the Privacy Act 1988.</p>
 
-          <p>Duis et quam ac urna blandit pellentesque at id justo. Sed ut libero ante. Duis in tortor mollis, faucibus justo in, faucibus magna. Integer luctus massa a venenatis maximus. Mauris ornare elit augue. Nam et ullamcorper libero. Curabitur aliquam nisl nec sapien luctus eleifend sed sed nulla.</p>
+                <p>SuperIQ’s Privacy Policy Statement will be reviewed from time to time to take account of new laws and technology, changes to our operations and practices and to make sure it remains appropriate to the changing environment. Any information we hold will be governed by the most current SuperIQ Privacy Policy Statement.</p>
 
-          <p>Nam lectus nisl, faucibus congue lorem a, rutrum aliquam nulla. Morbi pellentesque tellus id nulla imperdiet, et pulvinar enim feugiat. Donec gravida nibh facilisis laoreet lobortis. Pellentesque iaculis, metus ut iaculis consectetur, neque urna blandit mauris, vel dignissim arcu elit maximus lectus. Nam eu efficitur ex. Integer consectetur nunc in cursus fermentum. Fusce et aliquet tellus, et euismod ex. Sed ac sapien mi. Sed non felis at enim porta vehicula non et libero. Sed neque felis, lobortis ut pulvinar eu, eleifend in justo. Duis ac arcu dolor. Aenean ultricies tristique nisi vestibulum congue.</p>
+                <p>This Privacy Policy does not apply to acts or practices of SuperIQ that are directly related to employee records of current or former employees.</p>
 
-          <p>Integer tempor elementum convallis. Sed posuere finibus iaculis. Etiam tempus elit ex, et vehicula lorem lobortis at. Morbi volutpat ullamcorper lacus, et molestie elit bibendum ut. Cras ac malesuada tortor. Nunc at dolor id nibh dignissim rutrum at sit amet sem. Nullam non tincidunt massa, vitae elementum eros. Etiam dignissim massa et lorem tempus pharetra. Nulla suscipit, erat non auctor tristique, ex elit tristique nunc, sit amet fringilla arcu ipsum id eros. Mauris augue lacus, iaculis eu fermentum sit amet, tempus id ex. Sed finibus faucibus libero id euismod. Cras lacinia viverra dui, nec blandit urna posuere luctus. Integer at eleifend sapien. Quisque sollicitudin libero et odio molestie cursus.</p>
-
-          <p>Sed a elementum nulla. Phasellus vel urna justo. Curabitur id justo orci. Cras et accumsan nisi. Donec eu urna tincidunt felis egestas laoreet vel vel quam. Nullam viverra porta arcu. Sed vel augue lobortis, posuere urna sed, dictum ligula. Mauris a gravida lectus. Praesent nec auctor ligula, ut condimentum augue. Morbi dapibus sed risus id malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec pretium sem. Aliquam consectetur et lectus scelerisque gravida. Aliquam dapibus lobortis leo, in fringilla ante. Nulla egestas nisl a dui ornare, non rutrum ante tincidunt. Aliquam erat volutpat.</p>
-        </Grid>
+                <h4 className='text-primary prepend-xs-2'>What happens if you do not provide the information?</h4>
+                <p>You may be adversely treated from a taxation point of view either from a trading point of view or when you commence to draw benefits from your superannuation fund.</p>
+                <p>You may inadvertently make your superannuation fund non‐complying rendering it liable to non‐ concessionary tax rates and/or penalties.</p>
+              </Col>
+            </Row>
+          </Grid>
+        </div>
       </DocumentTitle>
     );
   }

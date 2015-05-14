@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
-import { Grid } from 'react-bootstrap';
+import { Navbar } from 'react-bootstrap';
+import { Link } from 'react-router';
 
 import AuthStore from '../stores/AuthStore';
 import BaseComponent from '../utils/BaseComponent';
@@ -8,17 +9,16 @@ import { connectToStores } from '../utils/StoreUtils';
 
 export default class Header extends BaseComponent {
   render() {
-    const { user } = this.props;
+    const { signedIn, user } = this.props;
 
     return (
-      <header className='bg-dark clearfix'>
-        <div className='clearfix'>
-          <Grid className='prepend-xs-1 append-xs-1'>
-            <h1 className='prepend-xs-tiny pull-left'>{locals.name}</h1>
-            <h4 className='pull-right text-muted prepend-xs-1'>{user.getIn(['name', 'first'])}'s Report</h4>
-          </Grid>
-        </div>
-      </header>
+      <Navbar className='append-xs-none' staticTop
+        brand={<span><Link to='app' className='logo'>{locals.name}</Link></span>}>
+        {!signedIn &&
+          <Link to='signin' className='btn btn-primary btn-lg btn--wide navbar-btn navbar-right'>
+            Log in
+          </Link>}
+      </Navbar>
     );
   }
 }
