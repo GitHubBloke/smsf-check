@@ -202,8 +202,8 @@ class RegisterPage extends Validatable {
 
   renderSuccess() {
     return (
-      <p className='append-xs-none'>
-        <FM message={this.getIntlMessage('register.sucessful')} />
+      <p className='text-center append-xs-none'>
+        <FM message={this.getIntlMessage('register.successful')} />
       </p>
     );
   }

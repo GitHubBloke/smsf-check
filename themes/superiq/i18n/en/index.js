@@ -44,13 +44,13 @@ export default {
     },
 
     register: {
-    title: 'Register',
+      title: 'Register',
       intro:
         `So we can remember who you are, and identify your fund, please enter the details below.<br>
          Your information will never be used for any purposes outside of this helpful tool.`,
       submit: { actionLabel: 'Register', loadingLabel: 'Please wait...', },
       already: { note: 'Already registered?', actionLabel: 'Log In', },
-      successful: `Thankyou for signing up. We've sent you an email with instructions on how to log in.`,
+      successful: `Thank you for signing up. We've sent you an email with instructions on how to log in.`,
     },
 
     signin: {
