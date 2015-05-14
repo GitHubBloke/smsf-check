@@ -13,17 +13,18 @@ class Footer extends BaseComponent {
     const { signedIn } = this.props;
 
     return (
-      <footer className='bg-gray clearfix'>
-        <Grid className='prepend-xs-2 append-xs-2'>
+      <footer className='footer clearfix'>
+        <Grid className='prepend-xs-1 append-xs-1 prepend-md-2 append-md-2'>
           <Link to='app' className='h1 text-muted'>{locals.brand}</Link>
-          &nbsp;&nbsp;
-          <small className='text-muted'>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <small className='text-alpha visible-xs-block visible-sm-inline visible-md-inline visible-lg-inline prepend-xs-tiny'>
             <FM message={this.getIntlMessage('footer.copyright')}
               year={new Date().getFullYear()} brand={locals.brand} />
           </small>
-          <ul className='list-inline pull-right small prepend-xs-1 append-xs-none'>
-            <li><Link to='terms'><FM message={this.getIntlMessage('footer.links.terms')} /></Link></li>
-            <li><Link to='privacy'><FM message={this.getIntlMessage('footer.links.privacy')} /></Link></li>
+          <ul className='list-inline pull-sm-right small prepend-xs-1 append-xs-none'>
+            <li><Link to='terms' className='link-plain'><FM message={this.getIntlMessage('footer.links.terms')} /></Link></li>
+            <li>&bull;</li>
+            <li><Link to='privacy' className='link-plain'><FM message={this.getIntlMessage('footer.links.privacy')} /></Link></li>
             {signedIn && <li><Link to='signout'><FM message={this.getIntlMessage('footer.links.signOut')} /></Link></li>}
           </ul>
         </Grid>
