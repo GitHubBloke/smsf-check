@@ -1,23 +1,26 @@
 @ionicons-font-path: "/fonts";
 
-@container-large-desktop: @container-desktop;
-@container-lg: @container-large-desktop;
-
-@font-family-sans-serif: "Montserrat", Helvetica, Arial, sans-serif;
+@font-family-sans-serif: "Lato", Helvetica, Arial, sans-serif;
 @font-family-base: @font-family-sans-serif;
 
-@font-size-base: 17px;
+@font-size-base: 16px;
 @font-size-large: ceil((@font-size-base * 1.05)); // ~18px
 @font-size-small: ceil((@font-size-base * 0.70)); // ~12px
 
-@font-size-h1: floor((@font-size-base * 2.23)); // ~38px
-@font-size-h2: floor((@font-size-base * 1.75)); // ~30px
-@font-size-h3: ceil((@font-size-base * 1.41)); // ~24px
-@font-size-h4: ceil((@font-size-base * 1.05)); // ~18px
+@font-size-h1: floor((@font-size-base * 2.875)); // ~46px
+@font-size-h2: floor((@font-size-base * 1.875)); // ~30px
+@font-size-h3: ceil((@font-size-base * 1.625)); // ~24px
+@font-size-h4: ceil((@font-size-base * 1.125)); // ~18px
 @font-size-h5: @font-size-base;
-@font-size-h6: ceil((@font-size-base * 0.70)); // ~12px
+@font-size-h6: ceil((@font-size-base * 0.75)); // ~12px
 
-@line-height-computed: floor((@font-size-base * @line-height-base)); // ~20px
+@headings-line-height: 1.2;
+
+@line-height-computed: floor((@font-size-base * @line-height-base)); // ~22px
+
+@grid-columns: 16;
+
+@navbar-height: 87px;
 
 @select-text-color: @input-color;
 @select-input-border-color: @input-border;

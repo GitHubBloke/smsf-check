@@ -58,42 +58,34 @@ class RegisterPage extends Validatable {
     const { submitting, registeredUser, error } = this.props;
 
     return (
-      <form autoComplete='off' noValidate onSubmit={this._handleSubmit}>
+      <form className='prepend-xs-1 append-xs-tiny' autoComplete='off' noValidate onSubmit={this._handleSubmit}>
         {error && <div className='alert alert-danger text-center'>{error.message}</div>}
         <p className='text-center'><FM message={this.getIntlMessage('register.intro')} /></p>
+        <hr />
 
-        <div className='prepend-xs-2 append-xs-1 clearfix'>
-          <Col md={6}>
+        <div className='prepend-xs-1 append-xs-1 clearfix'>
+          <Col md={8}>
             <Input ref='firstName' type='text' bsSize='large'
               placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.firstName.placeholder'))}
               valueLink={this.linkState('name.first')}
               disabled={submitting}
               {...this.getErrorProps('name.first')} />
           </Col>
-          <Col md={6}>
+          <Col md={8}>
             <Input type='text' bsSize='large'
               placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.lastName.placeholder'))}
               valueLink={this.linkState('name.last')}
               disabled={submitting}
               {...this.getErrorProps('name.last')} />
           </Col>
-          <Col md={12}>
+          <Col md={16}>
             <Input type='email' bsSize='large'
               placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.email.placeholder'))}
               valueLink={this.linkState('email')}
               disabled={submitting}
               {...this.getErrorProps('email')} />
           </Col>
-          <Col md={12}>
-            <div className={classNames({ 'form-group': true, 'has-error': this.hasError('fund.name') })}>
-              <Select name='fundName' asyncOptions={fundLoader('name')} autoload={false}
-                placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.fundName.placeholder'))}
-                {...this.valueLink('fund.name', this._handleFundSelect)}
-                disabled={submitting} />
-              <span className='help-block'>{this.getErrorProps('fund.name').help}</span>
-            </div>
-          </Col>
-          <Col md={12}>
+          <Col md={16}>
             <div className={classNames({ 'form-group': true, 'has-error': this.hasError('fund.abn') })}>
               <Select name='fundAbn' asyncOptions={fundLoader('abn')} autoload={false}
                 placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.fundAbn.placeholder'))}
@@ -102,7 +94,16 @@ class RegisterPage extends Validatable {
               <span className='help-block'>{this.getErrorProps('fund.abn').help}</span>
             </div>
           </Col>
-          <Col md={12} className='append-xs-tiny text-left'>
+          <Col md={16}>
+            <div className={classNames({ 'form-group': true, 'has-error': this.hasError('fund.name') })}>
+              <Select name='fundName' asyncOptions={fundLoader('name')} autoload={false}
+                placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.fundName.placeholder'))}
+                {...this.valueLink('fund.name', this._handleFundSelect)}
+                disabled={submitting} />
+              <span className='help-block'>{this.getErrorProps('fund.name').help}</span>
+            </div>
+          </Col>
+          <Col md={16} className='append-xs-tiny text-left'>
             <Input type='checkbox'
               label={this.formatMessage(this.getIntlMessage('shared.fields.user.doesConsent.label'), { brand: locals.brand })}
               checkedLink={this.linkState('doesConsent')}
