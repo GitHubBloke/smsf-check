@@ -167,18 +167,9 @@ class RegisterPage extends Validatable {
                   placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.fundAbn.placeholder'))}
                   {...this.valueLink('fund.abn', this._handleFundSelect)}
                   disabled={submitting} />
-                <span className='help-block'>{this.getErrorProps('fund.abn').help}</span>
-              </div>
-            </Col>
-          </Row>
-          <Row>
-            <Col md={16}>
-              <div className={classNames({ 'form-group': true, 'has-error': this.hasError('fund.name') })}>
-                <Select name='fundName' asyncOptions={abnLoader('name')} autoload={false} className='Select--lg'
-                  placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.fundName.placeholder'))}
-                  {...this.valueLink('fund.name', this._handleFundSelect)}
-                  disabled={submitting} />
-                <span className='help-block'>{this.getErrorProps('fund.name').help}</span>
+                  {this.hasError('fund.abn') &&
+                    <span className='help-block'
+                      dangerouslySetInnerHTML={{ __html: this.getErrorProps('fund.abn').help }}></span>}
               </div>
             </Col>
           </Row>
@@ -259,14 +250,17 @@ RegisterPage.schema = {
   },
   email: Joi.string().email().required().label('Email address'),
   fund: {
-    name: Joi.string()
-      .required()
-      .options({ language: { any: { required: 'must be selected from the list of funds' } } })
-      .label('Fund name'),
     abn: Joi.string()
       .required()
-      .options({ language: { any: { required: 'must be selected from the list of funds' } } })
-      .label('Fund ABN'),
+      .options({
+        language: {
+          any: {
+            required: 'and then select from the list',
+            empty: 'and then select from the list',
+          }
+        }
+      })
+      .label('Enter your fund\'s ABN'),
   },
 };
 

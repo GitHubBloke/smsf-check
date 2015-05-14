@@ -14,10 +14,10 @@ export default (type) => {
       .send()
       .end((err, res) => {
         cb(err, {
-          options: _.map(res.body.abns, (abn) => ({
-            label: abn[type],
-            value: abn[type],
-            abn,
+          options: _.map(res.body.abns, (record) => ({
+            label: `${record.name} (${record.abn})`,
+            value: record.abn,
+            abn: record,
           })),
         });
       });
