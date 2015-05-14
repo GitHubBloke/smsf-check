@@ -43,7 +43,7 @@ export default {
     register: {
     title: 'Register',
       intro:
-        `So we can remember who you are, and identify your fund, please enter the details below.
+        `So we can remember who you are, and identify your fund, please enter the details below.<br>
          Your information will never be used for any purposes outside of this helpful tool.`,
       submit: { actionLabel: 'Register', loadingLabel: 'Please wait...', },
       already: { note: 'Already registered?', actionLabel: 'Log In', },
@@ -52,8 +52,8 @@ export default {
 
     signin: {
       title: 'Log In',
-      heading: 'Log In',
-      submit: { actionLabel: 'Log In to your Health Check', loadingLabel: 'Please wait...', },
+      heading: 'Log In to your Health Check',
+      submit: { actionLabel: 'Log In Now', loadingLabel: 'Please wait...', },
       needAccount: { note: 'Need an account?', actionLabel: 'Register', },
     },
 

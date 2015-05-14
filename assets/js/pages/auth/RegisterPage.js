@@ -5,7 +5,7 @@ import Joi from 'joi';
 import React, { PropTypes } from 'react';
 import { Button, Col, Input, Row } from 'react-bootstrap';
 import DocumentTitle from 'react-document-title';
-import { FormattedMessage as FM } from '../../shims/ReactIntl';
+import { FormattedMessage as FM, FormattedHTMLMessage as FHM } from '../../shims/ReactIntl';
 import { Link } from 'react-router';
 import Select from 'react-select';
 
@@ -55,7 +55,7 @@ class RegisterPage extends Validatable {
     return (
       <form id='register' className='prepend-xs-tiny append-xs-tiny' autoComplete='off' noValidate onSubmit={this._handleSubmit}>
         {error && <div className='alert alert-danger text-center'>{error.message}</div>}
-        <p className='text-center'><FM message={this.getIntlMessage('register.intro')} /></p>
+        <p className='text-center'><FHM message={this.getIntlMessage('register.intro')} /></p>
         <hr/>
 
         <div className='prepend-xs-1 append-xs-1 clearfix'>
