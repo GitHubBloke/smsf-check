@@ -19,6 +19,7 @@ variables locally when the server is started. To get started create a new
 `.env` file in the root of this project. Below is a sample of what is
 required by the server for it to run:
 
+    ABN_GUID=4b09927a-0c28-443c-baa7-add97c0a56bf
     APP_THEME=superiq
     MANDRILL_API_KEY=NY8RRKyv1Bure9bdP8-TOQ
     NEW_RELIC_LICENSE_KEY=xxxxxxxxxxxxxxxx (optional)

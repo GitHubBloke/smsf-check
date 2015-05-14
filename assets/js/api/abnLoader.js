@@ -14,10 +14,10 @@ export default (type) => {
       .send()
       .end((err, res) => {
         cb(err, {
-          options: _.map(res.body.funds, (fund) => ({
-            label: fund[type],
-            value: fund[type],
-            fund,
+          options: _.map(res.body.abns, (abn) => ({
+            label: abn[type],
+            value: abn[type],
+            abn,
           })),
         });
       });

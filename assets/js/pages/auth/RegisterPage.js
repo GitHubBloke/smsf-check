@@ -10,7 +10,7 @@ import { Link } from 'react-router';
 import Select from 'react-select';
 
 import { requireUnauth } from '../../utils/AuthUtils';
-import fundLoader from '../../api/fundLoader';
+import abnLoader from '../../api/abnLoader';
 import locals from '../../utils/locals';
 import { connectToStores } from '../../utils/StoreUtils';
 import UserActionCreators from '../../actions/UserActionCreators';
@@ -87,7 +87,7 @@ class RegisterPage extends Validatable {
           </Col>
           <Col md={16}>
             <div className={classNames({ 'form-group': true, 'has-error': this.hasError('fund.abn') })}>
-              <Select name='fundAbn' asyncOptions={fundLoader('abn')} autoload={false}
+              <Select name='fundAbn' asyncOptions={abnLoader('abn')} autoload={false}
                 placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.fundAbn.placeholder'))}
                 {...this.valueLink('fund.abn', this._handleFundSelect)}
                 disabled={submitting} />
@@ -96,7 +96,7 @@ class RegisterPage extends Validatable {
           </Col>
           <Col md={16}>
             <div className={classNames({ 'form-group': true, 'has-error': this.hasError('fund.name') })}>
-              <Select name='fundName' asyncOptions={fundLoader('name')} autoload={false}
+              <Select name='fundName' asyncOptions={abnLoader('name')} autoload={false}
                 placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.fundName.placeholder'))}
                 {...this.valueLink('fund.name', this._handleFundSelect)}
                 disabled={submitting} />
@@ -143,10 +143,10 @@ class RegisterPage extends Validatable {
   }
 
   _handleFundSelect(value, selectedOptions) {
-    const { fund } = selectedOptions[0] || {};
-    if (fund) {
-      this._setState('fund.name', fund.name);
-      this._setState('fund.abn', fund.abn);
+    const { abn } = selectedOptions[0] || {};
+    if (abn) {
+      this._setState('fund.name', abn.name);
+      this._setState('fund.abn', abn.abn);
     }
   }
 
