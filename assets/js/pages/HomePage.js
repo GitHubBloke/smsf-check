@@ -13,8 +13,9 @@ export default class HomePage extends BaseComponent {
   render() {
     return (
       <div>
-        <Navbar className='append-xs-none' brand={<span><span className='logo'>{locals.name}</span></span>} staticTop>
+        <Navbar className='append-xs-none' brand={<span><Link to='app' className='logo'>{locals.name}</Link></span>} staticTop>
         </Navbar>
+
         <div className='hero text-inverse'>
           <Grid>
             <Row className='text-center clearfix'>
