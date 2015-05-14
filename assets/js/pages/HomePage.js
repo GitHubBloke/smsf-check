@@ -27,7 +27,7 @@ export default class HomePage extends BaseComponent {
                     brand={locals.brand} />
                 </h3>
                 <div className='prepend-xs-1'>
-                  <Button className='btn-clear btn--wide' bsSize='large'>Sign up</Button>
+                  <Button className='btn-clear btn--wide' bsSize='large' href='#register'>Sign up</Button>
                 </div>
               </Col>
             </Row>

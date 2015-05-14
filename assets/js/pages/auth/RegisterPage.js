@@ -57,7 +57,7 @@ class RegisterPage extends Validatable {
     const { submitting, registeredUser, error } = this.props;
 
     return (
-      <form className='prepend-xs-tiny append-xs-tiny' autoComplete='off' noValidate onSubmit={this._handleSubmit}>
+      <form id='register' className='prepend-xs-tiny append-xs-tiny' autoComplete='off' noValidate onSubmit={this._handleSubmit}>
         {error && <div className='alert alert-danger text-center'>{error.message}</div>}
         <p className='text-center'><FM message={this.getIntlMessage('register.intro')} /></p>
         <hr/>
