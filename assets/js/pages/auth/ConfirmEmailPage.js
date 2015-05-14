@@ -38,7 +38,7 @@ class ConfirmEmailPage extends Validatable {
 
     return (
       <DocumentTitle title={`${locals.name} - ${this.formatMessage(this.getIntlMessage('confirmEmail.title'))}`}>
-        <Grid className='prepend-xs-4 append-xs-4'>
+        <Grid className='prepend-xs-1 append-xs-1 prepend-sm-4 append-sm-4'>
           <Row>
             <Col md={12} mdOffset={2}>
               <Well bsSize='large' className='append-xs-none'>
