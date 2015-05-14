@@ -10,7 +10,6 @@ class ToolPage extends BaseComponent {
   render() {
     return (
       <div>
-        <Header />
         <RouteHandler {...this.props}/>
       </div>
     );

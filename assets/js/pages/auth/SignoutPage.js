@@ -23,15 +23,12 @@ class SignoutPage extends BaseComponent {
     const { signingOut } = this.props;
 
     return (
-      <Grid className='text-center prepend-xs-2 append-xs-3'>
-        <h1 className='text-center append-xs-3'>
-          <Link to='/'>{locals.name}</Link>
-        </h1>
+      <Grid className='text-center prepend-xs-5 append-xs-5'>
         {signingOut ?
-          <p className='text-muted'>
+          <p className='text-muted append-xs-none'>
             <FM message={this.getIntlMessage('signout.signingOut')} name={locals.name} />
           </p> :
-          <p className='text-muted'>
+          <p className='text-muted append-xs-none'>
             <FM message={this.getIntlMessage('signout.signedOut')} name={locals.name} />
           </p>}
       </Grid>

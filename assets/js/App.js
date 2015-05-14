@@ -4,6 +4,7 @@ import reactMixin from 'react-mixin';
 import { RouteHandler } from 'react-router';
 
 import BaseComponent from './utils/BaseComponent';
+import Header from './components/Header';
 import Footer from './components/Footer';
 import locals from './utils/locals';
 
@@ -12,7 +13,10 @@ export default class App extends BaseComponent {
     return (
       <DocumentTitle title={locals.name}>
         <div>
-          <RouteHandler {...this.props} />
+          <Header />
+          <div className='body'>
+            <RouteHandler {...this.props} />
+          </div>
           <Footer />
         </div>
       </DocumentTitle>

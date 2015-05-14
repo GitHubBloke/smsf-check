@@ -4,7 +4,6 @@ import { FormattedMessage as FM } from '../shims/ReactIntl';
 import { RouteHandler } from 'react-router';
 
 import BaseComponent from '../utils/BaseComponent';
-import Header from '../components/Header';
 import Icon, { IconStack } from '../components/Icon';
 import locals from '../utils/locals';
 
@@ -12,8 +11,6 @@ export default class HomePage extends BaseComponent {
   render() {
     return (
       <div>
-        <Header />
-
         <div className='hero text-inverse'>
           <Grid>
             <Row className='text-center clearfix'>
