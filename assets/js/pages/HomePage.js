@@ -20,12 +20,14 @@ export default class HomePage extends BaseComponent {
               <Col md={10} mdOffset={3} className='prepend-xs-2 append-xs-2 prepend-md-5 append-md-5'>
                 <h1 className='prepend-xs-tiny'>{locals.name}</h1>
                 <h3 className='text-normal'>
-                  <FM message={this.getIntlMessage('home.intro')}
+                  <FM message={this.getIntlMessage('home.hero.intro')}
                     name={locals.name}
                     brand={locals.brand} />
                 </h3>
                 <div className='prepend-xs-1'>
-                  <Button className='btn-clear btn--wide' bsSize='large' href='/#register'>Sign up</Button>
+                  <Button className='btn-clear btn--wide' bsSize='large' href='/#register'>
+                    <FM message={this.getIntlMessage('home.hero.signup.actionLabel')} />
+                  </Button>
                 </div>
               </Col>
             </Row>

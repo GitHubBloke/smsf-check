@@ -3,10 +3,13 @@ export default {
   messages: {
 
     home: {
-      intro:
-        `Welcome to the {brand} SMSF Health Check tool, {name}.
-         Compare your current fund to thousands of others SMSFs
-         to see how your fund stacks up.`,
+      hero: {
+        intro:
+          `Welcome to the {brand} SMSF Health Check tool, {name}.
+           Compare your current fund to thousands of others SMSFs
+           to see how your fund stacks up.`,
+        signup: { actionLabel: 'Sign up' },
+      },
       features: {
         safeData: 'Know your data is safe with bank-level security.',
         greatAdvice: 'Provide as much or as little information as you like and still receive great general advice.',
@@ -77,6 +80,10 @@ export default {
     },
 
     shared: {
+      navbar: {
+        signin: { actionLabel: 'Log in' },
+      },
+
       fields: {
         user: {
           firstName: { placeholder: 'Enter your first name...' },

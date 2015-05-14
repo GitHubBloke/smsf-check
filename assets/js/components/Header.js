@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Navbar } from 'react-bootstrap';
+import { FormattedMessage as FM } from '../shims/ReactIntl';
 import { Link } from 'react-router';
 
 import AuthStore from '../stores/AuthStore';
@@ -16,7 +17,7 @@ export default class Header extends BaseComponent {
         brand={<span><Link to='app' className='logo'>{locals.name}</Link></span>}>
         {!signedIn &&
           <Link to='signin' className='btn btn-primary btn-lg btn--wide navbar-btn navbar-right'>
-            Log in
+            <FM message={this.getIntlMessage('shared.navbar.signin.actionLabel')} />
           </Link>}
       </Navbar>
     );
