@@ -10,7 +10,7 @@ export default class HomePage extends BaseComponent {
   render() {
     return (
       <div>
-        <Navbar brand={locals.name}>
+        <Navbar brand={locals.name} staticTop={true}>
         </Navbar>
         <Grid>
           <Row className='text-center clearfix'>

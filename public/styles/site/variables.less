@@ -1,5 +1,7 @@
 @ionicons-font-path: "/fonts";
 
+@brand-primary: #68b125;
+
 @font-family-sans-serif: "Lato", Helvetica, Arial, sans-serif;
 @font-family-base: @font-family-sans-serif;
 
@@ -21,6 +23,10 @@
 @grid-columns: 16;
 
 @navbar-height: 87px;
+@navbar-default-bg: @brand-primary;
+@navbar-default-color: @text-inverse;
+@navbar-default-border: lighten(@navbar-default-bg, 4%);
+@navbar-default-brand-color: @navbar-default-color;
 
 @select-text-color: @input-color;
 @select-input-border-color: @input-border;
@@ -35,3 +41,5 @@
 
 @select-clear-color: @gray-light;
 @select-clear-hover-color: @brand-danger;
+
+@text-inverse: #fff;
