@@ -13,7 +13,7 @@ export default {
       features: {
         safeData: 'Know your data is safe with bank-level security.',
         greatAdvice: 'Provide as much or as little information as you like and still receive great general advice.',
-        compare: 'Compare your fund to over 11,000 funds from ATO and SuperIQ databases.',
+        compare: 'Compare your fund to over 11,000 funds from ATO and {name} databases.',
       },
     },
 
@@ -56,9 +56,7 @@ export default {
     signin: {
       title: 'Log In',
       heading: 'Log In to your Health Check',
-      subHeading:
-        `Please enter the details below to access your {name} account.<br>
-         Your information will never be used for any purposes outside of this helpful tool.`,
+      subHeading: 'Please enter the details below to access your {name} account.',
       submit: { actionLabel: 'Log In Now', loadingLabel: 'Please wait...', },
       needAccount: { note: 'Need an account?', actionLabel: 'Register', },
     },

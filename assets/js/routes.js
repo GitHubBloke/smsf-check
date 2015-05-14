@@ -3,7 +3,6 @@ import { Route, DefaultRoute, NotFoundRoute } from 'react-router';
 
 import App from './App';
 
-import HomePage from './pages/HomePage';
 import ToolPage from './pages/ToolPage';
 
 import ConfirmEmailPage from './pages/auth/ConfirmEmailPage';
@@ -20,20 +19,16 @@ import NotFoundPage from './pages/errors/NotFoundPage';
 
 export default (
   <Route name='app' path='/' handler={App}>
-    <Route handler={HomePage}>
-      <DefaultRoute handler={RegisterPage} />
-      <Route name='signin' handler={SigninPage} />
-      <Route name='confirm-email' path='/confirm-email/:resetPasswordKey' handler={ConfirmEmailPage} />
-    </Route>
+    <Route path='/' handler={RegisterPage} />
+    <Route name='confirm-email' path='/confirm-email/:resetPasswordKey' handler={ConfirmEmailPage} />
+    <Route name='signin' handler={SigninPage} />
+    <Route name='signout' handler={SignoutPage} />
+    <Route name='terms' handler={TermsPage} />
+    <Route name='privacy' handler={PrivacyPage} />
 
     <Route handler={ToolPage}>
       <Route name='members' handler={MembersPage} />
     </Route>
-
-    <Route name='signout' handler={SignoutPage} />
-
-    <Route name='terms' handler={TermsPage} />
-    <Route name='privacy' handler={PrivacyPage} />
 
     <NotFoundRoute handler={NotFoundPage} />
   </Route>

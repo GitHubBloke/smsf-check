@@ -1,7 +1,7 @@
 import Immutable from 'immutable';
 import Joi from 'joi';
 import React, { PropTypes } from 'react';
-import { Button, Col, Input, Row } from 'react-bootstrap';
+import { Button, Col, Grid, Input, Row, Well } from 'react-bootstrap';
 import DocumentTitle from 'react-document-title';
 import { FormattedMessage as FM } from '../../shims/ReactIntl';
 import { Link } from 'react-router';
@@ -38,47 +38,55 @@ class ConfirmEmailPage extends Validatable {
 
     return (
       <DocumentTitle title={`${locals.name} - ${this.formatMessage(this.getIntlMessage('confirmEmail.title'))}`}>
-        <form className='append-xs-tiny' autoComplete='off' noValidate onSubmit={this._handleSubmit}>
-          {error && <div className='alert alert-danger text-center'>{error.message}</div>}
+        <Grid className='prepend-xs-4 append-xs-4'>
+          <Row>
+            <Col md={12} mdOffset={2}>
+              <Well bsSize='large' className='append-xs-none'>
+                <form className='append-xs-tiny' autoComplete='off' noValidate onSubmit={this._handleSubmit}>
+                  {error && <div className='alert alert-danger text-center'>{error.message}</div>}
 
-          <div className='text-center prepend-xs-tiny append-xs-2'>
-            <h2 className='prepend-xs-none'>
-              <FM message={this.getIntlMessage('confirmEmail.heading')} name={locals.name} />
-            </h2>
-            <p><FM message={this.getIntlMessage('confirmEmail.subHeading')} /></p>
-          </div>
+                  <div className='text-center prepend-xs-tiny append-xs-2'>
+                    <h2 className='prepend-xs-none append-xs-1'>
+                      <FM message={this.getIntlMessage('confirmEmail.heading')} name={locals.name} />
+                    </h2>
+                    <p><FM message={this.getIntlMessage('confirmEmail.subHeading')} /></p>
+                  </div>
 
-          <div className='prepend-xs-1 append-xs-1 clearfix'>
-            <Row>
-              <Col md={8} mdOffset={4}>
-                <Input type='password' bsSize='large'
-                  placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.password.placeholder'))}
-                  valueLink={this.linkState('password')}
-                  disabled={submitting}
-                  {...this.getErrorProps('password')} />
-              </Col>
-            </Row>
-            <Row>
-              <Col md={8} mdOffset={4}>
-                <Input type='password' bsSize='large'
-                  placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.passwordConfirmation.placeholder'))}
-                  valueLink={this.linkState('passwordConfirmation')}
-                  disabled={submitting}
-                  {...this.getErrorProps('passwordConfirmation')} />
-              </Col>
-            </Row>
-          </div>
+                  <div className='prepend-xs-1 append-xs-1 clearfix'>
+                    <Row>
+                      <Col md={8} mdOffset={4}>
+                        <Input type='password' bsSize='large' className='input-lg'
+                          placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.password.placeholder'))}
+                          valueLink={this.linkState('password')}
+                          disabled={submitting}
+                          {...this.getErrorProps('password')} />
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col md={8} mdOffset={4}>
+                        <Input type='password' bsSize='large' className='input-lg'
+                          placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.passwordConfirmation.placeholder'))}
+                          valueLink={this.linkState('passwordConfirmation')}
+                          disabled={submitting}
+                          {...this.getErrorProps('passwordConfirmation')} />
+                      </Col>
+                    </Row>
+                  </div>
 
-          <div className='text-center'>
-            <Button bsStyle='primary' bsSize='large' className='btn--wide'
-              componentClass='button'
-              type='submit' disabled={submitting}>
-              {submitting ?
-                this.formatMessage(this.getIntlMessage('confirmEmail.submit.loadingLabel')) :
-                this.formatMessage(this.getIntlMessage('confirmEmail.submit.actionLabel'), { name: locals.name })}
-            </Button>
-          </div>
-        </form>
+                  <div className='text-center'>
+                    <Button bsStyle='primary' bsSize='large' className='btn--wide'
+                      componentClass='button'
+                      type='submit' disabled={submitting}>
+                      {submitting ?
+                        this.formatMessage(this.getIntlMessage('confirmEmail.submit.loadingLabel')) :
+                        this.formatMessage(this.getIntlMessage('confirmEmail.submit.actionLabel'), { name: locals.name })}
+                    </Button>
+                  </div>
+                </form>
+              </Well>
+            </Col>
+          </Row>
+        </Grid>
       </DocumentTitle>
     );
   }

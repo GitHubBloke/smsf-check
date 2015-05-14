@@ -25,10 +25,10 @@ class SignoutPage extends BaseComponent {
     return (
       <Grid className='text-center prepend-xs-5 append-xs-5'>
         {signingOut ?
-          <p className='text-muted append-xs-none'>
+          <p className='h4 text-muted prepend-xs-none append-xs-none'>
             <FM message={this.getIntlMessage('signout.signingOut')} name={locals.name} />
           </p> :
-          <p className='text-muted append-xs-none'>
+          <p className='h4 text-muted prepend-xs-none append-xs-none'>
             <FM message={this.getIntlMessage('signout.signedOut')} name={locals.name} />
           </p>}
       </Grid>

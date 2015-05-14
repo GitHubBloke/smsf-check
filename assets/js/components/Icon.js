@@ -23,7 +23,7 @@ export default class Icon extends BaseComponent {
 
 Icon.propTypes = {
   id: PropTypes.string.isRequired,
-  size: PropTypes.oneOfType(PropTypes.string, PropTypes.number),
+  size: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]),
   stacked: PropTypes.bool,
 };
 

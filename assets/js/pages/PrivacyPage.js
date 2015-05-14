@@ -10,8 +10,8 @@ export default class PrivacyPage extends BaseComponent {
   render() {
     return (
       <DocumentTitle title={`${locals.name} - ${this.formatMessage(this.getIntlMessage('privacy.title'))}`}>
-        <Grid className='prepend-xs-3 append-xs-3'>
-          <h2 className='text-primary text-center prepend-xs-none append-xs-2'>
+        <Grid className='prepend-xs-2 append-xs-2 prepend-sm-3 append-sm-3'>
+          <h2 className='text-primary text-center prepend-xs-none append-xs-1 append-sm-2'>
             <FM message={this.getIntlMessage('privacy.heading')} />
           </h2>
 
