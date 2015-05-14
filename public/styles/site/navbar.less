@@ -2,3 +2,21 @@
   #gradient.vertical(@navbar-default-bg, lighten(@navbar-default-bg, 5%));
   border-bottom-width: 16px;
 }
+
+.navbar-btn {
+  .navbar-default &.btn-primary {
+    .button-variant(@btn-primary-color; lighten(@btn-primary-bg, 5%); @btn-primary-border);
+
+    &:hover,
+    &:focus,
+    &:active,
+    &.active,
+    .open > .dropdown-toggle& {
+      .opacity(0.5);
+    }
+  }
+
+  &.btn-lg {
+    .navbar-vertical-align((@font-size-large + (@padding-large-vertical * 1.5 * 2) + 2));
+  }
+}

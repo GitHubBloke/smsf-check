@@ -26,10 +26,6 @@ class SigninPage extends Validatable {
     AuthActionCreators.clearSigninError();
   }
 
-  componentDidMount() {
-    this.refs.email.getInputDOMNode().focus();
-  }
-
   componentWillUnmount() {
     AuthActionCreators.clearSigninError();
   }
@@ -46,7 +42,7 @@ class SigninPage extends Validatable {
 
           <div className='prepend-xs-2 append-xs-1 clearfix'>
             <Col md={6}>
-              <Input ref='email' type='email' bsSize='large'
+              <Input type='email' bsSize='large'
                 placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.email.placeholder'))}
                 valueLink={this.linkState('email')}
                 disabled={submitting}

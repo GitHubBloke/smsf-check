@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Col, Grid, Navbar, Row, Well } from 'react-bootstrap';
+import { Button, Col, Grid, Nav, Navbar, NavItem, Row, Well } from 'react-bootstrap';
 import { FormattedMessage as FM } from '../shims/ReactIntl';
 import { Link, RouteHandler } from 'react-router';
 
@@ -7,13 +7,15 @@ import BaseComponent from '../utils/BaseComponent';
 import Icon, { IconStack } from '../components/Icon';
 import locals from '../utils/locals';
 
-console.log(IconStack);
-
 export default class HomePage extends BaseComponent {
   render() {
     return (
       <div>
-        <Navbar className='append-xs-none' brand={<span><Link to='app' className='logo'>{locals.name}</Link></span>} staticTop>
+        <Navbar className='append-xs-none' staticTop
+          brand={<span><Link to='app' className='logo'>{locals.name}</Link></span>}>
+          <Link to='signin' className='btn btn-primary btn-lg btn--wide navbar-btn navbar-right'>
+            Log in
+          </Link>
         </Navbar>
 
         <div className='hero text-inverse'>
@@ -27,7 +29,7 @@ export default class HomePage extends BaseComponent {
                     brand={locals.brand} />
                 </h3>
                 <div className='prepend-xs-1'>
-                  <Button className='btn-clear btn--wide' bsSize='large' href='#register'>Sign up</Button>
+                  <Button className='btn-clear btn--wide' bsSize='large' href='/#register'>Sign up</Button>
                 </div>
               </Col>
             </Row>

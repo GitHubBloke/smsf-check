@@ -35,10 +35,6 @@ class RegisterPage extends Validatable {
     UserActionCreators.clearSignup();
   }
 
-  componentDidMount() {
-    this.refs.firstName.getInputDOMNode().focus();
-  }
-
   componentWillUnmount() {
     UserActionCreators.clearSignup();
   }
@@ -65,7 +61,7 @@ class RegisterPage extends Validatable {
         <div className='prepend-xs-1 append-xs-1 clearfix'>
           <Row>
             <Col md={8}>
-              <Input ref='firstName' type='text' bsSize='large' className='input-lg'
+              <Input type='text' bsSize='large' className='input-lg'
                 placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.firstName.placeholder'))}
                 valueLink={this.linkState('name.first')}
                 disabled={submitting}

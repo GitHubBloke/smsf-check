@@ -28,10 +28,6 @@ class ConfirmEmailPage extends Validatable {
     UserActionCreators.clearResetPasswordError();
   }
 
-  componentDidMount() {
-    this.refs.password.getInputDOMNode().focus();
-  }
-
   componentWillUnmount() {
     UserActionCreators.clearResetPasswordError();
   }
@@ -56,7 +52,7 @@ class ConfirmEmailPage extends Validatable {
 
           <div className='prepend-xs-2 append-xs-1 clearfix'>
             <Col md={6}>
-              <Input ref='password' type='password' bsSize='large'
+              <Input type='password' bsSize='large'
                 placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.password.placeholder'))}
                 valueLink={this.linkState('password')}
                 disabled={submitting}
