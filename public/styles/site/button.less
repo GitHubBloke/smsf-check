@@ -1,0 +1,16 @@
+.btn { .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @border-radius-base); }
+.btn-lg { .button-size(@padding-large-vertical * 1.5; @padding-large-horizontal; @font-size-base; 1; @border-radius-small); }
+.btn-sm { .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-small); }
+.btn-xs { .button-size(@padding-xs-vertical; @padding-xs-horizontal; @font-size-small; @line-height-small; @border-radius-small); }
+
+.btn-clear {
+  .button-variant(@btn-clear-color; @btn-clear-bg; @btn-clear-border);
+  .box-shadow(none);
+  border-width: 3px;
+  border-radius: @border-radius-base;
+}
+
+.btn--wide {
+  padding-left: @padding-large-horizontal * 3;
+  padding-right: @padding-large-horizontal * 3;
+}

@@ -1,0 +1,12 @@
+.logo {
+  display: inline-block;
+
+  .image-2x('/images/logo.png', @logo-width, @logo-height);
+  .size(@logo-width, @logo-height);
+  .text-hide();
+
+  .navbar-brand & {
+    position: relative;
+    top: ceil((((@navbar-height + 1) - @navbar-padding-vertical * 2) - @logo-height) / 2);
+  }
+}

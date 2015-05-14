@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import Immutable, { Map } from 'immutable';
 import Joi from 'joi';
 import React, { PropTypes } from 'react';
-import { Button, Col, Input } from 'react-bootstrap';
+import { Button, Col, Input, Row } from 'react-bootstrap';
 import DocumentTitle from 'react-document-title';
 import { FormattedMessage as FM } from '../../shims/ReactIntl';
 import { Link } from 'react-router';
@@ -27,7 +27,6 @@ class RegisterPage extends Validatable {
         email: '',
         fund: { name: void 0, abn: void 0 },
         doesConsent: false,
-        notifications: { newsletter: false },
       }),
     };
   }
@@ -58,65 +57,72 @@ class RegisterPage extends Validatable {
     const { submitting, registeredUser, error } = this.props;
 
     return (
-      <form className='prepend-xs-1 append-xs-tiny' autoComplete='off' noValidate onSubmit={this._handleSubmit}>
+      <form className='prepend-xs-tiny append-xs-tiny' autoComplete='off' noValidate onSubmit={this._handleSubmit}>
         {error && <div className='alert alert-danger text-center'>{error.message}</div>}
         <p className='text-center'><FM message={this.getIntlMessage('register.intro')} /></p>
-        <hr />
+        <hr/>
 
         <div className='prepend-xs-1 append-xs-1 clearfix'>
-          <Col md={8}>
-            <Input ref='firstName' type='text' bsSize='large'
-              placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.firstName.placeholder'))}
-              valueLink={this.linkState('name.first')}
-              disabled={submitting}
-              {...this.getErrorProps('name.first')} />
-          </Col>
-          <Col md={8}>
-            <Input type='text' bsSize='large'
-              placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.lastName.placeholder'))}
-              valueLink={this.linkState('name.last')}
-              disabled={submitting}
-              {...this.getErrorProps('name.last')} />
-          </Col>
-          <Col md={16}>
-            <Input type='email' bsSize='large'
-              placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.email.placeholder'))}
-              valueLink={this.linkState('email')}
-              disabled={submitting}
-              {...this.getErrorProps('email')} />
-          </Col>
-          <Col md={16}>
-            <div className={classNames({ 'form-group': true, 'has-error': this.hasError('fund.abn') })}>
-              <Select name='fundAbn' asyncOptions={abnLoader('abn')} autoload={false}
-                placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.fundAbn.placeholder'))}
-                {...this.valueLink('fund.abn', this._handleFundSelect)}
+          <Row>
+            <Col md={8}>
+              <Input ref='firstName' type='text' bsSize='large' className='input-lg'
+                placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.firstName.placeholder'))}
+                valueLink={this.linkState('name.first')}
+                disabled={submitting}
+                {...this.getErrorProps('name.first')} />
+            </Col>
+            <Col md={8}>
+              <Input type='text' bsSize='large' className='input-lg'
+                placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.lastName.placeholder'))}
+                valueLink={this.linkState('name.last')}
+                disabled={submitting}
+                {...this.getErrorProps('name.last')} />
+            </Col>
+          </Row>
+          <Row>
+            <Col md={16}>
+              <Input type='email' bsSize='large' className='input-lg'
+                placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.email.placeholder'))}
+                valueLink={this.linkState('email')}
+                disabled={submitting}
+                {...this.getErrorProps('email')} />
+            </Col>
+          </Row>
+          <Row>
+            <Col md={16}>
+              <div className={classNames({ 'form-group': true, 'has-error': this.hasError('fund.abn') })}>
+                <Select name='fundAbn' asyncOptions={abnLoader('abn')} autoload={false} className='Select--lg'
+                  placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.fundAbn.placeholder'))}
+                  {...this.valueLink('fund.abn', this._handleFundSelect)}
+                  disabled={submitting} />
+                <span className='help-block'>{this.getErrorProps('fund.abn').help}</span>
+              </div>
+            </Col>
+          </Row>
+          <Row>
+            <Col md={16}>
+              <div className={classNames({ 'form-group': true, 'has-error': this.hasError('fund.name') })}>
+                <Select name='fundName' asyncOptions={abnLoader('name')} autoload={false} className='Select--lg'
+                  placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.fundName.placeholder'))}
+                  {...this.valueLink('fund.name', this._handleFundSelect)}
+                  disabled={submitting} />
+                <span className='help-block'>{this.getErrorProps('fund.name').help}</span>
+              </div>
+            </Col>
+          </Row>
+          <hr className='prepend-xs-tiny append-xs-tiny' />
+          <Row>
+            <Col md={16} className='append-xs-tiny text-left'>
+              <Input type='checkbox'
+                label={this.formatMessage(this.getIntlMessage('shared.fields.user.doesConsent.label'), { brand: locals.brand })}
+                checkedLink={this.linkState('doesConsent')}
                 disabled={submitting} />
-              <span className='help-block'>{this.getErrorProps('fund.abn').help}</span>
-            </div>
-          </Col>
-          <Col md={16}>
-            <div className={classNames({ 'form-group': true, 'has-error': this.hasError('fund.name') })}>
-              <Select name='fundName' asyncOptions={abnLoader('name')} autoload={false}
-                placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.fundName.placeholder'))}
-                {...this.valueLink('fund.name', this._handleFundSelect)}
-                disabled={submitting} />
-              <span className='help-block'>{this.getErrorProps('fund.name').help}</span>
-            </div>
-          </Col>
-          <Col md={16} className='append-xs-tiny text-left'>
-            <Input type='checkbox'
-              label={this.formatMessage(this.getIntlMessage('shared.fields.user.doesConsent.label'), { brand: locals.brand })}
-              checkedLink={this.linkState('doesConsent')}
-              disabled={submitting} />
-            <Input type='checkbox'
-              label={this.formatMessage(this.getIntlMessage('shared.fields.user.notifications.label'), { brand: locals.brand })}
-              checkedLink={this.linkState('notifications.newsletter')}
-              disabled={submitting} />
-          </Col>
+            </Col>
+          </Row>
         </div>
 
         <div className='text-center'>
-          <Button bsStyle='default' bsSize='large' className='append-xs-1'
+          <Button bsStyle='primary' bsSize='large' className='btn--wide append-xs-1'
             componentClass='button' type='submit'
             disabled={submitting || !data.get('doesConsent')}>
             {submitting ?

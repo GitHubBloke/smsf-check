@@ -15,10 +15,6 @@ User.add({
     name: { type: String, label: 'Name' },
     abn: { type: String, label: 'ABN' },
   },
-}, 'Notifications', {
-  notifications: {
-    newsletter: { type: Boolean, label: `Receive additional information from ${keystone.get('brand')} via email` },
-  },
 }, 'Permissions', {
   isAdmin: { type: Boolean, label: 'Can access Keystone', index: true },
   isVerified: { type: Boolean, label: 'Has a verified email address' },

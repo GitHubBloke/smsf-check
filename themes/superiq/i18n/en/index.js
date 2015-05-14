@@ -84,8 +84,11 @@ export default {
           fundName: { placeholder: 'The name of your fund...' },
           fundAbn: { placeholder: 'Your fund\'s ABN...' },
 
-          doesConsent: { label: 'I consent to {brand} using my data to compare my fund to other funds.' },
-          notifications: { label: 'I would like to receive additional information from {brand} via email.' },
+          doesConsent: {
+            label:
+              `I am happy for {brand} to use the information I provide to compare my fund to other funds
+               and to provide me with information relevant to me and my fund.`,
+          },
         },
       }
     },

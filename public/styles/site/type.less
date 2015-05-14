@@ -1,0 +1,14 @@
+.text-inverse { color: @text-inverse; }
+.text-inverse--muted { color: lighten(@text-muted, 10%); }
+.text-alpha { opacity: 0.5; }
+
+.text-light { font-weight: @font-weight-light !important; }
+.text-normal { font-weight: @font-weight-normal !important; }
+.text-bold { font-weight: @font-weight-bold !important; }
+
+.link-plain {
+   color: inherit;
+   &:hover, &:active, &:focus { color: inherit; }
+}
+
+hr { border-top-width: 2px; }

@@ -1,8 +1,9 @@
 @ionicons-font-path: "/fonts";
 
-@brand-primary: #68b125;
+@btn-clear-color: @text-inverse;
+@btn-clear-bg: transparent;
+@btn-clear-border: @text-inverse;
 
-@font-family-sans-serif: "Lato", Helvetica, Arial, sans-serif;
 @font-family-base: @font-family-sans-serif;
 
 @font-size-base: 16px;
@@ -16,7 +17,13 @@
 @font-size-h5: @font-size-base;
 @font-size-h6: ceil((@font-size-base * 0.75)); // ~12px
 
+@font-weight-light: 300;
+@font-weight-normal: 400;
+@font-weight-bold: 700;
+
 @headings-line-height: 1.2;
+
+@hr-border: @well-border;
 
 @line-height-computed: floor((@font-size-base * @line-height-base)); // ~22px
 
@@ -25,7 +32,7 @@
 @navbar-height: 87px;
 @navbar-default-bg: @brand-primary;
 @navbar-default-color: @text-inverse;
-@navbar-default-border: lighten(@navbar-default-bg, 4%);
+@navbar-default-border: darken(@brand-primary, 4%);
 @navbar-default-brand-color: @navbar-default-color;
 
 @select-text-color: @input-color;
@@ -42,4 +49,8 @@
 @select-clear-color: @gray-light;
 @select-clear-hover-color: @brand-danger;
 
+@text-color: #63686d;
 @text-inverse: #fff;
+
+@well-bg: #f7f8f9;
+@well-border: darken(@well-bg, 7%);

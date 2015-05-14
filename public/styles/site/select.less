@@ -1,11 +1,11 @@
-.Select-control {
-  .form-control;
-}
+.Select-control { .form-control; }
 
-.Select-clear {
-  top: @line-height-computed - 20;
-}
+.Select-clear { top: @line-height-computed - 20; }
+.Select-arrow { top: @select-padding-vertical + @select-arrow-width + (@line-height-computed - 20); }
 
-.Select-arrow {
-  top: @select-padding-vertical + @select-arrow-width + 1 + (@line-height-computed - 20);
+.Select--lg {
+  .Select-control, .Select-placeholder { .input-lg; }
+
+  .Select-clear { top: ((@padding-large-vertical - @select-padding-vertical) / 2) + @line-height-computed - 20; }
+  .Select-arrow { top: @padding-large-vertical + @select-arrow-width + (@line-height-computed - 20); }
 }

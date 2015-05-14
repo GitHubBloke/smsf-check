@@ -10,23 +10,27 @@ export default class HomePage extends BaseComponent {
   render() {
     return (
       <div>
-        <Navbar brand={locals.name} staticTop={true}>
+        <Navbar className='append-xs-none' brand={<span><span className='logo'>{locals.name}</span></span>} staticTop>
         </Navbar>
-        <Grid>
-          <Row className='text-center clearfix'>
-            <Col md={10} mdOffset={3} className='prepend-xs-4 append-xs-4'>
-              <h1 className='prepend-xs-tiny'>{locals.name}</h1>
-              <h3>
-                <FM message={this.getIntlMessage('home.intro')}
-                  name={<strong>{locals.name}</strong>}
-                  brand={locals.brand} />
-              </h3>
-              <div className='prepend-xs-1'>
-                <Button bsStyle='default' bsSize='large'>Sign up</Button>
-              </div>
-            </Col>
-          </Row>
+        <div className='hero text-inverse'>
+          <Grid>
+            <Row className='text-center clearfix'>
+              <Col md={10} mdOffset={3} className='prepend-xs-5 append-xs-5'>
+                <h1 className='prepend-xs-tiny'>{locals.name}</h1>
+                <h3 className='text-normal'>
+                  <FM message={this.getIntlMessage('home.intro')}
+                    name={locals.name}
+                    brand={locals.brand} />
+                </h3>
+                <div className='prepend-xs-1'>
+                  <Button className='btn-clear btn--wide' bsSize='large'>Sign up</Button>
+                </div>
+              </Col>
+            </Row>
+          </Grid>
+        </div>
 
+        <Grid>
           <Row className='text-center prepend-xs-3'>
             <Col md={4} mdOffset={2} className='append-xs-3'>
               <img src='http://placehold.it/100x100' width='100' />
