@@ -26,7 +26,7 @@ keystone.init(_.assign({
     preprocess: {
       importPaths: function(paths) {
         paths.push(__dirname + '/themes/' + process.env.APP_THEME + '/less');
-      }
+      },
     }
   },
   'static': [ 'public', 'themes/' + process.env.APP_THEME + '/public' ],
