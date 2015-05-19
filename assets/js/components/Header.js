@@ -28,7 +28,6 @@ export default class Header extends BaseComponent {
 
   renderSignedInActions() {
     const { user } = this.props;
-    console.log(this.props);
 
     return (
       <div className='navbar-right'>
