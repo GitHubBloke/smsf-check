@@ -10,3 +10,11 @@
     top: ceil((((@navbar-height + 1) - @navbar-padding-vertical * 2) - @logo-height) / 2);
   }
 }
+
+.logo-brand {
+  display: inline-block;
+
+  .image-2x('/images/logo-brand.png', @logo-brand-width, @logo-brand-height);
+  .size(@logo-brand-width, @logo-brand-height);
+  .text-hide();
+}
