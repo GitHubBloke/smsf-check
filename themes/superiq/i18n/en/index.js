@@ -80,6 +80,7 @@ export default {
     shared: {
       navbar: {
         signin: { actionLabel: 'Log In' },
+        save: { actionLabel: 'Save', disabledLabel: 'Saved' },
       },
 
       fields: {
