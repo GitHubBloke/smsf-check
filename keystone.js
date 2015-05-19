@@ -10,6 +10,8 @@ require('babel/register');
 
 // Require modules
 var _ = require('lodash');
+var autoprefixer = require('autoprefixer-core');
+var fs = require('fs');
 var keystone = require('keystone');
 
 // Load theme configuration
@@ -26,6 +28,13 @@ keystone.init(_.assign({
     preprocess: {
       importPaths: function(paths) {
         paths.push(__dirname + '/themes/' + process.env.APP_THEME + '/less');
+        paths.push(JSON.parse(fs.readFileSync('./.bowerrc')).directory);
+      },
+      postprocess: {
+        css: function(css, req) {
+          var processor = autoprefixer({ browsers: [ 'last 2 version' ], cascade: false });
+          return processor.process(css);
+        },
       },
     }
   },
