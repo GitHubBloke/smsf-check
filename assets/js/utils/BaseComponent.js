@@ -7,19 +7,19 @@ export default class BaseComponent extends Component {
      methods.forEach((method) => { this[method] = this[method].bind(this); });
   }
 
-  linkState(path, modifier) {
+  linkState(path, modifier = (v) => v) {
     return {
       value: this.state.data.getIn(path.split('.')),
-      requestChange: (newValue) => this._setState(path, newValue),
+      requestChange: (newValue) => this._setState(path, modifier(newValue)),
     };
   }
 
-  valueLink(path, onChange = () => {}) {
+  valueLink(path, onChange = () => {}, modifier = (v) => v) {
     return {
       value: this.state.data.getIn(path.split('.')),
       onChange: (...args) => {
         onChange(...args);
-        return this._setState(path, args[0]);
+        return this._setState(path, modifier(args[0]));
       },
     };
   }
