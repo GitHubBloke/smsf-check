@@ -1,4 +1,5 @@
 import React from 'react';
+import { Col, Grid, ProgressBar, Row } from 'react-bootstrap';
 import { RouteHandler } from 'react-router';
 
 import { requireAuth } from '../utils/AuthUtils';
@@ -9,6 +10,14 @@ class ToolPage extends BaseComponent {
   render() {
     return (
       <div>
+        <div>
+          <Grid>
+            <Row>
+              <Col md={24}>
+              </Col>
+            </Row>
+          </Grid>
+        </div>
         <RouteHandler {...this.props}/>
       </div>
     );

@@ -51,7 +51,7 @@ class RegisterPage extends Validatable {
             {this.renderFeatures()}
 
             <Row>
-              <Col md={12} mdOffset={2} className='append-xs-2'>
+              <Col md={18} mdOffset={3} className='append-xs-2'>
                 <Well bsSize='large'>
                   {registeredUser ? this.renderSuccess() : this.renderForm()}
                 </Well>
@@ -68,7 +68,7 @@ class RegisterPage extends Validatable {
       <div className='hero text-inverse'>
         <Grid>
           <Row className='text-center clearfix'>
-            <Col md={10} mdOffset={3} className='prepend-xs-2 append-xs-2 prepend-md-5 append-md-5'>
+            <Col md={16} mdOffset={4} className='prepend-xs-2 append-xs-2 prepend-md-5 append-md-5'>
               <h1 className='prepend-xs-tiny'>{locals.name}</h1>
               <h3 className='text-normal'>
                 <FM message={this.getIntlMessage('home.hero.intro')}
@@ -90,7 +90,7 @@ class RegisterPage extends Validatable {
   renderFeatures() {
     return (
       <Row className='text-center prepend-xs-2 prepend-sm-3'>
-        <Col md={4} mdOffset={2} className='append-xs-2 append-sm-3'>
+        <Col md={6} mdOffset={3} className='append-xs-2 append-sm-3'>
           <IconStack size='3'>
             <Icon id='record' size='2' stacked className='text-primary' />
             <Icon id='android-lock' size='1' stacked className='text-inverse' />
@@ -99,7 +99,7 @@ class RegisterPage extends Validatable {
             <FM message={this.getIntlMessage('home.features.safeData')} />
           </div>
         </Col>
-        <Col md={4} className='append-xs-2 append-sm-3'>
+        <Col md={6} className='append-xs-2 append-sm-3'>
           <IconStack size='3'>
             <Icon id='record' size='2' stacked className='text-primary' />
             <Icon id='information' size='1' stacked className='text-inverse' />
@@ -108,7 +108,7 @@ class RegisterPage extends Validatable {
             <FM message={this.getIntlMessage('home.features.greatAdvice')} />
           </div>
         </Col>
-        <Col md={4} className='append-xs-2 append-sm-3'>
+        <Col md={6} className='append-xs-2 append-sm-3'>
           <IconStack size='3'>
             <Icon id='record' size='2' stacked className='text-primary' />
             <Icon id='stats-bars' size='1' stacked className='text-inverse' />
@@ -136,14 +136,14 @@ class RegisterPage extends Validatable {
 
         <div className='prepend-xs-1 append-xs-1 clearfix'>
           <Row>
-            <Col md={8}>
+            <Col md={12}>
               <Input type='text' bsSize='large' className='input-lg'
                 placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.firstName.placeholder'))}
                 valueLink={this.linkState('name.first')}
                 disabled={submitting}
                 {...this.getErrorProps('name.first')} />
             </Col>
-            <Col md={8}>
+            <Col md={12}>
               <Input type='text' bsSize='large' className='input-lg'
                 placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.lastName.placeholder'))}
                 valueLink={this.linkState('name.last')}
@@ -152,7 +152,7 @@ class RegisterPage extends Validatable {
             </Col>
           </Row>
           <Row>
-            <Col md={16}>
+            <Col md={24}>
               <Input type='email' bsSize='large' className='input-lg'
                 placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.email.placeholder'))}
                 valueLink={this.linkState('email')}
@@ -161,7 +161,7 @@ class RegisterPage extends Validatable {
             </Col>
           </Row>
           <Row>
-            <Col md={16}>
+            <Col md={24}>
               <div className={classNames({ 'form-group': true, 'has-error': this.hasError('fund.abn') })}>
                 <Select name='fundAbn' asyncOptions={abnLoader('abn')} autoload={false} className='Select--lg'
                   placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.fundAbn.placeholder'))}
@@ -175,7 +175,7 @@ class RegisterPage extends Validatable {
           </Row>
           <hr className='prepend-xs-tiny append-xs-tiny' />
           <Row>
-            <Col md={16} className='append-xs-tiny text-left'>
+            <Col md={24} className='append-xs-tiny text-left'>
               <Input type='checkbox'
                 label={this.formatMessage(this.getIntlMessage('shared.fields.user.doesConsent.label'), { brand: locals.brand })}
                 checkedLink={this.linkState('doesConsent')}

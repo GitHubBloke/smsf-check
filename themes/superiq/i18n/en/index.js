@@ -83,6 +83,19 @@ export default {
         save: { actionLabel: 'Save', disabledLabel: 'Saved' },
       },
 
+      steps: [
+        { short: 'Member Details', long: 'Your SMSF Member Details' },
+        { short: 'Trust Structure', long: 'Your SMSF Trust Structure' },
+        { short: 'Tax & Accounting', long: 'Tax & Accounting' },
+        { short: 'Investment Advice', long: 'Investment Advice' },
+        { short: 'Investment Strategy', long: 'Investment Strategy' },
+        { short: 'Death Benefits', long: 'Death Benefits' },
+        { short: 'Insurance', long: 'Insurance' },
+        { short: 'Pensions', long: 'Pensions' },
+        { short: 'Contributions', long: 'Contributions' },
+        { short: 'Results', long: 'Results' },
+      ],
+
       fields: {
         user: {
           firstName: { placeholder: 'Enter your first name...' },

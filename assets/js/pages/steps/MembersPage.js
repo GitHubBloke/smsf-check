@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid } from 'react-bootstrap';
+import { Col, Grid, Row } from 'react-bootstrap';
 import DocumentTitle from 'react-document-title';
 
 import BaseComponent from '../../utils/BaseComponent';
@@ -10,20 +10,14 @@ export default class MembersPage extends BaseComponent {
     return (
       <DocumentTitle title={`${locals.name} - ${this.formatMessage(this.getIntlMessage('members.title'))}`}>
         <div>
-          <div className='bg-gray clearfix'>
-            <Grid className='prepend-xs-1 append-xs-1'>
-              <h2 className='prepend-xs-tiny'>
-                <span className='label label-default'>1/10</span>
-                &nbsp;
-                Your SMSF Member Details
-              </h2>
-            </Grid>
-          </div>
-          <div>
-            <Grid className='text-center prepend-xs-3 append-xs-3'>
-              <p>Member details form will go here</p>
-            </Grid>
-          </div>
+          <Grid className='prepend-xs-2 append-xs-2'>
+            <Row>
+              <Col md={16}>
+              </Col>
+              <Col md={8}>
+              </Col>
+            </Row>
+          </Grid>
         </div>
       </DocumentTitle>
     );

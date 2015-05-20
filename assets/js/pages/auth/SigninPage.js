@@ -38,7 +38,7 @@ class SigninPage extends Validatable {
       <DocumentTitle title={`${locals.name} - ${this.formatMessage(this.getIntlMessage('signin.title'))}`}>
         <Grid className='prepend-xs-1 append-xs-1 prepend-sm-4 append-sm-4'>
           <Row>
-            <Col md={12} mdOffset={2}>
+            <Col md={18} mdOffset={3}>
               <Well bsSize='large' className='append-xs-none'>
                 <form className='append-xs-tiny' onSubmit={this._handleSubmit}>
                   {error && <div className='alert alert-danger text-center'>{error.message}</div>}
@@ -52,7 +52,7 @@ class SigninPage extends Validatable {
 
                   <div className='prepend-xs-1 append-xs-1 clearfix'>
                     <Row>
-                      <Col md={8} mdOffset={4}>
+                      <Col md={12} mdOffset={6}>
                         <Input type='email' bsSize='large' className='input-lg'
                           placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.email.placeholder'))}
                           valueLink={this.linkState('email')}
@@ -61,7 +61,7 @@ class SigninPage extends Validatable {
                       </Col>
                     </Row>
                     <Row>
-                      <Col md={8} mdOffset={4}>
+                      <Col md={12} mdOffset={6}>
                         <Input type='password' bsSize='large' className='input-lg'
                           placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.password.placeholder'))}
                           valueLink={this.linkState('password')}

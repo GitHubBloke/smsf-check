@@ -16,7 +16,7 @@ export default class PrivacyPage extends BaseComponent {
           </h2>
 
           <Row>
-            <Col md={12} mdOffset={2}>
+            <Col md={18} mdOffset={3}>
               <h4 className='text-primary'>Your privacy</h4>
               <p>SuperIQ Pty limited ("SuperIQ” has created this Privacy Policy to respect the confidentiality of information and the privacy of individuals. SuperIQ is bound by the Australian Privacy Principles contained in the Privacy Act 1988.</p>
 
