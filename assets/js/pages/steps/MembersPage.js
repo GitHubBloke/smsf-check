@@ -16,7 +16,7 @@ import SurveyStore from '../../stores/SurveyStore';
 class MembersPage extends BaseComponent {
   constructor(props) {
     super(props);
-    this.bind('renderMember', '_addMember');
+    this.bind('renderMember', '_addMember', '_handleSubmit');
   }
 
   render() {
@@ -24,7 +24,7 @@ class MembersPage extends BaseComponent {
 
     return (
       <DocumentTitle title={`${locals.name} - ${this.formatMessage(this.getIntlMessage('members.title'))}`}>
-        <div>
+        <form noValidate autoComplete='off' onSubmit={this._handleSubmit}>
           <Grid className='prepend-xs-2 append-xs-2'>
             <Row>
               <Col md={16}>
@@ -38,20 +38,26 @@ class MembersPage extends BaseComponent {
                 </Row>
 
                 <hr />
+
+                <div className='pull-right'>
+                  <Button bsSize='large' bsStyle='primary' type='submit'>
+                    <FM message={this.getIntlMessage('shared.actions.nextStep.actionLabel')} />
+                  </Button>
+                </div>
               </Col>
               <Col md={8}>
               </Col>
             </Row>
           </Grid>
-        </div>
+        </form>
       </DocumentTitle>
     );
   }
 
-  renderMember(member) {
+  renderMember(member, index) {
     return (
       <Col key={member.get('id')} md={12}>
-        <MemberDetails member={member} />
+        <MemberDetails ref={`members-${index}`} member={member} />
       </Col>
     );
   }
@@ -59,6 +65,19 @@ class MembersPage extends BaseComponent {
   _addMember() {
     const { survey } = this.props;
     SurveyActionCreators.addMember({ name: `Member ${survey.get('members').size + 1}` });
+  }
+
+  _handleSubmit(e) {
+    const memberDetails = _.compact(_.map(this.refs, (ref) => {
+      if (ref instanceof MemberDetails) { return ref; }
+    }));
+
+    const valid = _.reduce(memberDetails, (valid, m) => valid && m.validate(), true);
+    if (valid) {
+      // TODO: submit form
+    }
+
+    e.preventDefault();
   }
 }
 

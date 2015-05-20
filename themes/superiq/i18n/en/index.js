@@ -107,7 +107,11 @@ export default {
                and to provide me with information relevant to me and my fund.`,
           },
         },
-      }
+      },
+
+      actions: {
+         nextStep: { actionLabel: 'Next Step', loadingLabel: 'Please wait...' },
+      },
     },
 
   }
