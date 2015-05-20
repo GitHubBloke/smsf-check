@@ -44,7 +44,11 @@ class MembersPage extends BaseComponent {
   }
 
   renderMember(member) {
-    return <Col key={member.get('id')} md={12}><MemberDetails member={member} /></Col>;
+    return (
+      <Col key={member.get('id')} md={12}>
+        <MemberDetails member={member} />
+      </Col>
+    );
   }
 
   _addMember() {
