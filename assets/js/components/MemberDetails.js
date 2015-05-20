@@ -34,7 +34,7 @@ export default class MemberDetails extends Validatable {
             {this.state.data.get('isRetired')}
             <label className='append-xs-tiny text-normal'>Is the member retired?</label>
             <div className='row form-inline'>
-              <RadioGroup {...this.valueLink('isRetired', () => {}, (v) => v === 'true')}>
+              <RadioGroup name='isRetired' {...this.valueLink('isRetired', () => {}, (v) => v === 'true')}>
                 <div className='col-xs-6 col-xs-offset-6'>
                   <label><input type='radio' defaultChecked={data.get('isRetired')} value={true} /> Yes</label>
                 </div>

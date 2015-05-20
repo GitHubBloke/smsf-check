@@ -1,6 +1,7 @@
 import _ from 'lodash';
+import Immutable from 'immutable';
 import React from 'react';
-import { Col, Grid, Row } from 'react-bootstrap';
+import { Button, Col, Grid, Row } from 'react-bootstrap';
 import DocumentTitle from 'react-document-title';
 
 import AuthStore from '../../stores/AuthStore';
@@ -8,15 +9,17 @@ import BaseComponent from '../../utils/BaseComponent';
 import locals from '../../utils/locals';
 import MemberDetails from '../../components/MemberDetails';
 import { connectToStores } from '../../utils/StoreUtils';
+import SurveyActionCreators from '../../actions/SurveyActionCreators';
+import SurveyStore from '../../stores/SurveyStore';
 
 class MembersPage extends BaseComponent {
   constructor(props) {
     super(props);
-    this.bind('renderMember');
+    this.bind('renderMember', '_addMember');
   }
 
   render() {
-    const { user } = this.props;
+    const { user, survey } = this.props;
 
     return (
       <DocumentTitle title={`${locals.name} - ${this.formatMessage(this.getIntlMessage('members.title'))}`}>
@@ -25,7 +28,10 @@ class MembersPage extends BaseComponent {
             <Row>
               <Col md={16}>
                 <Row>
-                  {user.getIn([ 'survey', 'members' ]).map(this.renderMember)}
+                  {survey.get('members').map(this.renderMember)}
+                  <Col md={12}>
+                    <Button block bsSize='large' onClick={this._addMember}>Add a member</Button>
+                  </Col>
                 </Row>
               </Col>
               <Col md={8}>
@@ -40,6 +46,11 @@ class MembersPage extends BaseComponent {
   renderMember(member) {
     return <Col key={member.get('id')} md={12}><MemberDetails member={member} /></Col>;
   }
+
+  _addMember() {
+    const { survey } = this.props;
+    SurveyActionCreators.addMember({ name: `Member ${survey.get('members').size + 1}` });
+  }
 }
 
 MembersPage.propTypes = {};
@@ -51,11 +62,12 @@ function pickProps({ params }) {
 
 function getState({ params }) {
   const user = AuthStore.getUser();
-  return { user };
+  const survey = SurveyStore.getSurvey();
+  return { user, survey };
 }
 
 export default connectToStores(MembersPage,
-  [ AuthStore ],
+  [ AuthStore, SurveyStore ],
   pickProps,
   getState
 );

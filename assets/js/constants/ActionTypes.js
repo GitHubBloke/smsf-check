@@ -19,4 +19,6 @@ export default keyMirror({
   USER_RESET_PASSWORD_SUCCESS: void 0,
   USER_RESET_PASSWORD_ERROR: void 0,
   CLEAR_USER_RESET_PASSWORD_ERROR: void 0,
+
+  SURVEY_ADD_MEMBER: void 0,
 });
