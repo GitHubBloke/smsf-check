@@ -16,7 +16,7 @@ import SurveyStore from '../../stores/SurveyStore';
 class MembersPage extends BaseComponent {
   constructor(props) {
     super(props);
-    this.bind('renderMember', '_addMember', '_handleSubmit');
+    this.bind('renderMember', '_addMember', '_handleSubmit', '_skip');
   }
 
   render() {
@@ -40,6 +40,9 @@ class MembersPage extends BaseComponent {
                 <hr />
 
                 <div className='pull-right'>
+                  <Button bsSize='large' bsStyle='link' className='link-plain' onClick={this._skip}>
+                    <small className='text-muted'>Skip this step</small>
+                  </Button>
                   <Button bsSize='large' bsStyle='primary' type='submit'>
                     <FM message={this.getIntlMessage('shared.actions.nextStep.actionLabel')} />
                   </Button>
@@ -73,11 +76,17 @@ class MembersPage extends BaseComponent {
     }));
 
     const valid = _.reduce(memberDetails, (valid, m) => valid && m.validate(), true);
-    if (valid) {
-      // TODO: submit form
-    }
+    if (valid) { this._save(this._skip); }
 
     e.preventDefault();
+  }
+
+  _save(cb) {
+    cb();
+  }
+
+  _skip() {
+    console.log('skipped');
   }
 }
 
