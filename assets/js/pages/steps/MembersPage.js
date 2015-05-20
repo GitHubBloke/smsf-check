@@ -3,6 +3,7 @@ import Immutable from 'immutable';
 import React from 'react';
 import { Button, Col, Grid, Row } from 'react-bootstrap';
 import DocumentTitle from 'react-document-title';
+import { FormattedMessage as FM } from '../../shims/ReactIntl';
 
 import AuthStore from '../../stores/AuthStore';
 import BaseComponent from '../../utils/BaseComponent';
@@ -27,12 +28,16 @@ class MembersPage extends BaseComponent {
           <Grid className='prepend-xs-2 append-xs-2'>
             <Row>
               <Col md={16}>
+                <h3 className='append-xs-2'><FM message={this.getIntlMessage('members.question')} /></h3>
+
                 <Row>
                   {survey.get('members').map(this.renderMember)}
                   <Col md={12}>
                     <Button block bsSize='large' onClick={this._addMember}>Add a member</Button>
                   </Col>
                 </Row>
+
+                <hr />
               </Col>
               <Col md={8}>
               </Col>

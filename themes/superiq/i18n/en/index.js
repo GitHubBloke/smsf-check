@@ -75,6 +75,8 @@ export default {
 
     members: {
       title: 'Member Details',
+      question: 'Tell us a little about the members of your fund.',
+
       preRetirementAnnualIncome: { label: 'Pre-retirement Annual Income' },
       currentMemberBalance: { label: 'Current Member Balance' },
       isRetired: {
