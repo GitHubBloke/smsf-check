@@ -71,18 +71,17 @@ class MembersPage extends BaseComponent {
   }
 
   _handleSubmit(e) {
+    this._save(this._skip);
+    e.preventDefault();
+  }
+
+  _save(cb = () => {}) {
     const memberDetails = _.compact(_.map(this.refs, (ref) => {
       if (ref instanceof MemberDetails) { return ref; }
     }));
 
     const valid = _.reduce(memberDetails, (valid, m) => valid && m.validate(), true);
-    if (valid) { this._save(this._skip); }
-
-    e.preventDefault();
-  }
-
-  _save(cb) {
-    cb();
+    if (valid) { cb(); }
   }
 
   _skip() {
@@ -99,7 +98,7 @@ function pickProps({ params }) {
 
 function getState({ params }) {
   const user = AuthStore.getUser();
-  const survey = SurveyStore.getSurvey();
+  const survey = SurveyStore.getDirtySurvey();
   return { user, survey };
 }
 

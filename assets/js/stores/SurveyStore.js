@@ -5,12 +5,14 @@ import AppDispatcher from '../dispatcher/AppDispatcher';
 import { createStore } from '../utils/StoreUtils';
 import locals from '../utils/locals';
 
-let currentSurvey;
+let currentSurvey, dirtySurvey;
 
-if (locals.user) { currentSurvey = Immutable.fromJS(locals.user.survey); }
+if (locals.user) { currentSurvey = dirtySurvey = Immutable.fromJS(locals.user.survey); }
 
 const SurveyStore = createStore({
-  getSurvey() { return currentSurvey; }
+  getSurvey() { return currentSurvey; },
+  getDirtySurvey() { return dirtySurvey; },
+  isDirty() { return currentSurvey !== dirtySurvey; }
 });
 
 SurveyStore.dispatchToken = AppDispatcher.register((payload) => {
@@ -20,11 +22,11 @@ SurveyStore.dispatchToken = AppDispatcher.register((payload) => {
   switch (action.type) {
     case ActionTypes.SIGNIN_SUCCESS:
       const user = response && response.user;
-      currentSurvey = Immutable.fromJS(user.survey);
+      currentSurvey = dirtySurvey = Immutable.fromJS(user.survey);
       break;
 
     case ActionTypes.SURVEY_ADD_MEMBER:
-      currentSurvey = currentSurvey.update('members', (v) => v.push(Immutable.fromJS(member)));
+      dirtySurvey = dirtySurvey.update('members', (v) => v.push(Immutable.fromJS(member)));
       break;
 
     default:
