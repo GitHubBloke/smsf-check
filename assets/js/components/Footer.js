@@ -26,8 +26,8 @@ class Footer extends BaseComponent {
             <li>&bull;</li>
             <li><Link to='privacy' className='link-plain'><FM message={this.getIntlMessage('footer.links.privacy')} /></Link></li>
             {signedIn &&
-              [ <li>&bull;</li>,
-                <li><Link to='signout' className='link-plain'><FM message={this.getIntlMessage('footer.links.signOut')} /></Link></li> ]}
+              [ <li key='bull'>&bull;</li>,
+                <li key='signout'><Link to='signout' className='link-plain'><FM message={this.getIntlMessage('footer.links.signOut')} /></Link></li> ]}
           </ul>
         </Grid>
       </footer>

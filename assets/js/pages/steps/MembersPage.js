@@ -17,6 +17,15 @@ class MembersPage extends BaseComponent {
   constructor(props) {
     super(props);
     this.bind('renderMember', '_addMember', '_handleSubmit', '_skip');
+    this.state = { data: Immutable.fromJS({}) };
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const survey = SurveyStore.getDirtySurvey();
+    const dirtySurvey = this.state.data.get('survey');
+    if (dirtySurvey && survey !== dirtySurvey) {
+      SurveyActionCreators.makeDirty(dirtySurvey);
+    }
   }
 
   render() {
@@ -45,9 +54,7 @@ class MembersPage extends BaseComponent {
                   </Button>
                   <Button bsSize='large' bsStyle='primary' type='submit'
                     disabled={submitting}>
-                    {submitting ?
-                      this.formatMessage(this.getIntlMessage('shared.actions.nextStep.loadingLabel')) :
-                      this.formatMessage(this.getIntlMessage('shared.actions.nextStep.actionLabel'))}
+                    <FM message={this.getIntlMessage(`shared.actions.nextStep.${submitting ? 'loadingLabel' : 'actionLabel'}`)} />
                   </Button>
                 </div>
               </Col>

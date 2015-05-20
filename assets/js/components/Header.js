@@ -8,6 +8,7 @@ import BaseComponent from '../utils/BaseComponent';
 import Icon from './Icon';
 import locals from '../utils/locals';
 import { connectToStores } from '../utils/StoreUtils';
+import SurveyStore from '../stores/SurveyStore';
 
 export default class Header extends BaseComponent {
   constructor(props) {
@@ -27,7 +28,7 @@ export default class Header extends BaseComponent {
   }
 
   renderSignedInActions() {
-    const { user } = this.props;
+    const { user, surveyIsDirty } = this.props;
 
     return (
       <div className='navbar-right'>
@@ -38,7 +39,7 @@ export default class Header extends BaseComponent {
         </div>
 
         <Button bsStyle='primary' bsSize='large' className='btn--wide navbar-btn'>
-          <FM message={this.getIntlMessage('shared.navbar.save.actionLabel')} />
+          <FM message={this.getIntlMessage(`shared.navbar.save.${surveyIsDirty ? 'actionLabel' : 'disabledLabel'}`)} />
         </Button>
       </div>
     );
@@ -63,11 +64,12 @@ function pickProps({ params }) {
 function getState({ params }) {
   const signedIn = AuthStore.signedIn();
   const user = AuthStore.getUser();
-  return { signedIn, user };
+  const surveyIsDirty = SurveyStore.isDirty();
+  return { signedIn, user, surveyIsDirty };
 }
 
 export default connectToStores(Header,
-  [ AuthStore ],
+  [ AuthStore, SurveyStore ],
   pickProps,
   getState
 );

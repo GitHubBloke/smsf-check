@@ -24,4 +24,6 @@ export default keyMirror({
   SURVEY_SAVE: void 0,
   SURVEY_SAVE_SUCCESS: void 0,
   SURVEY_SAVE_ERROR: void 0,
+  SURVEY_MAKE_DIRTY: void 0,
+  SURVEY_MAKE_MEMBER_DIRTY: void 0,
 });

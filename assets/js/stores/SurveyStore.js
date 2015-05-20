@@ -14,6 +14,7 @@ if (locals.user) { currentSurvey = dirtySurvey = Immutable.fromJS(locals.user.su
 
 const SurveyStore = createStore({
   getSurvey() { return currentSurvey; },
+
   getDirtySurvey() { return dirtySurvey; },
   isDirty() { return currentSurvey !== dirtySurvey; },
 
@@ -50,6 +51,17 @@ SurveyStore.dispatchToken = AppDispatcher.register((payload) => {
     case ActionTypes.SURVEY_SAVE_ERROR:
       saving = false;
       saveError = err;
+      break;
+
+    case ActionTypes.SURVEY_MAKE_DIRTY:
+      dirtySurvey = action.dirtySurvey;
+      break;
+
+    case ActionTypes.SURVEY_MAKE_MEMBER_DIRTY:
+      const { member, dirtyMember } = action;
+      const members = dirtySurvey.get('members');
+      const index = members.indexOf(member);
+      dirtySurvey = dirtySurvey.setIn([ 'members', index ], dirtyMember);
       break;
 
     default:

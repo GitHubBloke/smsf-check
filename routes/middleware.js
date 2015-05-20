@@ -38,11 +38,13 @@ export function initLocals(req, res, next) {
     { label: 'Home', key: 'home', href: '/' },
   ];
 
+  locals.client = _.assign({}, clientLocals);
+
   if (req.user) {
     req.user.populateCascade().then(
       (user) => {
         locals.user = user;
-        locals.client = _.assign({}, clientLocals, { user });
+        locals.client.user = user;
         next();
       },
       (err) => next(err)

@@ -11,7 +11,7 @@ Member.add({
   dateOfBirth: { type: Types.Date },
   preRetirementAnnualIncome: { type: Number },
   currentMemberBalance: { type: Number },
-  isRetired: { type: Boolean, default: false },
+  isRetired: { type: Boolean },
 });
 
 Member.schema.set('toJSON', {

@@ -23,6 +23,14 @@ export default {
     }
   },
 
+  makeDirty(dirtySurvey) {
+    AppDispatcher.handleViewAction({ type: ActionTypes.SURVEY_MAKE_DIRTY, dirtySurvey });
+  },
+
+  makeMemberDirty(member, dirtyMember) {
+    AppDispatcher.handleViewAction({ type: ActionTypes.SURVEY_MAKE_MEMBER_DIRTY, member, dirtyMember });
+  },
+
   addValidator(validator) {
     validators.push(validator);
   },
