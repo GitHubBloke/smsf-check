@@ -136,6 +136,7 @@ keystone.set('email tests', require('./routes/emails'));
 
 keystone.set('nav', {
   'users': 'users',
+  'surveys': 'surveys',
 });
 
 // Fix this bug: http://tech.vg.no/2013/10/02/ios7-bug-shows-white-page-when-getting-304-not-modified-from-server/

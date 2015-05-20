@@ -2,6 +2,7 @@ import _ from 'lodash';
 import keystone from 'keystone';
 
 const { Field: { Types } } = keystone;
+const Survey = keystone.list('Survey');
 
 const User = new keystone.List('User');
 
@@ -10,6 +11,7 @@ User.add({
   email: { type: Types.Email, initial: true, required: true, index: true },
   password: { type: Types.Password, initial: true, required: true },
   resetPasswordKey: { type: String, hidden: true, index: true },
+  survey: { type: Types.Relationship, ref: 'Survey', hidden: true },
 }, 'Fund', {
   fund: {
     name: { type: String, label: 'Name' },
@@ -26,7 +28,17 @@ User.schema.virtual('canAccessKeystone').get(function() {
 
 User.schema.pre('save', function(next) {
   this.wasNew = this.isNew;
-  next();
+
+  if (!this.survey) {
+    const survey = new Survey.model({ user: this._id });
+    survey.save((err) => {
+      if (err) { return next(err); }
+      this.survey = survey.id;
+      next();
+    });
+  } else {
+    next();
+  }
 });
 
 User.schema.post('save', function() {
@@ -65,5 +77,8 @@ User.schema.set('toJSON', {
   },
 });
 
-User.defaultColumns = 'name, email, fund, isAdmin';
+
+User.relationship({ path: 'survey', ref: 'Survey', refPath: 'user' });
+
+User.defaultColumns = 'name, email, isAdmin';
 User.register();
