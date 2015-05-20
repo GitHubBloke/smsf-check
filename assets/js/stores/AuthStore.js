@@ -9,9 +9,7 @@ let signingIn, signinError, signingOut;
 let currentUser = Immutable.fromJS(locals.user);
 
 const AuthStore = createStore({
-  signingIn() {
-    return signingIn;
-  },
+  signingIn() { return signingIn; },
 
   signedIn(email) {
     if (!email) {
@@ -21,17 +19,9 @@ const AuthStore = createStore({
     }
   },
 
-  getSigninError() {
-    return signinError;
-  },
-
-  signingOut() {
-    return signingOut;
-  },
-
-  getUser() {
-    return currentUser;
-  },
+  getSigninError() { return signinError; },
+  signingOut() { return signingOut; },
+  getUser() { return currentUser; },
 });
 
 AuthStore.dispatchToken = AppDispatcher.register((payload) => {

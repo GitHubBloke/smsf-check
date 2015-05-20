@@ -20,7 +20,7 @@ class MembersPage extends BaseComponent {
   }
 
   render() {
-    const { user, survey } = this.props;
+    const { user, survey, submitting } = this.props;
 
     return (
       <DocumentTitle title={`${locals.name} - ${this.formatMessage(this.getIntlMessage('members.title'))}`}>
@@ -43,8 +43,11 @@ class MembersPage extends BaseComponent {
                   <Button bsSize='large' bsStyle='link' className='link-plain' onClick={this._skip}>
                     <small className='text-muted'>Skip this step</small>
                   </Button>
-                  <Button bsSize='large' bsStyle='primary' type='submit'>
-                    <FM message={this.getIntlMessage('shared.actions.nextStep.actionLabel')} />
+                  <Button bsSize='large' bsStyle='primary' type='submit'
+                    disabled={submitting}>
+                    {submitting ?
+                      this.formatMessage(this.getIntlMessage('shared.actions.nextStep.loadingLabel')) :
+                      this.formatMessage(this.getIntlMessage('shared.actions.nextStep.actionLabel'))}
                   </Button>
                 </div>
               </Col>
@@ -71,17 +74,8 @@ class MembersPage extends BaseComponent {
   }
 
   _handleSubmit(e) {
-    this._save(this._skip);
+    SurveyActionCreators.save();
     e.preventDefault();
-  }
-
-  _save(cb = () => {}) {
-    const memberDetails = _.compact(_.map(this.refs, (ref) => {
-      if (ref instanceof MemberDetails) { return ref; }
-    }));
-
-    const valid = _.reduce(memberDetails, (valid, m) => valid && m.validate(), true);
-    if (valid) { cb(); }
   }
 
   _skip() {
@@ -99,7 +93,8 @@ function pickProps({ params }) {
 function getState({ params }) {
   const user = AuthStore.getUser();
   const survey = SurveyStore.getDirtySurvey();
-  return { user, survey };
+  const submitting = SurveyStore.isSaving();
+  return { user, survey, submitting };
 }
 
 export default connectToStores(MembersPage,

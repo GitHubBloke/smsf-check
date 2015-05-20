@@ -21,4 +21,7 @@ export default keyMirror({
   CLEAR_USER_RESET_PASSWORD_ERROR: void 0,
 
   SURVEY_ADD_MEMBER: void 0,
+  SURVEY_SAVE: void 0,
+  SURVEY_SAVE_SUCCESS: void 0,
+  SURVEY_SAVE_ERROR: void 0,
 });

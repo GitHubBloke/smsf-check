@@ -5,12 +5,22 @@ import React, { PropTypes } from 'react';
 import { FormattedMessage as FM } from '../shims/ReactIntl';
 import RadioGroup from 'react-radio';
 
+import SurveyActionCreators from '../actions/SurveyActionCreators';
 import Validatable from '../utils/Validatable';
 
 export default class MemberDetails extends Validatable {
   constructor(props) {
     super(props);
+    this.bind('validate');
     this.state = { data: props.member };
+  }
+
+  componentDidMount() {
+    SurveyActionCreators.addValidator(this.validate);
+  }
+
+  componentDidUnmount() {
+    SurveyActionCreators.removeValidator(this.validate);
   }
 
   render() {

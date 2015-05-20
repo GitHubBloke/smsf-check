@@ -9,29 +9,13 @@ let signingUp, registeredUser, signupError;
 let resetingPassword, resetPasswordError, newPassword;
 
 const UserStore = createStore({
-  signingUp() {
-    return signingUp;
-  },
+  signingUp() { return signingUp; },
+  getRegisteredUser() { return registeredUser; },
+  getSignupError() { return signupError; },
 
-  getRegisteredUser() {
-    return registeredUser;
-  },
-
-  getSignupError() {
-    return signupError;
-  },
-
-  resetingPassword() {
-    return resetingPassword;
-  },
-
-  getNewPassword() {
-    return newPassword;
-  },
-
-  getResetPasswordError() {
-    return resetPasswordError;
-  },
+  resetingPassword() { return resetingPassword; },
+  getNewPassword() { return newPassword; },
+  getResetPasswordError() { return resetPasswordError; },
 });
 
 UserStore.dispatchToken = AppDispatcher.register((payload) => {
