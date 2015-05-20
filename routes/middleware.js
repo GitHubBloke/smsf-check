@@ -9,6 +9,7 @@
  */
 
 import _ from 'lodash';
+import async from 'async';
 import keystone from 'keystone';
 
 /**
@@ -37,10 +38,18 @@ export function initLocals(req, res, next) {
     { label: 'Home', key: 'home', href: '/' },
   ];
 
-  locals.user = req.user;
-  locals.client = _.assign({}, clientLocals, { user: locals.user });
-
-  next();
+  if (req.user) {
+    req.user.populateCascade().then(
+      (user) => {
+        locals.user = user;
+        locals.client = _.assign({}, clientLocals, { user });
+        next();
+      },
+      (err) => next(err)
+    );
+  } else {
+    next();
+  }
 }
 
 

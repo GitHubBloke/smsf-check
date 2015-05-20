@@ -22,7 +22,12 @@ export function signin(req, res) {
     (user) => {
       if (!user) { return onError(); }
       session.signin({ email: user.email, password: req.body.password }, req, res,
-        (user) => res.json({ user: user.toJSON() }),
+        (user) => {
+          user.populateCascade().then(
+            () => res.json({ user: user.toJSON() }),
+            onError
+          );
+        },
         onError
       );
     },

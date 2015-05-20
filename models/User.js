@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import async from 'async';
 import keystone from 'keystone';
 
 const { Field: { Types } } = keystone;
@@ -46,6 +47,26 @@ User.schema.post('save', function() {
     this.resetPassword();
   }
 });
+
+User.schema.methods.populateCascade = function(cb = () => {}) {
+  return new Promise((resolve, reject) => {
+    async.auto({
+      survey: (cb) => {
+        this.populate('survey', cb);
+      },
+      members: ['survey', (cb, results) => {
+        if (this.survey) {
+          this.survey.populate('members', cb);
+        } else {
+          cb();
+        }
+      }],
+    }, (err) => {
+      if (err) { return reject(err); }
+      resolve(this);
+    });
+  });
+};
 
 User.schema.methods.resetPassword = function(cb = () => {}) {
   const user = this;
