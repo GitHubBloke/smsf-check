@@ -1,36 +1,13 @@
-import Immutable, { Map } from 'immutable';
+import _ from 'lodash';
 import Joi from 'joi';
 import { Input, Well } from 'react-bootstrap';
 import React, { PropTypes } from 'react';
 import { FormattedMessage as FM } from '../shims/ReactIntl';
 import RadioGroup from 'react-radio';
 
-import SurveyActionCreators from '../actions/SurveyActionCreators';
-import Validatable from '../utils/Validatable';
+import MemberCard from './MemberCard';
 
-export default class MemberDetails extends Validatable {
-  constructor(props) {
-    super(props);
-    this.bind('validate');
-    this.state = { data: Map({ member: props.member }) };
-  }
-
-  componentDidMount() {
-    SurveyActionCreators.addValidator(this.validate);
-  }
-
-  componentDidUnmount() {
-    SurveyActionCreators.removeValidator(this.validate);
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    const prevMember = prevState.data.get('member');
-    const member = this.state.data.get('member');
-    if (prevMember !== member) {
-      SurveyActionCreators.makeMemberDirty(prevMember, member);
-    }
-  }
-
+export default class MemberDetails extends MemberCard {
   render() {
     const { data } = this.state;
 
@@ -53,7 +30,8 @@ export default class MemberDetails extends Validatable {
             <FM message={this.getIntlMessage('members.isRetired.label')} />
           </label>
           <div className='row form-inline'>
-            <RadioGroup name='isRetired' {...this.valueLink('member.isRetired', () => {}, (v) => v === 'true')}>
+            <RadioGroup name='isRetired'
+              {...this.valueLink('member.isRetired', () => {}, this._isRetiredGetModifier, this._isRetiredSetModifier)}>
               <div className='col-xs-6 col-xs-offset-6'>
                 <label className='text-normal'>
                   <input type='radio' value={true} />&nbsp;
@@ -72,14 +50,18 @@ export default class MemberDetails extends Validatable {
       </Well>
     );
   }
+
+  _isRetiredSetModifier(v) { return v === 'true'; }
+  _isRetiredGetModifier(v) { return v !== void 0 ? v.toString() : v; }
 }
 
-MemberDetails.propTypes = {};
-MemberDetails.defaultProps = {};
+MemberDetails.propTypes = _.assign({}, MemberCard.propTypes, {});
+MemberDetails.defaultProps = _.assign({}, MemberCard.defaultProps, {});
 
 MemberDetails.schema = {
   member: {
-    preRetirementAnnualIncome: Joi.number().required().label('Pre-retirement Annual Income'),
-    currentMemberBalance: Joi.number().required().label('Current Member Balance'),
+    preRetirementAnnualIncome: Joi.number().required().label('This field'),
+    currentMemberBalance: Joi.number().required().label('This field'),
+    isRetired: Joi.bool().required().label('This field'),
   },
 };
