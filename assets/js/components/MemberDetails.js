@@ -60,7 +60,7 @@ export default class MemberDetails extends MemberCard {
               <FM message={this.getIntlMessage('members.isRetired.label')} />
             </label>
             <div className='row form-inline'>
-              <RadioGroup name='isRetired'
+              <RadioGroup name={`isRetired-${data.getIn([ 'member', 'id' ]) || data.getIn([ 'member', 'ref' ])}`}
                 {...this.valueLink('member.isRetired', () => {}, this._isRetiredGetModifier, this._isRetiredSetModifier)}>
                 <div className='col-xs-6 col-xs-offset-6'>
                   <label className='text-normal'>

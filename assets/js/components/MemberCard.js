@@ -15,7 +15,7 @@ export default class MemberCard extends Validatable {
     SurveyActionCreators.addValidator(this.validate);
   }
 
-  componentDidUnmount() {
+  componentWillUnmount() {
     SurveyActionCreators.removeValidator(this.validate);
   }
 
