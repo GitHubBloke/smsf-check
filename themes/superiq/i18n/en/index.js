@@ -119,7 +119,7 @@ export default {
 
       actions: {
         skipStep: { actionLabel: 'Skip this step' },
-        prevStep: { actionLabel: 'Previous Step' },
+        prevStep: { actionLabel: 'Previous' },
         nextStep: { actionLabel: 'Next Step', loadingLabel: 'Please wait...' },
       },
     },
