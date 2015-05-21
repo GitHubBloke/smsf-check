@@ -56,9 +56,9 @@ export function update(req, res) {
       survey.getUpdateHandler(req).process(req.body, {
         fields:
           `members,
-           trusteeType, deedSupplier, yearLastUpdated,
-           whoDoesAccounting, accountCostPerYear,
-           whoDoesInvestmentAdvice, investmentAdviceCostPerYear`,
+           trust.trusteeType, trust.deedSupplier, trust.yearLastUpdated,
+           accounting.whoDoesIt, accounting.costPerYear,
+           accounting.whoDoesIt, investmentAdvice.costPerYear`,
       }, cb);
     }],
 

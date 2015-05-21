@@ -46,11 +46,11 @@ class InvestmentAdvicePage extends BasePage {
     const { submitting } = this.props;
 
     const radioData = {
-      question: this.getIntlMessage('investmentAdvice.whoDoesInvestmentAdvice.question'),
-      options: this.translatedOptions('investmentAdvice.whoDoesInvestmentAdvice.options'),
-      valueLink: this.valueLink('survey.whoDoesInvestmentAdvice'),
+      question: this.getIntlMessage('investmentAdvice.whoDoesIt.question'),
+      options: this.translatedOptions('investmentAdvice.whoDoesIt.options'),
+      valueLink: this.valueLink('survey.investmentAdvice.whoDoesIt'),
       disabled: submitting,
-      error: this.getErrorProps('survey.whoDoesInvestmentAdvice').help,
+      error: this.getErrorProps('survey.investmentAdvice.whoDoesIt').help,
     };
 
     return (
@@ -67,11 +67,11 @@ class InvestmentAdvicePage extends BasePage {
     const { submitting } = this.props;
 
     const radioData = {
-      question: this.getIntlMessage('investmentAdvice.investmentAdviceCostPerYear.question'),
-      options: this.translatedOptions('investmentAdvice.investmentAdviceCostPerYear.options'),
-      valueLink: this.valueLink('survey.investmentAdviceCostPerYear'),
+      question: this.getIntlMessage('investmentAdvice.costPerYear.question'),
+      options: this.translatedOptions('investmentAdvice.costPerYear.options'),
+      valueLink: this.valueLink('survey.investmentAdvice.costPerYear'),
       disabled: submitting,
-      error: this.getErrorProps('survey.investmentAdviceCostPerYear').help,
+      error: this.getErrorProps('survey.investmentAdvice.costPerYear').help,
     };
 
     return (
@@ -89,8 +89,10 @@ InvestmentAdvicePage.defaultProps = {};
 
 InvestmentAdvicePage.schema = {
   survey: {
-    whoDoesInvestmentAdvice: Joi.string().required().label('This field'),
-    investmentAdviceCostPerYear: Joi.string().required().label('This field'),
+    investmentAdvice: {
+      whoDoesIt: Joi.string().required().label('This field'),
+      costPerYear: Joi.string().required().label('This field'),
+    },
   },
 };
 

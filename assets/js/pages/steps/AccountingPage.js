@@ -46,11 +46,11 @@ class AccountingPage extends BasePage {
     const { submitting } = this.props;
 
     const radioData = {
-      question: this.getIntlMessage('accounting.whoDoesAccounting.question'),
-      options: this.translatedOptions('accounting.whoDoesAccounting.options'),
-      valueLink: this.valueLink('survey.whoDoesAccounting'),
+      question: this.getIntlMessage('accounting.whoDoesIt.question'),
+      options: this.translatedOptions('accounting.whoDoesIt.options'),
+      valueLink: this.valueLink('survey.accounting.whoDoesIt'),
       disabled: submitting,
-      error: this.getErrorProps('survey.whoDoesAccounting').help,
+      error: this.getErrorProps('survey.accounting.whoDoesIt').help,
     };
 
     return (
@@ -67,11 +67,11 @@ class AccountingPage extends BasePage {
     const { submitting } = this.props;
 
     const radioData = {
-      question: this.getIntlMessage('accounting.accountCostPerYear.question'),
-      options: this.translatedOptions('accounting.accountCostPerYear.options'),
-      valueLink: this.valueLink('survey.accountCostPerYear'),
+      question: this.getIntlMessage('accounting.costPerYear.question'),
+      options: this.translatedOptions('accounting.costPerYear.options'),
+      valueLink: this.valueLink('survey.accounting.costPerYear'),
       disabled: submitting,
-      error: this.getErrorProps('survey.accountCostPerYear').help,
+      error: this.getErrorProps('survey.accounting.costPerYear').help,
     };
 
     return (
@@ -89,8 +89,10 @@ AccountingPage.defaultProps = {};
 
 AccountingPage.schema = {
   survey: {
-    whoDoesAccounting: Joi.string().required().label('This field'),
-    accountCostPerYear: Joi.string().required().label('This field'),
+    accounting: {
+      whoDoesIt: Joi.string().required().label('This field'),
+      costPerYear: Joi.string().required().label('This field'),
+    },
   },
 };
 

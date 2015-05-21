@@ -50,9 +50,9 @@ class TrustPage extends BasePage {
     const radioData = {
       question: this.getIntlMessage('trust.trusteeType.question'),
       options: this.translatedOptions('trust.trusteeType.options'),
-      valueLink: this.valueLink('survey.trusteeType'),
+      valueLink: this.valueLink('survey.trust.trusteeType'),
       disabled: submitting,
-      error: this.getErrorProps('survey.trusteeType').help,
+      error: this.getErrorProps('survey.trust.trusteeType').help,
     };
 
     return (
@@ -71,9 +71,9 @@ class TrustPage extends BasePage {
     const selectData = {
       question: this.getIntlMessage('trust.deedSupplier.question'),
       options: this.translatedOptions('trust.deedSupplier.options'),
-      valueLink: this.valueLink('survey.deedSupplier'),
+      valueLink: this.valueLink('survey.trust.deedSupplier'),
       disabled: submitting,
-      error: this.getErrorProps('survey.deedSupplier').help,
+      error: this.getErrorProps('survey.trust.deedSupplier').help,
       searchable: false,
     };
 
@@ -93,9 +93,9 @@ class TrustPage extends BasePage {
     const selectData = {
       question: this.getIntlMessage('trust.yearLastUpdated.question'),
       options: this.translatedOptions('trust.yearLastUpdated.options'),
-      valueLink: this.valueLink('survey.yearLastUpdated'),
+      valueLink: this.valueLink('survey.trust.yearLastUpdated'),
       disabled: submitting,
-      error: this.getErrorProps('survey.yearLastUpdated').help,
+      error: this.getErrorProps('survey.trust.yearLastUpdated').help,
     };
 
     return (
@@ -113,8 +113,11 @@ TrustPage.defaultProps = {};
 
 TrustPage.schema = {
   survey: {
-    trusteeType: Joi.string().required().label('This field'),
-    deedSupplier: Joi.string().required().label('This field'),
+    trust: {
+      trusteeType: Joi.string().required().label('This field'),
+      deedSupplier: Joi.string().required().label('This field'),
+      yearLastUpdated: Joi.string().required().label('This field'),
+    },
   },
 };
 

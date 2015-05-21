@@ -119,7 +119,7 @@ export default {
       title: 'Tax & Accounting',
       longTitle: 'Tax & Accounting',
 
-      whoDoesAccounting: {
+      whoDoesIt: {
         question: 'Who does the accounting and tax work for your fund?',
         options: [
           { value: 'myself', label: 'I do it myself' },
@@ -129,7 +129,7 @@ export default {
         ],
       },
 
-      accountCostPerYear: {
+      costPerYear: {
         question: 'How much does it cost per year?',
         options: [
           '< $1,000',
@@ -147,7 +147,7 @@ export default {
       title: 'Investment Advice',
       longTitle: 'Investment Advice',
 
-      whoDoesInvestmentAdvice: {
+      whoDoesIt: {
         question: 'Who provides investment advice for your fund?',
         options: [
           { value: 'myself', label: 'I do it myself' },
@@ -156,7 +156,7 @@ export default {
         ],
       },
 
-      investmentAdviceCostPerYear: {
+      costPerYear: {
         question: 'How much does it cost per year?',
         options: [
           '< $1,000',
