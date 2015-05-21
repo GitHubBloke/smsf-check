@@ -9,18 +9,19 @@ import RadioGroup from 'react-radio';
 import GenderOption from './GenderOption';
 import Icon, { IconStack } from './Icon';
 import MemberCard from './MemberCard';
+import SurveyStore from '../stores/SurveyStore';
+import { connectToStores } from '../utils/StoreUtils';
 
 export default class MemberDetails extends MemberCard {
   render() {
     const { data } = this.state;
+    const { survey, submitting } = this.props;
     const isRetiredHasError = this.hasError('member.isRetired');
 
     return (
       <Well className='text-center member'>
         <div className='well__header'>
-          <a href='#' className='member__delete link-plain pull-right' onClick={this.deleteMember}>
-            <Icon id='ios-close-outline' size='3' className='text-alpha' />
-          </a>
+          {survey.get('members').size > 1 && this.renderDeleteButton()}
         </div>
 
         <div className='well__body'>
@@ -82,6 +83,14 @@ export default class MemberDetails extends MemberCard {
     );
   }
 
+  renderDeleteButton() {
+    return (
+      <a href='#' className='member__delete link-plain pull-right' onClick={this.deleteMember}>
+        <Icon id='ios-close-outline' size='3' className='text-alpha' />
+      </a>
+    );
+  }
+
   _isRetiredSetModifier(v) { return v === 'true'; }
   _isRetiredGetModifier(v) { return v !== void 0 ? v.toString() : v; }
 }
@@ -96,3 +105,19 @@ MemberDetails.schema = {
     isRetired: Joi.bool().required().label('This field'),
   },
 };
+
+function pickProps({ params }) {
+  return { params };
+}
+
+function getState({ params }) {
+  const survey = SurveyStore.getDirtySurvey();
+  const submitting = SurveyStore.isSaving();
+  return { survey, submitting };
+}
+
+export default connectToStores(MemberDetails,
+  [ SurveyStore ],
+  pickProps,
+  getState
+);

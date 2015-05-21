@@ -18,6 +18,13 @@ class MembersPage extends BaseComponent {
     this.bind('renderForm', 'renderChart', 'renderMember', '_addMember');
   }
 
+  componentDidMount() {
+    const { survey, submitting } = this.props;
+    if (survey.get('members').isEmpty()) {
+      this._addMember();
+    }
+  }
+
   render() {
     return (
       <DocumentTitle title={`${locals.name} - ${this.formatMessage(this.getIntlMessage('members.title'))}`}>
