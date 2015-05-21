@@ -23,7 +23,6 @@
     "react-intl": "^1.2.0",
     "react-mixin": "^1.2.2",
     "react-radio": "^1.0.6",
-    "react-select": "^0.4.9",
     "soap": "^0.8.0",
     "superagent": "^1.2.0",
     "superagent-prefix": "0.0.2",
