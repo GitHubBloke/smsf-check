@@ -27,7 +27,7 @@ keystone.init(_.assign({
   'less middleware options': {
     preprocess: {
       importPaths: function(paths) {
-        paths.push(__dirname + '/themes/' + process.env.APP_THEME + '/less');
+        paths.push('themes/' + process.env.APP_THEME + '/less');
         paths.push(JSON.parse(fs.readFileSync('./.bowerrc')).directory);
       },
       postprocess: {
