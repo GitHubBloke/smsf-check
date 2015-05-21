@@ -30,10 +30,10 @@ export default class MemberDetails extends MemberCard {
               <FM message={this.getIntlMessage('members.gender.label')} />
             </label>
             <Row>
-              <Col xs={9} xsOffset={3}>
+              <Col xs={10} xsOffset={2}>
                 <GenderOption gender='female' {...this.linkState('member.gender')} disabled={submitting} />
               </Col>
-              <Col xs={9}>
+              <Col xs={10}>
                 <GenderOption gender='male' {...this.linkState('member.gender')} disabled={submitting} />
               </Col>
             </Row>
