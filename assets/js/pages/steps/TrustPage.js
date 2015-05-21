@@ -4,6 +4,7 @@ import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { FormattedMessage as FM } from '../../shims/ReactIntl';
 
+import AdviceBubble from '../../components/AdviceBubble';
 import BasePage from './BasePage';
 import locals from '../../utils/locals';
 import RadioQuestion from '../../components/RadioQuestion';
@@ -48,7 +49,7 @@ class TrustPage extends BasePage {
     const { submitting } = this.props;
 
     const radioData = {
-      question: this.getIntlMessage('trust.trusteeType.question'),
+      question: this.formatMessage(this.getIntlMessage('trust.trusteeType.question')),
       options: this.translatedOptions('trust.trusteeType.options'),
       valueLink: this.valueLink('survey.trust.trusteeType'),
       disabled: submitting,
@@ -56,9 +57,11 @@ class TrustPage extends BasePage {
     };
 
     return (
-      <Row>
+      <Row className='append-xs-2'>
         <Col xs={24}>
           <RadioQuestion {...radioData}></RadioQuestion>
+          {data.getIn([ 'survey', 'trust', 'trusteeType' ]) &&
+            <AdviceBubble advice={this.formatMessage(this.getIntlMessage('trust.trusteeType.advice'))} />}
         </Col>
       </Row>
     );
@@ -69,7 +72,7 @@ class TrustPage extends BasePage {
     const { submitting } = this.props;
 
     const selectData = {
-      question: this.getIntlMessage('trust.deedSupplier.question'),
+      question: this.formatMessage(this.getIntlMessage('trust.deedSupplier.question')),
       options: this.translatedOptions('trust.deedSupplier.options'),
       valueLink: this.valueLink('survey.trust.deedSupplier'),
       disabled: submitting,
@@ -78,7 +81,7 @@ class TrustPage extends BasePage {
     };
 
     return (
-      <Row>
+      <Row className='append-xs-2'>
         <Col xs={24}>
           <SelectQuestion {...selectData}></SelectQuestion>
         </Col>
@@ -91,7 +94,7 @@ class TrustPage extends BasePage {
     const { submitting } = this.props;
 
     const selectData = {
-      question: this.getIntlMessage('trust.yearLastUpdated.question'),
+      question: this.formatMessage(this.getIntlMessage('trust.yearLastUpdated.question')),
       options: this.translatedOptions('trust.yearLastUpdated.options'),
       valueLink: this.valueLink('survey.trust.yearLastUpdated'),
       disabled: submitting,
@@ -99,9 +102,11 @@ class TrustPage extends BasePage {
     };
 
     return (
-      <Row>
+      <Row className='append-xs-2'>
         <Col xs={24}>
           <SelectQuestion {...selectData}></SelectQuestion>
+          {data.getIn([ 'survey', 'trust', 'yearLastUpdated' ]) &&
+            <AdviceBubble advice={this.formatMessage(this.getIntlMessage('trust.yearLastUpdated.advice'))} />}
         </Col>
       </Row>
     );

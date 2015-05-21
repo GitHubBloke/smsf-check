@@ -102,6 +102,7 @@ export default {
           { value: 'individuals', label: 'Individuals as Trustee' },
           { value: 'corporate', label: 'Corporate trustee' },
         ],
+        advice: 'Do I have the right type of trustee?',
       },
 
       deedSupplier: {
@@ -112,6 +113,7 @@ export default {
       yearLastUpdated: {
         question: 'In which year was your trust fund last updated?',
         options: _.times(20, (i) => (new Date().getFullYear() - i).toString()),
+        advice: 'Should I update my deed?',
       },
     },
 
@@ -127,6 +129,7 @@ export default {
           { value: 'administrator', label: 'A SMSF administrator does it' },
           { value: 'financial-planner', label: 'My Financial Planner does it' },
         ],
+        advice: 'Why should I consider seeking accounting advice?',
       },
 
       costPerYear: {
@@ -140,6 +143,7 @@ export default {
           '$3,001 - $3,500',
           '$3,500+',
         ],
+        advice: 'Am I paying too much tax and accounting services for my fund?',
       },
     },
 
@@ -154,6 +158,7 @@ export default {
           { value: 'financial-planner', label: 'My Financial Planner does it' },
           { value: 'accountant', label: 'My accountant does it' },
         ],
+        advice: 'Why should I consider seeking investment advice?',
       },
 
       costPerYear: {
@@ -167,6 +172,7 @@ export default {
           '$3,001 - $3,500',
           '$3,500+',
         ],
+        advice: 'Am I paying too much for investment advice for my fund?',
       },
     },
 

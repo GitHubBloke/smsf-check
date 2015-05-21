@@ -4,6 +4,7 @@ import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { FormattedMessage as FM } from '../../shims/ReactIntl';
 
+import AdviceBubble from '../../components/AdviceBubble';
 import BasePage from './BasePage';
 import locals from '../../utils/locals';
 import RadioQuestion from '../../components/RadioQuestion';
@@ -46,7 +47,7 @@ class InvestmentAdvicePage extends BasePage {
     const { submitting } = this.props;
 
     const radioData = {
-      question: this.getIntlMessage('investmentAdvice.whoDoesIt.question'),
+      question: this.formatMessage(this.getIntlMessage('investmentAdvice.whoDoesIt.question')),
       options: this.translatedOptions('investmentAdvice.whoDoesIt.options'),
       valueLink: this.valueLink('survey.investmentAdvice.whoDoesIt'),
       disabled: submitting,
@@ -54,9 +55,11 @@ class InvestmentAdvicePage extends BasePage {
     };
 
     return (
-      <Row>
+      <Row className='append-xs-2'>
         <Col xs={24}>
           <RadioQuestion {...radioData}></RadioQuestion>
+          {(data.getIn([ 'survey', 'investmentAdvice', 'whoDoesIt' ]) === 'myself') &&
+            <AdviceBubble advice={this.formatMessage(this.getIntlMessage('investmentAdvice.whoDoesIt.advice'))} />}
         </Col>
       </Row>
     );
@@ -65,9 +68,10 @@ class InvestmentAdvicePage extends BasePage {
   renderAccountingCostPerYear() {
     const { data } = this.state;
     const { submitting } = this.props;
+    const costPerYear = data.getIn([ 'survey', 'investmentAdvice', 'costPerYear' ]);
 
     const radioData = {
-      question: this.getIntlMessage('investmentAdvice.costPerYear.question'),
+      question: this.formatMessage(this.getIntlMessage('investmentAdvice.costPerYear.question')),
       options: this.translatedOptions('investmentAdvice.costPerYear.options'),
       valueLink: this.valueLink('survey.investmentAdvice.costPerYear'),
       disabled: submitting,
@@ -75,9 +79,11 @@ class InvestmentAdvicePage extends BasePage {
     };
 
     return (
-      <Row>
+      <Row className='append-xs-2'>
         <Col xs={24}>
           <RadioQuestion {...radioData}></RadioQuestion>
+          {costPerYear && costPerYear !== '< $1,000' &&
+            <AdviceBubble advice={this.formatMessage(this.getIntlMessage('investmentAdvice.costPerYear.advice'))} />}
         </Col>
       </Row>
     );

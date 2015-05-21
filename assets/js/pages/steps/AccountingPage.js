@@ -4,6 +4,7 @@ import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { FormattedMessage as FM } from '../../shims/ReactIntl';
 
+import AdviceBubble from '../../components/AdviceBubble';
 import BasePage from './BasePage';
 import locals from '../../utils/locals';
 import RadioQuestion from '../../components/RadioQuestion';
@@ -46,7 +47,7 @@ class AccountingPage extends BasePage {
     const { submitting } = this.props;
 
     const radioData = {
-      question: this.getIntlMessage('accounting.whoDoesIt.question'),
+      question: this.formatMessage(this.getIntlMessage('accounting.whoDoesIt.question')),
       options: this.translatedOptions('accounting.whoDoesIt.options'),
       valueLink: this.valueLink('survey.accounting.whoDoesIt'),
       disabled: submitting,
@@ -54,9 +55,11 @@ class AccountingPage extends BasePage {
     };
 
     return (
-      <Row>
+      <Row className='append-xs-2'>
         <Col xs={24}>
           <RadioQuestion {...radioData}></RadioQuestion>
+          {(data.getIn([ 'survey', 'accounting', 'whoDoesIt' ]) === 'myself') &&
+            <AdviceBubble advice={this.formatMessage(this.getIntlMessage('accounting.whoDoesIt.advice'))} />}
         </Col>
       </Row>
     );
@@ -65,9 +68,10 @@ class AccountingPage extends BasePage {
   renderAccountingCostPerYear() {
     const { data } = this.state;
     const { submitting } = this.props;
+    const costPerYear = data.getIn([ 'survey', 'accounting', 'costPerYear' ]);
 
     const radioData = {
-      question: this.getIntlMessage('accounting.costPerYear.question'),
+      question: this.formatMessage(this.getIntlMessage('accounting.costPerYear.question')),
       options: this.translatedOptions('accounting.costPerYear.options'),
       valueLink: this.valueLink('survey.accounting.costPerYear'),
       disabled: submitting,
@@ -75,9 +79,11 @@ class AccountingPage extends BasePage {
     };
 
     return (
-      <Row>
+      <Row className='append-xs-2'>
         <Col xs={24}>
           <RadioQuestion {...radioData}></RadioQuestion>
+          {costPerYear && costPerYear !== '< $1,000' &&
+            <AdviceBubble advice={this.formatMessage(this.getIntlMessage('accounting.costPerYear.advice'))} />}
         </Col>
       </Row>
     );
