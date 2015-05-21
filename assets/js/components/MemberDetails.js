@@ -1,12 +1,13 @@
 import _ from 'lodash';
 import classNames from 'classnames';
 import Joi from 'joi';
-import { Col, Input, Row, Well } from 'react-bootstrap';
+import { Button, Col, Input, Row, Well } from 'react-bootstrap';
 import React, { PropTypes } from 'react';
 import { FormattedMessage as FM } from '../shims/ReactIntl';
 import RadioGroup from 'react-radio';
 
 import GenderOption from './GenderOption';
+import Icon, { IconStack } from './Icon';
 import MemberCard from './MemberCard';
 
 export default class MemberDetails extends MemberCard {
@@ -16,7 +17,13 @@ export default class MemberDetails extends MemberCard {
 
     return (
       <Well className='text-center'>
-        <div className='form-group'>
+        <div className='well__header'>
+          <a className='link-plain pull-right'>
+            <Icon id='ios-close-outline' size='2' className='text-alpha' />
+          </a>
+        </div>
+
+        <div className='form-group append-xs-1'>
           <label className='control-label text-normal'>Gender</label>
           <Row>
             <Col xs={9} xsOffset={3}>
@@ -28,13 +35,15 @@ export default class MemberDetails extends MemberCard {
           </Row>
         </div>
 
-        <Input type='text' bsSize='large' className='input-lg' labelClassName='append-xs-tiny text-normal'
+        <Input type='text' bsSize='large'
+          className='input-lg' labelClassName='append-xs-tiny text-normal' groupClassName='append-xs-1'
           label={this.formatMessage(this.getIntlMessage('members.preRetirementAnnualIncome.label'))}
           addonBefore='$'
           valueLink={this.linkState('member.preRetirementAnnualIncome')}
           {...this.getErrorProps('member.preRetirementAnnualIncome')} />
 
-        <Input type='text' bsSize='large' className='input-lg' labelClassName='append-xs-tiny text-normal'
+        <Input type='text' bsSize='large'
+          className='input-lg' labelClassName='append-xs-tiny text-normal' groupClassName='append-xs-1'
           label={this.formatMessage(this.getIntlMessage('members.currentMemberBalance.label'))}
           addonBefore='$'
           valueLink={this.linkState('member.currentMemberBalance')}

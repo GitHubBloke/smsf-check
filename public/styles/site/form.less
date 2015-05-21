@@ -1,4 +1,10 @@
 .form-control {
-  border: 2px solid @input-border;
+  border: @input-border-width solid @input-border;
   .box-shadow(none);
+}
+
+.control-label {
+  .has-error & {
+    color: inherit;
+  }
 }

@@ -16,7 +16,7 @@ export default class GenderOption extends BaseComponent {
 
     return (
       <a className='link-plain' href='#' onClick={this._setValue}>
-        <IconStack size='2' >
+        <IconStack size='2'>
           <Icon id='record' size='2' stacked className='text-inverse' />
           <Icon id='ios-circle-outline' size='2' stacked className={className} />
           <Icon id={gender} size='1' stacked className={className} />
@@ -25,9 +25,10 @@ export default class GenderOption extends BaseComponent {
     );
   }
 
-  _setValue() {
+  _setValue(e) {
     const { requestChange, gender } = this.props;
     requestChange(gender);
+    e.preventDefault();
   }
 }
 

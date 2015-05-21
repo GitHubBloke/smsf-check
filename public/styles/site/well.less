@@ -1,3 +1,36 @@
 .well {
   .box-shadow(0 1px 4px fade(black, 12%));
+  padding: @well-padding;
+  border: @well-border-width solid @well-border;
+  border-radius: @border-radius-large;
+}
+
+.well-lg {
+  padding: @well-lg-padding;
+}
+.well-sm {
+  padding: @well-sm-padding;
+}
+
+.well__header {
+  background: #fff;
+  border-bottom: @well-border-width solid @well-border;
+  padding: @well-padding;
+  margin: -@well-padding -@well-padding @well-padding -@well-padding;
+
+  .border-top-radius(@border-radius-base);
+
+  .well-lg & {
+    .border-top-radius(@border-radius-large);
+    padding: @well-lg-padding;
+    margin: -@well-lg-padding -@well-lg-padding @well-lg-padding -@well-lg-padding;
+  }
+
+  .well-sm & {
+    .border-top-radius(@border-radius-small);
+    padding: @well-sm-padding;
+    margin: -@well-sm-padding -@well-sm-padding @well-sm-padding -@well-sm-padding;
+  }
+
+  .clearfix;
 }
