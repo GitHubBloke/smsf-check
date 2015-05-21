@@ -52,8 +52,9 @@ SurveyStore.dispatchToken = AppDispatcher.register((payload) => {
       break;
 
     case ActionTypes.SURVEY_SAVE_SUCCESS:
+      const survey = response && response.survey;
       saving = false;
-      currentSurvey = dirtySurvey;
+      currentSurvey = dirtySurvey = Immutable.fromJS(survey);
       saveError = void 0;
       break;
 

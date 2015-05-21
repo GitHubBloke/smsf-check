@@ -7,9 +7,17 @@ const prefixer = prefix('/api/surveys');
 
 export default {
   save(survey, cb = () => {}) {
-    setTimeout(() => {
-      SurveyServerActionCreators.handleSaveSuccess();
-      cb();
-    }, 1000);
+    request.put(`/${survey.id}`)
+      .use(prefixer)
+      .send(survey)
+      .end((err, res) => {
+        if (err || !res.status === 200) {
+          return SurveyServerActionCreators.handleSaveError(res.body);
+        }
+
+        SurveyServerActionCreators.handleSaveSuccess(res.body);
+        cb();
+      }
+    );
   },
 };
