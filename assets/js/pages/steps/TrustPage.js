@@ -37,6 +37,7 @@ class TrustPage extends BasePage {
       <div>
         {this.renderTrusteeType()}
         {this.renderDeedSupplier()}
+        {this.renderYearLastUpdated()}
       </div>
     );
   }
@@ -77,6 +78,27 @@ class TrustPage extends BasePage {
       disabled: submitting,
       error: this.getErrorProps('survey.deedSupplier').help,
       searchable: false,
+    };
+
+    return (
+      <Row>
+        <Col xs={24}>
+          <SelectQuestion {...selectData}></SelectQuestion>
+        </Col>
+      </Row>
+    );
+  }
+
+  renderYearLastUpdated() {
+    const { data } = this.state;
+    const { submitting } = this.props;
+
+    const selectData = {
+      question: this.getIntlMessage('trust.yearLastUpdated.question'),
+      options: this.translatedOptions('trust.yearLastUpdated.options'),
+      valueLink: this.valueLink('survey.yearLastUpdated'),
+      disabled: submitting,
+      error: this.getErrorProps('survey.yearLastUpdated').help,
     };
 
     return (

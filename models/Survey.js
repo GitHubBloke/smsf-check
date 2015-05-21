@@ -11,7 +11,7 @@ Survey.add({
 
   trusteeType: { type: String, noedit: true },
   deedSupplier: { type: String, noedit: true },
-  yearLastUpdated: { type: Number, noedit: true },
+  yearLastUpdated: { type: String, noedit: true },
 });
 
 Survey.schema.set('toJSON', {

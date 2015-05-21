@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 export default {
   locales: [ 'en' ],
   messages: {
@@ -101,11 +103,16 @@ export default {
           { value: 'corporate', label: 'Corporate trustee' },
         ],
       },
+
       deedSupplier: {
         question: 'Who supplied the trust deed for you fund?',
         options: [ 'Unknown', 'Freehills', 'Madgwicks', 'SuperCentral' ],
       },
-      yearLastUpdated: { question: 'In which year was your trust fund last updated?' },
+
+      yearLastUpdated: {
+        question: 'In which year was your trust fund last updated?',
+        options: _.times(20, (i) => (new Date().getFullYear() - i).toString()),
+      },
     },
 
     results: {
