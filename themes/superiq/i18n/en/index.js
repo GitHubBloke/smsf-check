@@ -102,6 +102,11 @@ export default {
       yearLastUpdated: { question: 'In which year was your trust fund last updated?' },
     },
 
+    results: {
+      title: 'Results',
+      longTitle: 'Results',
+    },
+
     shared: {
       navbar: {
         signin: { actionLabel: 'Log In' },

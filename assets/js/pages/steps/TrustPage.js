@@ -24,7 +24,7 @@ class TrustPage extends BasePage {
       <SurveyForm {...this.props}
         renderForm={this.renderForm}
         renderChart={this.renderChart}
-        prevRoute='members'>
+        prevRoute='members' nextRoute='results'>
       </SurveyForm>
     );
   }
@@ -87,7 +87,6 @@ TrustPage.defaultProps = {};
 TrustPage.schema = {
   survey: {
     trusteeType: Joi.string().required().label('This field'),
-    deedSupplier: Joi.string().required().label('This field'),
   },
 };
 
