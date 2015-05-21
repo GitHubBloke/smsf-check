@@ -12,7 +12,7 @@ import SurveyForm from './SurveyForm';
 import SurveyStore from '../../stores/SurveyStore';
 import { requireSkippable } from '../../utils/SurveyUtils';
 
-class AccountingPage extends BasePage {
+class InvestmentAdvicePage extends BasePage {
   constructor(props) {
     super(props);
     this.bind('renderForm', 'renderChart');
@@ -23,7 +23,7 @@ class AccountingPage extends BasePage {
       <SurveyForm {...this.props}
         renderForm={this.renderForm}
         renderChart={this.renderChart}
-        prevRoute='trust' nextRoute='investment-advice'>
+        prevRoute='accounting' nextRoute='results'>
       </SurveyForm>
     );
   }
@@ -46,11 +46,11 @@ class AccountingPage extends BasePage {
     const { submitting } = this.props;
 
     const radioData = {
-      question: this.getIntlMessage('accounting.whoDoesAccounting.question'),
-      options: this.translatedOptions('accounting.whoDoesAccounting.options'),
-      valueLink: this.valueLink('survey.whoDoesAccounting'),
+      question: this.getIntlMessage('investmentAdvice.whoDoesInvestmentAdvice.question'),
+      options: this.translatedOptions('investmentAdvice.whoDoesInvestmentAdvice.options'),
+      valueLink: this.valueLink('survey.whoDoesInvestmentAdvice'),
       disabled: submitting,
-      error: this.getErrorProps('survey.whoDoesAccounting').help,
+      error: this.getErrorProps('survey.whoDoesInvestmentAdvice').help,
     };
 
     return (
@@ -67,11 +67,11 @@ class AccountingPage extends BasePage {
     const { submitting } = this.props;
 
     const radioData = {
-      question: this.getIntlMessage('accounting.accountCostPerYear.question'),
-      options: this.translatedOptions('accounting.accountCostPerYear.options'),
-      valueLink: this.valueLink('survey.accountCostPerYear'),
+      question: this.getIntlMessage('investmentAdvice.investmentAdviceCostPerYear.question'),
+      options: this.translatedOptions('investmentAdvice.investmentAdviceCostPerYear.options'),
+      valueLink: this.valueLink('survey.investmentAdviceCostPerYear'),
       disabled: submitting,
-      error: this.getErrorProps('survey.accountCostPerYear').help,
+      error: this.getErrorProps('survey.investmentAdviceCostPerYear').help,
     };
 
     return (
@@ -84,13 +84,13 @@ class AccountingPage extends BasePage {
   }
 }
 
-AccountingPage.propTypes = {};
-AccountingPage.defaultProps = {};
+InvestmentAdvicePage.propTypes = {};
+InvestmentAdvicePage.defaultProps = {};
 
-AccountingPage.schema = {
+InvestmentAdvicePage.schema = {
   survey: {
-    whoDoesAccounting: Joi.string().required().label('This field'),
-    accountCostPerYear: Joi.string().required().label('This field'),
+    whoDoesInvestmentAdvice: Joi.string().required().label('This field'),
+    investmentAdviceCostPerYear: Joi.string().required().label('This field'),
   },
 };
 
@@ -105,7 +105,7 @@ function getState({ params }) {
   return { survey, submitting, skippable };
 }
 
-export default requireSkippable(connectToStores(AccountingPage,
+export default requireSkippable(connectToStores(InvestmentAdvicePage,
   [ SurveyStore ],
   pickProps,
   getState

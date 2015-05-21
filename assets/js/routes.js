@@ -13,6 +13,7 @@ import SignoutPage from './pages/auth/SignoutPage';
 import MembersPage from './pages/steps/MembersPage';
 import TrustPage from './pages/steps/TrustPage';
 import AccountingPage from './pages/steps/AccountingPage';
+import InvestmentAdvicePage from './pages/steps/InvestmentAdvicePage';
 import ResultsPage from './pages/steps/ResultsPage';
 
 import PrivacyPage from './pages/PrivacyPage';
@@ -33,6 +34,7 @@ export default (
       <Route name='members' handler={MembersPage} />
       <Route name='trust' handler={TrustPage} />
       <Route name='accounting' handler={AccountingPage} />
+      <Route name='investment-advice' handler={InvestmentAdvicePage} />
       <Route name='results' handler={ResultsPage} />
     </Route>
 

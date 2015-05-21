@@ -13,8 +13,11 @@ Survey.add({
   deedSupplier: { type: String, noedit: true },
   yearLastUpdated: { type: String, noedit: true },
 
-  whoDoesAccountingWork: { type: String, noedit: true },
-  costPerYear: { type: String, noedit: true },
+  whoDoesAccounting: { type: String, noedit: true },
+  accountCostPerYear: { type: String, noedit: true },
+
+  whoDoesInvestmentAdvice: { type: String, noedit: true },
+  investmentAdviceCostPerYear: { type: String, noedit: true },
 });
 
 Survey.schema.set('toJSON', {

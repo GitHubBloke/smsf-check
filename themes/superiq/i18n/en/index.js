@@ -119,7 +119,7 @@ export default {
       title: 'Tax & Accounting',
       longTitle: 'Tax & Accounting',
 
-      whoDoesAccountingWork: {
+      whoDoesAccounting: {
         question: 'Who does the accounting and tax work for your fund?',
         options: [
           { value: 'myself', label: 'I do it myself' },
@@ -129,7 +129,34 @@ export default {
         ],
       },
 
-      costPerYear: {
+      accountCostPerYear: {
+        question: 'How much does it cost per year?',
+        options: [
+          '< $1,000',
+          '$1,001 - $1,500',
+          '$1,501 - $2,000',
+          '$2,001 - $2,500',
+          '$2,501 - $3,000',
+          '$3,001 - $3,500',
+          '$3,500+',
+        ],
+      },
+    },
+
+    investmentAdvice: {
+      title: 'Investment Advice',
+      longTitle: 'Investment Advice',
+
+      whoDoesInvestmentAdvice: {
+        question: 'Who provides investment advice for your fund?',
+        options: [
+          { value: 'myself', label: 'I do it myself' },
+          { value: 'financial-planner', label: 'My Financial Planner does it' },
+          { value: 'accountant', label: 'My accountant does it' },
+        ],
+      },
+
+      investmentAdviceCostPerYear: {
         question: 'How much does it cost per year?',
         options: [
           '< $1,000',

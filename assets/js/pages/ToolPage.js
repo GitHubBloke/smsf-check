@@ -2,6 +2,7 @@ import React from 'react';
 import { Col, Grid, Label, Row } from 'react-bootstrap';
 import DocumentTitle from 'react-document-title';
 import { RouteHandler } from 'react-router';
+import utils from 'keystone-utils';
 
 import { requireAuth } from '../utils/AuthUtils';
 import BaseComponent from '../utils/BaseComponent';
@@ -13,7 +14,7 @@ class ToolPage extends BaseComponent {
   render() {
     const step = router.getCurrentPathname().substring(1);
     const stepNumber = steps.indexOf(step) + 1;
-    const title = this.formatMessage(this.getIntlMessage(`${step}.longTitle`));
+    const title = this.formatMessage(this.getIntlMessage(`${utils.keyToProperty(step)}.longTitle`));
 
     return (
       <DocumentTitle title={`${locals.name} - ${title}`}>
