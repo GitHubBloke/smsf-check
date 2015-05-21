@@ -42,7 +42,7 @@ class MembersPage extends BasePage {
 
     return (
       <div>
-        <h3 className='append-xs-2'>
+        <h3 className='prepend-xs-none append-xs-2'>
           <FM message={this.getIntlMessage('members.question')} />
         </h3>
         <Row className='members'>

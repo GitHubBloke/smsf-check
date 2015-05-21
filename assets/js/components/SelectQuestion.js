@@ -10,8 +10,8 @@ export default class SelectQuestion extends BaseComponent {
     const { question, valueLink, error } = this.props;
 
     return (
-      <div>
-        <h3 className='append-xs-1'>{question}</h3>
+      <div className='append-xs-2'>
+        <h3 className='prepend-xs-none append-xs-1'>{question}</h3>
         <div className={classNames('form-group', error && 'has-error')}>
           <Select name={question} {...this.props} className='Select--lg' {...valueLink} />
           {error && <span className='help-block' dangerouslySetInnerHTML={{ __html: error }}></span>}

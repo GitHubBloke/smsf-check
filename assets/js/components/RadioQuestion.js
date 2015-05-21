@@ -15,8 +15,8 @@ export default class RadioQuestion extends BaseComponent {
     const { question, options, valueLink, error } = this.props;
 
     return (
-      <div>
-        <h3 className='append-xs-1'>{question}</h3>
+      <div className='append-xs-2'>
+        <h3 className='prepend-xs-none append-xs-1'>{question}</h3>
         <div className={classNames('form-group', error && 'has-error')}>
           <RadioGroup name={question} {...valueLink}>
             {_.map(options, this.renderOption)}
@@ -39,7 +39,7 @@ export default class RadioQuestion extends BaseComponent {
     }
 
     return (
-      <div key={value} className='radio'>
+      <div key={value} className='radio prepend-xs-tiny append-xs-tiny'>
         <label className='text-normal'>
           <input type='radio' value={value} disabled={disabled} />&nbsp;
           {label}

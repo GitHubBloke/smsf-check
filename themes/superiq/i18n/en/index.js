@@ -115,6 +115,34 @@ export default {
       },
     },
 
+    accounting: {
+      title: 'Tax & Accounting',
+      longTitle: 'Tax & Accounting',
+
+      whoDoesAccountingWork: {
+        question: 'Who does the accounting and tax work for your fund?',
+        options: [
+          { value: 'myself', label: 'I do it myself' },
+          { value: 'accountant', label: 'My accountant does it' },
+          { value: 'administrator', label: 'A SMSF administrator does it' },
+          { value: 'financial-planner', label: 'My Financial Planner does it' },
+        ],
+      },
+
+      costPerYear: {
+        question: 'How much does it cost per year?',
+        options: [
+          '< $1,000',
+          '$1,001 - $1,500',
+          '$1,501 - $2,000',
+          '$2,001 - $2,500',
+          '$2,501 - $3,000',
+          '$3,001 - $3,500',
+          '$3,500+',
+        ],
+      },
+    },
+
     results: {
       title: 'Results',
       longTitle: 'Results',

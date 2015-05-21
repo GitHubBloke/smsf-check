@@ -19,7 +19,7 @@ export default class SurveyForm extends BaseComponent {
   render() {
     return (
       <form className='survey' noValidate autoComplete='off' onSubmit={this._handleSubmit}>
-        <Grid className='prepend-xs-2 append-xs-2'>
+        <Grid className='prepend-xs-3 append-xs-2'>
           <Row>
             <Col md={16}>
               {this.props.renderForm()}

@@ -8,9 +8,8 @@ import BasePage from './BasePage';
 import locals from '../../utils/locals';
 import RadioQuestion from '../../components/RadioQuestion';
 import { connectToStores } from '../../utils/StoreUtils';
-import SurveyActionCreators from '../../actions/SurveyActionCreators';
-import SurveyForm from './SurveyForm';
 import SelectQuestion from '../../components/SelectQuestion';
+import SurveyForm from './SurveyForm';
 import SurveyStore from '../../stores/SurveyStore';
 import { requireSkippable } from '../../utils/SurveyUtils';
 
@@ -25,14 +24,12 @@ class TrustPage extends BasePage {
       <SurveyForm {...this.props}
         renderForm={this.renderForm}
         renderChart={this.renderChart}
-        prevRoute='members' nextRoute='results'>
+        prevRoute='members' nextRoute='accounting'>
       </SurveyForm>
     );
   }
 
   renderForm() {
-    const { survey, submitting } = this.props;
-
     return (
       <div>
         {this.renderTrusteeType()}
