@@ -9,6 +9,7 @@ import locals from '../../utils/locals';
 import { connectToStores } from '../../utils/StoreUtils';
 import SurveyActionCreators from '../../actions/SurveyActionCreators';
 import SurveyStore from '../../stores/SurveyStore';
+import { requireSkippable } from '../../utils/SurveyUtils';
 
 class TrustPage extends BaseComponent {
   constructor(props) {
@@ -58,8 +59,8 @@ function getState({ params }) {
   return { survey, submitting, skippable };
 }
 
-export default connectToStores(TrustPage,
+export default requireSkippable(connectToStores(TrustPage,
   [ SurveyStore ],
   pickProps,
   getState
-);
+));
