@@ -84,7 +84,8 @@ export default class MemberDetails extends MemberCard {
   }
 
   renderHeader() {
-    const { survey } = this.props;
+    const { data } = this.state;
+    const { survey, submitting } = this.props;
 
     return (
       <div className='well__header'>
@@ -110,6 +111,7 @@ MemberDetails.defaultProps = _.assign({}, MemberCard.defaultProps, {});
 
 MemberDetails.schema = {
   member: {
+    name: Joi.string().required().label('This field'),
     preRetirementAnnualIncome: Joi.number().required().label('This field'),
     currentMemberBalance: Joi.number().required().label('This field'),
     isRetired: Joi.bool().required().label('This field'),

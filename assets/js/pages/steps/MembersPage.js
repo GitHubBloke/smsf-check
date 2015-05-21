@@ -1,4 +1,5 @@
 import Immutable from 'immutable';
+import uuid from 'node-uuid';
 import React from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
 import DocumentTitle from 'react-document-title';
@@ -59,7 +60,7 @@ class MembersPage extends BaseComponent {
 
   renderMember(member, index) {
     return (
-      <Col key={index} md={12} className='append-xs-tiny'>
+      <Col key={member.get('id') || member.get('ref')} md={12} className='append-xs-tiny'>
         <MemberDetails member={member} />
       </Col>
     );
@@ -67,7 +68,7 @@ class MembersPage extends BaseComponent {
 
   _addMember() {
     const { survey } = this.props;
-    SurveyActionCreators.addMember({ name: `Member ${survey.get('members').size + 1}`, gender: 'male' });
+    SurveyActionCreators.addMember({ name: `Member ${survey.get('members').size + 1}`, gender: 'male', ref: uuid.v1() });
   }
 }
 
