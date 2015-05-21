@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import { Component } from 'react';
 import { IntlMixin } from '../shims/ReactIntl';
 import reactMixin from 'react-mixin';
@@ -22,6 +23,12 @@ export default class BaseComponent extends Component {
         return this._setState(path, setModifier(args[0]));
       },
     };
+  }
+
+  translatedOptions(name) {
+    return _.map(this.getIntlMessage(name), ({ value, label }) => {
+      return { value, label: this.formatMessage(label) };
+    });
   }
 
   _setState(path, value, cb) {

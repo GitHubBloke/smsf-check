@@ -50,10 +50,7 @@ class TrustPage extends BasePage {
 
     const radioData = {
       question: this.getIntlMessage('trust.trusteeType.question'),
-      options: [
-        { value: 'individuals', label: this.getIntlMessage('trust.trusteeType.options.individuals') },
-        { value: 'corporate', label: this.getIntlMessage('trust.trusteeType.options.corporate') },
-      ],
+      options: this.translatedOptions('trust.trusteeType.options'),
       valueLink: this.valueLink('survey.trusteeType'),
       disabled: submitting,
       error: this.getErrorProps('survey.trusteeType').help,

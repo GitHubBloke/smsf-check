@@ -96,7 +96,10 @@ export default {
 
       trusteeType: {
         question: 'What type of trustee does your fund have?',
-        options: { individuals: 'Individuals as Trustee', corporate: 'Corporate trustee' },
+        options: [
+          { value: 'individuals', label: 'Individuals as Trustee' },
+          { value: 'corporate', label: 'Corporate trustee' },
+        ],
       },
       deedSupplier: { question: 'Who supplied the trust deed for you fund?' },
       yearLastUpdated: { question: 'In which year was your trust fund last updated?' },
