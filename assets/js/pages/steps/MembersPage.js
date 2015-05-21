@@ -52,7 +52,7 @@ class MembersPage extends BaseComponent {
 
   renderMember(member, index) {
     return (
-      <Col key={index} md={12}>
+      <Col key={index} md={12} className='append-xs-tiny'>
         <MemberDetails member={member} />
       </Col>
     );
