@@ -13,7 +13,7 @@ export default {
   },
 
   save() {
-    const valid = _.reduce(validators, (valid, validator) => valid && validator(), true);
+    const valid = _.reduce(validators, (valid, validator) => validator() && valid, true);
 
     if (valid) {
       AppDispatcher.handleViewAction({ type: ActionTypes.SURVEY_SAVE });
