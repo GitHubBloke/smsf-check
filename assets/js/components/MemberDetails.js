@@ -88,7 +88,10 @@ export default class MemberDetails extends MemberCard {
     const { survey, submitting } = this.props;
 
     return (
-      <div className='well__header'>
+      <div className='well__header member__header'>
+        <div className='member__name'>
+          <h4>{data.getIn([ 'member', 'name' ])}</h4>
+        </div>
         {survey.get('members').size > 1 && this.renderDeleteButton()}
       </div>
     );
