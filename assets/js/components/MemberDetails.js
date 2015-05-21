@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import classNames from 'classnames';
 import Joi from 'joi';
 import { Input, Well } from 'react-bootstrap';
 import React, { PropTypes } from 'react';
@@ -25,8 +26,8 @@ export default class MemberDetails extends MemberCard {
           valueLink={this.linkState('member.currentMemberBalance')}
           {...this.getErrorProps('member.currentMemberBalance')} />
 
-        <div className='form-group append-xs-none'>
-          <label className='append-xs-tiny text-normal'>
+        <div className={classNames('form-group append-xs-none', this.hasError('member.isRetired') && 'has-error')}>
+          <label className='control-label append-xs-tiny text-normal'>
             <FM message={this.getIntlMessage('members.isRetired.label')} />
           </label>
           <div className='row form-inline'>
@@ -46,6 +47,7 @@ export default class MemberDetails extends MemberCard {
               </div>
             </RadioGroup>
           </div>
+          <div className='help-block'>{this.getErrorProps('member.isRetired').help}</div>
         </div>
       </Well>
     );

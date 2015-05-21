@@ -39,5 +39,5 @@ export default {
 
   removeValidator(validator) {
     _.remove(validators, (v) => validator === v);
-  }
+  },
 };
