@@ -48,7 +48,7 @@ class MembersPage extends BasePage {
         </h3>
         <Row className='members'>
           {survey.get('members').map(this.renderMember)}
-          <Col md={12}>
+          <Col md={12} className={(survey.get('members').size % 2 === 0) && 'clear-md clear-lg'}>
             <Button block className='btn-dashed btn-xl text-normal members__add'
               disabled={submitting} onClick={this._addMember}>
               <Icon id='ios-plus-outline' size='lg' />
@@ -67,7 +67,7 @@ class MembersPage extends BasePage {
 
   renderMember(member, index) {
     return (
-      <Col key={member.get('id') || member.get('ref')} md={12}>
+      <Col key={member.get('id') || member.get('ref')} md={12} className={(index % 2 === 0) && 'clear-md clear-lg'}>
         <MemberDetails member={member} />
       </Col>
     );
