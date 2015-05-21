@@ -16,8 +16,10 @@ export default {
     const valid = _.reduce(validators, (valid, validator) => validator() && valid, true);
 
     if (valid) {
-      AppDispatcher.handleViewAction({ type: ActionTypes.SURVEY_SAVE });
-      SurveyAPI.save(SurveyStore.getDirtySurvey().toJS());
+      if (SurveyStore.isDirty()) {
+        AppDispatcher.handleViewAction({ type: ActionTypes.SURVEY_SAVE });
+        SurveyAPI.save(SurveyStore.getDirtySurvey().toJS());
+      }
     } else {
       AppDispatcher.handleViewAction({ type: ActionTypes.SURVEY_SAVE_ERROR });
     }
