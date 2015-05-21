@@ -54,6 +54,7 @@ SurveyStore.dispatchToken = AppDispatcher.register((payload) => {
       break;
 
     case ActionTypes.SURVEY_MAKE_DIRTY:
+      console.log('made dirty');
       dirtySurvey = action.dirtySurvey;
       break;
 

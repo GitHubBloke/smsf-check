@@ -3,6 +3,7 @@ import React from 'react';
 import AuthServerActionCreators from '../actions/AuthServerActionCreators';
 import AuthStore from '../stores/AuthStore';
 import BaseComponent from './BaseComponent';
+import locals from './locals';
 
 export function requireAuth(Component) {
   class Authenticated extends BaseComponent {
@@ -24,8 +25,7 @@ export function requireUnauth(Component) {
   class Unauthenticated extends BaseComponent {
     static willTransitionTo(transition) {
       if (AuthStore.signedIn()) {
-        const user = AuthStore.getUser();
-        AuthServerActionCreators.handleSigninSuccess({ user });
+        AuthServerActionCreators.handleSigninSuccess({ user: locals.user });
       }
     }
 
