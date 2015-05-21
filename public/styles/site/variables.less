@@ -2,6 +2,8 @@
 
 @avatar-size: 100px;
 
+@border-radius-xl: 10px;
+
 @btn-clear-color: @text-inverse;
 @btn-clear-bg: transparent;
 @btn-clear-border: @text-inverse;
@@ -9,6 +11,7 @@
 @font-family-base: @font-family-sans-serif;
 
 @font-size-base: 16px;
+@font-size-xl: ceil((@font-size-base * 1.625)); // ~26px
 @font-size-large: ceil((@font-size-base * 1.05)); // ~18px
 @font-size-small: ceil((@font-size-base * 0.875)); // ~14px
 
@@ -30,6 +33,7 @@
 @hr-border: @well-border;
 
 @input-border: @well-border;
+@input-border-focus: @brand-primary;
 @input-border-width: 2px;
 @input-color: @text-color;
 
@@ -45,6 +49,9 @@
 @navbar-default-color: @text-inverse;
 @navbar-default-border: darken(@brand-primary, 4%);
 @navbar-default-brand-color: @navbar-default-color;
+
+@padding-xl-vertical: 40px;
+@padding-xl-horizontal: 40px;
 
 @progress-bg: #ebedef;
 @progress-border-radius: @border-radius-large;
@@ -65,6 +72,7 @@
 
 @text-color: #63686d;
 @text-inverse: #fff;
+@text-muted: #cdd4db;
 
 @well-bg: #f7f8f9;
 @well-border: darken(@well-bg, 7%);

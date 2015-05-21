@@ -1,4 +1,5 @@
 .btn { .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @border-radius-base); }
+.btn-xl { .button-size(@padding-xl-vertical; @padding-xl-horizontal; @font-size-xl; 1; @border-radius-xl); }
 .btn-lg { .button-size(@padding-large-vertical * 1.5; @padding-large-horizontal; @font-size-base; 1; @border-radius-small); }
 .btn-sm { .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-small); }
 .btn-xs { .button-size(@padding-xs-vertical; @padding-xs-horizontal; @font-size-small; @line-height-small; @border-radius-small); }
@@ -13,4 +14,27 @@
 .btn--wide {
   padding-left: @padding-large-horizontal * 3;
   padding-right: @padding-large-horizontal * 3;
+}
+
+.btn-dashed {
+  color: @text-muted;
+  background-color: transparent;
+  border: 2px dashed @text-muted;
+  font-weight: @font-weight-bold;
+  .box-shadow(none);
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    background-color: transparent;
+    color: darken(@text-muted, 10%);
+    border-color: darken(@text-muted, 10%);
+  }
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    background-color: @well-bg;
+  }
 }

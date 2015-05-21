@@ -7,7 +7,7 @@ export class IconStack extends BaseComponent {
   render() {
     const { id, size, className, children } = this.props;
     return (
-      <span className={classNames('fa-stack', size && `fa-${size}x`, className)}>
+      <span className={classNames('fa-stack', size && `fa-${size}`, className)}>
         {children}
       </span>
     );
@@ -17,7 +17,7 @@ export class IconStack extends BaseComponent {
 export default class Icon extends BaseComponent {
   render() {
     const { id, size, stacked, className } = this.props;
-    return <span className={classNames('icon', `ion-${id}`, size && `fa-${stacked ? 'stack-' : ''}${size}x`, className)}></span>;
+    return <span className={classNames('icon', `ion-${id}`, size && `fa-${stacked ? 'stack-' : ''}${size}`, className)}></span>;
   }
 }
 

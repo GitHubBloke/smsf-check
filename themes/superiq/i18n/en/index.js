@@ -85,9 +85,8 @@ export default {
         options: { yes: 'Yes', no: 'No' },
       },
 
-      delete: {
-        confirmation: 'Are you sure you would like to remove this member?',
-      }
+      add: { actionLabel: 'Add a member' },
+      delete: { confirmation: 'Are you sure you would like to remove this member?' },
     },
 
     shared: {

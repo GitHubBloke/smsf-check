@@ -7,6 +7,7 @@ import { FormattedMessage as FM } from '../../shims/ReactIntl';
 
 import BaseComponent from '../../utils/BaseComponent';
 import BasePage from './BasePage';
+import Icon from '../../components/Icon';
 import locals from '../../utils/locals';
 import MemberDetails from '../../components/MemberDetails';
 import { connectToStores } from '../../utils/StoreUtils';
@@ -45,8 +46,11 @@ class MembersPage extends BaseComponent {
         <Row>
           {survey.get('members').map(this.renderMember)}
           <Col md={12}>
-            <Button block bsSize='large' onClick={this._addMember}>
-              Add a member
+            <Button block className='btn-dashed btn-xl text-normal'
+              disabled={submitting} onClick={this._addMember}>
+              <Icon id='ios-plus-outline' size='lg' />
+              &nbsp;&nbsp;
+              <FM message={this.getIntlMessage('members.add.actionLabel')} />
             </Button>
           </Col>
         </Row>

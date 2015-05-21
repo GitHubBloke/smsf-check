@@ -91,27 +91,27 @@ class RegisterPage extends Validatable {
     return (
       <Row className='text-center prepend-xs-2 prepend-sm-3'>
         <Col md={6} mdOffset={3} className='append-xs-2 append-sm-3'>
-          <IconStack size='3'>
-            <Icon id='record' size='2' stacked className='text-primary' />
-            <Icon id='android-lock' size='1' stacked className='text-inverse' />
+          <IconStack size='3x'>
+            <Icon id='record' size='2x' stacked className='text-primary' />
+            <Icon id='android-lock' size='1x' stacked className='text-inverse' />
           </IconStack>
           <div className='prepend-xs-1'>
             <FM message={this.getIntlMessage('home.features.safeData')} />
           </div>
         </Col>
         <Col md={6} className='append-xs-2 append-sm-3'>
-          <IconStack size='3'>
-            <Icon id='record' size='2' stacked className='text-primary' />
-            <Icon id='information' size='1' stacked className='text-inverse' />
+          <IconStack size='3x'>
+            <Icon id='record' size='2x' stacked className='text-primary' />
+            <Icon id='information' size='1x' stacked className='text-inverse' />
           </IconStack>
           <div className='prepend-xs-1'>
             <FM message={this.getIntlMessage('home.features.greatAdvice')} />
           </div>
         </Col>
         <Col md={6} className='append-xs-2 append-sm-3'>
-          <IconStack size='3'>
-            <Icon id='record' size='2' stacked className='text-primary' />
-            <Icon id='stats-bars' size='1' stacked className='text-inverse' />
+          <IconStack size='3x'>
+            <Icon id='record' size='2x' stacked className='text-primary' />
+            <Icon id='stats-bars' size='1x' stacked className='text-inverse' />
           </IconStack>
           <div className='prepend-xs-1'>
             <FM message={this.getIntlMessage('home.features.compare')} name={locals.name} />

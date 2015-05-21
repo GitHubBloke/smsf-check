@@ -100,7 +100,7 @@ export default class MemberDetails extends MemberCard {
   renderDeleteButton() {
     return (
       <a href='#' className='member__delete link-plain pull-right' onClick={this.deleteMember}>
-        <Icon id='ios-close-outline' size='3' className='text-alpha' />
+        <Icon id='ios-close-outline' size='3x' className='text-alpha' />
       </a>
     );
   }
