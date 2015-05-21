@@ -4,16 +4,17 @@ import React from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
 import { FormattedMessage as FM } from '../../shims/ReactIntl';
 
-import BaseComponent from '../../utils/BaseComponent';
 import BasePage from './BasePage';
+import BaseComponent from '../../utils/BaseComponent';
 import Icon from '../../components/Icon';
 import locals from '../../utils/locals';
 import MemberDetails from '../../components/MemberDetails';
 import { connectToStores } from '../../utils/StoreUtils';
 import SurveyActionCreators from '../../actions/SurveyActionCreators';
+import SurveyForm from './SurveyForm';
 import SurveyStore from '../../stores/SurveyStore';
 
-class MembersPage extends BaseComponent {
+class MembersPage extends BasePage {
   constructor(props) {
     super(props);
     this.bind('renderForm', 'renderChart', 'renderMember', '_addMember');
@@ -28,11 +29,11 @@ class MembersPage extends BaseComponent {
 
   render() {
     return (
-      <BasePage {...this.props}
+      <SurveyForm {...this.props}
         renderForm={this.renderForm}
         renderChart={this.renderChart}
         nextRoute='trust'>
-      </BasePage>
+      </SurveyForm>
     );
   }
 
