@@ -11,6 +11,7 @@ import SigninPage from './pages/auth/SigninPage';
 import SignoutPage from './pages/auth/SignoutPage';
 
 import MembersPage from './pages/steps/MembersPage';
+import TrustPage from './pages/steps/TrustPage';
 
 import PrivacyPage from './pages/PrivacyPage';
 import TermsPage from './pages/TermsPage';
@@ -28,6 +29,7 @@ export default (
 
     <Route handler={ToolPage}>
       <Route name='members' handler={MembersPage} />
+      <Route name='trust' handler={TrustPage} />
     </Route>
 
     <NotFoundRoute handler={NotFoundPage} />

@@ -8,7 +8,7 @@ import { createStore } from '../utils/StoreUtils';
 import locals from '../utils/locals';
 
 let currentSurvey, dirtySurvey;
-let saving, saveError;
+let saving = false, saveError;
 
 if (locals.user) { currentSurvey = dirtySurvey = Immutable.fromJS(locals.user.survey); }
 
@@ -20,6 +20,8 @@ const SurveyStore = createStore({
 
   isSaving() { return saving; },
   getSaveError() { return saveError; },
+
+  isSkippable() { return !currentSurvey.get('members').isEmpty(); },
 });
 
 SurveyStore.dispatchToken = AppDispatcher.register((payload) => {
@@ -29,7 +31,14 @@ SurveyStore.dispatchToken = AppDispatcher.register((payload) => {
   switch (action.type) {
     case ActionTypes.SIGNIN_SUCCESS:
       const user = response && response.user;
-      currentSurvey = dirtySurvey = Immutable.fromJS(user.survey);
+      if (!currentSurvey || !dirtySurvey) {
+        currentSurvey = dirtySurvey = Immutable.fromJS(user.survey);
+      }
+      break;
+
+    case ActionTypes.SIGNOUT_SUCCESS:
+      currentSurvey = void 0;
+      dirtySurvey = void 0;
       break;
 
     case ActionTypes.SURVEY_ADD_MEMBER:

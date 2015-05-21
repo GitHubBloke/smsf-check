@@ -89,6 +89,10 @@ export default {
       delete: { confirmation: 'Are you sure you would like to remove this member?' },
     },
 
+    trust: {
+      title: 'Trust Structure',
+    },
+
     shared: {
       navbar: {
         signin: { actionLabel: 'Log In' },
@@ -114,7 +118,9 @@ export default {
       },
 
       actions: {
-         nextStep: { actionLabel: 'Next Step', loadingLabel: 'Please wait...' },
+        skipStep: { actionLabel: 'Skip this step' },
+        prevStep: { actionLabel: 'Previous Step' },
+        nextStep: { actionLabel: 'Next Step', loadingLabel: 'Please wait...' },
       },
     },
 

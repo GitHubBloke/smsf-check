@@ -19,7 +19,7 @@ export default class MemberDetails extends MemberCard {
     const isRetiredHasError = this.hasError('member.isRetired');
 
     return (
-      <Well className='text-center member'>
+      <Well className='text-center member append-xs-none'>
         {this.renderHeader()}
 
         <div className='well__body'>

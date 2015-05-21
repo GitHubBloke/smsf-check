@@ -6,9 +6,10 @@ import SurveyServerActionCreators from '../actions/SurveyServerActionCreators';
 const prefixer = prefix('/api/surveys');
 
 export default {
-  save(survey) {
+  save(survey, cb = () => {}) {
     setTimeout(() => {
       SurveyServerActionCreators.handleSaveSuccess();
+      cb();
     }, 1000);
   },
 };

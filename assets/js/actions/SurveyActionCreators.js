@@ -5,6 +5,8 @@ import ActionTypes from '../constants/ActionTypes';
 import SurveyAPI from '../api/SurveyAPI';
 import SurveyStore from '../stores/SurveyStore';
 
+import router from '../router';
+
 const validators = [];
 
 export default {
@@ -12,17 +14,21 @@ export default {
     AppDispatcher.handleViewAction({ type: ActionTypes.SURVEY_ADD_MEMBER, member });
   },
 
-  save() {
+  save(cb) {
     const valid = _.reduce(validators, (valid, validator) => validator() && valid, true);
 
     if (valid) {
       if (SurveyStore.isDirty()) {
         AppDispatcher.handleViewAction({ type: ActionTypes.SURVEY_SAVE });
-        SurveyAPI.save(SurveyStore.getDirtySurvey().toJS());
+        SurveyAPI.save(SurveyStore.getDirtySurvey().toJS(), cb);
       }
     } else {
       AppDispatcher.handleViewAction({ type: ActionTypes.SURVEY_SAVE_ERROR });
     }
+  },
+
+  saveAndTransitionTo(nextRoute) {
+    this.save(() => router.transitionTo(nextRoute));
   },
 
   makeDirty(dirtySurvey) {

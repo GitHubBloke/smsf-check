@@ -30,7 +30,11 @@ class MembersPage extends BaseComponent {
   render() {
     return (
       <DocumentTitle title={`${locals.name} - ${this.formatMessage(this.getIntlMessage('members.title'))}`}>
-        <BasePage {...this.props} renderForm={this.renderForm} renderChart={this.renderChart}></BasePage>
+        <BasePage {...this.props}
+          renderForm={this.renderForm}
+          renderChart={this.renderChart}
+          nextRoute='trust'>
+        </BasePage>
       </DocumentTitle>
     );
   }
@@ -43,10 +47,10 @@ class MembersPage extends BaseComponent {
         <h3 className='append-xs-2'>
           <FM message={this.getIntlMessage('members.question')} />
         </h3>
-        <Row>
+        <Row className='members'>
           {survey.get('members').map(this.renderMember)}
           <Col md={12}>
-            <Button block className='btn-dashed btn-xl text-normal'
+            <Button block className='btn-dashed btn-xl text-normal members__add'
               disabled={submitting} onClick={this._addMember}>
               <Icon id='ios-plus-outline' size='lg' />
               &nbsp;&nbsp;
@@ -64,7 +68,7 @@ class MembersPage extends BaseComponent {
 
   renderMember(member, index) {
     return (
-      <Col key={member.get('id') || member.get('ref')} md={12} className='append-xs-tiny'>
+      <Col key={member.get('id') || member.get('ref')} md={12}>
         <MemberDetails member={member} />
       </Col>
     );
@@ -86,7 +90,8 @@ function pickProps({ params }) {
 function getState({ params }) {
   const survey = SurveyStore.getDirtySurvey();
   const submitting = SurveyStore.isSaving();
-  return { survey, submitting };
+  const skippable = SurveyStore.isSkippable();
+  return { survey, submitting, skippable };
 }
 
 export default connectToStores(MembersPage,
