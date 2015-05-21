@@ -60,7 +60,7 @@ class MembersPage extends BaseComponent {
 
   _addMember() {
     const { survey } = this.props;
-    SurveyActionCreators.addMember({ name: `Member ${survey.get('members').size + 1}` });
+    SurveyActionCreators.addMember({ name: `Member ${survey.get('members').size + 1}`, gender: 'male' });
   }
 }
 

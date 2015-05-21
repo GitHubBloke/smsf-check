@@ -1,19 +1,33 @@
 import _ from 'lodash';
 import classNames from 'classnames';
 import Joi from 'joi';
-import { Input, Well } from 'react-bootstrap';
+import { Col, Input, Row, Well } from 'react-bootstrap';
 import React, { PropTypes } from 'react';
 import { FormattedMessage as FM } from '../shims/ReactIntl';
 import RadioGroup from 'react-radio';
 
+import GenderOption from './GenderOption';
 import MemberCard from './MemberCard';
 
 export default class MemberDetails extends MemberCard {
   render() {
     const { data } = this.state;
+    const isRetiredHasError = this.hasError('member.isRetired');
 
     return (
       <Well className='text-center'>
+        <div className='form-group'>
+          <label className='control-label text-normal'>Gender</label>
+          <Row>
+            <Col xs={9} xsOffset={3}>
+              <GenderOption gender='female' {...this.linkState('member.gender')} />
+            </Col>
+            <Col xs={9}>
+              <GenderOption gender='male' {...this.linkState('member.gender')} />
+            </Col>
+          </Row>
+        </div>
+
         <Input type='text' bsSize='large' className='input-lg' labelClassName='append-xs-tiny text-normal'
           label={this.formatMessage(this.getIntlMessage('members.preRetirementAnnualIncome.label'))}
           addonBefore='$'
@@ -26,7 +40,7 @@ export default class MemberDetails extends MemberCard {
           valueLink={this.linkState('member.currentMemberBalance')}
           {...this.getErrorProps('member.currentMemberBalance')} />
 
-        <div className={classNames('form-group append-xs-none', this.hasError('member.isRetired') && 'has-error')}>
+        <div className={classNames('form-group append-xs-none', isRetiredHasError && 'has-error')}>
           <label className='control-label append-xs-tiny text-normal'>
             <FM message={this.getIntlMessage('members.isRetired.label')} />
           </label>
@@ -47,7 +61,7 @@ export default class MemberDetails extends MemberCard {
               </div>
             </RadioGroup>
           </div>
-          <div className='help-block'>{this.getErrorProps('member.isRetired').help}</div>
+          {isRetiredHasError && <div className='help-block'>{this.getErrorProps('member.isRetired').help}</div>}
         </div>
       </Well>
     );
