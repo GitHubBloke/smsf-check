@@ -7,7 +7,7 @@ import { Button, Col, Grid, Input, Row, Well } from 'react-bootstrap';
 import DocumentTitle from 'react-document-title';
 import { FormattedMessage as FM, FormattedHTMLMessage as FHM } from '../../shims/ReactIntl';
 import { Link } from 'react-router';
-import Select from 'keystone/node_modules/react-select';
+import Select from 'react-select';
 
 import { requireUnauth } from '../../utils/AuthUtils';
 import abnLoader from '../../api/abnLoader';

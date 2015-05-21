@@ -17,6 +17,7 @@
     "react-intl": "~1.2.0",
     "ionicons": "~2.0.1",
     "font-awesome": "~4.3.0",
-    "bootstrap": "~3.3.4"
+    "bootstrap": "~3.3.4",
+    "react-select": "~0.4.9"
   }
 }

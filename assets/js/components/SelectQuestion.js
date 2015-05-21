@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import classNames from 'classnames';
 import React, { PropTypes } from 'react';
-import Select from 'keystone/node_modules/react-select';
+import Select from 'react-select';
 
 import BaseComponent from '../utils/BaseComponent';
 
