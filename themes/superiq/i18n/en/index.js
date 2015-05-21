@@ -77,12 +77,17 @@ export default {
       title: 'Member Details',
       question: 'Tell us a little about the members of your fund.',
 
+      gender: { label: 'Gender' },
       preRetirementAnnualIncome: { label: 'Pre-retirement Annual Income' },
       currentMemberBalance: { label: 'Current Member Balance' },
       isRetired: {
         label: 'Is the member retired?',
         options: { yes: 'Yes', no: 'No' },
       },
+
+      delete: {
+        confirmation: 'Are you sure you would like to remove this member?',
+      }
     },
 
     shared: {

@@ -64,6 +64,13 @@ SurveyStore.dispatchToken = AppDispatcher.register((payload) => {
       dirtySurvey = dirtySurvey.setIn([ 'members', index ], dirtyMember);
       break;
 
+    case ActionTypes.SURVEY_DELETE_MEMBER:
+      const { member } = action;
+      const members = dirtySurvey.get('members');
+      const index = members.indexOf(member);
+      dirtySurvey = dirtySurvey.deleteIn([ 'members', index ]);
+      break;
+
     default:
       return;
   }

@@ -18,8 +18,8 @@ export default class MemberDetails extends MemberCard {
     return (
       <Well className='text-center member'>
         <div className='well__header'>
-          <a className='link-plain pull-right'>
-            <Icon id='ios-close-outline' size='2' className='text-alpha' />
+          <a href='#' className='member__delete link-plain pull-right' onClick={this.deleteMember}>
+            <Icon id='ios-close-outline' size='3' className='text-alpha' />
           </a>
         </div>
 
@@ -27,7 +27,9 @@ export default class MemberDetails extends MemberCard {
           <div className={classNames(`avatar-${data.getIn([ 'member', 'gender' ])}`, 'member__avatar', 'append-xs-1')}></div>
 
           <div className='form-group append-xs-1'>
-            <label className='control-label text-normal'>Gender</label>
+            <label className='control-label text-normal'>
+              <FM message={this.getIntlMessage('members.gender.label')} />
+            </label>
             <Row>
               <Col xs={9} xsOffset={3}>
                 <GenderOption gender='female' {...this.linkState('member.gender')} />

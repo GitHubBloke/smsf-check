@@ -33,6 +33,10 @@ export default {
     AppDispatcher.handleViewAction({ type: ActionTypes.SURVEY_MAKE_MEMBER_DIRTY, member, dirtyMember });
   },
 
+  deleteMember(member) {
+    AppDispatcher.handleViewAction({ type: ActionTypes.SURVEY_DELETE_MEMBER, member });
+  },
+
   addValidator(validator) {
     validators.push(validator);
   },

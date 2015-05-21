@@ -7,7 +7,7 @@ import Validatable from '../utils/Validatable';
 export default class MemberCard extends Validatable {
   constructor(props) {
     super(props);
-    this.bind('validate');
+    this.bind('validate', 'deleteMember');
     this.state = { data: Map({ member: props.member }) };
   }
 
@@ -24,6 +24,12 @@ export default class MemberCard extends Validatable {
     const member = this.state.data.get('member');
     if (prevMember !== member) {
       SurveyActionCreators.makeMemberDirty(prevMember, member);
+    }
+  }
+
+  deleteMember() {
+    if (window.confirm(this.formatMessage(this.getIntlMessage('members.delete.confirmation')))) {
+      SurveyActionCreators.deleteMember(this.state.data.get('member'));
     }
   }
 }
