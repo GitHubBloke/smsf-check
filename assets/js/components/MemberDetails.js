@@ -76,7 +76,8 @@ export default class MemberDetails extends MemberCard {
                 </div>
               </RadioGroup>
             </div>
-            {isRetiredHasError && <div className='help-block'>{this.getErrorProps('member.isRetired').help}</div>}
+            {isRetiredHasError &&
+              <div className='help-block' dangerouslySetInnerHTML={this.getErrorProps('member.isRetired').help}></div>}
           </div>
         </div>
       </Well>

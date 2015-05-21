@@ -10,6 +10,7 @@ import RadioQuestion from '../../components/RadioQuestion';
 import { connectToStores } from '../../utils/StoreUtils';
 import SurveyActionCreators from '../../actions/SurveyActionCreators';
 import SurveyForm from './SurveyForm';
+import SelectQuestion from '../../components/SelectQuestion';
 import SurveyStore from '../../stores/SurveyStore';
 import { requireSkippable } from '../../utils/SurveyUtils';
 
@@ -69,9 +70,19 @@ class TrustPage extends BasePage {
     const { data } = this.state;
     const { submitting } = this.props;
 
+    const selectData = {
+      question: this.getIntlMessage('trust.deedSupplier.question'),
+      options: this.translatedOptions('trust.deedSupplier.options'),
+      valueLink: this.valueLink('survey.deedSupplier'),
+      disabled: submitting,
+      error: this.getErrorProps('survey.deedSupplier').help,
+      searchable: false,
+    };
+
     return (
       <Row>
         <Col xs={24}>
+          <SelectQuestion {...selectData}></SelectQuestion>
         </Col>
       </Row>
     );
@@ -84,6 +95,7 @@ TrustPage.defaultProps = {};
 TrustPage.schema = {
   survey: {
     trusteeType: Joi.string().required().label('This field'),
+    deedSupplier: Joi.string().required().label('This field'),
   },
 };
 

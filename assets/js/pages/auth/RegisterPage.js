@@ -167,9 +167,9 @@ class RegisterPage extends Validatable {
                   placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.fundAbn.placeholder'))}
                   {...this.valueLink('fund.abn', this._handleFundSelect)}
                   disabled={submitting} />
-                  {this.hasError('fund.abn') &&
-                    <span className='help-block'
-                      dangerouslySetInnerHTML={{ __html: this.getErrorProps('fund.abn').help }}></span>}
+                {this.hasError('fund.abn') &&
+                  <span className='help-block'
+                    dangerouslySetInnerHTML={{ __html: this.getErrorProps('fund.abn').help }}></span>}
               </div>
             </Col>
           </Row>

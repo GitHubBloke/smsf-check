@@ -26,8 +26,17 @@ export default class BaseComponent extends Component {
   }
 
   translatedOptions(name) {
-    return _.map(this.getIntlMessage(name), ({ value, label }) => {
-      return { value, label: this.formatMessage(label) };
+    return _.map(this.getIntlMessage(name), (option) => {
+      let value, label;
+
+      if (_.isObject(option)) {
+        value = option.value;
+        label = this.formatMessage(option.label);
+      } else {
+        value = label = this.formatMessage(option);
+      }
+
+      return { value, label };
     });
   }
 

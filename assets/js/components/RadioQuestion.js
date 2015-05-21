@@ -1,9 +1,6 @@
 import _ from 'lodash';
 import classNames from 'classnames';
-import Immutable from 'immutable';
 import React, { PropTypes } from 'react';
-import { Col, Row } from 'react-bootstrap';
-import { FormattedMessage as FM } from '../shims/ReactIntl';
 import RadioGroup from 'react-radio';
 
 import BaseComponent from '../utils/BaseComponent';
@@ -24,7 +21,7 @@ export default class RadioQuestion extends BaseComponent {
           <RadioGroup name={question} {...valueLink}>
             {_.map(options, this.renderOption)}
           </RadioGroup>
-          {error && <div className='help-block'>{error}</div>}
+          {error && <span className='help-block' dangerouslySetInnerHTML={{ __html: error }}></span>}
         </div>
       </div>
     );

@@ -101,7 +101,10 @@ export default {
           { value: 'corporate', label: 'Corporate trustee' },
         ],
       },
-      deedSupplier: { question: 'Who supplied the trust deed for you fund?' },
+      deedSupplier: {
+        question: 'Who supplied the trust deed for you fund?',
+        options: [ 'Unknown', 'Freehills', 'Madgwicks', 'SuperCentral' ],
+      },
       yearLastUpdated: { question: 'In which year was your trust fund last updated?' },
     },
 
