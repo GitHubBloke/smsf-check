@@ -81,6 +81,10 @@ SurveyStore.dispatchToken = AppDispatcher.register((payload) => {
       dirtySurvey = dirtySurvey.deleteIn([ 'members', index ]);
       break;
 
+    case ActionTypes.SURVEY_CLEAR_DIRTY:
+      dirtySurvey = currentSurvey;
+      break;
+
     default:
       return;
   }

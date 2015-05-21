@@ -10,7 +10,7 @@ import RadioQuestion from '../../components/RadioQuestion';
 import { connectToStores } from '../../utils/StoreUtils';
 import SurveyForm from './SurveyForm';
 import SurveyStore from '../../stores/SurveyStore';
-import { requireSkippable } from '../../utils/SurveyUtils';
+import { wrapSurvey } from '../../utils/SurveyUtils';
 
 class InvestmentAdvicePage extends BasePage {
   constructor(props) {
@@ -107,7 +107,7 @@ function getState({ params }) {
   return { survey, submitting, skippable };
 }
 
-export default requireSkippable(connectToStores(InvestmentAdvicePage,
+export default wrapSurvey({ requireSkippable: true, confirmDirtySurvey: true }, connectToStores(InvestmentAdvicePage,
   [ SurveyStore ],
   pickProps,
   getState

@@ -13,6 +13,7 @@ import { connectToStores } from '../../utils/StoreUtils';
 import SurveyActionCreators from '../../actions/SurveyActionCreators';
 import SurveyForm from './SurveyForm';
 import SurveyStore from '../../stores/SurveyStore';
+import { wrapSurvey } from '../../utils/SurveyUtils';
 
 class MembersPage extends BasePage {
   constructor(props) {
@@ -92,8 +93,8 @@ function getState({ params }) {
   return { survey, submitting, skippable };
 }
 
-export default connectToStores(MembersPage,
+export default wrapSurvey({ confirmDirtySurvey: true }, connectToStores(MembersPage,
   [ SurveyStore ],
   pickProps,
   getState
-);
+));

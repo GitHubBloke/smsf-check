@@ -204,6 +204,8 @@ export default {
         prevStep: { actionLabel: 'Previous' },
         nextStep: { actionLabel: 'Next Step', loadingLabel: 'Please wait...' },
       },
+
+      beforeUnload: { message: 'You have unsaved changes. If you leave before saving, your changes will be lost.' },
     },
 
   }

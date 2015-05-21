@@ -3,7 +3,7 @@ import React from 'react';
 import BasePage from './BasePage';
 import { connectToStores } from '../../utils/StoreUtils';
 import SurveyStore from '../../stores/SurveyStore';
-import { requireSkippable } from '../../utils/SurveyUtils';
+import { wrapSurvey } from '../../utils/SurveyUtils';
 
 class ResultsPage extends BasePage {
   constructor(props) {
@@ -27,7 +27,7 @@ function getState({ params }) {
   return { survey };
 }
 
-export default requireSkippable(connectToStores(ResultsPage,
+export default wrapSurvey({ requireSkippable: true }, connectToStores(ResultsPage,
   [ SurveyStore ],
   pickProps,
   getState

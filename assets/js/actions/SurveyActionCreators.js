@@ -45,6 +45,10 @@ export default {
     AppDispatcher.handleViewAction({ type: ActionTypes.SURVEY_DELETE_MEMBER, member });
   },
 
+  clearDirty() {
+    AppDispatcher.handleViewAction({ type: ActionTypes.SURVEY_CLEAR_DIRTY });
+  },
+
   addValidator(validator) {
     validators.push(validator);
   },

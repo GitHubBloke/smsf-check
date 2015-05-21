@@ -7,7 +7,6 @@ import { Link } from 'react-router';
 import BaseComponent from '../../utils/BaseComponent';
 import Icon from '../../components/Icon';
 import SurveyActionCreators from '../../actions/SurveyActionCreators';
-import SurveyStore from '../../stores/SurveyStore';
 
 export default class SurveyForm extends BaseComponent {
   constructor(props) {

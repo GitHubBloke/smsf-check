@@ -9,8 +9,22 @@ import BaseComponent from '../utils/BaseComponent';
 import locals from '../utils/locals';
 import router from '../router';
 import steps from '../constants/Steps';
+import SurveyStore from '../stores/SurveyStore';
 
 class ToolPage extends BaseComponent {
+  constructor(props) {
+    super(props);
+    this.bind('_beforeUnload');
+  }
+
+  componentDidMount() {
+    window.addEventListener('beforeunload', this._beforeUnload);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('beforeunload', this._beforeUnload);
+  }
+
   render() {
     const step = router.getCurrentPathname().substring(1);
     const stepNumber = steps.indexOf(step) + 1;
@@ -36,6 +50,14 @@ class ToolPage extends BaseComponent {
         </div>
       </DocumentTitle>
     );
+  }
+
+  _beforeUnload(e) {
+    if (SurveyStore.isDirty()) {
+      const confirmationMessage = this.formatMessage(this.getIntlMessage('shared.beforeUnload.message'));
+      (e || window.event).returnValue = confirmationMessage;
+      return confirmationMessage;
+    }
   }
 }
 

@@ -2,6 +2,7 @@ import Immutable from 'immutable';
 import React from 'react';
 
 import SurveyActionCreators from '../../actions/SurveyActionCreators';
+import SurveyStore from '../../stores/SurveyStore';
 import Validatable from '../../utils/Validatable';
 
 export default class BasePage extends Validatable {

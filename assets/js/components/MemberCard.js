@@ -28,7 +28,7 @@ export default class MemberCard extends Validatable {
   }
 
   deleteMember() {
-    if (window.confirm(this.formatMessage(this.getIntlMessage('members.delete.confirmation')))) {
+    if (confirm(this.formatMessage(this.getIntlMessage('members.delete.confirmation')))) {
       SurveyActionCreators.deleteMember(this.state.data.get('member'));
     }
   }

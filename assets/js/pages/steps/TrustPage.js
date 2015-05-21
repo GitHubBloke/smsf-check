@@ -11,7 +11,7 @@ import { connectToStores } from '../../utils/StoreUtils';
 import SelectQuestion from '../../components/SelectQuestion';
 import SurveyForm from './SurveyForm';
 import SurveyStore from '../../stores/SurveyStore';
-import { requireSkippable } from '../../utils/SurveyUtils';
+import { wrapSurvey } from '../../utils/SurveyUtils';
 
 class TrustPage extends BasePage {
   constructor(props) {
@@ -132,7 +132,7 @@ function getState({ params }) {
   return { survey, submitting, skippable };
 }
 
-export default requireSkippable(connectToStores(TrustPage,
+export default wrapSurvey({ requireSkippable: true, confirmDirtySurvey: true }, connectToStores(TrustPage,
   [ SurveyStore ],
   pickProps,
   getState

@@ -27,4 +27,5 @@ export default keyMirror({
   SURVEY_MAKE_DIRTY: void 0,
   SURVEY_MAKE_MEMBER_DIRTY: void 0,
   SURVEY_DELETE_MEMBER: void 0,
+  SURVEY_CLEAR_DIRTY: void 0,
 });
