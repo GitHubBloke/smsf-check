@@ -26,7 +26,7 @@ export default class BasePage extends BaseComponent {
 
   render() {
     return (
-      <form noValidate autoComplete='off' onSubmit={this._handleSubmit}>
+      <form className='survey' noValidate autoComplete='off' onSubmit={this._handleSubmit}>
         <Grid className='prepend-xs-2 append-xs-2'>
           <Row>
             <Col md={16}>

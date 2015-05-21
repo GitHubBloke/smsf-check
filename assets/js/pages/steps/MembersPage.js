@@ -2,7 +2,6 @@ import Immutable from 'immutable';
 import uuid from 'node-uuid';
 import React from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
-import DocumentTitle from 'react-document-title';
 import { FormattedMessage as FM } from '../../shims/ReactIntl';
 
 import BaseComponent from '../../utils/BaseComponent';
@@ -29,13 +28,11 @@ class MembersPage extends BaseComponent {
 
   render() {
     return (
-      <DocumentTitle title={`${locals.name} - ${this.formatMessage(this.getIntlMessage('members.title'))}`}>
-        <BasePage {...this.props}
-          renderForm={this.renderForm}
-          renderChart={this.renderChart}
-          nextRoute='trust'>
-        </BasePage>
-      </DocumentTitle>
+      <BasePage {...this.props}
+        renderForm={this.renderForm}
+        renderChart={this.renderChart}
+        nextRoute='trust'>
+      </BasePage>
     );
   }
 

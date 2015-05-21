@@ -1,6 +1,5 @@
 import React from 'react';
 import { Row } from 'react-bootstrap';
-import DocumentTitle from 'react-document-title';
 import { FormattedMessage as FM } from '../../shims/ReactIntl';
 
 import BaseComponent from '../../utils/BaseComponent';
@@ -19,13 +18,11 @@ class TrustPage extends BaseComponent {
 
   render() {
     return (
-      <DocumentTitle title={`${locals.name} - ${this.formatMessage(this.getIntlMessage('trust.title'))}`}>
-        <BasePage {...this.props}
-          renderForm={this.renderForm}
-          renderChart={this.renderChart}
-          prevRoute='members'>
-        </BasePage>
-      </DocumentTitle>
+      <BasePage {...this.props}
+        renderForm={this.renderForm}
+        renderChart={this.renderChart}
+        prevRoute='members'>
+      </BasePage>
     );
   }
 

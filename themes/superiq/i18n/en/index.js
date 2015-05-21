@@ -75,6 +75,7 @@ export default {
 
     members: {
       title: 'Member Details',
+      longTitle: 'Your SMSF Member Details',
       question: 'Tell us a little about the members of your fund.',
 
       gender: { label: 'Gender' },
@@ -91,6 +92,14 @@ export default {
 
     trust: {
       title: 'Trust Structure',
+      longTitle: 'Your SMSF Trust Structure',
+
+      trusteeType: {
+        question: 'What type of trustee does your fund have?',
+        options: { individuals: 'Individuals as Trustee', corporate: 'Corporate trustee' },
+      },
+      deedSupplier: { question: 'Who supplied the trust deed for you fund?' },
+      yearLastUpdated: { question: 'In which year was your trust fund last updated?' },
     },
 
     shared: {
