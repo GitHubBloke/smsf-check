@@ -58,7 +58,7 @@ export function update(req, res) {
           `members,
            trust.trusteeType, trust.deedSupplier, trust.yearLastUpdated,
            accounting.whoDoesIt, accounting.costPerYear,
-           accounting.whoDoesIt, investmentAdvice.costPerYear`,
+           investmentAdvice.whoDoesIt, investmentAdvice.costPerYear`,
       }, cb);
     }],
 
