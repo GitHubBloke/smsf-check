@@ -33,12 +33,6 @@ export default class Header extends BaseComponent {
 
     return (
       <div className='navbar-right'>
-        <div className='navbar-text text-bold'>
-          <Icon id='android-person' />
-          &nbsp;&nbsp;
-          {user.getIn([ 'name', 'first' ])}
-        </div>
-
         <Button bsStyle='primary' bsSize='large' className='btn--wide navbar-btn'
           disabled={!surveyIsDirty || surveyIsSaving} onClick={this._save}>
           <FM message={this.getIntlMessage(`shared.navbar.save.${surveyIsSaving ? 'loadingLabel' : (surveyIsDirty ? 'actionLabel' : 'disabledLabel')}`)} />
