@@ -11,11 +11,11 @@ export default class GenderOption extends BaseComponent {
   }
 
   render() {
-    const { gender, value } = this.props;
+    const { gender, value, disabled } = this.props;
     const className = (gender === value ? 'text-primary' : 'text-alpha');
 
     return (
-      <a className='link-plain' href='#' onClick={this._setValue}>
+      <a className={classNames('link-plain', disabled && 'text-alpha')} href='#' onClick={this._setValue}>
         <IconStack size='2'>
           <Icon id='record' size='2' stacked className='text-inverse' />
           <Icon id='ios-circle-outline' size='2' stacked className={className} />
@@ -36,4 +36,8 @@ GenderOption.propTypes = {
   gender: PropTypes.oneOf([ 'male', 'female' ]),
   value: PropTypes.oneOf([ 'male', 'female' ]),
   requestChange: PropTypes.func.isRequired,
+  disabled: PropTypes.bool
+};
+GenderOption.defaultProps = {
+  disabled: false,
 };

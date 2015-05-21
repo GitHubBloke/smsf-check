@@ -20,9 +20,7 @@ export default class MemberDetails extends MemberCard {
 
     return (
       <Well className='text-center member'>
-        <div className='well__header'>
-          {survey.get('members').size > 1 && this.renderDeleteButton()}
-        </div>
+        {this.renderHeader()}
 
         <div className='well__body'>
           <div className={classNames(`avatar-${data.getIn([ 'member', 'gender' ])}`, 'member__avatar', 'append-xs-1')}></div>
@@ -33,10 +31,10 @@ export default class MemberDetails extends MemberCard {
             </label>
             <Row>
               <Col xs={9} xsOffset={3}>
-                <GenderOption gender='female' {...this.linkState('member.gender')} />
+                <GenderOption gender='female' {...this.linkState('member.gender')} disabled={submitting} />
               </Col>
               <Col xs={9}>
-                <GenderOption gender='male' {...this.linkState('member.gender')} />
+                <GenderOption gender='male' {...this.linkState('member.gender')} disabled={submitting} />
               </Col>
             </Row>
           </div>
@@ -46,6 +44,7 @@ export default class MemberDetails extends MemberCard {
             label={this.formatMessage(this.getIntlMessage('members.preRetirementAnnualIncome.label'))}
             addonBefore='$'
             valueLink={this.linkState('member.preRetirementAnnualIncome')}
+            disabled={submitting}
             {...this.getErrorProps('member.preRetirementAnnualIncome')} />
 
           <Input type='text' bsSize='large'
@@ -53,6 +52,7 @@ export default class MemberDetails extends MemberCard {
             label={this.formatMessage(this.getIntlMessage('members.currentMemberBalance.label'))}
             addonBefore='$'
             valueLink={this.linkState('member.currentMemberBalance')}
+            disabled={submitting}
             {...this.getErrorProps('member.currentMemberBalance')} />
 
           <div className={classNames('form-group append-xs-none', isRetiredHasError && 'has-error')}>
@@ -64,13 +64,13 @@ export default class MemberDetails extends MemberCard {
                 {...this.valueLink('member.isRetired', () => {}, this._isRetiredGetModifier, this._isRetiredSetModifier)}>
                 <div className='col-xs-6 col-xs-offset-6'>
                   <label className='text-normal'>
-                    <input type='radio' value={true} />&nbsp;
+                    <input type='radio' value={true} disabled={submitting} />&nbsp;
                     <FM message={this.getIntlMessage('members.isRetired.options.yes')} />
                   </label>
                 </div>
                 <div className='col-xs-6'>
                   <label className='text-normal'>
-                    <input type='radio' value={false} />&nbsp;
+                    <input type='radio' value={false} disabled={submitting} />&nbsp;
                     <FM message={this.getIntlMessage('members.isRetired.options.no')} />
                   </label>
                 </div>
@@ -80,6 +80,16 @@ export default class MemberDetails extends MemberCard {
           </div>
         </div>
       </Well>
+    );
+  }
+
+  renderHeader() {
+    const { survey } = this.props;
+
+    return (
+      <div className='well__header'>
+        {survey.get('members').size > 1 && this.renderDeleteButton()}
+      </div>
     );
   }
 
