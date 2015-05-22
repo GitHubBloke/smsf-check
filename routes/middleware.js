@@ -44,7 +44,7 @@ export function initLocals(req, res, next) {
     req.user.populateCascade().then(
       (user) => {
         locals.user = user;
-        locals.client.user = user;
+        locals.client.user = user.toJSON();
         next();
       },
       (err) => next(err)

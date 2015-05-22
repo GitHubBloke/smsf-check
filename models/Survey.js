@@ -29,6 +29,12 @@ Survey.add({
 Survey.schema.set('toJSON', {
   transform(doc, ret) {
     ret.id = ret._id;
+    ret.members = _.map(doc.members, (member) => member.toJSON());
+
+    ret.trust = ret.trust || {};
+    ret.accounting = ret.accounting || {};
+    ret.investmentAdvice = ret.investmentAdvice || {};
+
     ret = _.omit(ret, '_id', '__v');
     return ret;
   },
