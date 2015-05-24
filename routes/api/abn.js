@@ -21,7 +21,6 @@ export function lookup(req, res) {
         params = {
           searchString: q,
           includeHistoricalDetails: 'N',
-          authenticationGuid: '',
         };
         break;
       default:
@@ -35,11 +34,11 @@ export function lookup(req, res) {
       if (err) { return res.status(500).json(err); }
 
       const { response } = result.ABRPayloadSearchResults;
+      const { regulator } = response.businessEntity201408.superannuationStatus || {};
 
-      if (response.exception) {
+      if (response.exception || regulator !== 'ATOREGULATED') {
         return res.json({ abns: [] });
       }
-
 
       function getName(field) {
         return field && (_.isArray(field) ? field[0].organisationName : field.organisationName);
