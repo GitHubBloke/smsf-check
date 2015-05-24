@@ -113,13 +113,12 @@ ConfirmEmailPage.defaultProps = { submitting: false, error: void 0 };
 
 ConfirmEmailPage.schema = {
   password: Joi.string()
-    .min(8).max(16)
-    .regex(/^(?=.{0,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\W).*$/g)
+    .regex(/^(?=.{8,16})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\W).*$/g)
     .options({
       language: {
         string: {
           regex: {
-            base: 'is required to contain a mix of letters, capital letters, numbers and special characters'
+            base: 'is required to contain a mix of letters, capital letters, numbers and special characters, and be between 8 to 16 characters long'
           }
         }
       }
