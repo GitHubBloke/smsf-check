@@ -163,7 +163,7 @@ class RegisterPage extends Validatable {
           <Row>
             <Col md={24}>
               <div className={classNames({ 'form-group': true, 'has-error': this.hasError('fund.abn') })}>
-                <Select name='fundAbn' asyncOptions={abnLoader('abn')} autoload={false} className='Select--lg'
+                <Select name='fundAbn' asyncOptions={abnLoader()} autoload={false} className='Select--lg'
                   placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.fundAbn.placeholder'))}
                   {...this.valueLink('fund.abn', this._handleFundSelect)}
                   disabled={submitting} />

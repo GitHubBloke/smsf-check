@@ -22,7 +22,7 @@ export default class Header extends BaseComponent {
 
     return (
       <Navbar className='append-xs-none' staticTop
-        brand={<span><Link to='app' className='logo'>{locals.name}</Link></span>}>
+        brand={<span><Link to={signedIn ? 'members' : 'app'} className='logo'>{locals.name}</Link></span>}>
         {signedIn ? this.renderSignedInActions() : this.renderSignedOutActions()}
       </Navbar>
     );

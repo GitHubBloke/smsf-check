@@ -4,13 +4,13 @@ import request from 'superagent';
 
 const prefixer = prefix('/api/abn');
 
-export default (type) => {
+export default () => {
   return (q, cb) => {
     if (!q || q.length === 0) { return cb(void 0, { options: [] }); }
 
     request.get('/lookup')
       .use(prefixer)
-      .query({ q, type })
+      .query({ q })
       .send()
       .end((err, res) => {
         cb(err, {

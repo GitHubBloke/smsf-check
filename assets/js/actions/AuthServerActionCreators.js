@@ -11,7 +11,7 @@ export default {
     });
 
     const query = router.getCurrentQuery();
-    router.replaceWith((query && query.next) || response.user.survey.currentStep || 'members');
+    router.replaceWith((query && query.next) || '/');
   },
 
   handleSigninError(err) {
