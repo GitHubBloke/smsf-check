@@ -9,6 +9,7 @@ import { Link } from 'react-router';
 import AuthActionCreators from '../../actions/AuthActionCreators';
 import AuthStore from '../../stores/AuthStore';
 import locals from '../../utils/locals';
+import Password from '../../components/Password';
 import router from '../../router';
 import { connectToStores } from '../../utils/StoreUtils';
 import UserActionCreators from '../../actions/UserActionCreators';
@@ -55,7 +56,7 @@ class ConfirmEmailPage extends Validatable {
                   <div className='prepend-xs-1 append-xs-1 clearfix'>
                     <Row>
                       <Col md={12} mdOffset={6}>
-                        <Input type='password' bsSize='large' className='input-lg'
+                        <Password className='input-lg'
                           placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.password.placeholder'))}
                           valueLink={this.linkState('password')}
                           disabled={submitting}
