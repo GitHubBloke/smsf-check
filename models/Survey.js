@@ -6,6 +6,8 @@ const { Field: { Types } } = keystone;
 const Survey = new keystone.List('Survey');
 
 Survey.add({
+  currentStep: { type: String, hidden: true },
+
   user: { type: Types.Relationship, ref: 'User', required: true, initial: true, noedit: true },
   members: { type: Types.Relationship, ref: 'Member', many: true, noedit: true },
 

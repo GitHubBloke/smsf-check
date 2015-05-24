@@ -14,13 +14,16 @@ export default {
     AppDispatcher.handleViewAction({ type: ActionTypes.SURVEY_ADD_MEMBER, member });
   },
 
-  save(cb = () => {}) {
+  save(cb = () => {}, currentStep) {
     const valid = _.reduce(validators, (valid, validator) => validator() && valid, true);
 
     if (valid) {
       if (SurveyStore.isDirty()) {
+        const survey = SurveyStore.getDirtySurvey().toJS();
+        survey.currentStep = currentStep;
+
         AppDispatcher.handleViewAction({ type: ActionTypes.SURVEY_SAVE });
-        SurveyAPI.save(SurveyStore.getDirtySurvey().toJS(), cb);
+        SurveyAPI.save(survey, cb);
       } else {
         cb();
       }
@@ -30,7 +33,7 @@ export default {
   },
 
   saveAndTransitionTo(nextRoute) {
-    this.save(() => router.transitionTo(nextRoute));
+    this.save(() => router.transitionTo(nextRoute), nextRoute);
   },
 
   makeDirty(dirtySurvey) {

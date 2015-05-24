@@ -29,7 +29,6 @@ class ToolPage extends BaseComponent {
 
   render() {
     const step = router.getCurrentPathname().substring(1);
-    console.log(step);
     const stepNumber = steps.indexOf(step) + 1;
     const title = this.formatMessage(this.getIntlMessage(`${utils.keyToProperty(step)}.longTitle`));
 

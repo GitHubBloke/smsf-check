@@ -55,7 +55,8 @@ export function update(req, res) {
     updateSurvey: ['assignMembers', (cb, { survey }) => {
       survey.getUpdateHandler(req).process(req.body, {
         fields:
-          `members,
+          `currentStep,
+           members,
            trust.trusteeType, trust.deedSupplier, trust.yearLastUpdated,
            accounting.whoDoesIt, accounting.costPerYear,
            investmentAdvice.whoDoesIt, investmentAdvice.costPerYear`,
