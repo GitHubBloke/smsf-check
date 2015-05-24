@@ -1,0 +1,94 @@
+.steps {
+  display: table;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.steps-bar(@background) {
+  background: @background;
+  box-sizing: content-box;
+  content: '';
+  display: block;
+  height: @steps-height;
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+.steps__step {
+  display: table-cell;
+  line-height: 1;
+  position: relative;
+  text-align: center;
+
+  a {
+    color: mix(@text-inverse, @sub-header-bg, 50%);
+    display: block;
+    padding-top: @steps-height + 18px;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      color: mix(@text-inverse, @sub-header-bg, 75%);
+    }
+  }
+
+  a:before {
+    .steps-bar(@steps-bg);
+    border-top: @steps-bar-top-border-width solid @steps-shadow-color;
+    left: 0;
+    right: 0;
+  }
+
+  &.visited span:before { right: 0; }
+  &.active span:before { right: 50%; }
+
+  span:before {
+    .steps-bar(@steps-bar-bg);
+    height: @steps-bar-height;
+    top: @steps-bar-inner-gap + @steps-bar-top-border-width;
+  }
+
+  &:first-child {
+    a:before { .border-left-radius(@steps-height / 2); }
+    span:before {
+      .border-left-radius(@steps-bar-height / 2);
+      left: @steps-bar-inner-gap;
+    }
+  }
+
+  &:last-child {
+    a:before { .border-right-radius(@steps-height / 2); }
+    span:before { .border-right-radius(@steps-bar-height / 2); }
+
+    &.active a:after { right: @steps-indicator-size / 2 + @steps-bar-inner-gap; }
+    &.active span:before { right: @steps-bar-inner-gap; }
+  }
+
+  &.visited, &.active {
+    a {
+      &,
+      &:hover,
+      &:focus {
+        color: @text-inverse;
+      }
+    }
+  }
+
+  &.active {
+    a:after {
+      #gradient.vertical(@steps-indicator-color, lighten(@steps-indicator-color, 10%));
+      border-bottom: @steps-bar-top-border-width solid @steps-shadow-color;
+      border-radius: 100%;
+      box-sizing: content-box;
+      content: '';
+      position: absolute;
+      right: 50%;
+      top: ceil((@steps-height + @steps-bar-top-border-width) / 2);
+
+      .translate(@steps-indicator-size / 2, @steps-indicator-size / -2);
+      .square(@steps-indicator-size);
+    }
+  }
+}

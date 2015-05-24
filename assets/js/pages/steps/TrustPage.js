@@ -10,7 +10,7 @@ import locals from '../../utils/locals';
 import RadioQuestion from '../../components/RadioQuestion';
 import { connectToStores } from '../../utils/StoreUtils';
 import SelectQuestion from '../../components/SelectQuestion';
-import SurveyForm from './SurveyForm';
+import SurveyForm from '../../components/SurveyForm';
 import SurveyStore from '../../stores/SurveyStore';
 import { wrapSurvey } from '../../utils/SurveyUtils';
 

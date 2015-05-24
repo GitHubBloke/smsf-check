@@ -53,14 +53,12 @@
 @navbar-height: 87px;
 @navbar-default-bg: @brand-primary;
 @navbar-default-color: @text-inverse;
-@navbar-default-border: darken(@brand-primary, 4%);
+@navbar-default-border: @sub-header-bg;
 @navbar-default-brand-color: @navbar-default-color;
+@navbar-bottom-border-width: 16px;
 
 @padding-xl-vertical: 40px;
 @padding-xl-horizontal: 40px;
-
-@progress-bg: #ebedef;
-@progress-border-radius: @border-radius-large;
 
 @select-text-color: @input-color;
 @select-input-border-color: @input-border;
@@ -75,6 +73,22 @@
 
 @select-clear-color: @gray-light;
 @select-clear-hover-color: @brand-danger;
+
+@steps-height: 15px;
+@steps-bg: @gray-lighter;
+@steps-shadow-color: darken(@sub-header-bg, 11%);
+
+@steps-bar-bg: @brand-primary;
+@steps-bar-height: 9px;
+@steps-bar-top-border-width: 2px;
+
+@steps-indicator-size: 19px;
+@steps-indicator-color: lighten(@brand-primary, 10%);
+
+@steps-bar-inner-gap: (@steps-height - @steps-bar-height) / 2;
+
+@sub-header-bg: darken(@brand-primary, 4%);
+@sub-header-border: darken(@sub-header-bg, 11%);
 
 @survey-header-bg: @gray-lighter;
 

@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React from 'react';
 import { Col, Grid, Label, Row } from 'react-bootstrap';
 import DocumentTitle from 'react-document-title';
@@ -8,6 +9,7 @@ import { requireAuth } from '../utils/AuthUtils';
 import BaseComponent from '../utils/BaseComponent';
 import locals from '../utils/locals';
 import router from '../router';
+import Steps from '../components/Steps';
 import steps from '../constants/Steps';
 import SurveyStore from '../stores/SurveyStore';
 
@@ -27,26 +29,39 @@ class ToolPage extends BaseComponent {
 
   render() {
     const step = router.getCurrentPathname().substring(1);
+    console.log(step);
     const stepNumber = steps.indexOf(step) + 1;
     const title = this.formatMessage(this.getIntlMessage(`${utils.keyToProperty(step)}.longTitle`));
 
     return (
       <DocumentTitle title={`${locals.name} - ${title}`}>
-        <div className='survey'>
-          <div className='survey__header'>
-            <Grid className='prepend-xs-1 append-xs-1'>
+        <div>
+          <div className='sub-header clearfix visible-md visible-lg'>
+            <Grid className='prepend-md-1 append-md-1'>
               <Row>
                 <Col md={24}>
-                  <h3 className='text-primary prepend-xs-none append-xs-none'>
-                    <Label bsStyle='primary' className='pull-left'>{stepNumber}/{steps.length}</Label>
-                    &nbsp;&nbsp;
-                    {title}
-                  </h3>
+                  <Steps currentStep={step} className='text-inverse' />
                 </Col>
               </Row>
             </Grid>
           </div>
-          <RouteHandler {...this.props}/>
+
+          <div className='survey'>
+            <div className='survey__header'>
+              <Grid className='prepend-xs-1 append-xs-1'>
+                <Row>
+                  <Col md={24}>
+                    <h3 className='text-primary prepend-xs-none append-xs-none'>
+                      <Label bsStyle='primary' className='pull-left'>{stepNumber}/{steps.length}</Label>
+                      &nbsp;&nbsp;
+                      {title}
+                    </h3>
+                  </Col>
+                </Row>
+              </Grid>
+            </div>
+            <RouteHandler {...this.props}/>
+          </div>
         </div>
       </DocumentTitle>
     );

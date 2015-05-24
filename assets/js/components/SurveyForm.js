@@ -1,12 +1,12 @@
 import Immutable, { Map } from 'immutable';
 import React, { PropTypes } from 'react';
 import { Button, Col, Grid, Row } from 'react-bootstrap';
-import { FormattedMessage as FM } from '../../shims/ReactIntl';
+import { FormattedMessage as FM } from '../shims/ReactIntl';
 import { Link } from 'react-router';
 
-import BaseComponent from '../../utils/BaseComponent';
-import Icon from '../../components/Icon';
-import SurveyActionCreators from '../../actions/SurveyActionCreators';
+import BaseComponent from '../utils/BaseComponent';
+import Icon from './Icon';
+import SurveyActionCreators from '../actions/SurveyActionCreators';
 
 export default class SurveyForm extends BaseComponent {
   constructor(props) {

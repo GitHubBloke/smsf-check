@@ -11,7 +11,7 @@ import locals from '../../utils/locals';
 import MemberDetails from '../../components/MemberDetails';
 import { connectToStores } from '../../utils/StoreUtils';
 import SurveyActionCreators from '../../actions/SurveyActionCreators';
-import SurveyForm from './SurveyForm';
+import SurveyForm from '../../components/SurveyForm';
 import SurveyStore from '../../stores/SurveyStore';
 import { wrapSurvey } from '../../utils/SurveyUtils';
 

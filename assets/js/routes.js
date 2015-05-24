@@ -35,6 +35,11 @@ export default (
       <Route name='trust' handler={TrustPage} />
       <Route name='accounting' handler={AccountingPage} />
       <Route name='investment-advice' handler={InvestmentAdvicePage} />
+      <Route name='investment-strategy' handler={ResultsPage} />
+      <Route name='death-benefits' handler={ResultsPage} />
+      <Route name='insurance' handler={ResultsPage} />
+      <Route name='pensions' handler={ResultsPage} />
+      <Route name='contributions' handler={ResultsPage} />
       <Route name='results' handler={ResultsPage} />
     </Route>
 

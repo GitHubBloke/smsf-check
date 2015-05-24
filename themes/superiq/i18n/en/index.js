@@ -176,6 +176,31 @@ export default {
       },
     },
 
+    investmentStrategy: {
+      title: 'Investment Strategy',
+      longTitle: 'Investment Strategy',
+    },
+
+    deathBenefits: {
+      title: 'Death Benefits',
+      longTitle: 'Death Benefits',
+    },
+
+    insurance: {
+      title: 'Insurance',
+      longTitle: 'Insurnace',
+    },
+
+    pensions: {
+      title: 'Pensions',
+      longTitle: 'Pensions',
+    },
+
+    contributions: {
+      title: 'Contributions',
+      longTitle: 'Contributions',
+    },
+
     results: {
       title: 'Results',
       longTitle: 'Results',
