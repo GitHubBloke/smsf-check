@@ -25,7 +25,7 @@ export function requireUnauth(Component) {
   class Unauthenticated extends BaseComponent {
     static willTransitionTo(transition) {
       if (AuthStore.signedIn()) {
-        AuthServerActionCreators.handleSigninSuccess({ user: locals.user });
+        AuthServerActionCreators.handleSigninSuccess({ user: AuthStore.getUser().toJS() });
       }
     }
 
