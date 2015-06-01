@@ -51,10 +51,23 @@ class RegisterPage extends Validatable {
             {this.renderFeatures()}
 
             <Row>
-              <Col md={18} mdOffset={3} className='append-xs-2'>
-                <Well bsSize='large'>
+              <Col md={18} mdOffset={3}>
+                <Well bsSize='large' className='append-xs-tiny'>
                   {registeredUser ? this.renderSuccess() : this.renderForm()}
                 </Well>
+              </Col>
+            </Row>
+
+            <Row>
+              <Col md={18} mdOffset={3}>
+                <hr className='append-xs-1' />
+              </Col>
+            </Row>
+            <Row>
+              <Col md={16} mdOffset={4} className='append-xs-2'>
+                <p className='text-center small'>
+                  <FM message={this.getIntlMessage('home.adviceDisclaimer')} />
+                </p>
               </Col>
             </Row>
           </Grid>
@@ -69,17 +82,11 @@ class RegisterPage extends Validatable {
         <Grid>
           <Row className='text-center clearfix'>
             <Col md={16} mdOffset={4} className='prepend-xs-2 append-xs-2 prepend-md-5 append-md-5'>
-              <h1 className='prepend-xs-tiny'>{locals.name}</h1>
-              <h3 className='text-normal'>
-                <FM message={this.getIntlMessage('home.hero.intro')}
+              <h3 className='text-normal prepend-xs-none append-xs-4 append-md-none'>
+                <FHM message={this.getIntlMessage('home.hero.intro')}
                   name={locals.name}
                   brand={locals.brand} />
               </h3>
-              <div className='prepend-xs-1'>
-                <Button className='btn-clear btn--wide' bsSize='large' href='/#register'>
-                  <FM message={this.getIntlMessage('home.hero.signup.actionLabel')} />
-                </Button>
-              </div>
             </Col>
           </Row>
         </Grid>
@@ -89,33 +96,39 @@ class RegisterPage extends Validatable {
 
   renderFeatures() {
     return (
-      <Row className='text-center prepend-xs-2 prepend-sm-3'>
-        <Col md={6} mdOffset={3} className='append-xs-2 append-sm-3'>
-          <IconStack size='3x'>
-            <Icon id='record' size='2x' stacked className='text-primary' />
-            <Icon id='android-lock' size='1x' stacked className='text-inverse' />
-          </IconStack>
-          <div className='prepend-xs-1'>
-            <FM message={this.getIntlMessage('home.features.safeData')} />
-          </div>
+      <Row className='features text-center'>
+        <Col md={6} mdOffset={3}>
+          <Well className='well--white'>
+            <IconStack size='3x'>
+              <Icon id='record' size='2x' stacked className='text-primary' />
+              <Icon id='android-lock' size='1x' stacked className='text-inverse' />
+            </IconStack>
+            <div className='prepend-xs-1 append-xs-tiny'>
+              <FHM message={this.getIntlMessage('home.features.safeData')} />
+            </div>
+          </Well>
         </Col>
-        <Col md={6} className='append-xs-2 append-sm-3'>
-          <IconStack size='3x'>
-            <Icon id='record' size='2x' stacked className='text-primary' />
-            <Icon id='information' size='1x' stacked className='text-inverse' />
-          </IconStack>
-          <div className='prepend-xs-1'>
-            <FM message={this.getIntlMessage('home.features.greatAdvice')} />
-          </div>
+        <Col md={6}>
+          <Well className='well--white'>
+            <IconStack size='3x'>
+              <Icon id='record' size='2x' stacked className='text-primary' />
+              <Icon id='information' size='1x' stacked className='text-inverse' />
+            </IconStack>
+            <div className='prepend-xs-1 append-xs-tiny'>
+              <FHM message={this.getIntlMessage('home.features.greatAdvice')} />
+            </div>
+          </Well>
         </Col>
-        <Col md={6} className='append-xs-2 append-sm-3'>
-          <IconStack size='3x'>
-            <Icon id='record' size='2x' stacked className='text-primary' />
-            <Icon id='stats-bars' size='1x' stacked className='text-inverse' />
-          </IconStack>
-          <div className='prepend-xs-1'>
-            <FM message={this.getIntlMessage('home.features.compare')} name={locals.name} />
-          </div>
+        <Col md={6}>
+          <Well className='well--white'>
+            <IconStack size='3x'>
+              <Icon id='record' size='2x' stacked className='text-primary' />
+              <Icon id='stats-bars' size='1x' stacked className='text-inverse' />
+            </IconStack>
+            <div className='prepend-xs-1 append-xs-tiny'>
+              <FHM message={this.getIntlMessage('home.features.compare')} name={locals.name} />
+            </div>
+          </Well>
         </Col>
       </Row>
     );
@@ -129,76 +142,80 @@ class RegisterPage extends Validatable {
       <form id='register' className='append-xs-tiny' autoComplete='off' noValidate onSubmit={this._handleSubmit}>
         {error && <div className='alert alert-danger text-center'>{error.message}</div>}
 
-        <p className='prepend-xs-tiny text-center'>
-          <FHM message={this.getIntlMessage('register.intro')} />
-        </p>
-        <hr/>
+        <Row>
+          <Col md={22} mdOffset={1}>
+            <p className='prepend-xs-tiny text-center text-primary'>
+              <FHM message={this.getIntlMessage('register.intro')} />
+            </p>
+            <hr/>
 
-        <div className='prepend-xs-1 append-xs-1 clearfix'>
-          <Row>
-            <Col md={12}>
-              <Input type='text' bsSize='large' className='input-lg'
-                placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.firstName.placeholder'))}
-                valueLink={this.linkState('name.first')}
-                disabled={submitting}
-                {...this.getErrorProps('name.first')} />
-            </Col>
-            <Col md={12}>
-              <Input type='text' bsSize='large' className='input-lg'
-                placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.lastName.placeholder'))}
-                valueLink={this.linkState('name.last')}
-                disabled={submitting}
-                {...this.getErrorProps('name.last')} />
-            </Col>
-          </Row>
-          <Row>
-            <Col md={24}>
-              <Input type='email' bsSize='large' className='input-lg'
-                placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.email.placeholder'))}
-                valueLink={this.linkState('email')}
-                disabled={submitting}
-                {...this.getErrorProps('email')} />
-            </Col>
-          </Row>
-          <Row>
-            <Col md={24}>
-              <div className={classNames({ 'form-group': true, 'has-error': this.hasError('fund.abn') })}>
-                <Select name='fundAbn' asyncOptions={abnLoader()} autoload={false} className='Select--lg'
-                  placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.fundAbn.placeholder'))}
-                  {...this.valueLink('fund.abn', this._handleFundSelect)}
-                  disabled={submitting} />
-                {this.hasError('fund.abn') &&
-                  <span className='help-block'
-                    dangerouslySetInnerHTML={{ __html: this.getErrorProps('fund.abn').help }}></span>}
-              </div>
-            </Col>
-          </Row>
-          <hr className='prepend-xs-tiny append-xs-tiny' />
-          <Row>
-            <Col md={24} className='append-xs-tiny text-left'>
-              <Input type='checkbox'
-                label={this.formatMessage(this.getIntlMessage('shared.fields.user.doesConsent.label'), { brand: locals.brand })}
-                checkedLink={this.linkState('doesConsent')}
-                disabled={submitting} />
-            </Col>
-          </Row>
-        </div>
+            <div className='prepend-xs-1 append-xs-1 clearfix'>
+              <Row>
+                <Col md={12}>
+                  <Input type='text' bsSize='large' className='input-lg'
+                    placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.firstName.placeholder'))}
+                    valueLink={this.linkState('name.first')}
+                    disabled={submitting}
+                    {...this.getErrorProps('name.first')} />
+                </Col>
+                <Col md={12}>
+                  <Input type='text' bsSize='large' className='input-lg'
+                    placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.lastName.placeholder'))}
+                    valueLink={this.linkState('name.last')}
+                    disabled={submitting}
+                    {...this.getErrorProps('name.last')} />
+                </Col>
+              </Row>
+              <Row>
+                <Col md={24}>
+                  <Input type='email' bsSize='large' className='input-lg'
+                    placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.email.placeholder'))}
+                    valueLink={this.linkState('email')}
+                    disabled={submitting}
+                    {...this.getErrorProps('email')} />
+                </Col>
+              </Row>
+              <Row>
+                <Col md={24}>
+                  <div className={classNames({ 'form-group': true, 'has-error': this.hasError('fund.abn') })}>
+                    <Select name='fundAbn' asyncOptions={abnLoader()} autoload={false} className='Select--lg'
+                      placeholder={this.formatMessage(this.getIntlMessage('shared.fields.user.fundAbn.placeholder'))}
+                      {...this.valueLink('fund.abn', this._handleFundSelect)}
+                      disabled={submitting} />
+                    {this.hasError('fund.abn') &&
+                      <span className='help-block'
+                        dangerouslySetInnerHTML={{ __html: this.getErrorProps('fund.abn').help }}></span>}
+                  </div>
+                </Col>
+              </Row>
+              <hr className='prepend-xs-tiny append-xs-tiny' />
+              <Row>
+                <Col md={24} className='append-xs-tiny text-left'>
+                  <Input type='checkbox'
+                    label={this.formatMessage(this.getIntlMessage('shared.fields.user.doesConsent.label'), { brand: locals.brand })}
+                    checkedLink={this.linkState('doesConsent')}
+                    disabled={submitting} />
+                </Col>
+              </Row>
+            </div>
 
-        <div className='text-center'>
-          <Button bsStyle='primary' bsSize='large' className='btn--wide append-xs-1'
-            componentClass='button' type='submit'
-            disabled={submitting || !data.get('doesConsent')}>
-            {submitting ?
-              this.formatMessage(this.getIntlMessage('register.submit.loadingLabel')) :
-              this.formatMessage(this.getIntlMessage('register.submit.actionLabel'))}
-          </Button>
-          <p className='append-xs-none'>
-            <FM message={this.getIntlMessage('register.already.note')} />{' '}
-            <Link to='signin'>
-              <FM message={this.getIntlMessage('register.already.actionLabel')} />
-            </Link>
-          </p>
-        </div>
+            <div className='text-center'>
+              <Button bsStyle='primary' bsSize='large' className='btn--wide append-xs-1'
+                componentClass='button' type='submit'
+                disabled={submitting || !data.get('doesConsent')}>
+                {submitting ?
+                  this.formatMessage(this.getIntlMessage('register.submit.loadingLabel')) :
+                  this.formatMessage(this.getIntlMessage('register.submit.actionLabel'))}
+              </Button>
+              <p className='append-xs-none'>
+                <FM message={this.getIntlMessage('register.already.note')} />{' '}
+                <Link to='signin'>
+                  <FM message={this.getIntlMessage('register.already.actionLabel')} />
+                </Link>
+              </p>
+            </div>
+          </Col>
+        </Row>
       </form>
     );
   }

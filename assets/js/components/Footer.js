@@ -22,6 +22,8 @@ class Footer extends BaseComponent {
               year={new Date().getFullYear()} brand={locals.brand} />
           </small>
           <ul className='list-inline pull-sm-right small prepend-xs-1 append-xs-none'>
+            <li><Link to='app' className='link-plain'><FM message={this.getIntlMessage('footer.links.guide')} /></Link></li>
+            <li>&bull;</li>
             <li><Link to='terms' className='link-plain'><FM message={this.getIntlMessage('footer.links.terms')} /></Link></li>
             <li>&bull;</li>
             <li><Link to='privacy' className='link-plain'><FM message={this.getIntlMessage('footer.links.privacy')} /></Link></li>

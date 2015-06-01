@@ -7,21 +7,25 @@ export default {
     home: {
       hero: {
         intro:
-          `Welcome to the {brand} SMSF Health Check tool, {name}.
+          `Welcome to the {brand} SMSF Health Check tool, <strong>{name}</strong>.
            Compare your current fund to thousands of others SMSFs
            to see how your fund stacks up.`,
         signup: { actionLabel: 'Sign up' },
       },
       features: {
-        safeData: 'Know your data is safe with bank-level security.',
+        safeData: 'Know your data is safe <br class="visible-md visible-lg" /> with bank-level <br class="visible-md visible-lg"/> security.',
         greatAdvice: 'Provide as much or as little information as you like and still receive great general advice.',
         compare: 'Compare your fund to over 11,000 funds from ATO and {name} databases.',
       },
+      adviceDisclaimer:
+        `Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
+         aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.`,
     },
 
-    'footer': {
+    footer: {
       copyright: '© {year} {brand}. All rights reserved.',
       links: {
+        guide: 'Financial Services Guide',
         terms: 'Terms of Use',
         privacy: 'Privacy',
         signOut: 'Sign Out',
