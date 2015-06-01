@@ -2,6 +2,7 @@ import Immutable from 'immutable';
 import uuid from 'node-uuid';
 import React from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
+import Highcharts from 'react-highcharts/3d';
 import { FormattedMessage as FM } from '../../shims/ReactIntl';
 
 import BasePage from './BasePage';
@@ -14,6 +15,11 @@ import SurveyActionCreators from '../../actions/SurveyActionCreators';
 import SurveyForm from '../../components/SurveyForm';
 import SurveyStore from '../../stores/SurveyStore';
 import { wrapSurvey } from '../../utils/SurveyUtils';
+
+const chartsConfig = {
+  age: require('../../charts/members/age'),
+  size: require('../../charts/members/size'),
+};
 
 class MembersPage extends BasePage {
   constructor(props) {
@@ -62,7 +68,12 @@ class MembersPage extends BasePage {
   }
 
   renderChart() {
-    return <div></div>;
+    return (
+      <div>
+        <Highcharts config={chartsConfig.age.siq} />
+        <Highcharts config={chartsConfig.size.siq} />
+      </div>
+    );
   }
 
   renderMember(member, index) {

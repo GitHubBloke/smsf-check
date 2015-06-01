@@ -2,6 +2,7 @@ import Immutable from 'immutable';
 import Joi from 'joi';
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
+import Highcharts from 'react-highcharts/3d';
 import { FormattedMessage as FM } from '../../shims/ReactIntl';
 
 import AdviceBubble from '../../components/AdviceBubble';
@@ -13,6 +14,11 @@ import SelectQuestion from '../../components/SelectQuestion';
 import SurveyForm from '../../components/SurveyForm';
 import SurveyStore from '../../stores/SurveyStore';
 import { wrapSurvey } from '../../utils/SurveyUtils';
+
+const chartsConfig = {
+  trusteeType: require('../../charts/trust/trusteeType'),
+  deedSupplier: require('../../charts/trust/deedSupplier'),
+};
 
 class TrustPage extends BasePage {
   constructor(props) {
@@ -41,7 +47,12 @@ class TrustPage extends BasePage {
   }
 
   renderChart() {
-    return <div></div>;
+    return (
+      <div>
+        <Highcharts config={chartsConfig.trusteeType.siq} />
+        <Highcharts config={chartsConfig.deedSupplier.siq} />
+      </div>
+    );
   }
 
   renderTrusteeType() {

@@ -20,6 +20,7 @@
     "react": "^0.13.2",
     "react-bootstrap": "^0.21.2",
     "react-document-title": "^1.0.2",
+    "react-highcharts": "git@github.com:eleung/react-highcharts.git",
     "react-intl": "^1.2.0",
     "react-mixin": "^1.2.2",
     "react-radio": "^1.0.6",
