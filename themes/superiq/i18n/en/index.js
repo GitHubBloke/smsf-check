@@ -117,7 +117,7 @@ export default {
       yearLastUpdated: {
         question: 'In which year was your trust fund last updated?',
         options: _.times(20, (i) => (new Date().getFullYear() - i).toString()),
-        advice: 'Should I update my deed?',
+        advice: 'Should I upgrade my trust deed?',
       },
     },
 
@@ -133,7 +133,7 @@ export default {
           { value: 'administrator', label: 'A SMSF administrator does it' },
           { value: 'financial-planner', label: 'My Financial Planner does it' },
         ],
-        advice: 'Why should I consider seeking accounting advice?',
+        advice: 'Should I use a professional administrator?',
       },
 
       costPerYear: {
@@ -147,7 +147,7 @@ export default {
           '$3,001 - $3,500',
           '$3,500+',
         ],
-        advice: 'Am I paying too much tax and accounting services for my fund?',
+        advice: 'Am I paying too much tax and accounting?',
       },
     },
 
@@ -162,7 +162,7 @@ export default {
           { value: 'financial-planner', label: 'My Financial Planner does it' },
           { value: 'accountant', label: 'My accountant does it' },
         ],
-        advice: 'Why should I consider seeking investment advice?',
+        advice: 'Should I get professional investment advice?',
       },
 
       costPerYear: {
@@ -176,7 +176,7 @@ export default {
           '$3,001 - $3,500',
           '$3,500+',
         ],
-        advice: 'Am I paying too much for investment advice for my fund?',
+        advice: 'Am I paying too much for investment advice?',
       },
     },
 

@@ -58,7 +58,7 @@ class AccountingPage extends BasePage {
       <Row className='append-xs-2'>
         <Col xs={24}>
           <RadioQuestion {...radioData}></RadioQuestion>
-          {(data.getIn([ 'survey', 'accounting', 'whoDoesIt' ]) === 'myself') &&
+          {data.getIn([ 'survey', 'accounting', 'whoDoesIt' ]) &&
             <AdviceBubble advice={this.formatMessage(this.getIntlMessage('accounting.whoDoesIt.advice'))} />}
         </Col>
       </Row>
@@ -82,7 +82,7 @@ class AccountingPage extends BasePage {
       <Row className='append-xs-2'>
         <Col xs={24}>
           <RadioQuestion {...radioData}></RadioQuestion>
-          {costPerYear && costPerYear !== '< $1,000' &&
+          {costPerYear &&
             <AdviceBubble advice={this.formatMessage(this.getIntlMessage('accounting.costPerYear.advice'))} />}
         </Col>
       </Row>

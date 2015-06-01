@@ -82,7 +82,7 @@ class InvestmentAdvicePage extends BasePage {
       <Row className='append-xs-2'>
         <Col xs={24}>
           <RadioQuestion {...radioData}></RadioQuestion>
-          {costPerYear && costPerYear !== '< $1,000' &&
+          {costPerYear &&
             <AdviceBubble advice={this.formatMessage(this.getIntlMessage('investmentAdvice.costPerYear.advice'))} />}
         </Col>
       </Row>
