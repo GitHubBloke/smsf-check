@@ -58,7 +58,7 @@ class InvestmentAdvicePage extends BasePage {
       <Row className='append-xs-2'>
         <Col xs={24}>
           <RadioQuestion {...radioData}></RadioQuestion>
-          {(data.getIn([ 'survey', 'investmentAdvice', 'whoDoesIt' ]) === 'myself') &&
+          {data.getIn([ 'survey', 'investmentAdvice', 'whoDoesIt' ]) &&
             <AdviceBubble advice={this.formatMessage(this.getIntlMessage('investmentAdvice.whoDoesIt.advice'))} />}
         </Col>
       </Row>
