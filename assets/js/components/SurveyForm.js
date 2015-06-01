@@ -1,7 +1,8 @@
 import Immutable, { Map } from 'immutable';
 import React, { PropTypes } from 'react';
-import { Button, Col, Grid, Row } from 'react-bootstrap';
+import { Button, Col, Grid, Row, Well } from 'react-bootstrap';
 import { FormattedMessage as FM } from '../shims/ReactIntl';
+import RadioGroup from 'react-radio';
 import { Link } from 'react-router';
 
 import BaseComponent from '../utils/BaseComponent';
@@ -12,10 +13,12 @@ export default class SurveyForm extends BaseComponent {
   constructor(props) {
     super(props);
     this.bind('_handleSubmit');
-    this.state = { data: Immutable.fromJS({}) };
+    this.state = { data: Immutable.fromJS({ dataSet: 'ato' }) };
   }
 
   render() {
+    const { data } = this.state;
+
     return (
       <form className='survey' noValidate autoComplete='off' onSubmit={this._handleSubmit}>
         <Grid className='prepend-xs-3 append-xs-2'>
@@ -26,7 +29,19 @@ export default class SurveyForm extends BaseComponent {
               {this.renderActions()}
             </Col>
             <Col md={8}>
-              {this.props.renderChart()}
+              <RadioGroup name='dataSet' {...this.valueLink('dataSet')}>
+                <div className='radio'>
+                  <label className='text-normal'>
+                    <input type='radio' value='ato' />&nbsp; Display ATO SMSF data set
+                  </label>
+                </div>
+                <div className='radio'>
+                  <label className='text-normal'>
+                    <input type='radio' value='siq' />&nbsp; Display IQ Compare data set
+                  </label>
+                </div>
+              </RadioGroup>
+              {this.props.renderChart(data.get('dataSet'))}
             </Col>
           </Row>
         </Grid>

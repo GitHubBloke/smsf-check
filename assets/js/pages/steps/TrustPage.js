@@ -46,11 +46,11 @@ class TrustPage extends BasePage {
     );
   }
 
-  renderChart() {
+  renderChart(dataSet) {
     return (
       <div>
-        <Highcharts config={chartsConfig.trusteeType.siq} />
-        <Highcharts config={chartsConfig.deedSupplier.siq} />
+        {chartsConfig.trusteeType[dataSet] && <Highcharts config={chartsConfig.trusteeType[dataSet]} />}
+        {chartsConfig.deedSupplier[dataSet] && <Highcharts config={chartsConfig.deedSupplier[dataSet]} />}
       </div>
     );
   }

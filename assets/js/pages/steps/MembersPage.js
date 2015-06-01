@@ -67,11 +67,11 @@ class MembersPage extends BasePage {
     );
   }
 
-  renderChart() {
+  renderChart(dataSet) {
     return (
       <div>
-        <Highcharts config={chartsConfig.age.siq} />
-        <Highcharts config={chartsConfig.size.siq} />
+        {chartsConfig.age[dataSet] && <Highcharts config={chartsConfig.age[dataSet]} />}
+        {chartsConfig.size[dataSet] && <Highcharts config={chartsConfig.size[dataSet]} />}
       </div>
     );
   }
