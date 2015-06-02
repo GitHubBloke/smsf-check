@@ -5,7 +5,7 @@ import reactMixin from 'react-mixin';
 
 export default class BaseComponent extends Component {
   bind(...methods) {
-     methods.forEach((method) => { this[method] = this[method].bind(this); });
+    methods.forEach((method) => { this[method] = this[method].bind(this); });
   }
 
   linkState(path, modifier = (v) => v) {
