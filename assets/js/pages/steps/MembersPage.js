@@ -6,6 +6,7 @@ import Highcharts from 'react-highcharts/3d';
 import { FormattedMessage as FM, FormattedHTMLMessage as FHM } from '../../shims/ReactIntl';
 import reactMixin from 'react-mixin';
 
+import AdviceBubble from '../../components/AdviceBubble';
 import BasePage from './BasePage';
 import BaseComponent from '../../utils/BaseComponent';
 import Icon from '../../components/Icon';
@@ -65,6 +66,10 @@ class MembersPage extends BasePage {
             </Button>
           </Col>
         </Row>
+        <div className='append-xs-2'>
+          <div className='append-xs-tiny'><AdviceBubble advice={this.formatMessage(this.getIntlMessage('members.basics.advice'))} /></div>
+          <div className='append-xs-tiny'><AdviceBubble advice={this.formatMessage(this.getIntlMessage('members.forMe.advice'))} /></div>
+        </div>
       </div>
     );
   }

@@ -116,6 +116,9 @@ export default {
 
       add: { actionLabel: 'Add a member' },
       delete: { confirmation: 'Are you sure you would like to remove this member?' },
+
+      basics: { advice: 'What are the basics of a SMSF?' },
+      forMe: { advice: 'Is a SMSF right for me?' },
     },
 
     trust: {
