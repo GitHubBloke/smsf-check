@@ -1,30 +1,18 @@
 import _ from 'lodash';
 
+import { tooltip, options3d, pie } from '../base';
+
 const common = {
   chart: {
     type: 'pie',
-    options3d: {
-      enabled: true,
-      alpha: 60,
-    },
+    options3d: { ...options3d },
   },
   title: {
     text: 'Member Age',
     useHTML: true,
   },
-  plotOptions: {
-    pie: {
-      depth: 30,
-      dataLabels: {
-        enabled: false
-      },
-      innerSize: 130,
-      size: 220,
-      tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
-      },
-    },
-  },
+  tooltip: { ...tooltip },
+  plotOptions: { pie: { ...pie } },
 };
 
 export const siq = _.assign({}, common, {

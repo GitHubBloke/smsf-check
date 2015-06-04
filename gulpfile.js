@@ -96,7 +96,7 @@ function bundle(watch) {
     entries: paths.browserify,
     debug: watch,
     transform: [
-      babelify.configure({ ignore: /react-intl/ }),
+      babelify.configure({ stage: 1, ignore: /react-intl/ }),
       debowerify
     ]
   }));
