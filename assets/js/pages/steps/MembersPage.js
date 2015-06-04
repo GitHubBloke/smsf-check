@@ -1,9 +1,10 @@
 import Immutable from 'immutable';
 import uuid from 'node-uuid';
 import React from 'react';
-import { Button, Col, Row } from 'react-bootstrap';
+import { Button, Col, Grid, Modal, OverlayMixin, Row } from 'react-bootstrap';
 import Highcharts from 'react-highcharts/3d';
-import { FormattedMessage as FM } from '../../shims/ReactIntl';
+import { FormattedMessage as FM, FormattedHTMLMessage as FHM } from '../../shims/ReactIntl';
+import reactMixin from 'react-mixin';
 
 import BasePage from './BasePage';
 import BaseComponent from '../../utils/BaseComponent';
@@ -24,12 +25,13 @@ const chartsConfig = {
 class MembersPage extends BasePage {
   constructor(props) {
     super(props);
-    this.bind('renderForm', 'renderChart', 'renderMember', '_addMember');
+    this.bind('renderForm', 'renderChart', 'renderMember', '_toggleModal', '_addMember');
   }
 
   componentDidMount() {
     const { survey, submitting } = this.props;
     if (survey.get('members').isEmpty()) {
+      this._setState('isModalOpen', true);
       this._addMember();
     }
   }
@@ -84,6 +86,39 @@ class MembersPage extends BasePage {
     );
   }
 
+  renderOverlay() {
+    const { data } = this.state;
+
+    if (!data.get('isModalOpen')) { return <span/>; }
+
+    return (
+      <Modal bsSize='medium' onRequestHide={this._toggleModal}>
+        <div className='modal-body text-center'>
+          <h3 className='text-primary append-xs-2'>
+            <FM message={this.getIntlMessage('welcome.title')} name={locals.name} />
+          </h3>
+
+          <Grid fluid>
+            <Row>
+              <Col md={20} mdOffset={2}>
+                <FHM message={this.getIntlMessage('welcome.body')} brand={locals.brand} />
+
+                <Button bsStyle='primary' bsSize='large' className='btn--wide prepend-xs-1 append-xs-2'
+                  onClick={this._toggleModal}>
+                  <FM message={this.getIntlMessage('welcome.start.actionLabel')} />
+                </Button>
+              </Col>
+            </Row>
+          </Grid>
+        </div>
+      </Modal>
+    );
+  }
+
+  _toggleModal() {
+    this._setState('isModalOpen', !this.state.data.get('isModalOpen'));
+  }
+
   _addMember() {
     const { survey } = this.props;
     SurveyActionCreators.addMember({ name: `Member ${survey.get('members').size + 1}`, gender: 'male', ref: uuid.v1() });
@@ -109,3 +144,5 @@ export default wrapSurvey({ confirmDirtySurvey: true }, connectToStores(MembersP
   pickProps,
   getState
 ));
+
+reactMixin.onClass(MembersPage, OverlayMixin);

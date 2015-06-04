@@ -79,6 +79,27 @@ export default {
       contactUs: 'If you found a broken link from another site or from our site, please contact us.',
     },
 
+    welcome: {
+      title: 'Welcome to {name}',
+      body:
+        `<p>
+           Your are about to embark on the most comprehensive comparison and health check process
+           ever available for Self Managed Super Funds. To do this we compare your SMSF data to those
+           of over thousands of funds administered on the {brand} platform as well as data supplied
+           from sources such as the Australian Taxation Office.
+         </p>
+         <p>
+           All the way through the comparison tool we will show you the similarities and differences
+           between your fund and other funds, and supply you with useful information to help you make
+           the most of your fund.
+         </p>
+        <p>
+          At the end of the comparison we will provide you with a summary of the comparison and some
+          things for you to think about.
+        </p>`,
+        start: { actionLabel: 'Start Your SMSF Health Check' },
+    },
+
     members: {
       title: 'Member Details',
       longTitle: 'Your SMSF Member Details',
