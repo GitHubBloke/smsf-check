@@ -13,6 +13,7 @@ export function wrapSurvey({ requireSkippable, confirmDirtySurvey }, Component) 
     }
 
     static willTransitionFrom(transition) {
+      if (!SurveyStore.isSkippable()) { return; }
       if (confirmDirtySurvey && SurveyStore.isDirty()) {
         if (!confirm('You have unsaved information, are you sure you want to leave this page?')) {
           transition.abort();
