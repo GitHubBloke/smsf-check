@@ -30,13 +30,13 @@ keystone.init(_.assign({
         paths.push('themes/' + process.env.APP_THEME + '/less');
         paths.push(JSON.parse(fs.readFileSync('./.bowerrc')).directory);
       },
-      postprocess: {
-        css: function(css, req) {
-          var processor = autoprefixer({ browsers: [ 'last 2 version' ], cascade: false });
-          return processor.process(css);
-        },
+    },
+    postprocess: {
+      css: function(css, req) {
+        var processor = autoprefixer({ browsers: [ 'last 2 version' ], cascade: false });
+        return processor.process(css);
       },
-    }
+    },
   },
   'static': [ 'public', 'themes/' + process.env.APP_THEME + '/public' ],
   'favicon': 'public/favicon.ico',
