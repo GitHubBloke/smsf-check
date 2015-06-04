@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import classNames from 'classnames';
 import Joi from 'joi';
+import moment from 'moment';
 import { Button, Col, Input, Row, Well } from 'react-bootstrap';
 import React, { PropTypes } from 'react';
 import { FormattedMessage as FM } from '../shims/ReactIntl';
@@ -43,7 +44,7 @@ export default class MemberDetails extends MemberCard {
             className='input-lg' labelClassName='append-xs-tiny text-normal' groupClassName='append-xs-1'
             placeholder='DD / MM / YYYY'
             label={this.formatMessage(this.getIntlMessage('members.dateOfBirth.label'))}
-            valueLink={this.linkState('member.dateOfBirth', this._santizeDate)}
+            valueLink={this.linkState('member.dateOfBirth', this._santizeDate, this._dateToString)}
             disabled={submitting}
             {...this.getErrorProps('member.dateOfBirth')} />
 
@@ -148,7 +149,7 @@ MemberDetails.defaultProps = _.assign({}, MemberCard.defaultProps, {});
 MemberDetails.schema = {
   member: {
     name: Joi.string().required().label('This field'),
-    dateOfBirth: Joi.date().required().label('This field'),
+    dateOfBirth: Joi.date().format('DD / MM / YYYY').required().label('This field'),
     preRetirementAnnualIncome: Joi.number().required().label('This field'),
     currentMemberBalance: Joi.number().required().label('This field'),
     isRetired: Joi.bool().required().label('This field'),
