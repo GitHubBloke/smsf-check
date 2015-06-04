@@ -11,7 +11,6 @@ const common = {
   title: {
     text: 'Member Gender',
     useHTML: true,
-    verticalAlign: 'bottom',
   },
   plotOptions: {
     pie: {
@@ -33,8 +32,8 @@ export const siq = _.assign({}, common, {
     animation: false,
     name: '% of total',
     data: [
-      ['Male', 52.75],
-      ['Female', 47.26],
+      [ 'Male', 52.75 ],
+      [ 'Female', 47.26 ],
     ],
   }],
 });
@@ -44,8 +43,8 @@ export const ato = _.assign({}, common, {
     animation: false,
     name: '% of total',
     data: [
-      ['Male', 52.80],
-      ['Female', 47.20],
+      [ 'Male', 52.80 ],
+      [ 'Female', 47.20 ],
     ],
   }],
 });

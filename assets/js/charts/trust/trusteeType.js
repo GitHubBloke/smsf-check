@@ -11,7 +11,6 @@ const common = {
   title: {
     text: 'Trustee Type',
     useHTML: true,
-    verticalAlign: 'bottom',
   },
   plotOptions: {
     pie: {

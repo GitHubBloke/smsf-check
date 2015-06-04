@@ -38,3 +38,34 @@
 .well--white {
   background: #fff;
 }
+
+.well-group {
+  hr {
+    margin-left: -@well-padding;
+    margin-right: -@well-padding;
+  }
+
+  .well-lg hr {
+    margin-left: -@well-lg-padding;
+    margin-right: -@well-lg-padding;
+  }
+
+  .well-sm hr {
+    margin-left: -@well-sm-padding;
+    margin-right: -@well-sm-padding;
+  }
+
+  .well {
+    .border-bottom-radius(0);
+    .box-shadow(none);
+
+    &:last-child {
+      .border-bottom-radius(@border-radius-large);
+    }
+  }
+
+  .well + .well {
+    .border-top-radius(0);
+    margin-top: -@line-height-computed;
+  }
+}

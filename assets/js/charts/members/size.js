@@ -11,7 +11,6 @@ const common = {
   title: {
     text: 'Member Size',
     useHTML: true,
-    verticalAlign: 'bottom',
   },
   plotOptions: {
     pie: {

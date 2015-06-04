@@ -18,7 +18,7 @@ import SurveyStore from '../../stores/SurveyStore';
 import { wrapSurvey } from '../../utils/SurveyUtils';
 
 const chartsConfig = {
-  age: require('../../charts/members/age'),
+  gender: require('../../charts/members/gender'),
   size: require('../../charts/members/size'),
 };
 
@@ -72,7 +72,8 @@ class MembersPage extends BasePage {
   renderChart(dataSet) {
     return (
       <div>
-        {chartsConfig.age[dataSet] && <Highcharts config={chartsConfig.age[dataSet]} />}
+        {chartsConfig.gender[dataSet] && <Highcharts config={chartsConfig.gender[dataSet]} />}
+        <hr />
         {chartsConfig.size[dataSet] && <Highcharts config={chartsConfig.size[dataSet]} />}
       </div>
     );

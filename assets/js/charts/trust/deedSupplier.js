@@ -12,7 +12,6 @@ const common = {
   title: {
     text: 'Trust Deed Supplier',
     useHTML: true,
-    verticalAlign: 'bottom',
   },
   plotOptions: {
     pie: {

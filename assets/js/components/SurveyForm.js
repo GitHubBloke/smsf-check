@@ -13,7 +13,7 @@ export default class SurveyForm extends BaseComponent {
   constructor(props) {
     super(props);
     this.bind('_handleSubmit');
-    this.state = { data: Immutable.fromJS({ dataSet: 'ato' }) };
+    this.state = { data: Immutable.fromJS({ dataSet: 'ato', compareType: 'all' }) };
   }
 
   render() {
@@ -21,27 +21,56 @@ export default class SurveyForm extends BaseComponent {
 
     return (
       <form className='survey' noValidate autoComplete='off' onSubmit={this._handleSubmit}>
-        <Grid className='prepend-xs-3 append-xs-2'>
+        <Grid className='prepend-xs-2 append-xs-2'>
           <Row>
-            <Col md={16}>
+            <Col md={8} mdPush={16}>
+              <div className='well-group'>
+                <Well bsSize='large'>
+                  <h3 className='text-bold text-center prepend-xs-none append-xs-1'>Compare Members & Funds</h3>
+                  <Row>
+                    <Col xs={22} xsOffset={1}>
+                      <RadioGroup className='clearfix' name='compareType' {...this.valueLink('compareType')}>
+                        <div className='radio prepend-xs-tiny'>
+                          <label className='text-normal'>
+                            <input type='radio' value='all' />&nbsp; Compare to all members and funds
+                          </label>
+                        </div>
+                        <div className='radio append-xs-none'>
+                          <label className='text-normal'>
+                            <input type='radio' value='similar' />&nbsp; Compare to members like:
+                          </label>
+                        </div>
+                      </RadioGroup>
+                    </Col>
+                  </Row>
+                </Well>
+                <Well bsSize='large'>
+                  <Row>
+                    <Col xs={22} xsOffset={1}>
+                      <RadioGroup name='dataSet' {...this.valueLink('dataSet')}>
+                        <div className='radio prepend-xs-none'>
+                          <label className='text-normal'>
+                            <input type='radio' value='ato' />&nbsp; Display ATO SMSF data set
+                          </label>
+                        </div>
+                        <div className='radio append-xs-none'>
+                          <label className='text-normal'>
+                            <input type='radio' value='siq' />&nbsp; Display IQ Compare data set
+                          </label>
+                        </div>
+                      </RadioGroup>
+                    </Col>
+                  </Row>
+                </Well>
+                <Well bsSize='large' className='well--white'>
+                  {this.props.renderChart(data.get('dataSet'))}
+                </Well>
+              </div>
+            </Col>
+            <Col md={16} mdPull={8} className='prepend-xs-1'>
               {this.props.renderForm()}
               <hr className='prepend-xs-tiny append-xs-tiny' />
               {this.renderActions()}
-            </Col>
-            <Col md={8}>
-              <RadioGroup name='dataSet' {...this.valueLink('dataSet')}>
-                <div className='radio'>
-                  <label className='text-normal'>
-                    <input type='radio' value='ato' />&nbsp; Display ATO SMSF data set
-                  </label>
-                </div>
-                <div className='radio'>
-                  <label className='text-normal'>
-                    <input type='radio' value='siq' />&nbsp; Display IQ Compare data set
-                  </label>
-                </div>
-              </RadioGroup>
-              {this.props.renderChart(data.get('dataSet'))}
             </Col>
           </Row>
         </Grid>
