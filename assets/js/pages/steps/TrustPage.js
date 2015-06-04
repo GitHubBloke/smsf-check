@@ -46,12 +46,12 @@ class TrustPage extends BasePage {
     );
   }
 
-  renderCharts(dataSet) {
+  renderCharts(options) {
     return (
       <div className='charts'>
-        {this.renderChart(require('../../charts/trust/trusteeType'), dataSet)}
+        {this.renderChart(require('../../charts/trust/trusteeType'), options)}
         <hr/>
-        {this.renderChart(require('../../charts/trust/deedSupplier'), dataSet)}
+        {this.renderChart(require('../../charts/trust/deedSupplier'), options)}
       </div>
     );
   }

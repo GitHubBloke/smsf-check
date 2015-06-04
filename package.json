@@ -17,6 +17,7 @@
     "lodash": "3.7.0",
     "moment": "^2.10.3",
     "newrelic": "1.18.2",
+    "node-csvify": "0.0.4",
     "node-uuid": "1.4.3",
     "react": "0.13.2",
     "react-bootstrap": "0.21.2",

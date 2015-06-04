@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import Immutable from 'immutable';
+import moment from 'moment';
 import React from 'react';
 import Highcharts from 'react-highcharts/3d';
 
@@ -36,13 +37,25 @@ export default class BasePage extends Validatable {
     }
   }
 
-  renderChart(chart, dataSet) {
-    return (
-      chart.series[dataSet] &&
-        <Highcharts key={chart.config.title.text}
-          config={chart.config}
-          series={_.cloneDeep(chart.series[dataSet])} />
-    );
+  renderChart(chart, { dataSet, compareType, compareMember }) {
+    const data = chart.series[dataSet];
+
+    let group = 'All';
+
+    if (compareType === 'similar' && compareMember) {
+      const age = moment().diff(moment(compareMember, 'DD / MM / YYYY'), 'years');
+      _.each([ 25, 35, 45, 55, 65, Infinity ], (ageTopRange) => {
+        if (age < ageTopRange) {
+          group = ageTopRange.toString();
+          return false;
+        }
+      });
+    }
+
+    return data && data[group] &&
+      <Highcharts key={chart.config.title.text}
+        config={chart.config}
+        series={_.cloneDeep(data[group])} />;
   }
 }
 

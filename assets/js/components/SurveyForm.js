@@ -1,23 +1,34 @@
+import _ from 'lodash';
 import Immutable, { Map } from 'immutable';
+import moment from 'moment';
 import React, { PropTypes } from 'react';
 import { Button, Col, Grid, Row, Well } from 'react-bootstrap';
 import { FormattedMessage as FM } from '../shims/ReactIntl';
 import RadioGroup from 'react-radio';
 import { Link } from 'react-router';
+import Select from 'react-select/lib/Select';
 
 import BaseComponent from '../utils/BaseComponent';
 import Icon from './Icon';
+import { connectToStores } from '../utils/StoreUtils';
 import SurveyActionCreators from '../actions/SurveyActionCreators';
+import SurveyStore from '../stores/SurveyStore';
 
 export default class SurveyForm extends BaseComponent {
   constructor(props) {
     super(props);
     this.bind('_handleSubmit');
-    this.state = { data: Immutable.fromJS({ dataSet: 'ato', compareType: 'all' }) };
+    this.state = { data: Immutable.fromJS({ dataSet: 'ato', compareType: 'all', compareMember: void 0 }) };
   }
 
   render() {
+    const { survey } = this.props;
     const { data } = this.state;
+
+    const memberOptions = survey.get('members').map((member, index) => ({
+      label: member.get('name'),
+      value: member.get('dateOfBirth'),
+    })).toJS();
 
     return (
       <form className='survey' noValidate autoComplete='off' onSubmit={this._handleSubmit}>
@@ -25,6 +36,7 @@ export default class SurveyForm extends BaseComponent {
           <Row>
             <Col md={8} mdPush={16}>
               <div className='well-group'>
+
                 <Well bsSize='large'>
                   <h3 className='text-bold text-center prepend-xs-none append-xs-1'>Compare Members & Funds</h3>
                   <Row>
@@ -35,15 +47,19 @@ export default class SurveyForm extends BaseComponent {
                             <input type='radio' value='all' />&nbsp; Compare to all members and funds
                           </label>
                         </div>
-                        <div className='radio append-xs-none'>
+                        <div className='radio'>
                           <label className='text-normal'>
                             <input type='radio' value='similar' />&nbsp; Compare to members like:
                           </label>
                         </div>
                       </RadioGroup>
+                      <Select name='compareMember' options={memberOptions}
+                        clearable={false}
+                        {...this.valueLink('compareMember', () => this._setState('compareType', 'similar'))} />
                     </Col>
                   </Row>
                 </Well>
+
                 <Well bsSize='large'>
                   <Row>
                     <Col xs={22} xsOffset={1}>
@@ -62,11 +78,14 @@ export default class SurveyForm extends BaseComponent {
                     </Col>
                   </Row>
                 </Well>
+
                 <Well bsSize='large' className='well--white'>
-                  {this.props.renderCharts(data.get('dataSet'))}
+                  {this.props.renderCharts(data.toJS())}
                 </Well>
+
               </div>
             </Col>
+
             <Col md={16} mdPull={8} className='prepend-xs-1'>
               {this.props.renderForm()}
               <hr className='prepend-xs-tiny append-xs-tiny' />
@@ -130,3 +149,18 @@ SurveyForm.propTypes = {
 };
 
 SurveyForm.defaultProps = {};
+
+function pickProps({ params }) {
+  return { params };
+}
+
+function getState({ params }) {
+  const survey = SurveyStore.getDirtySurvey();
+  return { survey };
+}
+
+export default connectToStores(SurveyForm,
+  [ SurveyStore ],
+  pickProps,
+  getState
+);

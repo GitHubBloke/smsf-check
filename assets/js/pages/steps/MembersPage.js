@@ -75,14 +75,14 @@ class MembersPage extends BasePage {
     );
   }
 
-  renderCharts(dataSet) {
+  renderCharts(options) {
     return (
       <div className='charts'>
-        {this.renderChart(require('../../charts/members/age'), dataSet)}
+        {this.renderChart(require('../../charts/members/age'), options)}
         <hr/>
-        {this.renderChart(require('../../charts/members/gender'), dataSet)}
+        {this.renderChart(require('../../charts/members/gender'), options)}
         <hr/>
-        {this.renderChart(require('../../charts/members/size'), dataSet)}
+        {this.renderChart(require('../../charts/members/size'), options)}
       </div>
     );
   }

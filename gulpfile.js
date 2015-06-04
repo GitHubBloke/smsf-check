@@ -4,6 +4,7 @@ var _ = require('lodash');
 var babelify = require('babelify');
 var browserify = require('browserify');
 var buffer = require('vinyl-buffer');
+var csvify = require('node-csvify');
 var debowerify = require('debowerify');
 var eslint = require('gulp-eslint');
 var gulp = require('gulp');
@@ -96,6 +97,7 @@ function bundle(watch) {
     entries: paths.browserify,
     debug: watch,
     transform: [
+      csvify,
       babelify.configure({ stage: 1, ignore: /react-intl/ }),
       debowerify
     ]

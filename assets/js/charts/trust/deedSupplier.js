@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-import { pie } from '../base';
+import { pie, csvToSeries } from '../base';
 
 export default {
   config: _.merge({}, pie, {
@@ -10,15 +10,6 @@ export default {
     },
   }),
   series: {
-    siq: [{
-      animation: false,
-      name: '% of total',
-      data: [
-        ['Freehils', 8.66],
-        ['Kelly & Co', 0.03],
-        ['Madgwicks', 79.2],
-        ['OtherA', 12.08],
-      ],
-    }],
+    siq: csvToSeries(require('./deedSupplier-siq.csv')),
   }
 };

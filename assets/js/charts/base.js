@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 export const pie = {
   chart: {
     type: 'pie',
@@ -27,3 +29,20 @@ export const pie = {
     }
   },
 };
+
+export function csvToSeries(csv) {
+  const series = {};
+
+  _.each(csv, (line) => {
+    _.each(_.omit(line, 'label'), (value, group) => {
+      series[group] = series[group] || [{
+        animation: false, name: '% of total',
+        data: [],
+      }];
+
+      series[group][0].data.push([ line.label, parseFloat(value) ]);
+    });
+  });
+
+  return series;
+}
