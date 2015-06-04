@@ -16,14 +16,14 @@ import { wrapSurvey } from '../../utils/SurveyUtils';
 class InvestmentAdvicePage extends BasePage {
   constructor(props) {
     super(props);
-    this.bind('renderForm', 'renderChart');
+    this.bind('renderForm', 'renderCharts');
   }
 
   render() {
     return (
       <SurveyForm {...this.props}
         renderForm={this.renderForm}
-        renderChart={this.renderChart}
+        renderCharts={this.renderCharts}
         prevRoute='accounting' nextRoute='results'>
       </SurveyForm>
     );
@@ -38,7 +38,7 @@ class InvestmentAdvicePage extends BasePage {
     );
   }
 
-  renderChart() {
+  renderCharts() {
     return <div></div>;
   }
 

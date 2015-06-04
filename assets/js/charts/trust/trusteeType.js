@@ -1,50 +1,31 @@
 import _ from 'lodash';
+import React from 'react';
 
-const common = {
-  chart: {
-    type: 'pie',
-    options3d: {
-      enabled: true,
-      alpha: 60,
+import { pie } from '../base';
+
+export default {
+  config: _.merge({}, pie, {
+    title: {
+      text: 'Trustee Type',
+      useHTML: true,
     },
-  },
-  title: {
-    text: 'Trustee Type',
-    useHTML: true,
-  },
-  plotOptions: {
-    pie: {
-      depth: 30,
-      dataLabels: {
-        enabled: false
-      },
-      innerSize: 130,
-      size: 220,
-      tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
-      },
-    },
-  },
+  }),
+  series: {
+    siq: [{
+      animation: false,
+      name: '% of total',
+      data: [
+        ['Individuals as Trustee', 54.02],
+        ['Corporate Trustee', 45.99],
+      ],
+    }],
+    ato: [{
+      animation: false,
+      name: '% of total',
+      data: [
+        ['Individuals as Trustee', 76.94],
+        ['Corporate Trustee', 23.06],
+      ],
+    }],
+  }
 };
-
-export const siq = _.assign({}, common, {
-  series: [{
-    animation: false,
-    name: '% of total',
-    data: [
-      ['Individuals as Trustee', 54.02],
-      ['Corporate Trustee', 45.99],
-    ],
-  }],
-});
-
-export const ato = _.assign({}, common, {
-  series: [{
-    animation: false,
-    name: '% of total',
-    data: [
-      ['Individuals as Trustee', 76.94],
-      ['Corporate Trustee', 23.06],
-    ],
-  }],
-});

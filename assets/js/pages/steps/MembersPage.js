@@ -1,8 +1,8 @@
+import _ from 'lodash';
 import Immutable from 'immutable';
 import uuid from 'node-uuid';
 import React from 'react';
 import { Button, Col, Grid, Modal, OverlayMixin, Row } from 'react-bootstrap';
-import Highcharts from 'react-highcharts/3d';
 import { FormattedMessage as FM, FormattedHTMLMessage as FHM } from '../../shims/ReactIntl';
 import reactMixin from 'react-mixin';
 
@@ -27,7 +27,7 @@ const chartsConfig = {
 class MembersPage extends BasePage {
   constructor(props) {
     super(props);
-    this.bind('renderForm', 'renderChart', 'renderMember', '_toggleModal', '_addMember');
+    this.bind('renderForm', 'renderCharts', 'renderMember', '_toggleModal', '_addMember');
   }
 
   componentDidMount() {
@@ -42,7 +42,7 @@ class MembersPage extends BasePage {
     return (
       <SurveyForm {...this.props}
         renderForm={this.renderForm}
-        renderChart={this.renderChart}
+        renderCharts={this.renderCharts}
         nextRoute='trust'>
       </SurveyForm>
     );
@@ -75,14 +75,14 @@ class MembersPage extends BasePage {
     );
   }
 
-  renderChart(dataSet) {
+  renderCharts(dataSet) {
     return (
-      <div>
-        {chartsConfig.age[dataSet] && <Highcharts config={chartsConfig.age[dataSet]} />}
-        <hr />
-        {chartsConfig.gender[dataSet] && <Highcharts config={chartsConfig.gender[dataSet]} />}
-        <hr />
-        {chartsConfig.size[dataSet] && <Highcharts config={chartsConfig.size[dataSet]} />}
+      <div className='charts'>
+        {this.renderChart(require('../../charts/members/age'), dataSet)}
+        <hr/>
+        {this.renderChart(require('../../charts/members/gender'), dataSet)}
+        <hr/>
+        {this.renderChart(require('../../charts/members/size'), dataSet)}
       </div>
     );
   }

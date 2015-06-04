@@ -63,7 +63,7 @@ export default class SurveyForm extends BaseComponent {
                   </Row>
                 </Well>
                 <Well bsSize='large' className='well--white'>
-                  {this.props.renderChart(data.get('dataSet'))}
+                  {this.props.renderCharts(data.get('dataSet'))}
                 </Well>
               </div>
             </Col>

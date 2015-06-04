@@ -1,8 +1,8 @@
+import _ from 'lodash';
 import Immutable from 'immutable';
 import Joi from 'joi';
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
-import Highcharts from 'react-highcharts/3d';
 import { FormattedMessage as FM } from '../../shims/ReactIntl';
 
 import AdviceBubble from '../../components/AdviceBubble';
@@ -23,14 +23,14 @@ const chartsConfig = {
 class TrustPage extends BasePage {
   constructor(props) {
     super(props);
-    this.bind('renderForm', 'renderChart');
+    this.bind('renderForm', 'renderCharts');
   }
 
   render() {
     return (
       <SurveyForm {...this.props}
         renderForm={this.renderForm}
-        renderChart={this.renderChart}
+        renderCharts={this.renderCharts}
         prevRoute='members' nextRoute='accounting'>
       </SurveyForm>
     );
@@ -46,11 +46,12 @@ class TrustPage extends BasePage {
     );
   }
 
-  renderChart(dataSet) {
+  renderCharts(dataSet) {
     return (
-      <div>
-        {chartsConfig.trusteeType[dataSet] && <Highcharts config={chartsConfig.trusteeType[dataSet]} />}
-        {chartsConfig.deedSupplier[dataSet] && <Highcharts config={chartsConfig.deedSupplier[dataSet]} />}
+      <div className='charts'>
+        {this.renderChart(require('../../charts/trust/trusteeType'), dataSet)}
+        <hr/>
+        {this.renderChart(require('../../charts/trust/deedSupplier'), dataSet)}
       </div>
     );
   }

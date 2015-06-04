@@ -1,5 +1,7 @@
+import _ from 'lodash';
 import Immutable from 'immutable';
 import React from 'react';
+import Highcharts from 'react-highcharts/3d';
 
 import SurveyActionCreators from '../../actions/SurveyActionCreators';
 import SurveyStore from '../../stores/SurveyStore';
@@ -32,6 +34,15 @@ export default class BasePage extends Validatable {
     if (prevSurvey !== survey) {
       SurveyActionCreators.makeDirty(survey);
     }
+  }
+
+  renderChart(chart, dataSet) {
+    return (
+      chart.series[dataSet] &&
+        <Highcharts key={chart.config.title.text}
+          config={chart.config}
+          series={_.cloneDeep(chart.series[dataSet])} />
+    );
   }
 }
 
