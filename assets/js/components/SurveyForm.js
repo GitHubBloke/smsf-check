@@ -9,6 +9,8 @@ import { Link } from 'react-router';
 import Select from 'react-select/lib/Select';
 
 import BaseComponent from '../utils/BaseComponent';
+import ChartsActionCreators from '../actions/ChartsActionCreators';
+import ChartsStore from '../stores/ChartsStore';
 import Icon from './Icon';
 import { connectToStores } from '../utils/StoreUtils';
 import SurveyActionCreators from '../actions/SurveyActionCreators';
@@ -17,18 +19,18 @@ import SurveyStore from '../stores/SurveyStore';
 export default class SurveyForm extends BaseComponent {
   constructor(props) {
     super(props);
-    this.bind('_handleSubmit');
-    this.state = { data: Immutable.fromJS({ dataSet: 'ato', compareType: 'all', compareMember: void 0 }) };
+    this.bind('_handleSubmit', '_setActiveDataSet', '_setComparisonMode', '_setComparisonMember');
   }
 
   render() {
-    const { survey } = this.props;
-    const { data } = this.state;
+    const { survey, activeDataSet, comparisonMode, comparisonMember } = this.props;
 
-    const memberOptions = survey.get('members').map((member, index) => ({
-      label: member.get('name'),
-      value: member.get('dateOfBirth'),
-    })).toJS();
+    const memberOptions = survey.get('members').map((member, index) => {
+      return {
+        label: member.get('name'),
+        value: member.get('ref') || member.get('id'),
+      };
+    }).toJS();
 
     return (
       <form className='survey' noValidate autoComplete='off' onSubmit={this._handleSubmit}>
@@ -41,7 +43,9 @@ export default class SurveyForm extends BaseComponent {
                   <h3 className='text-bold text-center prepend-xs-none append-xs-1'>Compare Members & Funds</h3>
                   <Row>
                     <Col xs={22} xsOffset={1}>
-                      <RadioGroup className='clearfix' name='compareType' {...this.valueLink('compareType')}>
+
+                      <RadioGroup className='clearfix' name='comparisonMode'
+                        value={comparisonMode} onChange={this._setComparisonMode}>
                         <div className='radio prepend-xs-tiny'>
                           <label className='text-normal'>
                             <input type='radio' value='all' />&nbsp; Compare to all members and funds
@@ -49,13 +53,16 @@ export default class SurveyForm extends BaseComponent {
                         </div>
                         <div className='radio'>
                           <label className='text-normal'>
-                            <input type='radio' value='similar' />&nbsp; Compare to members like:
+                            <input type='radio' value='member' />&nbsp; Compare to members like:
                           </label>
                         </div>
                       </RadioGroup>
-                      <Select name='compareMember' options={memberOptions}
-                        clearable={false}
-                        {...this.valueLink('compareMember', () => this._setState('compareType', 'similar'))} />
+
+                      <Select name='comparisonMember' options={memberOptions}
+                        clearable={false} searchable={false}
+                        value={comparisonMember && (comparisonMember.get('ref') || comparisonMember.get('id'))}
+                        onChange={this._setComparisonMember} />
+
                     </Col>
                   </Row>
                 </Well>
@@ -63,7 +70,7 @@ export default class SurveyForm extends BaseComponent {
                 <Well bsSize='large'>
                   <Row>
                     <Col xs={22} xsOffset={1}>
-                      <RadioGroup name='dataSet' {...this.valueLink('dataSet')}>
+                      <RadioGroup name='dataSet' value={activeDataSet} onChange={this._setActiveDataSet}>
                         <div className='radio prepend-xs-none'>
                           <label className='text-normal'>
                             <input type='radio' value='ato' />&nbsp; Display ATO SMSF data set
@@ -80,7 +87,7 @@ export default class SurveyForm extends BaseComponent {
                 </Well>
 
                 <Well bsSize='large' className='well--white'>
-                  {this.props.renderCharts(data.toJS())}
+                  {this.props.renderCharts({ activeDataSet, comparisonMode, comparisonMember })}
                 </Well>
 
               </div>
@@ -138,6 +145,19 @@ export default class SurveyForm extends BaseComponent {
     SurveyActionCreators.saveAndTransitionTo(nextRoute);
     e.preventDefault();
   }
+
+  _setActiveDataSet(dataSet) {
+    ChartsActionCreators.setActiveDataSet(dataSet);
+  }
+
+  _setComparisonMode(mode) {
+    ChartsActionCreators.setComparisonMode(mode);
+  }
+
+  _setComparisonMember(id) {
+    const member = SurveyStore.getMember(id);
+    ChartsActionCreators.setComparisonMember(member);
+  }
 }
 
 SurveyForm.propTypes = {
@@ -156,11 +176,15 @@ function pickProps({ params }) {
 
 function getState({ params }) {
   const survey = SurveyStore.getDirtySurvey();
-  return { survey };
+  const activeDataSet = ChartsStore.getActiveDataSet();
+  const comparisonMode = ChartsStore.getComparisonMode();
+  const comparisonMember = ChartsStore.getComparisonMember();
+
+  return { survey, activeDataSet, comparisonMode, comparisonMember };
 }
 
 export default connectToStores(SurveyForm,
-  [ SurveyStore ],
+  [ SurveyStore, ChartsStore ],
   pickProps,
   getState
 );

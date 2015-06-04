@@ -37,13 +37,13 @@ export default class BasePage extends Validatable {
     }
   }
 
-  renderChart(chart, { dataSet, compareType, compareMember }) {
-    const data = chart.series[dataSet];
+  renderChart(chart, { activeDataSet, comparisonMode, comparisonMember }) {
+    const data = chart.series[activeDataSet];
 
     let group = 'All';
 
-    if (compareType === 'similar' && compareMember) {
-      const age = moment().diff(moment(compareMember, 'DD / MM / YYYY'), 'years');
+    if (comparisonMode === 'member' && comparisonMember) {
+      const age = moment().diff(moment(comparisonMember.get('dateOfBirth'), 'DD / MM / YYYY'), 'years');
       _.each([ 25, 35, 45, 55, 65, Infinity ], (ageTopRange) => {
         if (age < ageTopRange) {
           group = ageTopRange.toString();

@@ -22,6 +22,12 @@ const SurveyStore = createStore({
   getSaveError() { return saveError; },
 
   isSkippable() { return !currentSurvey.get('members').isEmpty(); },
+
+  getMember(id) {
+    return dirtySurvey.get('members').find((m) => {
+      return (m.get('id') === id || m.get('ref') === id);
+    });
+  },
 });
 
 SurveyStore.dispatchToken = AppDispatcher.register((payload) => {
