@@ -85,6 +85,7 @@ export default {
       question: 'Tell us a little about the members of your fund.',
 
       gender: { label: 'Gender' },
+      dateOfBirth: { label: 'Date of Birth' },
       preRetirementAnnualIncome: { label: 'Pre-retirement Annual Income' },
       currentMemberBalance: { label: 'Current Member Balance' },
       isRetired: {

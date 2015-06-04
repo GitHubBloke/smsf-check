@@ -41,6 +41,14 @@ export default class MemberDetails extends MemberCard {
 
           <Input type='text' bsSize='large'
             className='input-lg' labelClassName='append-xs-tiny text-normal' groupClassName='append-xs-1'
+            placeholder='DD / MM / YYYY'
+            label={this.formatMessage(this.getIntlMessage('members.dateOfBirth.label'))}
+            valueLink={this.linkState('member.dateOfBirth', this._santizeDate)}
+            disabled={submitting}
+            {...this.getErrorProps('member.dateOfBirth')} />
+
+          <Input type='text' bsSize='large'
+            className='input-lg' labelClassName='append-xs-tiny text-normal' groupClassName='append-xs-1'
             label={this.formatMessage(this.getIntlMessage('members.preRetirementAnnualIncome.label'))}
             addonBefore='$'
             valueLink={this.linkState('member.preRetirementAnnualIncome')}
@@ -108,6 +116,30 @@ export default class MemberDetails extends MemberCard {
 
   _isRetiredSetModifier(v) { return v === 'true'; }
   _isRetiredGetModifier(v) { return v !== void 0 ? v.toString() : v; }
+
+  _santizeDate(date) {
+    date = date.replace(/[^0-9.]/g, '');
+
+    let day = date.substring(0, 2);
+    let month = date.substring(2, 4);
+    let year = date.substring(4);
+
+    if (parseInt(day, 10) > 31) {
+      day = date.substring(0, 1);
+      month = date.substring(1, 3);
+      year = date.substring(3);
+    }
+
+    if (parseInt(month, 10) > 12) {
+      month = date.substring(2, 3);
+      year = date.substring(3);
+    }
+
+    if (month && day.length === 1) { day = `0${day}`; }
+    if (year && month.length === 1) { month = `0${month}`; }
+
+    return day + (month ? ' / ' + month : '') + (year ? ' / ' + year : '');
+  }
 }
 
 MemberDetails.propTypes = _.assign({}, MemberCard.propTypes, {});
@@ -116,6 +148,7 @@ MemberDetails.defaultProps = _.assign({}, MemberCard.defaultProps, {});
 MemberDetails.schema = {
   member: {
     name: Joi.string().required().label('This field'),
+    dateOfBirth: Joi.date().required().label('This field'),
     preRetirementAnnualIncome: Joi.number().required().label('This field'),
     currentMemberBalance: Joi.number().required().label('This field'),
     isRetired: Joi.bool().required().label('This field'),
