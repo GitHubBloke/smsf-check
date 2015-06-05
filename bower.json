@@ -20,5 +20,8 @@
     "bootstrap": "~3.3.4",
     "react-select": "~0.4.9",
     "classnames": "~2.1.2"
+  },
+  "resolutions": {
+    "classnames": "^1.2.2"
   }
 }
