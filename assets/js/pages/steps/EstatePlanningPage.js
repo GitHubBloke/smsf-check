@@ -38,7 +38,7 @@ class EstatePlanningPage extends BasePage {
     const { survey, submitting } = this.props;
 
     return (
-      <div>
+      <div className='append-xs-2'>
         {this.renderRadioQuestion('estatePlanning.haveBeneficiary', 'survey.estatePlanning.haveBeneficiary')}
 
         {data.getIn([ 'survey', 'estatePlanning', 'haveBeneficiary' ]) === 'Yes' &&
@@ -47,7 +47,7 @@ class EstatePlanningPage extends BasePage {
           </Row>}
 
         {data.getIn([ 'survey', 'estatePlanning', 'haveBeneficiary' ]) &&
-          <div className='append-xs-2'>
+          <div>
             <div><AdviceBubble advice={this.formatMessage(this.getIntlMessage('estatePlanning.advice'))} /></div>
             <div><AdviceBubble advice={this.formatMessage(this.getIntlMessage('estatePlanning.typesOfBenefits.advice'))} /></div>
             <div><AdviceBubble advice={this.formatMessage(this.getIntlMessage('estatePlanning.beneficiary.advice'))} /></div>
