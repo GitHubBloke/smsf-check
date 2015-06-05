@@ -1,4 +1,4 @@
-import classNames from 'classNames';
+import classNames from 'classnames';
 import { Map } from 'immutable';
 import React, { PropTypes } from 'react';
 import { FormattedMessage as FM } from '../shims/ReactIntl';
