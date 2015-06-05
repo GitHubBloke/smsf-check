@@ -26,6 +26,22 @@ Survey.add({
     whoDoesIt: { type: String, noedit: true },
     costPerYear: { type: String, noedit: true },
   },
+
+  investmentStrategy: {
+    hasStrategy: { type: String, noedit: true },
+    considerations: { type: String, noedit: true },
+    yearLastUpdated: { type: String, noedit: true },
+
+    cashAndFixedInterest: { type: Number, noedit: true },
+    australianEquities: { type: Number, noedit: true },
+    internationalEquities: { type: Number, noedit: true },
+    directProperty: { type: Number, noedit: true },
+    internationalCashAndFixedInterest: { type: Number, noedit: true },
+    internationalShares: { type: Number, noedit: true },
+    listedProperty: { type: Number, noedit: true },
+    mortgages: { type: Number, noedit: true },
+    other: { type: Number, noedit: true },
+  },
 });
 
 Survey.schema.set('toJSON', {
@@ -36,6 +52,7 @@ Survey.schema.set('toJSON', {
     ret.trust = ret.trust || {};
     ret.accounting = ret.accounting || {};
     ret.investmentAdvice = ret.investmentAdvice || {};
+    ret.investmentStrategy = ret.investmentStrategy || {};
 
     ret = _.omit(ret, '_id', '__v');
     return ret;

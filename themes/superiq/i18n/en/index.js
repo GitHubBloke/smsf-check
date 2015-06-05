@@ -208,6 +208,44 @@ export default {
     investmentStrategy: {
       title: 'Investment Strategy',
       longTitle: 'Investment Strategy',
+
+      hasStrategy: {
+        question: 'Does your fund have an Investment Strategy?',
+        options: [
+          { value: 'Yes', label: 'Yes' },
+          { value: 'No', label: 'No' },
+        ],
+        advice: 'Does my fund require an Investment Strategy?',
+      },
+
+      considerations: {
+        question: 'Does your investment strategy consider the cashflow, liquidity liabilities and tax consequences of holding certain assets for the fund?',
+        options: [
+          { value: 'Yes', label: 'Yes' },
+          { value: 'No', label: 'No' },
+        ],
+      },
+
+      yearLastUpdated: {
+        question: 'When was your investment strategy last updated?',
+        options: _.times(20, (i) => (new Date().getFullYear() - i).toString()),
+        advice: 'How frequently should I update my Investment Strategy?',
+      },
+
+      assetAllocations: {
+        question: 'What is the current asset allocation in your investment strategy?',
+        assets: {
+          cashAndFixedInterest: 'Cash & Fixed Interest...',
+          australianEquities: 'Australian Equities...',
+          internationalEquities: 'International Equities...',
+          directProperty: 'Direct Property...',
+          internationalCashAndFixedInterest: 'International Cash & Fixed Interest...',
+          internationalShares: 'International Shares...',
+          listedProperty: 'Listed Property...',
+          mortgages: 'Mortgages...',
+          other: 'Other...',
+        },
+      }
     },
 
     deathBenefits: {

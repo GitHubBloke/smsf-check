@@ -59,7 +59,13 @@ export function update(req, res) {
            members,
            trust.trusteeType, trust.deedSupplier, trust.yearLastUpdated,
            accounting.whoDoesIt, accounting.costPerYear,
-           investmentAdvice.whoDoesIt, investmentAdvice.costPerYear`,
+           investmentAdvice.whoDoesIt, investmentAdvice.costPerYear,
+           investmentStrategy.hasStrategy, investmentStrategy.considerations, investmentStrategy.yearLastUpdated,
+           investmentStrategy.cashAndFixedInterest, investmentStrategy.australianEquities,
+           investmentStrategy.internationalEquities, investmentStrategy.directProperty,
+           investmentStrategy.internationalCashAndFixedInterest, investmentStrategy.internationalShares,
+           investmentStrategy.listedProperty, investmentStrategy.mortgages,
+           investmentStrategy.other`,
       }, cb);
     }],
 
