@@ -295,7 +295,7 @@ export default {
 
     insurance: {
       title: 'Insurance',
-      longTitle: 'Insurnace',
+      longTitle: 'Insurance',
     },
 
     pensions: {
