@@ -42,6 +42,10 @@ Survey.add({
     mortgages: { type: Number, noedit: true },
     other: { type: Number, noedit: true },
   },
+
+  estatePlanning: {
+    haveBeneficiary: { type: String, noedit: true },
+  },
 });
 
 Survey.schema.set('toJSON', {

@@ -65,7 +65,8 @@ export function update(req, res) {
            investmentStrategy.internationalEquities, investmentStrategy.directProperty,
            investmentStrategy.internationalCashAndFixedInterest, investmentStrategy.internationalShares,
            investmentStrategy.listedProperty, investmentStrategy.mortgages,
-           investmentStrategy.other`,
+           investmentStrategy.other,
+           estatePlanning.haveBeneficiary`,
       }, cb);
     }],
 

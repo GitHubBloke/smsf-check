@@ -13,6 +13,8 @@ Member.add({
   preRetirementAnnualIncome: { type: Number },
   currentMemberBalance: { type: Number },
   isRetired: { type: Boolean },
+  hasWill: { type: Boolean },
+  hasEnduringPowersOfAttorney: { type: Boolean },
 });
 
 Member.schema.set('toJSON', {

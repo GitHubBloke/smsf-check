@@ -2,8 +2,12 @@ import _ from 'lodash';
 import Immutable from 'immutable';
 import moment from 'moment';
 import React from 'react';
+import { Col, Row } from 'react-bootstrap';
 import Highcharts from 'react-highcharts/3d';
 
+import AdviceBubble from '../../components/AdviceBubble';
+import RadioQuestion from '../../components/RadioQuestion';
+import SelectQuestion from '../../components/SelectQuestion';
 import SurveyActionCreators from '../../actions/SurveyActionCreators';
 import SurveyStore from '../../stores/SurveyStore';
 import Validatable from '../../utils/Validatable';
@@ -56,6 +60,52 @@ export default class BasePage extends Validatable {
       <Highcharts key={chart.config.title.text}
         config={chart.config}
         series={_.cloneDeep(data[group])} />;
+  }
+
+  renderRadioQuestion(messagePath, dataPath, hasAdvice) {
+    const { data } = this.state;
+    const { submitting } = this.props;
+
+    const radioData = {
+      question: this.formatMessage(this.getIntlMessage(`${messagePath}.question`)),
+      options: this.translatedOptions(`${messagePath}.options`),
+      valueLink: this.valueLink(dataPath),
+      disabled: submitting,
+      error: this.getErrorProps(dataPath).help,
+    };
+
+    return (
+      <Row>
+        <Col xs={24}>
+          <RadioQuestion {...radioData}></RadioQuestion>
+          {hasAdvice && data.getIn(dataPath.split('.')) &&
+            <AdviceBubble advice={this.formatMessage(this.getIntlMessage(`${messagePath}.advice`))} />}
+        </Col>
+      </Row>
+    );
+  }
+
+  renderSelectQuestion(messagePath, dataPath, hasAdvice) {
+    const { data } = this.state;
+    const { submitting } = this.props;
+
+    const selectData = {
+      question: this.formatMessage(this.getIntlMessage(`${messagePath}.question`)),
+      options: this.translatedOptions(`${messagePath}.options`),
+      valueLink: this.valueLink(dataPath),
+      disabled: submitting,
+      error: this.getErrorProps(dataPath).help,
+    };
+
+    return (
+      <Row>
+        <Col xs={24}>
+          <SelectQuestion {...selectData}></SelectQuestion>
+          {hasAdvice && data.getIn(dataPath.split('.')) &&
+            <AdviceBubble advice={this.formatMessage(this.getIntlMessage(`${messagePath}.advice`))} />}
+        </Col>
+      </Row>
+    );
   }
 }
 

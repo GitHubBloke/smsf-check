@@ -4,7 +4,7 @@ export default [
   'accounting',
   'investment-advice',
   'investment-strategy',
-  'death-benefits',
+  'estate-planning',
   'insurance',
   'pensions',
   'contributions',

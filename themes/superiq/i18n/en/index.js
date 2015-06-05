@@ -113,12 +113,20 @@ export default {
         label: 'Is the member retired?',
         options: { yes: 'Yes', no: 'No' },
       },
+      hasWill: {
+        label: 'Does the member have a will?',
+        options: { yes: 'Yes', no: 'No' },
+      },
+      hasEnduringPowersOfAttorney: {
+        label: 'Do the members of your Fund have Enduring Powers of Attorney?',
+        options: { yes: 'Yes', no: 'No' },
+      },
 
       add: { actionLabel: 'Add a member' },
       delete: { confirmation: 'Are you sure you would like to remove this member?' },
 
-      basics: { advice: 'What are the basics of a SMSF?' },
-      forMe: { advice: 'Is a SMSF right for me?' },
+      smsfBasics: { advice: 'What are the basics of a SMSF?' },
+      smsfRightForMe: { advice: 'Is a SMSF right for me?' },
     },
 
     trust: {
@@ -248,9 +256,41 @@ export default {
       }
     },
 
-    deathBenefits: {
-      title: 'Death Benefits',
-      longTitle: 'Death Benefits',
+    estatePlanning: {
+      title: 'Estate Planning',
+      longTitle: 'Estate Planning',
+      advice: 'Should members of my fund have a death benefit nomination?',
+
+      haveBeneficiary: {
+        question: 'Do the members of your fund have death benefit nominations in place?',
+        options: [
+          { value: 'Yes', label: 'Yes' },
+          { value: 'No', label: 'No' },
+        ],
+      },
+
+      typesOfBenefits: {
+        question: 'Types of benefits',
+        options: [
+          { value: '', label: '' },
+          { value: '', label: '' },
+        ],
+        advice: 'What are the different types of death benefit nominations?',
+      },
+
+      yearLastUpdated: {
+        question: 'Last updated?',
+        options: _.times(20, (i) => (new Date().getFullYear() - i).toString()),
+      },
+
+      beneficiary: {
+        question: 'Who is the beneficiary?',
+        options: [
+          { value: '', label: '' },
+          { value: '', label: '' },
+        ],
+        advice: 'Have I nominated the right beneficiaries?',
+      },
     },
 
     insurance: {
@@ -274,6 +314,18 @@ export default {
     },
 
     shared: {
+      charts: {
+        title: 'Does the member have a will?',
+        comparisonMode: {
+          all: 'Compare to all members and funds',
+          member: ' Compare to members like:',
+        },
+        activeDataSet: {
+          ato: 'Display ATO SMSF data set',
+          siq: 'Display {name} data set',
+        },
+      },
+
       navbar: {
         signin: { actionLabel: 'Log In' },
         save: { actionLabel: 'Save', disabledLabel: 'Saved', loadingLabel: 'Saving...' },

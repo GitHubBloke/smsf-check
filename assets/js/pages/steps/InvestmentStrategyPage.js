@@ -1,16 +1,12 @@
 import _ from 'lodash';
-import Immutable from 'immutable';
 import Joi from 'joi';
 import React from 'react';
 import { Col, Input, Row } from 'react-bootstrap';
 import { FormattedMessage as FM } from '../../shims/ReactIntl';
 
-import AdviceBubble from '../../components/AdviceBubble';
 import BasePage from './BasePage';
 import locals from '../../utils/locals';
-import RadioQuestion from '../../components/RadioQuestion';
 import { connectToStores } from '../../utils/StoreUtils';
-import SelectQuestion from '../../components/SelectQuestion';
 import SurveyForm from '../../components/SurveyForm';
 import SurveyStore from '../../stores/SurveyStore';
 import { wrapSurvey } from '../../utils/SurveyUtils';
@@ -26,7 +22,7 @@ class InvestmentStrategy extends BasePage {
       <SurveyForm {...this.props}
         renderForm={this.renderForm}
         renderCharts={this.renderCharts}
-        prevRoute='investment-advice' nextRoute='death-benefits'>
+        prevRoute='investment-advice' nextRoute='estate-planning'>
       </SurveyForm>
     );
   }
@@ -36,7 +32,7 @@ class InvestmentStrategy extends BasePage {
 
     return (
       <div>
-        {this.renderHasStrategy()}
+        <div className='append-xs-2'>{this.renderRadioQuestion('investmentStrategy.hasStrategy', 'survey.investmentStrategy.hasStrategy', true)}</div>
         {(data.getIn([ 'survey', 'investmentStrategy', 'hasStrategy' ]) === 'Yes') && this.renderStrategyQuestions()}
       </div>
     );
@@ -45,82 +41,15 @@ class InvestmentStrategy extends BasePage {
   renderStrategyQuestions() {
     return (
       <div>
-        {this.renderConsiderations()}
-        {this.renderYearLastUpdated()}
-        {this.renderAssetAllocations()}
+        <div className='append-xs-2'>{this.renderRadioQuestion('investmentStrategy.considerations', 'survey.investmentStrategy.considerations')}</div>
+        <div className='append-xs-2'>{this.renderSelectQuestion('investmentStrategy.yearLastUpdated', 'survey.investmentStrategy.yearLastUpdated', true)}</div>
+        <div className='append-xs-2'>{this.renderAssetAllocations()}</div>
       </div>
     );
   }
 
   renderCharts() {
     return <div></div>;
-  }
-
-  renderHasStrategy() {
-    const { data } = this.state;
-    const { submitting } = this.props;
-
-    const radioData = {
-      question: this.formatMessage(this.getIntlMessage('investmentStrategy.hasStrategy.question')),
-      options: this.translatedOptions('investmentStrategy.hasStrategy.options'),
-      valueLink: this.valueLink('survey.investmentStrategy.hasStrategy'),
-      disabled: submitting,
-      error: this.getErrorProps('survey.investmentStrategy.hasStrategy').help,
-    };
-
-    return (
-      <Row className='append-xs-2'>
-        <Col xs={24}>
-          <RadioQuestion {...radioData}></RadioQuestion>
-          {data.getIn([ 'survey', 'investmentStrategy', 'hasStrategy' ]) &&
-            <AdviceBubble advice={this.formatMessage(this.getIntlMessage('investmentStrategy.hasStrategy.advice'))} />}
-        </Col>
-      </Row>
-    );
-  }
-
-  renderConsiderations() {
-    const { data } = this.state;
-    const { submitting } = this.props;
-
-    const radioData = {
-      question: this.formatMessage(this.getIntlMessage('investmentStrategy.considerations.question')),
-      options: this.translatedOptions('investmentStrategy.considerations.options'),
-      valueLink: this.valueLink('survey.investmentStrategy.considerations'),
-      disabled: submitting,
-      error: this.getErrorProps('survey.investmentStrategy.considerations').help,
-    };
-
-    return (
-      <Row className='append-xs-2'>
-        <Col xs={24}>
-          <RadioQuestion {...radioData}></RadioQuestion>
-        </Col>
-      </Row>
-    );
-  }
-
-  renderYearLastUpdated() {
-    const { data } = this.state;
-    const { submitting } = this.props;
-
-    const selectData = {
-      question: this.formatMessage(this.getIntlMessage('investmentStrategy.yearLastUpdated.question')),
-      options: this.translatedOptions('investmentStrategy.yearLastUpdated.options'),
-      valueLink: this.valueLink('survey.investmentStrategy.yearLastUpdated'),
-      disabled: submitting,
-      error: this.getErrorProps('survey.investmentStrategy.yearLastUpdated').help,
-    };
-
-    return (
-      <Row className='append-xs-2'>
-        <Col xs={24}>
-          <SelectQuestion {...selectData}></SelectQuestion>
-          {data.getIn([ 'survey', 'investmentStrategy', 'yearLastUpdated' ]) &&
-            <AdviceBubble advice={this.formatMessage(this.getIntlMessage('investmentStrategy.yearLastUpdated.advice'))} />}
-        </Col>
-      </Row>
-    );
   }
 
   renderAssetAllocations() {
@@ -140,7 +69,7 @@ class InvestmentStrategy extends BasePage {
     ];
 
     return (
-      <Row className='append-xs-2'>
+      <Row>
         <Col xs={24}>
           <h3 className='prepend-xs-none append-xs-1'>
             <FM message={this.getIntlMessage('investmentStrategy.assetAllocations.question')} />

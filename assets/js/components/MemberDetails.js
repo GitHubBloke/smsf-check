@@ -64,30 +64,7 @@ export default class MemberDetails extends MemberCard {
             disabled={submitting}
             {...this.getErrorProps('member.currentMemberBalance')} />
 
-          <div className={classNames('form-group append-xs-none', isRetiredHasError && 'has-error')}>
-            <label className='control-label append-xs-tiny text-normal'>
-              <FM message={this.getIntlMessage('members.isRetired.label')} />
-            </label>
-            <div className='row form-inline'>
-              <RadioGroup name={`isRetired-${data.getIn([ 'member', 'id' ]) || data.getIn([ 'member', 'ref' ])}`}
-                {...this.valueLink('member.isRetired', () => {}, this._isRetiredGetModifier, this._isRetiredSetModifier)}>
-                <div className='col-xs-6 col-xs-offset-6'>
-                  <label className='text-normal'>
-                    <input type='radio' value={true} disabled={submitting} />&nbsp;
-                    <FM message={this.getIntlMessage('members.isRetired.options.yes')} />
-                  </label>
-                </div>
-                <div className='col-xs-6'>
-                  <label className='text-normal'>
-                    <input type='radio' value={false} disabled={submitting} />&nbsp;
-                    <FM message={this.getIntlMessage('members.isRetired.options.no')} />
-                  </label>
-                </div>
-              </RadioGroup>
-            </div>
-            {isRetiredHasError &&
-              <div className='help-block' dangerouslySetInnerHTML={{ __html: this.getErrorProps('member.isRetired').help }}></div>}
-          </div>
+          {this.renderBooleanQuestion('members.isRetired', 'member.isRetired')}
         </div>
       </Well>
     );

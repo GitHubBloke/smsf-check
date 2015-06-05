@@ -1,5 +1,3 @@
-import _ from 'lodash';
-import Immutable from 'immutable';
 import uuid from 'node-uuid';
 import React from 'react';
 import { Button, Col, Grid, Modal, OverlayMixin, Row } from 'react-bootstrap';
@@ -68,8 +66,8 @@ class MembersPage extends BasePage {
           </Col>
         </Row>
         <div className='append-xs-2'>
-          <div className='append-xs-tiny'><AdviceBubble advice={this.formatMessage(this.getIntlMessage('members.basics.advice'))} /></div>
-          <div className='append-xs-tiny'><AdviceBubble advice={this.formatMessage(this.getIntlMessage('members.forMe.advice'))} /></div>
+          <div><AdviceBubble advice={this.formatMessage(this.getIntlMessage('members.smsfBasics.advice'))} /></div>
+          <div><AdviceBubble advice={this.formatMessage(this.getIntlMessage('members.smsfRightForMe.advice'))} /></div>
         </div>
       </div>
     );

@@ -12,6 +12,7 @@ import BaseComponent from '../utils/BaseComponent';
 import ChartsActionCreators from '../actions/ChartsActionCreators';
 import ChartsStore from '../stores/ChartsStore';
 import Icon from './Icon';
+import locals from '../utils/locals';
 import { connectToStores } from '../utils/StoreUtils';
 import SurveyActionCreators from '../actions/SurveyActionCreators';
 import SurveyStore from '../stores/SurveyStore';
@@ -40,7 +41,9 @@ export default class SurveyForm extends BaseComponent {
               <div className='well-group'>
 
                 <Well bsSize='large'>
-                  <h3 className='text-bold text-center prepend-xs-none append-xs-1'>Compare Members & Funds</h3>
+                  <h3 className='text-bold text-center prepend-xs-none append-xs-1'>
+                    <FM message={this.getIntlMessage('shared.charts.title')} />
+                  </h3>
                   <Row>
                     <Col xs={22} xsOffset={1}>
 
@@ -48,12 +51,14 @@ export default class SurveyForm extends BaseComponent {
                         value={comparisonMode} onChange={this._setComparisonMode}>
                         <div className='radio prepend-xs-tiny'>
                           <label className='text-normal'>
-                            <input type='radio' value='all' />&nbsp; Compare to all members and funds
+                            <input type='radio' value='all' />&nbsp;&nbsp;
+                            <FM message={this.getIntlMessage('shared.charts.comparisonMode.all')} />
                           </label>
                         </div>
                         <div className='radio'>
                           <label className='text-normal'>
-                            <input type='radio' value='member' />&nbsp; Compare to members like:
+                            <input type='radio' value='member' />&nbsp;&nbsp;
+                            <FM message={this.getIntlMessage('shared.charts.comparisonMode.member')} />
                           </label>
                         </div>
                       </RadioGroup>
@@ -73,12 +78,14 @@ export default class SurveyForm extends BaseComponent {
                       <RadioGroup name='dataSet' value={activeDataSet} onChange={this._setActiveDataSet}>
                         <div className='radio prepend-xs-none'>
                           <label className='text-normal'>
-                            <input type='radio' value='ato' />&nbsp; Display ATO SMSF data set
+                            <input type='radio' value='ato' />&nbsp;&nbsp;
+                            <FM message={this.getIntlMessage('shared.charts.activeDataSet.ato')} />
                           </label>
                         </div>
                         <div className='radio append-xs-none'>
                           <label className='text-normal'>
-                            <input type='radio' value='siq' />&nbsp; Display IQ Compare data set
+                            <input type='radio' value='siq' />&nbsp;&nbsp;
+                            <FM message={this.getIntlMessage('shared.charts.activeDataSet.siq')} name={locals.name} />
                           </label>
                         </div>
                       </RadioGroup>

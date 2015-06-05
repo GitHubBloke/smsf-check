@@ -1,13 +1,8 @@
-import Immutable from 'immutable';
 import Joi from 'joi';
 import React from 'react';
-import { Col, Row } from 'react-bootstrap';
-import { FormattedMessage as FM } from '../../shims/ReactIntl';
 
-import AdviceBubble from '../../components/AdviceBubble';
 import BasePage from './BasePage';
 import locals from '../../utils/locals';
-import RadioQuestion from '../../components/RadioQuestion';
 import { connectToStores } from '../../utils/StoreUtils';
 import SurveyForm from '../../components/SurveyForm';
 import SurveyStore from '../../stores/SurveyStore';
@@ -32,61 +27,14 @@ class AccountingPage extends BasePage {
   renderForm() {
     return (
       <div>
-        {this.renderWhoDoesAccounting()}
-        {this.renderAccountingCostPerYear()}
+        <div className='append-xs-2'>{this.renderRadioQuestion('accounting.whoDoesIt', 'survey.accounting.whoDoesIt', true)}</div>
+        <div className='append-xs-2'>{this.renderRadioQuestion('accounting.costPerYear', 'survey.accounting.costPerYear', true)}</div>
       </div>
     );
   }
 
   renderCharts() {
     return <div></div>;
-  }
-
-  renderWhoDoesAccounting() {
-    const { data } = this.state;
-    const { submitting } = this.props;
-
-    const radioData = {
-      question: this.formatMessage(this.getIntlMessage('accounting.whoDoesIt.question')),
-      options: this.translatedOptions('accounting.whoDoesIt.options'),
-      valueLink: this.valueLink('survey.accounting.whoDoesIt'),
-      disabled: submitting,
-      error: this.getErrorProps('survey.accounting.whoDoesIt').help,
-    };
-
-    return (
-      <Row className='append-xs-2'>
-        <Col xs={24}>
-          <RadioQuestion {...radioData}></RadioQuestion>
-          {data.getIn([ 'survey', 'accounting', 'whoDoesIt' ]) &&
-            <AdviceBubble advice={this.formatMessage(this.getIntlMessage('accounting.whoDoesIt.advice'))} />}
-        </Col>
-      </Row>
-    );
-  }
-
-  renderAccountingCostPerYear() {
-    const { data } = this.state;
-    const { submitting } = this.props;
-    const costPerYear = data.getIn([ 'survey', 'accounting', 'costPerYear' ]);
-
-    const radioData = {
-      question: this.formatMessage(this.getIntlMessage('accounting.costPerYear.question')),
-      options: this.translatedOptions('accounting.costPerYear.options'),
-      valueLink: this.valueLink('survey.accounting.costPerYear'),
-      disabled: submitting,
-      error: this.getErrorProps('survey.accounting.costPerYear').help,
-    };
-
-    return (
-      <Row className='append-xs-2'>
-        <Col xs={24}>
-          <RadioQuestion {...radioData}></RadioQuestion>
-          {costPerYear &&
-            <AdviceBubble advice={this.formatMessage(this.getIntlMessage('accounting.costPerYear.advice'))} />}
-        </Col>
-      </Row>
-    );
   }
 }
 
