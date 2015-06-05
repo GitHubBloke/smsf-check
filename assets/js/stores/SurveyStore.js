@@ -33,7 +33,7 @@ const SurveyStore = createStore({
 SurveyStore.dispatchToken = AppDispatcher.register((payload) => {
   const { action } = payload;
   const { response, err, member, dirtyMember } = action;
-  let members, dirtySurvey;
+  let members, memberIndex, dirtySurvey;
 
   switch (action.type) {
     case ActionTypes.SIGNIN_SUCCESS:
