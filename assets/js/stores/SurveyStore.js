@@ -32,7 +32,7 @@ const SurveyStore = createStore({
 
 SurveyStore.dispatchToken = AppDispatcher.register((payload) => {
   const { action } = payload;
-  const { response, err } = action;
+  const { response, err, member, dirtyMember } = action;
 
   switch (action.type) {
     case ActionTypes.SIGNIN_SUCCESS:
@@ -48,7 +48,6 @@ SurveyStore.dispatchToken = AppDispatcher.register((payload) => {
       break;
 
     case ActionTypes.SURVEY_ADD_MEMBER:
-      const { member } = action;
       dirtySurvey = dirtySurvey.update('members', (v) => v.push(Immutable.fromJS(member)));
       break;
 
@@ -80,14 +79,12 @@ SurveyStore.dispatchToken = AppDispatcher.register((payload) => {
       break;
 
     case ActionTypes.SURVEY_MAKE_MEMBER_DIRTY:
-      const { member, dirtyMember } = action;
       const members = dirtySurvey.get('members');
       const index = members.indexOf(member);
       dirtySurvey = dirtySurvey.setIn([ 'members', index ], dirtyMember);
       break;
 
     case ActionTypes.SURVEY_DELETE_MEMBER:
-      const { member } = action;
       const members = dirtySurvey.get('members');
       const index = members.indexOf(member);
       dirtySurvey = dirtySurvey.deleteIn([ 'members', index ]);

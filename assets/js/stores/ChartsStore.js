@@ -17,11 +17,10 @@ const ChartsStore = createStore({
 
 ChartsStore.dispatchToken = AppDispatcher.register((payload) => {
   const { action } = payload;
-  const { response, err } = action;
+  const { response, err, member, dirtyMember } = action;
 
   switch (action.type) {
     case ActionTypes.SURVEY_DELETE_MEMBER:
-      const { member } = action;
       if (comparisonMember &&
           (comparisonMember.get('id') === member.get('id') ||
           comparisonMember.get('ref') === member.get('ref'))) {
@@ -30,7 +29,6 @@ ChartsStore.dispatchToken = AppDispatcher.register((payload) => {
       break;
 
     case ActionTypes.SURVEY_MAKE_MEMBER_DIRTY:
-      const { member, dirtyMember } = action;
       if (comparisonMember &&
           (comparisonMember.get('id') === member.get('id') ||
           comparisonMember.get('ref') === member.get('ref'))) {
