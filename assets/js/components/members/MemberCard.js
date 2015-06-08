@@ -1,8 +1,9 @@
 import classNames from 'classnames';
 import { Map } from 'immutable';
 import React, { PropTypes } from 'react';
-import { FormattedMessage as FM } from '../shims/ReactIntl';
+import { FormattedMessage as FM } from '../../shims/ReactIntl';
 import RadioGroup from 'react-radio';
+import Select from 'react-select/lib/Select';
 
 import SurveyActionCreators from '../../actions/SurveyActionCreators';
 import Validatable from '../../utils/Validatable';
@@ -43,7 +44,7 @@ export default class MemberCard extends Validatable {
     const error = this.getErrorProps(dataPath).help;
 
     return (
-      <div className={classNames('form-group append-xs-none', error && 'has-error')}>
+      <div className={classNames('form-group', error && 'has-error')}>
         <label className='control-label append-xs-tiny text-normal'>
           <FM message={this.getIntlMessage(`${messagePath}.label`)} />
         </label>
@@ -63,6 +64,30 @@ export default class MemberCard extends Validatable {
               </label>
             </div>
           </RadioGroup>
+        </div>
+        {error && <div className='help-block' dangerouslySetInnerHTML={{ __html: error }}></div>}
+      </div>
+    );
+  }
+
+  renderSelectQuestion(messagePath, dataPath) {
+    const { data } = this.state;
+    const { submitting } = this.props;
+    const error = this.getErrorProps(dataPath).help;
+
+    const selectData = {
+      options: this.translatedOptions(`${messagePath}.options`),
+      valueLink: this.valueLink(dataPath),
+      disabled: submitting,
+    };
+
+    return (
+      <div className={classNames('form-group', error && 'has-error')}>
+        <label className='control-label append-xs-tiny text-normal'>
+          <FM message={this.getIntlMessage(`${messagePath}.label`)} />
+        </label>
+        <div className='form-inline'>
+          <Select name={`${dataPath}-${data.getIn([ 'member', 'id' ]) || data.getIn([ 'member', 'ref' ])}`} {...selectData} className='Select--lg' />
         </div>
         {error && <div className='help-block' dangerouslySetInnerHTML={{ __html: error }}></div>}
       </div>

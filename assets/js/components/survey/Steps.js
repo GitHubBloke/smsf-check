@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import classNames from 'classnames';
 import React, { PropTypes } from 'react';
-import { FormattedMessage as FM } from '../shims/ReactIntl';
+import { FormattedMessage as FM } from '../../shims/ReactIntl';
 import { Link } from 'react-router';
 import utils from 'keystone-utils';
 

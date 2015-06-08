@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import React, { PropTypes } from 'react';
 
-import BaseComponent from '../utils/BaseComponent';
-import Icon, { IconStack } from './Icon';
+import BaseComponent from '../../utils/BaseComponent';
+import Icon, { IconStack } from '../Icon';
 
 export default class GenderOption extends BaseComponent {
   constructor(props) {

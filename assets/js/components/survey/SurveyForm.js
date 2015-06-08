@@ -3,7 +3,7 @@ import Immutable, { Map } from 'immutable';
 import moment from 'moment';
 import React, { PropTypes } from 'react';
 import { Button, Col, Grid, Row, Well } from 'react-bootstrap';
-import { FormattedMessage as FM } from '../shims/ReactIntl';
+import { FormattedMessage as FM } from '../../shims/ReactIntl';
 import RadioGroup from 'react-radio';
 import { Link } from 'react-router';
 import Select from 'react-select/lib/Select';

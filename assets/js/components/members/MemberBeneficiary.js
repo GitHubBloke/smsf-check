@@ -22,7 +22,8 @@ export default class MemberBeneficiary extends MemberCard {
         <div className='well__body'>
           <div className={classNames(`avatar-${data.getIn([ 'member', 'gender' ])}`, 'member__avatar', 'append-xs-1')}></div>
 
-          <div className='append-xs-tiny'>{this.renderBooleanQuestion('members.hasWill', 'member.hasWill')}</div>
+          {this.renderSelectQuestion('members.typesOfBenefits', 'member.typesOfBenefits')}
+          {this.renderBooleanQuestion('members.hasWill', 'member.hasWill')}
           {this.renderBooleanQuestion('members.hasEnduringPowersOfAttorney', 'member.hasEnduringPowersOfAttorney')}
         </div>
       </Well>

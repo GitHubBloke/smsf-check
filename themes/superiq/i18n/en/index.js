@@ -113,6 +113,26 @@ export default {
         label: 'Is the member retired?',
         options: { yes: 'Yes', no: 'No' },
       },
+      typesOfBenefits: {
+        label: 'Types of benefits',
+        options: [
+          { value: '', label: '' },
+          { value: '', label: '' },
+        ],
+        advice: 'What are the different types of death benefit nominations?',
+      },
+      yearLastUpdated: {
+        label: 'Last updated?',
+        options: _.times(20, (i) => (new Date().getFullYear() - i).toString()),
+      },
+      beneficiary: {
+        label: 'Who is the beneficiary?',
+        options: [
+          { value: '', label: '' },
+          { value: '', label: '' },
+        ],
+        advice: 'Have I nominated the right beneficiaries?',
+      },
       hasWill: {
         label: 'Does the member have a will?',
         options: { yes: 'Yes', no: 'No' },
@@ -267,29 +287,6 @@ export default {
           { value: 'Yes', label: 'Yes' },
           { value: 'No', label: 'No' },
         ],
-      },
-
-      typesOfBenefits: {
-        question: 'Types of benefits',
-        options: [
-          { value: '', label: '' },
-          { value: '', label: '' },
-        ],
-        advice: 'What are the different types of death benefit nominations?',
-      },
-
-      yearLastUpdated: {
-        question: 'Last updated?',
-        options: _.times(20, (i) => (new Date().getFullYear() - i).toString()),
-      },
-
-      beneficiary: {
-        question: 'Who is the beneficiary?',
-        options: [
-          { value: '', label: '' },
-          { value: '', label: '' },
-        ],
-        advice: 'Have I nominated the right beneficiaries?',
       },
     },
 

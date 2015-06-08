@@ -4,10 +4,10 @@ import Joi from 'joi';
 import moment from 'moment';
 import { Button, Col, Input, Row, Well } from 'react-bootstrap';
 import React, { PropTypes } from 'react';
-import { FormattedMessage as FM } from '../shims/ReactIntl';
+import { FormattedMessage as FM } from '../../shims/ReactIntl';
 import RadioGroup from 'react-radio';
 
-import GenderOption from '../GenderOption';
+import GenderOption from './GenderOption';
 import Icon, { IconStack } from '../Icon';
 import MemberCard from './MemberCard';
 import SurveyStore from '../../stores/SurveyStore';
