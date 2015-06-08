@@ -5,7 +5,7 @@ import React from 'react';
 import { Button, Col, Grid, Row } from 'react-bootstrap';
 import { FormattedMessage as FM, FormattedHTMLMessage as FHM } from '../../shims/ReactIntl';
 
-import AdviceBubble from '../../components/AdviceBubble';
+import AdviceBubble from '../../components/survey/AdviceBubble';
 import BasePage from './BasePage';
 import BaseComponent from '../../utils/BaseComponent';
 import Icon from '../../components/Icon';
@@ -13,7 +13,7 @@ import locals from '../../utils/locals';
 import MemberBeneficiary from '../../components/members/MemberBeneficiary';
 import { connectToStores } from '../../utils/StoreUtils';
 import SurveyActionCreators from '../../actions/SurveyActionCreators';
-import SurveyForm from '../../components/SurveyForm';
+import SurveyForm from '../../components/survey/SurveyForm';
 import SurveyStore from '../../stores/SurveyStore';
 import { wrapSurvey } from '../../utils/SurveyUtils';
 

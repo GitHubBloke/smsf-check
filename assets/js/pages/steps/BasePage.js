@@ -5,9 +5,9 @@ import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import Highcharts from 'react-highcharts/3d';
 
-import AdviceBubble from '../../components/AdviceBubble';
-import RadioQuestion from '../../components/RadioQuestion';
-import SelectQuestion from '../../components/SelectQuestion';
+import AdviceBubble from '../../components/survey/AdviceBubble';
+import RadioQuestion from '../../components/survey/RadioQuestion';
+import SelectQuestion from '../../components/survey/SelectQuestion';
 import SurveyActionCreators from '../../actions/SurveyActionCreators';
 import SurveyStore from '../../stores/SurveyStore';
 import Validatable from '../../utils/Validatable';

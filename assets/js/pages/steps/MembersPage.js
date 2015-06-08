@@ -4,7 +4,7 @@ import { Button, Col, Grid, Modal, OverlayMixin, Row } from 'react-bootstrap';
 import { FormattedMessage as FM, FormattedHTMLMessage as FHM } from '../../shims/ReactIntl';
 import reactMixin from 'react-mixin';
 
-import AdviceBubble from '../../components/AdviceBubble';
+import AdviceBubble from '../../components/survey/AdviceBubble';
 import BasePage from './BasePage';
 import BaseComponent from '../../utils/BaseComponent';
 import Icon from '../../components/Icon';
@@ -12,7 +12,7 @@ import locals from '../../utils/locals';
 import MemberDetails from '../../components/members/MemberDetails';
 import { connectToStores } from '../../utils/StoreUtils';
 import SurveyActionCreators from '../../actions/SurveyActionCreators';
-import SurveyForm from '../../components/SurveyForm';
+import SurveyForm from '../../components/survey/SurveyForm';
 import SurveyStore from '../../stores/SurveyStore';
 import { wrapSurvey } from '../../utils/SurveyUtils';
 

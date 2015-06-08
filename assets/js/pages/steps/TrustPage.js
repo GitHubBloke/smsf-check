@@ -5,7 +5,7 @@ import { FormattedMessage as FM } from '../../shims/ReactIntl';
 import BasePage from './BasePage';
 import locals from '../../utils/locals';
 import { connectToStores } from '../../utils/StoreUtils';
-import SurveyForm from '../../components/SurveyForm';
+import SurveyForm from '../../components/survey/SurveyForm';
 import SurveyStore from '../../stores/SurveyStore';
 import { wrapSurvey } from '../../utils/SurveyUtils';
 

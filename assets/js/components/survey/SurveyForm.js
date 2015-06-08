@@ -8,14 +8,14 @@ import RadioGroup from 'react-radio';
 import { Link } from 'react-router';
 import Select from 'react-select/lib/Select';
 
-import BaseComponent from '../utils/BaseComponent';
-import ChartsActionCreators from '../actions/ChartsActionCreators';
-import ChartsStore from '../stores/ChartsStore';
-import Icon from './Icon';
-import locals from '../utils/locals';
-import { connectToStores } from '../utils/StoreUtils';
-import SurveyActionCreators from '../actions/SurveyActionCreators';
-import SurveyStore from '../stores/SurveyStore';
+import BaseComponent from '../../utils/BaseComponent';
+import ChartsActionCreators from '../../actions/ChartsActionCreators';
+import ChartsStore from '../../stores/ChartsStore';
+import Icon from '../Icon';
+import locals from '../../utils/locals';
+import { connectToStores } from '../../utils/StoreUtils';
+import SurveyActionCreators from '../../actions/SurveyActionCreators';
+import SurveyStore from '../../stores/SurveyStore';
 
 export default class SurveyForm extends BaseComponent {
   constructor(props) {

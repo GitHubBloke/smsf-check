@@ -4,7 +4,7 @@ import React, { PropTypes } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import Select from 'react-select/lib/Select';
 
-import BaseComponent from '../utils/BaseComponent';
+import BaseComponent from '../../utils/BaseComponent';
 
 export default class SelectQuestion extends BaseComponent {
   render() {

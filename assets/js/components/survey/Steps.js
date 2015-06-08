@@ -5,8 +5,8 @@ import { FormattedMessage as FM } from '../shims/ReactIntl';
 import { Link } from 'react-router';
 import utils from 'keystone-utils';
 
-import BaseComponent from '../utils/BaseComponent';
-import steps from '../constants/Steps';
+import BaseComponent from '../../utils/BaseComponent';
+import steps from '../../constants/Steps';
 
 export default class Steps extends BaseComponent {
   constructor(props) {

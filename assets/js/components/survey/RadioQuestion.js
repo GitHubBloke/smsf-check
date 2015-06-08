@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import React, { PropTypes } from 'react';
 import RadioGroup from 'react-radio';
 
-import BaseComponent from '../utils/BaseComponent';
+import BaseComponent from '../../utils/BaseComponent';
 
 export default class RadioQuestion extends BaseComponent {
   constructor(props) {

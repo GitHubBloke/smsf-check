@@ -9,7 +9,7 @@ import { requireAuth } from '../utils/AuthUtils';
 import BaseComponent from '../utils/BaseComponent';
 import locals from '../utils/locals';
 import router from '../router';
-import Steps from '../components/Steps';
+import Steps from '../components/survey/Steps';
 import steps from '../constants/Steps';
 import SurveyStore from '../stores/SurveyStore';
 

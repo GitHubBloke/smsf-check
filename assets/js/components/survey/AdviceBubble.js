@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 
-import BaseComponent from '../utils/BaseComponent';
-import Icon from '../components/Icon';
+import BaseComponent from '../../utils/BaseComponent';
+import Icon from '../../components/Icon';
 
 export default class AdviceBubble extends BaseComponent {
   render() {
