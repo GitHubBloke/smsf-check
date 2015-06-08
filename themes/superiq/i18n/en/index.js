@@ -312,7 +312,7 @@ export default {
 
     shared: {
       charts: {
-        title: 'Does the member have a will?',
+        title: 'Compare Members & Funds',
         comparisonMode: {
           all: 'Compare to all members and funds',
           member: ' Compare to members like:',
