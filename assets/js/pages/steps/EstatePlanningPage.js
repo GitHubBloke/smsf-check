@@ -1,18 +1,15 @@
 import _ from 'lodash';
-import Immutable from 'immutable';
 import Joi from 'joi';
 import React from 'react';
-import { Button, Col, Grid, Row } from 'react-bootstrap';
+import { Col, Grid, Row } from 'react-bootstrap';
 import { FormattedMessage as FM, FormattedHTMLMessage as FHM } from '../../shims/ReactIntl';
+import RadioQuestion from '../../components/survey/RadioQuestion';
+import SelectQuestion from '../../components/survey/SelectQuestion';
 
 import AdviceBubble from '../../components/survey/AdviceBubble';
 import BasePage from './BasePage';
-import BaseComponent from '../../utils/BaseComponent';
-import Icon from '../../components/Icon';
-import locals from '../../utils/locals';
 import MemberBeneficiary from '../../components/members/MemberBeneficiary';
 import { connectToStores } from '../../utils/StoreUtils';
-import SurveyActionCreators from '../../actions/SurveyActionCreators';
 import SurveyForm from '../../components/survey/SurveyForm';
 import SurveyStore from '../../stores/SurveyStore';
 import { wrapSurvey } from '../../utils/SurveyUtils';
@@ -39,7 +36,9 @@ class EstatePlanningPage extends BasePage {
 
     return (
       <div className='append-xs-2'>
-        {this.renderRadioQuestion('estatePlanning.haveBeneficiary', 'survey.estatePlanning.haveBeneficiary')}
+        <div className='append-xs-2'>
+          <RadioQuestion {...this.questionProps('estatePlanning.haveBeneficiary')} />
+        </div>
 
         {data.getIn([ 'survey', 'estatePlanning', 'haveBeneficiary' ]) === 'Yes' &&
           <Row className='members'>

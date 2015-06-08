@@ -154,7 +154,7 @@ export default {
       longTitle: 'Your SMSF Trust Structure',
 
       trusteeType: {
-        question: 'What type of trustee does your fund have?',
+        label: 'What type of trustee does your fund have?',
         options: [
           { value: 'individuals', label: 'Individuals as Trustee' },
           { value: 'corporate', label: 'Corporate trustee' },
@@ -163,12 +163,12 @@ export default {
       },
 
       deedSupplier: {
-        question: 'Who supplied the trust deed for you fund?',
+        label: 'Who supplied the trust deed for you fund?',
         options: [ 'Unknown', 'Freehills', 'Madgwicks', 'SuperCentral' ],
       },
 
       yearLastUpdated: {
-        question: 'In which year was your trust fund last updated?',
+        label: 'In which year was your trust fund last updated?',
         options: _.times(20, (i) => (new Date().getFullYear() - i).toString()),
         advice: 'Should I upgrade my trust deed?',
       },
@@ -179,7 +179,7 @@ export default {
       longTitle: 'Tax & Accounting',
 
       whoDoesIt: {
-        question: 'Who does the accounting and tax work for your fund?',
+        label: 'Who does the accounting and tax work for your fund?',
         options: [
           { value: 'myself', label: 'I do it myself' },
           { value: 'accountant', label: 'My accountant does it' },
@@ -190,7 +190,7 @@ export default {
       },
 
       costPerYear: {
-        question: 'How much does it cost per year?',
+        label: 'How much does it cost per year?',
         options: [
           '< $1,000',
           '$1,001 - $1,500',
@@ -209,7 +209,7 @@ export default {
       longTitle: 'Investment Advice',
 
       whoDoesIt: {
-        question: 'Who provides investment advice for your fund?',
+        label: 'Who provides investment advice for your fund?',
         options: [
           { value: 'myself', label: 'I do it myself' },
           { value: 'financial-planner', label: 'My Financial Planner does it' },
@@ -219,7 +219,7 @@ export default {
       },
 
       costPerYear: {
-        question: 'How much does it cost per year?',
+        label: 'How much does it cost per year?',
         options: [
           '< $1,000',
           '$1,001 - $1,500',
@@ -238,7 +238,7 @@ export default {
       longTitle: 'Investment Strategy',
 
       hasStrategy: {
-        question: 'Does your fund have an Investment Strategy?',
+        label: 'Does your fund have an Investment Strategy?',
         options: [
           { value: 'Yes', label: 'Yes' },
           { value: 'No', label: 'No' },
@@ -247,7 +247,7 @@ export default {
       },
 
       considerations: {
-        question: 'Does your investment strategy consider the cashflow, liquidity liabilities and tax consequences of holding certain assets for the fund?',
+        label: 'Does your investment strategy consider the cashflow, liquidity liabilities and tax consequences of holding certain assets for the fund?',
         options: [
           { value: 'Yes', label: 'Yes' },
           { value: 'No', label: 'No' },
@@ -255,13 +255,13 @@ export default {
       },
 
       yearLastUpdated: {
-        question: 'When was your investment strategy last updated?',
+        label: 'When was your investment strategy last updated?',
         options: _.times(20, (i) => (new Date().getFullYear() - i).toString()),
         advice: 'How frequently should I update my Investment Strategy?',
       },
 
       assetAllocations: {
-        question: 'What is the current asset allocation in your investment strategy?',
+        label: 'What is the current asset allocation in your investment strategy?',
         assets: {
           cashAndFixedInterest: 'Cash & Fixed Interest...',
           australianEquities: 'Australian Equities...',
@@ -282,7 +282,7 @@ export default {
       advice: 'Should members of my fund have a death benefit nomination?',
 
       haveBeneficiary: {
-        question: 'Do the members of your fund have death benefit nominations in place?',
+        label: 'Do the members of your fund have death benefit nominations in place?',
         options: [
           { value: 'Yes', label: 'Yes' },
           { value: 'No', label: 'No' },

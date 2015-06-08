@@ -1,9 +1,9 @@
 import Joi from 'joi';
 import React from 'react';
-import { FormattedMessage as FM } from '../../shims/ReactIntl';
+import RadioQuestion from '../../components/survey/RadioQuestion';
+import SelectQuestion from '../../components/survey/SelectQuestion';
 
 import BasePage from './BasePage';
-import locals from '../../utils/locals';
 import { connectToStores } from '../../utils/StoreUtils';
 import SurveyForm from '../../components/survey/SurveyForm';
 import SurveyStore from '../../stores/SurveyStore';
@@ -31,11 +31,19 @@ class TrustPage extends BasePage {
   }
 
   renderForm() {
+    const { submitting } = this.props;
+
     return (
       <div>
-        <div className='append-xs-2'>{this.renderRadioQuestion('trust.trusteeType', 'survey.trust.trusteeType', true)}</div>
-        <div className='append-xs-2'>{this.renderSelectQuestion('trust.deedSupplier', 'survey.trust.deedSupplier')}</div>
-        <div className='append-xs-2'>{this.renderSelectQuestion('trust.yearLastUpdated', 'survey.trust.yearLastUpdated', true)}</div>
+        <div className='append-xs-2'>
+          <RadioQuestion {...this.questionProps('trust.trusteeType')} />
+        </div>
+        <div className='append-xs-2'>
+          <SelectQuestion {...this.questionProps('trust.deedSupplier')} />
+        </div>
+        <div className='append-xs-2'>
+          <SelectQuestion {...this.questionProps('trust.yearLastUpdated')} />
+        </div>
       </div>
     );
   }

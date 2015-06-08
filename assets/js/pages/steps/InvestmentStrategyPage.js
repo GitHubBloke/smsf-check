@@ -3,9 +3,10 @@ import Joi from 'joi';
 import React from 'react';
 import { Col, Input, Row } from 'react-bootstrap';
 import { FormattedMessage as FM } from '../../shims/ReactIntl';
+import RadioQuestion from '../../components/survey/RadioQuestion';
+import SelectQuestion from '../../components/survey/SelectQuestion';
 
 import BasePage from './BasePage';
-import locals from '../../utils/locals';
 import { connectToStores } from '../../utils/StoreUtils';
 import SurveyForm from '../../components/survey/SurveyForm';
 import SurveyStore from '../../stores/SurveyStore';
@@ -14,7 +15,7 @@ import { wrapSurvey } from '../../utils/SurveyUtils';
 class InvestmentStrategy extends BasePage {
   constructor(props) {
     super(props);
-    this.bind('renderForm', 'renderCharts', '_renderAssetAllocation');
+    this.bind('renderForm', 'renderCharts', 'renderAssetAllocation');
   }
 
   render() {
@@ -32,7 +33,9 @@ class InvestmentStrategy extends BasePage {
 
     return (
       <div>
-        <div className='append-xs-2'>{this.renderRadioQuestion('investmentStrategy.hasStrategy', 'survey.investmentStrategy.hasStrategy', true)}</div>
+        <div className='append-xs-2'>
+          <RadioQuestion {...this.questionProps('investmentStrategy.hasStrategy')} />
+        </div>
         {(data.getIn([ 'survey', 'investmentStrategy', 'hasStrategy' ]) === 'Yes') && this.renderStrategyQuestions()}
       </div>
     );
@@ -41,8 +44,12 @@ class InvestmentStrategy extends BasePage {
   renderStrategyQuestions() {
     return (
       <div>
-        <div className='append-xs-2'>{this.renderRadioQuestion('investmentStrategy.considerations', 'survey.investmentStrategy.considerations')}</div>
-        <div className='append-xs-2'>{this.renderSelectQuestion('investmentStrategy.yearLastUpdated', 'survey.investmentStrategy.yearLastUpdated', true)}</div>
+        <div className='append-xs-2'>
+          <RadioQuestion {...this.questionProps('investmentStrategy.considerations')} />
+        </div>
+        <div className='append-xs-2'>
+          <SelectQuestion {...this.questionProps('investmentStrategy.yearLastUpdated')} />
+        </div>
         <div className='append-xs-2'>{this.renderAssetAllocations()}</div>
       </div>
     );
@@ -72,15 +79,15 @@ class InvestmentStrategy extends BasePage {
       <Row>
         <Col xs={24}>
           <h3 className='prepend-xs-none append-xs-1'>
-            <FM message={this.getIntlMessage('investmentStrategy.assetAllocations.question')} />
+            <FM message={this.getIntlMessage('investmentStrategy.assetAllocations.label')} />
           </h3>
-          {_.map(assetAllocations, this._renderAssetAllocation)}
+          {_.map(assetAllocations, this.renderAssetAllocation)}
         </Col>
       </Row>
     );
   }
 
-  _renderAssetAllocation(field) {
+  renderAssetAllocation(field) {
     const { submitting } = this.props;
 
     return (

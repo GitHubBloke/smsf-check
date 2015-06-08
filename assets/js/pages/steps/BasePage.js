@@ -2,12 +2,8 @@ import _ from 'lodash';
 import Immutable from 'immutable';
 import moment from 'moment';
 import React from 'react';
-import { Col, Row } from 'react-bootstrap';
 import Highcharts from 'react-highcharts/3d';
 
-import AdviceBubble from '../../components/survey/AdviceBubble';
-import RadioQuestion from '../../components/survey/RadioQuestion';
-import SelectQuestion from '../../components/survey/SelectQuestion';
 import SurveyActionCreators from '../../actions/SurveyActionCreators';
 import SurveyStore from '../../stores/SurveyStore';
 import Validatable from '../../utils/Validatable';
@@ -62,50 +58,20 @@ export default class BasePage extends Validatable {
         series={_.cloneDeep(data[group])} />;
   }
 
-  renderRadioQuestion(messagePath, dataPath, hasAdvice) {
-    const { data } = this.state;
-    const { submitting } = this.props;
+  questionProps(path) {
+    let advice, options;
 
-    const radioData = {
-      question: this.formatMessage(this.getIntlMessage(`${messagePath}.question`)),
-      options: this.translatedOptions(`${messagePath}.options`),
-      valueLink: this.valueLink(dataPath),
-      disabled: submitting,
-      error: this.getErrorProps(dataPath).help,
+    try { advice = this.formatMessage(this.getIntlMessage(`${path}.advice`)); } catch(e) {}
+    try { options = this.translatedOptions(`${path}.options`); } catch(e) {}
+
+    return {
+      label: this.formatMessage(this.getIntlMessage(`${path}.label`)),
+      valueLink: this.linkState(`survey.${path}`),
+      disabled: this.props.submitting,
+      advice,
+      options,
+      ...this.getErrorProps(`survey.${path}`),
     };
-
-    return (
-      <Row>
-        <Col xs={24}>
-          <RadioQuestion {...radioData}></RadioQuestion>
-          {hasAdvice && data.getIn(dataPath.split('.')) &&
-            <AdviceBubble advice={this.formatMessage(this.getIntlMessage(`${messagePath}.advice`))} />}
-        </Col>
-      </Row>
-    );
-  }
-
-  renderSelectQuestion(messagePath, dataPath, hasAdvice) {
-    const { data } = this.state;
-    const { submitting } = this.props;
-
-    const selectData = {
-      question: this.formatMessage(this.getIntlMessage(`${messagePath}.question`)),
-      options: this.translatedOptions(`${messagePath}.options`),
-      valueLink: this.valueLink(dataPath),
-      disabled: submitting,
-      error: this.getErrorProps(dataPath).help,
-    };
-
-    return (
-      <Row>
-        <Col xs={24}>
-          <SelectQuestion {...selectData}></SelectQuestion>
-          {hasAdvice && data.getIn(dataPath.split('.')) &&
-            <AdviceBubble advice={this.formatMessage(this.getIntlMessage(`${messagePath}.advice`))} />}
-        </Col>
-      </Row>
-    );
   }
 }
 

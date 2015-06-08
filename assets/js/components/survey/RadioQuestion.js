@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import React, { PropTypes } from 'react';
 import RadioGroup from 'react-radio';
 
+import AdviceBubble from './AdviceBubble';
 import BaseComponent from '../../utils/BaseComponent';
 
 export default class RadioQuestion extends BaseComponent {
@@ -12,17 +13,18 @@ export default class RadioQuestion extends BaseComponent {
   }
 
   render() {
-    const { question, options, valueLink, error } = this.props;
+    const { label, bsStyle, help, valueLink, advice, options } = this.props;
 
     return (
       <div>
-        <h3 className='prepend-xs-none append-xs-1'>{question}</h3>
-        <div className={classNames('form-group', error && 'has-error')}>
-          <RadioGroup name={question} {...valueLink}>
+        <h3 className='prepend-xs-none append-xs-1'>{label}</h3>
+        <div className={classNames('form-group', (bsStyle === 'error') && 'has-error')}>
+          <RadioGroup name={label} {...this.props} value={valueLink.value} onChange={valueLink.requestChange}>
             {_.map(options, this.renderOption)}
           </RadioGroup>
-          {error && <span className='help-block' dangerouslySetInnerHTML={{ __html: error }}></span>}
+          {help && <span className='help-block' dangerouslySetInnerHTML={{ __html: help }}></span>}
         </div>
+        {advice && valueLink.value && <AdviceBubble advice={advice} />}
       </div>
     );
   }
@@ -50,10 +52,6 @@ export default class RadioQuestion extends BaseComponent {
 }
 
 RadioQuestion.propTypes = {
-  question: PropTypes.string.isRequired,
   options: PropTypes.array.isRequired,
-  valueLink: PropTypes.object.isRequired,
-  disabled: PropTypes.bool,
-  error: PropTypes.string,
 };
 

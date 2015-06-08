@@ -1,8 +1,9 @@
 import Joi from 'joi';
 import React from 'react';
+import RadioQuestion from '../../components/survey/RadioQuestion';
+import SelectQuestion from '../../components/survey/SelectQuestion';
 
 import BasePage from './BasePage';
-import locals from '../../utils/locals';
 import { connectToStores } from '../../utils/StoreUtils';
 import SurveyForm from '../../components/survey/SurveyForm';
 import SurveyStore from '../../stores/SurveyStore';
@@ -27,8 +28,12 @@ class InvestmentAdvicePage extends BasePage {
   renderForm() {
     return (
       <div>
-        <div className='append-xs-2'>{this.renderRadioQuestion('investmentAdvice.whoDoesIt', 'survey.investmentAdvice.whoDoesIt', true)}</div>
-        <div className='append-xs-2'>{this.renderRadioQuestion('investmentAdvice.costPerYear', 'survey.investmentAdvice.costPerYear', true)}</div>
+        <div className='append-xs-2'>
+          <RadioQuestion {...this.questionProps('investmentAdvice.whoDoesIt')} />
+        </div>
+        <div className='append-xs-2'>
+          <RadioQuestion {...this.questionProps('investmentAdvice.costPerYear')} />
+        </div>
       </div>
     );
   }

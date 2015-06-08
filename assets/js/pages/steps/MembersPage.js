@@ -6,7 +6,6 @@ import reactMixin from 'react-mixin';
 
 import AdviceBubble from '../../components/survey/AdviceBubble';
 import BasePage from './BasePage';
-import BaseComponent from '../../utils/BaseComponent';
 import Icon from '../../components/Icon';
 import locals from '../../utils/locals';
 import MemberDetails from '../../components/members/MemberDetails';
