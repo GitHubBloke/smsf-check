@@ -10,7 +10,7 @@ import BasePage from './BasePage';
 import BaseComponent from '../../utils/BaseComponent';
 import Icon from '../../components/Icon';
 import locals from '../../utils/locals';
-import MemberBeneficiary from '../../components/MemberBeneficiary';
+import MemberBeneficiary from '../../components/members/MemberBeneficiary';
 import { connectToStores } from '../../utils/StoreUtils';
 import SurveyActionCreators from '../../actions/SurveyActionCreators';
 import SurveyForm from '../../components/SurveyForm';

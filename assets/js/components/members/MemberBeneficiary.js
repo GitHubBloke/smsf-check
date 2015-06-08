@@ -4,10 +4,10 @@ import Joi from 'joi';
 import { Input,  Well } from 'react-bootstrap';
 import React, { PropTypes } from 'react';
 
-import Icon, { IconStack } from './Icon';
+import Icon, { IconStack } from '../Icon';
 import MemberCard from './MemberCard';
-import SurveyStore from '../stores/SurveyStore';
-import { connectToStores } from '../utils/StoreUtils';
+import SurveyStore from '../../stores/SurveyStore';
+import { connectToStores } from '../../utils/StoreUtils';
 
 export default class MemberBeneficiary extends MemberCard {
   render() {

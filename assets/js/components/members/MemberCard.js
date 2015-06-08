@@ -4,8 +4,8 @@ import React, { PropTypes } from 'react';
 import { FormattedMessage as FM } from '../shims/ReactIntl';
 import RadioGroup from 'react-radio';
 
-import SurveyActionCreators from '../actions/SurveyActionCreators';
-import Validatable from '../utils/Validatable';
+import SurveyActionCreators from '../../actions/SurveyActionCreators';
+import Validatable from '../../utils/Validatable';
 
 export default class MemberCard extends Validatable {
   constructor(props) {

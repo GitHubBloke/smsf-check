@@ -7,11 +7,11 @@ import React, { PropTypes } from 'react';
 import { FormattedMessage as FM } from '../shims/ReactIntl';
 import RadioGroup from 'react-radio';
 
-import GenderOption from './GenderOption';
-import Icon, { IconStack } from './Icon';
+import GenderOption from '../GenderOption';
+import Icon, { IconStack } from '../Icon';
 import MemberCard from './MemberCard';
-import SurveyStore from '../stores/SurveyStore';
-import { connectToStores } from '../utils/StoreUtils';
+import SurveyStore from '../../stores/SurveyStore';
+import { connectToStores } from '../../utils/StoreUtils';
 
 export default class MemberDetails extends MemberCard {
   render() {
