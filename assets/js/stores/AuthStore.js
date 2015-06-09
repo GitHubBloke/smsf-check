@@ -42,6 +42,19 @@ AuthStore.dispatchToken = AppDispatcher.register((payload) => {
       signingIn = false;
       currentUser = Immutable.fromJS(user);
       signinError = void 0;
+
+      if (analytics) {
+        analytics.identify(user.id, {
+          name: `${user.name.first} ${user.name.last}`,
+          firstName: user.name.first,
+          lastName: user.name.last,
+          lastSeen: new Date(),
+          username: user.email,
+          email: user.email,
+          createdAt: new Date(parseInt(user.id.substring(0, 8), 16) * 1000),
+        });
+      }
+
       break;
 
     case ActionTypes.SIGNIN_ERROR:

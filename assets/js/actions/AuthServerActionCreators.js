@@ -4,14 +4,16 @@ import ActionTypes from '../constants/ActionTypes';
 import router from '../router';
 
 export default {
-  handleSigninSuccess(response) {
+  handleSigninSuccess(response, shouldRedirect = true) {
     AppDispatcher.handleServerAction({
       type: ActionTypes.SIGNIN_SUCCESS,
       response,
     });
 
-    const query = router.getCurrentQuery();
-    router.replaceWith((query && query.next) || '/');
+    if (shouldRedirect) {
+      const query = router.getCurrentQuery();
+      router.replaceWith((query && query.next) || '/');
+    }
   },
 
   handleSigninError(err) {

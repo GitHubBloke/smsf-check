@@ -1,1 +1,1 @@
-export default window.mixpanel;
+module.exports = window.mixpanel;

@@ -1,1 +1,1 @@
-export default window.analytics;
+module.exports = window.analytics;
