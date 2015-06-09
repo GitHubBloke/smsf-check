@@ -9,9 +9,9 @@ if (locals.user && analytics) {
   const { user } = locals;
 
   analytics.identify(user.id, {
-    name: `${user.name.firstName} ${user.name.lastName}`,
-    firstName: user.name.firstName,
-    lastName: user.name.lastName,
+    name: `${user.name.first} ${user.name.last}`,
+    firstName: user.name.first,
+    lastName: user.name.last,
     lastSeen: new Date(),
     username: user.email,
     email: user.email,
