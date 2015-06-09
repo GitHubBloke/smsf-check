@@ -340,8 +340,8 @@ export default {
       hasStrategy: {
         label: 'Does your fund have an Investment Strategy?',
         options: [
-          { value: true, label: 'Yes' },
-          { value: false, label: 'No' },
+          { value: 'yes', label: 'Yes' },
+          { value: 'no', label: 'No' },
         ],
         advice: 'Does my fund require an Investment Strategy?',
       },
@@ -349,8 +349,8 @@ export default {
       considerations: {
         label: 'Does your investment strategy consider the cashflow, liquidity liabilities and tax consequences of holding certain assets for the fund?',
         options: [
-          { value: true, label: 'Yes' },
-          { value: false, label: 'No' },
+          { value: 'yes', label: 'Yes' },
+          { value: 'no', label: 'No' },
         ],
       },
 
@@ -384,8 +384,8 @@ export default {
       haveBeneficiary: {
         label: 'Do the members of your fund have death benefit nominations in place?',
         options: [
-          { value: true, label: 'Yes' },
-          { value: false, label: 'No' },
+          { value: 'yes', label: 'Yes' },
+          { value: 'no', label: 'No' },
         ],
       },
     },
@@ -414,8 +414,8 @@ export default {
       havePensions: {
         label: 'Do the members of your fund have pensions in place?',
         options: [
-          { value: true, label: 'Yes' },
-          { value: false, label: 'No' },
+          { value: 'yes', label: 'Yes' },
+          { value: 'no', label: 'No' },
         ],
       },
 
@@ -430,8 +430,8 @@ export default {
       haveContributions: {
         label: 'Are any of the members of your fund making contributions?',
         options: [
-          { value: true, label: 'Yes' },
-          { value: false, label: 'No' },
+          { value: 'yes', label: 'Yes' },
+          { value: 'no', label: 'No' },
         ],
       },
 

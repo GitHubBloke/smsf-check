@@ -36,11 +36,10 @@ class InsurancePage extends BasePage {
     return (
       <div className='append-xs-2'>
         <div className='append-xs-2'>
-          <RadioQuestion {...this.questionProps('insurance.haveInsurance', { getter: this.booleanGetModifier, setter: this.booleanSetModifier })} />
+          <RadioQuestion {...this.questionProps('insurance.haveInsurance')} />
         </div>
-        {data.getIn('survey.insurance.haveInsurance'.split('.'))}
 
-        {data.getIn([ 'survey', 'insurance', 'haveInsurance' ]) &&
+        {data.getIn([ 'survey', 'insurance', 'haveInsurance' ]) == 'yes' &&
           <Row className='members'>
             {survey.get('members').map(this.renderMember)}
           </Row>}
@@ -77,7 +76,7 @@ InsurancePage.defaultProps = {};
 InsurancePage.schema = {
   survey: {
     insurance: {
-      haveInsurance: Joi.bool().required().label('This field'),
+      haveInsurance: Joi.string().required().label('This field'),
     },
   },
 };

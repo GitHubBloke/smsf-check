@@ -55,7 +55,7 @@ class MembersPage extends BasePage {
         </h3>
         <Row className='members'>
           {survey.get('members').map(this.renderMember)}
-          {survey.get('members').length < 4 &&
+          {survey.get('members').size < 4 &&
             <Col md={12} className={(survey.get('members').size % 2 === 0) && 'clear-md clear-lg'}>
               <Button block className='btn-dashed btn-xl text-normal members__add'
                 disabled={submitting} onClick={this._addMember}>

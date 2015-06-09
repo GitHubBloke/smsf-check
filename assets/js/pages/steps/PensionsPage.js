@@ -24,7 +24,7 @@ class PensionsPage extends BasePage {
       <SurveyForm {...this.props}
         renderForm={this.renderForm}
         renderCharts={this.renderCharts}
-        prevRoute='estate-planning' nextRoute='pensions'>
+        prevRoute='estate-planning' nextRoute='contributions'>
       </SurveyForm>
     );
   }
@@ -35,12 +35,9 @@ class PensionsPage extends BasePage {
 
     return (
       <div className='append-xs-2'>
-        <div className='append-xs-2'>
-          <RadioQuestion {...this.questionProps('pensions.havePensions', { getter: this.booleanGetModifier, setter: this.booleanSetModifier })} />
-        </div>
-        {data.getIn('survey.pensions.havePensions'.split('.'))}
+        <RadioQuestion {...this.questionProps('pensions.havePensions')} />
 
-        {data.getIn([ 'survey', 'pensions', 'havePensions' ]) &&
+        {data.getIn([ 'survey', 'pensions', 'havePensions' ]) === 'yes' &&
           <Row className='members'>
             {survey.get('members').map(this.renderMember)}
           </Row>}
@@ -76,7 +73,7 @@ PensionsPage.defaultProps = {};
 PensionsPage.schema = {
   survey: {
     insurance: {
-      haveInsurance: Joi.bool().required().label('This field'),
+      haveInsurance: Joi.string().required().label('This field'),
     },
   },
 };

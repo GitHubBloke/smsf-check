@@ -28,7 +28,7 @@ Survey.add({
   },
 
   investmentStrategy: {
-    hasStrategy: { type: Boolean, noedit: true },
+    hasStrategy: { type: String, noedit: true },
     considerations: { type: String, noedit: true },
     yearLastUpdated: { type: String, noedit: true },
 
@@ -44,19 +44,19 @@ Survey.add({
   },
 
   estatePlanning: {
-    haveBeneficiary: { type: Boolean, noedit: true },
+    haveBeneficiary: { type: String, noedit: true },
   },
 
   insurance: {
-    haveInsurance: { type: Boolean, noedit: true },
+    haveInsurance: { type: String, noedit: true },
   },
 
   pensions: {
-    havePensions: { type: Boolean, noedit: true },
+    havePensions: { type: String, noedit: true },
   },
 
   contributions: {
-    haveContributions: { type: Boolean, noedit: true },
+    haveContributions: { type: String, noedit: true },
   },
 });
 

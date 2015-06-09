@@ -35,11 +35,9 @@ class EstatePlanningPage extends BasePage {
 
     return (
       <div className='append-xs-2'>
-        <div className='append-xs-2'>
-          <RadioQuestion {...this.questionProps('estatePlanning.haveBeneficiary', { getter: this.booleanGetModifier, setter: this.booleanSetModifier })} />
-        </div>
+        <RadioQuestion {...this.questionProps('estatePlanning.haveBeneficiary')} />
 
-        {data.getIn([ 'survey', 'estatePlanning', 'haveBeneficiary' ]) &&
+        {data.getIn([ 'survey', 'estatePlanning', 'haveBeneficiary' ]) === 'yes' &&
           <Row className='members'>
             {survey.get('members').map(this.renderMember)}
           </Row>}
@@ -76,7 +74,7 @@ EstatePlanningPage.defaultProps = {};
 EstatePlanningPage.schema = {
   survey: {
     estatePlanning: {
-      haveBeneficiary: Joi.bool().required().label('This field'),
+      haveBeneficiary: Joi.string().required().label('This field'),
     },
   },
 };

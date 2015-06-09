@@ -35,12 +35,9 @@ class ContributionsPage extends BasePage {
 
     return (
       <div className='append-xs-2'>
-        <div className='append-xs-2'>
-          <RadioQuestion {...this.questionProps('contributions.haveContributions', { getter: this.booleanGetModifier, setter: this.booleanSetModifier })} />
-        </div>
-        {data.getIn('survey.contributions.haveContributions'.split('.'))}
+        <RadioQuestion {...this.questionProps('contributions.haveContributions')} />
 
-        {data.getIn([ 'survey', 'contributions', 'haveContributions' ]) &&
+        {data.getIn([ 'survey', 'contributions', 'haveContributions' ]) === 'yes' &&
           <Row className='members'>
             {survey.get('members').map(this.renderMember)}
           </Row>}
@@ -76,7 +73,7 @@ ContributionsPage.defaultProps = {};
 ContributionsPage.schema = {
   survey: {
     insurance: {
-      haveInsurance: Joi.bool().required().label('This field'),
+      haveInsurance: Joi.string().required().label('This field'),
     },
   },
 };
