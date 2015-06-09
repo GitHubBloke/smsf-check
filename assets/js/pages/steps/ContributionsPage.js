@@ -45,7 +45,7 @@ class ContributionsPage extends BasePage {
             {survey.get('members').map(this.renderMember)}
           </Row>}
 
-        {data.getIn([ 'survey', 'contributions', 'haveContributions' ]) &&
+        {data.getIn([ 'survey', 'contributions', 'haveContributions' ]) !== void 0 &&
           <div>
             <div><AdviceBubble advice={this.formatMessage(this.getIntlMessage('contributions.typesOfContributions.advice'))} /></div>
             <div><AdviceBubble advice={this.formatMessage(this.getIntlMessage('contributions.shouldContribute.advice'))} /></div>

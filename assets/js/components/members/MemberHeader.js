@@ -17,5 +17,5 @@ export default class MemberHeader extends BaseComponent {
   }
 }
 
-MemberHeader.propTypes = { title: PropTypes.string.isRequired };
+MemberHeader.propTypes = { name: PropTypes.string.isRequired };
 MemberHeader.defaultProps = {};

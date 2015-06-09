@@ -43,7 +43,7 @@ export default class MemberDetails extends MemberCard {
           </div>
 
           <Input type='text' bsSize='large'
-            {...this.questionProps('member.dateOfBirth', { setter: this.sanitizeDate })}
+            {...this.questionProps('member.dateOfBirth', { setter: this._sanitizeDate })}
             className='input-lg' labelClassName='append-xs-tiny text-normal' groupClassName='append-xs-1' />
 
           <Input type='text' bsSize='large'

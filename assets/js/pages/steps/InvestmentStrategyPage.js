@@ -34,9 +34,9 @@ class InvestmentStrategy extends BasePage {
     return (
       <div>
         <div className='append-xs-2'>
-          <RadioQuestion {...this.questionProps('investmentStrategy.hasStrategy')} />
+          <RadioQuestion {...this.questionProps('investmentStrategy.hasStrategy', { getter: this.booleanGetModifier, setter: this.booleanSetModifier })} />
         </div>
-        {(data.getIn([ 'survey', 'investmentStrategy', 'hasStrategy' ]) === 'Yes') && this.renderStrategyQuestions()}
+        {data.getIn([ 'survey', 'investmentStrategy', 'hasStrategy' ]) && this.renderStrategyQuestions()}
       </div>
     );
   }
@@ -45,7 +45,7 @@ class InvestmentStrategy extends BasePage {
     return (
       <div>
         <div className='append-xs-2'>
-          <RadioQuestion {...this.questionProps('investmentStrategy.considerations')} />
+          <RadioQuestion {...this.questionProps('investmentStrategy.considerations', { getter: this.booleanGetModifier, setter: this.booleanSetModifier })} />
         </div>
         <div className='append-xs-2'>
           <SelectQuestion {...this.questionProps('investmentStrategy.yearLastUpdated')} />
@@ -111,7 +111,7 @@ InvestmentStrategy.defaultProps = {};
 InvestmentStrategy.schema = {
   survey: {
     investmentStrategy: {
-      hasStrategy: Joi.string().required().label('This field'),
+      hasStrategy: Joi.bool().required().label('This field'),
       considerations: Joi.string().label('This field').when('hasStrategy', { is: 'Yes', then: Joi.required() }),
       yearLastUpdated: Joi.string().label('This field').when('hasStrategy', { is: 'Yes', then: Joi.required() }),
 

@@ -24,7 +24,7 @@ export default class RadioQuestion extends BaseComponent {
           </RadioGroup>
           {help && <span className='help-block' dangerouslySetInnerHTML={{ __html: help }}></span>}
         </div>
-        {advice && valueLink.value && <AdviceBubble advice={advice} />}
+        {advice && (valueLink.value !== void 0) && <AdviceBubble advice={advice} />}
       </div>
     );
   }

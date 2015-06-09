@@ -36,15 +36,15 @@ class EstatePlanningPage extends BasePage {
     return (
       <div className='append-xs-2'>
         <div className='append-xs-2'>
-          <RadioQuestion {...this.questionProps('estatePlanning.haveBeneficiary')} />
+          <RadioQuestion {...this.questionProps('estatePlanning.haveBeneficiary', { getter: this.booleanGetModifier, setter: this.booleanSetModifier })} />
         </div>
 
-        {data.getIn([ 'survey', 'estatePlanning', 'haveBeneficiary' ]) === 'Yes' &&
+        {data.getIn([ 'survey', 'estatePlanning', 'haveBeneficiary' ]) &&
           <Row className='members'>
             {survey.get('members').map(this.renderMember)}
           </Row>}
 
-        {data.getIn([ 'survey', 'estatePlanning', 'haveBeneficiary' ]) &&
+        {data.getIn([ 'survey', 'estatePlanning', 'haveBeneficiary' ]) !== void 0 &&
           <div>
             <div><AdviceBubble advice={this.formatMessage(this.getIntlMessage('estatePlanning.advice'))} /></div>
             <div><AdviceBubble advice={this.formatMessage(this.getIntlMessage('member.typesOfBenefits.advice'))} /></div>
@@ -76,7 +76,7 @@ EstatePlanningPage.defaultProps = {};
 EstatePlanningPage.schema = {
   survey: {
     estatePlanning: {
-      haveBeneficiary: Joi.string().required().label('This field'),
+      haveBeneficiary: Joi.bool().required().label('This field'),
     },
   },
 };

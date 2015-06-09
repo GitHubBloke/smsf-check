@@ -45,7 +45,7 @@ class InsurancePage extends BasePage {
             {survey.get('members').map(this.renderMember)}
           </Row>}
 
-        {data.getIn([ 'survey', 'insurance', 'haveInsurance' ]) &&
+        {data.getIn([ 'survey', 'insurance', 'haveInsurance' ]) !== void 0 &&
           <div>
             <div><AdviceBubble advice={this.formatMessage(this.getIntlMessage('insurance.typesOfInsurance.advice'))} /></div>
             <div><AdviceBubble advice={this.formatMessage(this.getIntlMessage('insurance.advice'))} /></div>

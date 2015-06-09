@@ -48,6 +48,7 @@ SurveyStore.dispatchToken = AppDispatcher.register((payload) => {
       break;
 
     case ActionTypes.SURVEY_ADD_MEMBER:
+      const { member } = action;
       dirtySurvey = dirtySurvey.update('members', (v) => v.push(Immutable.fromJS(member)));
       break;
 
@@ -88,7 +89,7 @@ SurveyStore.dispatchToken = AppDispatcher.register((payload) => {
     case ActionTypes.SURVEY_DELETE_MEMBER:
       const { member } = action;
       const members = dirtySurvey.get('members');
-      const memberIndex = members.indexOf(member);
+      const index = members.indexOf(member);
       dirtySurvey = dirtySurvey.deleteIn([ 'members', index ]);
       break;
 

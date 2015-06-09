@@ -23,7 +23,7 @@ export default class SelectQuestion extends BaseComponent {
             </div>
           </Col>
         </Row>
-        {advice && valueLink.value && <AdviceBubble advice={advice} />}
+        {advice && (valueLink.value !== void 0) && <AdviceBubble advice={advice} />}
       </div>
     );
   }
