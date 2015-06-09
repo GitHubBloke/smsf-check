@@ -39,7 +39,7 @@ class InsurancePage extends BasePage {
           <RadioQuestion {...this.questionProps('insurance.haveInsurance')} />
         </div>
 
-        {data.getIn([ 'survey', 'insurance', 'haveInsurance' ]) == 'yes' &&
+        {data.getIn([ 'survey', 'insurance', 'haveInsurance' ]) === 'yes' &&
           <Row className='members'>
             {survey.get('members').map(this.renderMember)}
           </Row>}

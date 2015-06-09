@@ -35,7 +35,9 @@ class EstatePlanningPage extends BasePage {
 
     return (
       <div className='append-xs-2'>
-        <RadioQuestion {...this.questionProps('estatePlanning.haveBeneficiary')} />
+        <div className='append-xs-2'>
+          <RadioQuestion {...this.questionProps('estatePlanning.haveBeneficiary')} />
+        </div>
 
         {data.getIn([ 'survey', 'estatePlanning', 'haveBeneficiary' ]) === 'yes' &&
           <Row className='members'>
