@@ -1,9 +1,11 @@
 import Immutable from 'immutable';
 
 import ActionTypes from '../constants/ActionTypes';
+import analytics from '../shims/analytics';
 import AppDispatcher from '../dispatcher/AppDispatcher';
-import { createStore } from '../utils/StoreUtils';
 import locals from '../utils/locals';
+import mixpanel from '../shims/mixpanel';
+import { createStore } from '../utils/StoreUtils';
 
 let signingIn, signinError, signingOut;
 let currentUser = Immutable.fromJS(locals.user);
@@ -58,6 +60,9 @@ AuthStore.dispatchToken = AppDispatcher.register((payload) => {
     case ActionTypes.SIGNOUT_SUCCESS:
       signingOut = false;
       currentUser = void 0;
+
+      if (analytics) { analytics.reset(); }
+      if (mixpanel) { mixpanel.cookie.clear(); }
       break;
 
     case ActionTypes.SIGNOUT_ERROR:
