@@ -10,53 +10,55 @@ Survey.add({
 
   user: { type: Types.Relationship, ref: 'User', required: true, initial: true, noedit: true },
   members: { type: Types.Relationship, ref: 'Member', many: true, noedit: true },
-
+}, 'Trust Structure', {
   trust: {
-    trusteeType: { type: String, noedit: true },
-    deedSupplier: { type: String, noedit: true },
-    yearLastUpdated: { type: String, noedit: true },
+    trusteeType: { type: String, label: 'Trustee type', noedit: true },
+    deedSupplier: { type: String, label: 'Deed supplier', noedit: true },
+    yearLastUpdated: { type: String, label: 'Last updated', noedit: true },
   },
-
+}, 'Tax & Accounting', {
   accounting: {
-    whoDoesIt: { type: String, noedit: true },
-    costPerYear: { type: String, noedit: true },
+    whoDoesIt: { type: String, label: 'Who does accounting', noedit: true },
+    costPerYear: { type: String, label: 'Cost per year', noedit: true },
   },
-
+}, 'Investment Advice', {
   investmentAdvice: {
-    whoDoesIt: { type: String, noedit: true },
-    costPerYear: { type: String, noedit: true },
+    whoDoesIt: { type: String, label: 'Who provides investment advice', noedit: true },
+    costPerYear: { type: String, label: 'Cost per year', noedit: true },
   },
-
+}, 'Investment Strategy', {
   investmentStrategy: {
-    hasStrategy: { type: String, noedit: true },
-    considerations: { type: String, noedit: true },
-    yearLastUpdated: { type: String, noedit: true },
-
-    cashAndFixedInterest: { type: Number, noedit: true },
-    australianEquities: { type: Number, noedit: true },
-    internationalEquities: { type: Number, noedit: true },
-    directProperty: { type: Number, noedit: true },
-    internationalCashAndFixedInterest: { type: Number, noedit: true },
-    internationalShares: { type: Number, noedit: true },
-    listedProperty: { type: Number, noedit: true },
-    mortgages: { type: Number, noedit: true },
-    other: { type: Number, noedit: true },
+    hasStrategy: { type: String, label: 'Has investmemt strategy', noedit: true },
+    considerations: { type: String, label: 'Considers cashflow, liquidity liabilities and tax consequences of holding certain assets for the fund', noedit: true },
+    yearLastUpdated: { type: String, label: 'Last updated', noedit: true },
   },
-
+}, 'Asset Allocations', {
+  investmentStrategy: {
+    cashAndFixedInterest: { type: Number, label: 'Cash & fixed interest', noedit: true },
+    australianEquities: { type: Number, label: 'Australian equities', noedit: true },
+    internationalEquities: { type: Number, label: 'International equities', noedit: true },
+    directProperty: { type: Number, label: 'Direct property', noedit: true },
+    internationalCashAndFixedInterest: { type: Number, label: 'International cash & fixed interest', noedit: true },
+    internationalShares: { type: Number, label: 'International shares', noedit: true },
+    listedProperty: { type: Number, label: 'Listed property', noedit: true },
+    mortgages: { type: Number, label: 'Mortages', noedit: true },
+    other: { type: Number, label: 'Other', noedit: true },
+  },
+}, 'Estate Planning', {
   estatePlanning: {
-    haveBeneficiary: { type: String, noedit: true },
+    haveBeneficiary: { type: String, label: 'Members have death benefit nominations', noedit: true },
   },
-
+}, 'Insurance', {
   insurance: {
-    haveInsurance: { type: String, noedit: true },
+    haveInsurance: { type: String, label: 'Members have insurance',  noedit: true },
   },
-
+}, 'Pensions', {
   pensions: {
-    havePensions: { type: String, noedit: true },
+    havePensions: { type: String, label: 'Members have pensions', noedit: true },
   },
-
+}, 'Contributions', {
   contributions: {
-    haveContributions: { type: String, noedit: true },
+    haveContributions: { type: String, label: 'Members make contributions', noedit: true },
   },
 });
 

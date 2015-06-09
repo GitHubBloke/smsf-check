@@ -7,55 +7,61 @@ const { Field: { Types } } = keystone;
 const Member = new keystone.List('Member');
 
 Member.add({
-  name: { type: String },
-  gender: { type: Types.Select, options: [{ value: 'male', label: 'Male' }, { value: 'female', label: 'Female' }], default: 'male' },
+  name: { type: String, label: 'Name', noedit: true },
+  gender: {
+    type: Types.Select,
+    label: 'Gender',
+    options: [{ value: 'male', label: 'Male' }, { value: 'female', label: 'Female' }],
+    default: 'male',
+    noedit: true,
+  },
 
-  dateOfBirth: { type: Types.Date, format: 'DD / MM / YYYY' },
-  preRetirementAnnualIncome: { type: Number },
-  currentMemberBalance: { type: Number },
-  isRetired: { type: Boolean },
+  dateOfBirth: { type: Types.Date, format: 'DD / MM / YYYY', noedit: true },
+  preRetirementAnnualIncome: { type: Number, noedit: true },
+  currentMemberBalance: { type: Number, noedit: true },
+  isRetired: { type: Boolean, noedit: true },
+}, 'Death Benefits', {
+  typesOfBenefits: { type: String, label: 'Type of benefits', noedit: true },
+  yearBenefitLastUpdated: { type: String, label: 'Last updated', noedit: true },
+  beneficiary: { type: String, label: 'Who is the beneficiary?', noedit: true },
+  hasWill: { type: Boolean, label: 'Has will', noedit: true },
+  hasEnduringPowersOfAttorney: { type: Boolean, label: 'Has Enduring Powers of Attorney', noedit: true },
+}, 'Insurance', {
+  hasLifeInsurance: { type: Boolean, label: 'Has life insurance', noedit: true },
+  lifeInsuranceAmount: { type: Number, label: 'Life insurance amount', noedit: true },
+  lifeInsuranceHeldAt: { type: String, label: 'Life insurance period', noedit: true },
 
-  typesOfBenefits: { type: String },
-  yearBenefitLastUpdated: { type: String },
-  beneficiary: { type: String },
-  hasWill: { type: Boolean },
-  hasEnduringPowersOfAttorney: { type: Boolean },
+  hasDisablement: { type: Boolean, label: 'Has total and permanent disablement', noedit: true },
+  disablementAmount: { type: Number, label: 'Disablement amount', noedit: true },
+  disablementHeldAt: { type: String, label: 'Disablement period', noedit: true },
 
-  hasLifeInsurance: { type: Boolean },
-  lifeInsuranceAmount: { type: Number },
-  lifeInsuranceHeldAt: { type: String },
+  hasIncomeProtection: { type: Boolean, label: 'Has income protection', noedit: true },
+  incomeProtectionAmount: { type: Number, label: 'Income protection amount', noedit: true },
+  incomeProtectionHeldAt: { type: String, label: 'Income protection period', noedit: true },
+}, 'Pensions', {
+  hasAccountBasedPension: { type: Boolean, label: 'Has account based pension', noedit: true },
+  accountBasedPensionAmount: { type: Number, label: 'Account based pension amount', noedit: true },
+  accountBasedPensionInterval: { type: String, label: 'Account based pension period', noedit: true },
 
-  hasDisablement: { type: Boolean },
-  disablementAmount: { type: Number },
-  disablementHeldAt: { type: String },
+  hasTransitionToRetirementPension: { type: Boolean, label: 'Has transition to retirement pension', noedit: true },
+  transitionToRetirementAmount: { type: Number, label: 'Transition to retirement pension amount', noedit: true },
+  transitionToRetirementInterval: { type: String, label: 'Transition to retirement pension period', noedit: true },
 
-  hasIncomeProtection: { type: Boolean },
-  incomeProtectionAmount: { type: Number },
-  incomeProtectionHeldAt: { type: String },
+  hasOtherPension: { type: Boolean, label: 'Has other type of pension', noedit: true },
+  otherPensionAmount: { type: Number, label: 'Other pension amount', noedit: true },
+  otherPensionInterval: { type: String, label: 'Other pension period', noedit: true },
+}, 'Contributions', {
+  hasConcessionalContribution: { type: Boolean, label: 'Has concessional contributions', noedit: true },
+  concessionalContributionAmount: { type: Number, label: 'Concessional contributions amount', noedit: true },
+  concessionalContributionInterval: { type: String, label: 'Concessional contributions period', noedit: true },
 
-  hasAccountBasedPension: { type: Boolean },
-  accountBasedPensionAmount: { type: Number },
-  accountBasedPensionInterval: { type: String },
+  hasNonConcessionalContribution: { type: Boolean, label: 'Has non-concessional contributions', noedit: true },
+  nonConcessionalContributionAmount: { type: Number, label: 'Non-concessional contributions amount', noedit: true },
+  nonConcessionalContributionInterval: { type: String, label: 'Non-contributions contributions period', noedit: true },
 
-  hasTransitionToRetirementPension: { type: Boolean },
-  transitionToRetirementAmount: { type: Number },
-  transitionToRetirementInterval: { type: String },
-
-  hasOtherPension: { type: Boolean },
-  otherPensionAmount: { type: Number },
-  otherPensionInterval: { type: String },
-
-  hasConcessionalContribution: { type: Boolean },
-  concessionalContributionAmount: { type: Number },
-  concessionalContributionInterval: { type: String },
-
-  hasNonConcessionalContribution: { type: Boolean },
-  nonConcessionalContributionAmount: { type: Number },
-  nonConcessionalContributionInterval: { type: String },
-
-  hasOtherContribution: { type: Boolean },
-  otherContributionAmount: { type: Number },
-  otherContributionInterval: { type: String },
+  hasOtherContribution: { type: Boolean, label: 'Has other contributions', noedit: true },
+  otherContributionAmount: { type: Number, label: 'Other contributions amount', noedit: true },
+  otherContributionInterval: { type: String, label: 'Other contributions period', noedit: true },
 });
 
 Member.schema.set('toJSON', {
