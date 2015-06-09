@@ -48,8 +48,8 @@ class EstatePlanningPage extends BasePage {
         {data.getIn([ 'survey', 'estatePlanning', 'haveBeneficiary' ]) &&
           <div>
             <div><AdviceBubble advice={this.formatMessage(this.getIntlMessage('estatePlanning.advice'))} /></div>
-            <div><AdviceBubble advice={this.formatMessage(this.getIntlMessage('members.typesOfBenefits.advice'))} /></div>
-            <div><AdviceBubble advice={this.formatMessage(this.getIntlMessage('members.beneficiary.advice'))} /></div>
+            <div><AdviceBubble advice={this.formatMessage(this.getIntlMessage('member.typesOfBenefits.advice'))} /></div>
+            <div><AdviceBubble advice={this.formatMessage(this.getIntlMessage('member.beneficiary.advice'))} /></div>
           </div>}
       </div>
     );

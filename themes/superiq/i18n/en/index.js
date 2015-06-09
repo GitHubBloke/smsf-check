@@ -100,24 +100,23 @@ export default {
         start: { actionLabel: 'Start Your SMSF Health Check' },
     },
 
-    members: {
-      title: 'Member Details',
-      longTitle: 'Your SMSF Member Details',
-      question: 'Tell us a little about the members of your fund.',
-
+    member: {
       gender: { label: 'Gender' },
       dateOfBirth: { label: 'Date of Birth' },
       preRetirementAnnualIncome: { label: 'Pre-retirement Annual Income' },
       currentMemberBalance: { label: 'Current Member Balance' },
       isRetired: {
         label: 'Is the member retired?',
-        options: { yes: 'Yes', no: 'No' },
+        options: [
+          { value: true, label: 'Yes' },
+          { value: false, label: 'No' },
+        ],
       },
       typesOfBenefits: {
         label: 'Types of benefits',
         options: [
-          { value: '', label: '' },
-          { value: '', label: '' },
+          { value: 'option1', label: 'Option 1' },
+          { value: 'option2', label: 'Option 2' },
         ],
         advice: 'What are the different types of death benefit nominations?',
       },
@@ -128,19 +127,31 @@ export default {
       beneficiary: {
         label: 'Who is the beneficiary?',
         options: [
-          { value: '', label: '' },
-          { value: '', label: '' },
+          { value: 'option1', label: 'Option 1' },
+          { value: 'option2', label: 'Option 2' },
         ],
         advice: 'Have I nominated the right beneficiaries?',
       },
       hasWill: {
         label: 'Does the member have a will?',
-        options: { yes: 'Yes', no: 'No' },
+        options: [
+          { value: true, label: 'Yes' },
+          { value: false, label: 'No' },
+        ],
       },
       hasEnduringPowersOfAttorney: {
         label: 'Do the members of your Fund have Enduring Powers of Attorney?',
-        options: { yes: 'Yes', no: 'No' },
+        options: [
+          { value: true, label: 'Yes' },
+          { value: false, label: 'No' },
+        ],
       },
+    },
+
+    members: {
+      title: 'Member Details',
+      longTitle: 'Your SMSF Member Details',
+      question: 'Tell us a little about the members of your fund.',
 
       add: { actionLabel: 'Add a member' },
       delete: { confirmation: 'Are you sure you would like to remove this member?' },

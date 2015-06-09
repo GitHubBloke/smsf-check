@@ -1,8 +1,10 @@
 import _ from 'lodash';
 import classNames from 'classnames';
 import Joi from 'joi';
-import { Input,  Well } from 'react-bootstrap';
+import { Well } from 'react-bootstrap';
 import React, { PropTypes } from 'react';
+import RadioQuestion from './RadioQuestion';
+import SelectQuestion from './SelectQuestion';
 
 import Icon, { IconStack } from '../Icon';
 import MemberCard from './MemberCard';
@@ -13,7 +15,6 @@ export default class MemberBeneficiary extends MemberCard {
   render() {
     const { data } = this.state;
     const { survey, submitting } = this.props;
-    const isRetiredHasError = false;
 
     return (
       <Well className='text-center member append-xs-none'>
@@ -22,9 +23,9 @@ export default class MemberBeneficiary extends MemberCard {
         <div className='well__body'>
           <div className={classNames(`avatar-${data.getIn([ 'member', 'gender' ])}`, 'member__avatar', 'append-xs-1')}></div>
 
-          {this.renderSelectQuestion('members.typesOfBenefits', 'member.typesOfBenefits')}
-          {this.renderBooleanQuestion('members.hasWill', 'member.hasWill')}
-          {this.renderBooleanQuestion('members.hasEnduringPowersOfAttorney', 'member.hasEnduringPowersOfAttorney')}
+          <SelectQuestion {...this.questionProps('member.typesOfBenefits')} />
+          <RadioQuestion {...this.questionProps('member.hasWill', { getter: this.booleanGetModifier, setter: this.booleanSetModifier })} />
+          <RadioQuestion {...this.questionProps('member.hasEnduringPowersOfAttorney', { getter: this.booleanGetModifier, setter: this.booleanSetModifier })} />
         </div>
       </Well>
     );

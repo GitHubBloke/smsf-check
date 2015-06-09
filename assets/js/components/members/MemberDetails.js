@@ -5,7 +5,7 @@ import moment from 'moment';
 import { Button, Col, Input, Row, Well } from 'react-bootstrap';
 import React, { PropTypes } from 'react';
 import { FormattedMessage as FM } from '../../shims/ReactIntl';
-import RadioGroup from 'react-radio';
+import RadioQuestion from './RadioQuestion';
 
 import GenderOption from './GenderOption';
 import Icon, { IconStack } from '../Icon';
@@ -17,7 +17,6 @@ export default class MemberDetails extends MemberCard {
   render() {
     const { data } = this.state;
     const { survey, submitting } = this.props;
-    const isRetiredHasError = this.hasError('member.isRetired');
 
     return (
       <Well className='text-center member append-xs-none'>
@@ -28,7 +27,7 @@ export default class MemberDetails extends MemberCard {
 
           <div className='form-group append-xs-1'>
             <label className='control-label text-normal'>
-              <FM message={this.getIntlMessage('members.gender.label')} />
+              <FM message={this.getIntlMessage('member.gender.label')} />
             </label>
             <Row>
               <Col xs={10} xsOffset={2}>
@@ -41,30 +40,21 @@ export default class MemberDetails extends MemberCard {
           </div>
 
           <Input type='text' bsSize='large'
+            {...this.questionProps('member.dateOfBirth', { setter: this.sanitizeDate })}
             className='input-lg' labelClassName='append-xs-tiny text-normal' groupClassName='append-xs-1'
-            placeholder='DD / MM / YYYY'
-            label={this.formatMessage(this.getIntlMessage('members.dateOfBirth.label'))}
-            valueLink={this.linkState('member.dateOfBirth', this._santizeDate, this._dateToString)}
-            disabled={submitting}
-            {...this.getErrorProps('member.dateOfBirth')} />
+            placeholder='DD / MM / YYYY' />
 
           <Input type='text' bsSize='large'
+            {...this.questionProps('member.preRetirementAnnualIncome')}
             className='input-lg' labelClassName='append-xs-tiny text-normal' groupClassName='append-xs-1'
-            label={this.formatMessage(this.getIntlMessage('members.preRetirementAnnualIncome.label'))}
-            addonBefore='$'
-            valueLink={this.linkState('member.preRetirementAnnualIncome')}
-            disabled={submitting}
-            {...this.getErrorProps('member.preRetirementAnnualIncome')} />
+            addonBefore='$' />
 
           <Input type='text' bsSize='large'
+            {...this.questionProps('member.currentMemberBalance')}
             className='input-lg' labelClassName='append-xs-tiny text-normal' groupClassName='append-xs-1'
-            label={this.formatMessage(this.getIntlMessage('members.currentMemberBalance.label'))}
-            addonBefore='$'
-            valueLink={this.linkState('member.currentMemberBalance')}
-            disabled={submitting}
-            {...this.getErrorProps('member.currentMemberBalance')} />
+            addonBefore='$' />
 
-          {this.renderBooleanQuestion('members.isRetired', 'member.isRetired')}
+          <RadioQuestion {...this.questionProps('member.isRetired', { getter: this.booleanGetModifier, setter: this.booleanSetModifier })} />
         </div>
       </Well>
     );
@@ -92,10 +82,7 @@ export default class MemberDetails extends MemberCard {
     );
   }
 
-  _isRetiredSetModifier(v) { return v === 'true'; }
-  _isRetiredGetModifier(v) { return v !== void 0 ? v.toString() : v; }
-
-  _santizeDate(date) {
+  _sanitizeDate(date) {
     date = date.replace(/[^0-9.]/g, '');
 
     let day = date.substring(0, 2);

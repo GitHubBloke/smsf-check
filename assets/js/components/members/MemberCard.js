@@ -1,9 +1,6 @@
 import classNames from 'classnames';
 import { Map } from 'immutable';
 import React, { PropTypes } from 'react';
-import { FormattedMessage as FM } from '../../shims/ReactIntl';
-import RadioGroup from 'react-radio';
-import Select from 'react-select/lib/Select';
 
 import SurveyActionCreators from '../../actions/SurveyActionCreators';
 import Validatable from '../../utils/Validatable';
@@ -17,7 +14,6 @@ export default class MemberCard extends Validatable {
 
   componentDidMount() {
     SurveyActionCreators.addValidator(this.validate);
-    console.log('validator added');
   }
 
   componentWillUnmount() {
@@ -38,64 +34,24 @@ export default class MemberCard extends Validatable {
     }
   }
 
-  renderBooleanQuestion(messagePath, dataPath) {
-    const { data } = this.state;
-    const { submitting } = this.props;
-    const error = this.getErrorProps(dataPath).help;
+  questionProps(path, { getter, setter } = {}) {
+    const { member } = this.props;
+    let options;
 
-    return (
-      <div className={classNames('form-group', error && 'has-error')}>
-        <label className='control-label append-xs-tiny text-normal'>
-          <FM message={this.getIntlMessage(`${messagePath}.label`)} />
-        </label>
-        <div className='row form-inline'>
-          <RadioGroup name={`${dataPath}-${data.getIn([ 'member', 'id' ]) || data.getIn([ 'member', 'ref' ])}`}
-            {...this.valueLink(dataPath, () => {}, this._booleanGetModifier, this._booleanSetModifier)}>
-            <div className='col-xs-6 col-xs-offset-6'>
-              <label className='text-normal'>
-                <input type='radio' value={true} disabled={submitting} />&nbsp;
-                <FM message={this.getIntlMessage(`${messagePath}.options.yes`)} />
-              </label>
-            </div>
-            <div className='col-xs-6'>
-              <label className='text-normal'>
-                <input type='radio' value={false} disabled={submitting} />&nbsp;
-                <FM message={this.getIntlMessage(`${messagePath}.options.no`)} />
-              </label>
-            </div>
-          </RadioGroup>
-        </div>
-        {error && <div className='help-block' dangerouslySetInnerHTML={{ __html: error }}></div>}
-      </div>
-    );
-  }
+    try { options = this.translatedOptions(`${path}.options`); } catch(e) {}
 
-  renderSelectQuestion(messagePath, dataPath) {
-    const { data } = this.state;
-    const { submitting } = this.props;
-    const error = this.getErrorProps(dataPath).help;
-
-    const selectData = {
-      options: this.translatedOptions(`${messagePath}.options`),
-      valueLink: this.valueLink(dataPath),
-      disabled: submitting,
+    return {
+      id: `${member.get('id') || member.get('ref')}-${path}`,
+      label: this.formatMessage(this.getIntlMessage(`${path}.label`)),
+      valueLink: this.linkState(path, setter, getter),
+      disabled: this.props.submitting,
+      options,
+      ...this.getErrorProps(path),
     };
-
-    return (
-      <div className={classNames('form-group', error && 'has-error')}>
-        <label className='control-label append-xs-tiny text-normal'>
-          <FM message={this.getIntlMessage(`${messagePath}.label`)} />
-        </label>
-        <div className='form-inline'>
-          <Select name={`${dataPath}-${data.getIn([ 'member', 'id' ]) || data.getIn([ 'member', 'ref' ])}`} {...selectData} className='Select--lg' />
-        </div>
-        {error && <div className='help-block' dangerouslySetInnerHTML={{ __html: error }}></div>}
-      </div>
-    );
   }
 
-  _booleanSetModifier(v) { return v === 'true'; }
-  _booleanGetModifier(v) { return v !== void 0 ? v.toString() : v; }
+  booleanSetModifier(v) { return v === 'true'; }
+  booleanGetModifier(v) { return v !== void 0 ? v.toString() : v; }
 }
 
 MemberCard.propTypes = { member: PropTypes.instanceOf(Map) };
