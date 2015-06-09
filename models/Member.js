@@ -44,6 +44,18 @@ Member.add({
   hasOtherPension: { type: Boolean },
   otherPensionAmount: { type: Number },
   otherPensionInterval: { type: String },
+
+  hasConcessionalContribution: { type: Boolean },
+  concessionalContributionAmount: { type: Number },
+  concessionalContributionInterval: { type: String },
+
+  hasNonConcessionalContribution: { type: Boolean },
+  nonConcessionalContributionAmount: { type: Number },
+  nonConcessionalContributionInterval: { type: String },
+
+  hasOtherContribution: { type: Boolean },
+  otherContributionAmount: { type: Number },
+  otherContributionInterval: { type: String },
 });
 
 Member.schema.set('toJSON', {

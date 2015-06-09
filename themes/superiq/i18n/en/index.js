@@ -209,6 +209,32 @@ export default {
           { value: 'per-week', label: 'Per week' },
         ],
       },
+
+      contributionsTitle: 'Types of Contributions',
+
+      hasConcessionalContribution: { label: 'Concessional', },
+      concessionalContributionAmount: { placeholder: '$ Amount', },
+      concessionalContributionInterval: {
+        options: [
+          { value: 'per-week', label: 'Per week' },
+        ],
+      },
+
+      hasNonConcessionalContribution: { label: 'Non Concessional', },
+      nonConcessionalContributionAmount: { placeholder: '$ Amount', },
+      nonConcessionalContributionInterval: {
+        options: [
+          { value: 'per-week', label: 'Per week' },
+        ],
+      },
+
+      hasOtherContribution: { label: 'Other', },
+      otherContributionAmount: { placeholder: '$ Amount', },
+      otherContributionInterval: {
+        options: [
+          { value: 'per-week', label: 'Per week' },
+        ],
+      },
     },
 
     members: {
@@ -400,6 +426,17 @@ export default {
     contributions: {
       title: 'Contributions',
       longTitle: 'Contributions',
+
+      haveContributions: {
+        label: 'Are any of the members of your fund making contributions?',
+        options: [
+          { value: true, label: 'Yes' },
+          { value: false, label: 'No' },
+        ],
+      },
+
+      typesOfContributions: { advice: 'What types of contributions can members make to my fund and what are the rules about these contributions? ' },
+      shouldContribute: { advice: 'Should I contribute more to my fund?' },
     },
 
     results: {

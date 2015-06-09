@@ -68,7 +68,8 @@ export function update(req, res) {
            investmentStrategy.other,
            estatePlanning.haveBeneficiary,
            insurance.haveInsurance,
-           pensions.havePensions`,
+           pensions.havePensions,
+           contributions.haveContributions`,
       }, cb);
     }],
 

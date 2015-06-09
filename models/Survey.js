@@ -54,6 +54,10 @@ Survey.add({
   pensions: {
     havePensions: { type: Boolean, noedit: true },
   },
+
+  contributions: {
+    haveContributions: { type: Boolean, noedit: true },
+  },
 });
 
 Survey.schema.set('toJSON', {
