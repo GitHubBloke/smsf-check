@@ -398,8 +398,8 @@ export default {
       haveInsurance: {
         label: 'Do the members of your fund have insurance in place?',
         options: [
-          { value: true, label: 'Yes' },
-          { value: false, label: 'No' },
+          { value: 'yes', label: 'Yes' },
+          { value: 'no', label: 'No' },
         ],
       },
 
