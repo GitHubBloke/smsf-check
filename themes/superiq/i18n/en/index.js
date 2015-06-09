@@ -152,6 +152,8 @@ export default {
         ],
       },
 
+      insuranceTitle: 'Types of Insurance',
+
       hasLifeInsurance: { label: 'Life Insurance', },
       lifeInsuranceAmount: { placeholder: '$ Amount', },
       lifeInsuranceHeldAt: {
@@ -179,6 +181,32 @@ export default {
         options: [
           { value: 'option1', label: 'Option 1' },
           { value: 'option2', label: 'Option 2' },
+        ],
+      },
+
+      pensionsTitle: 'Types of Pensions',
+
+      hasAccountBasedPension: { label: 'Account based', },
+      accountBasedPensionAmount: { placeholder: '$ Amount', },
+      accountBasedPensionInterval: {
+        options: [
+          { value: 'per-week', label: 'Per week' },
+        ],
+      },
+
+      hasTransitionToRetirementPension: { label: 'Transition to retirement', },
+      transitionToRetirementAmount: { placeholder: '$ Amount', },
+      transitionToRetirementInterval: {
+        options: [
+          { value: 'per-week', label: 'Per week' },
+        ],
+      },
+
+      hasOtherPension: { label: 'Other', },
+      otherPensionAmount: { placeholder: '$ Amount', },
+      otherPensionInterval: {
+        options: [
+          { value: 'per-week', label: 'Per week' },
         ],
       },
     },
@@ -356,6 +384,17 @@ export default {
     pensions: {
       title: 'Pensions',
       longTitle: 'Pensions',
+
+      havePensions: {
+        label: 'Do the members of your fund have pensions in place?',
+        options: [
+          { value: true, label: 'Yes' },
+          { value: false, label: 'No' },
+        ],
+      },
+
+      typesOfPensions: { advice: 'What types of pensions are available to the members of my fund?' },
+      shouldStart: { advice: 'Should I start a pension?' },
     },
 
     contributions: {

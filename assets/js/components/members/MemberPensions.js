@@ -13,7 +13,7 @@ import SelectQuestion from './SelectQuestion';
 import SurveyStore from '../../stores/SurveyStore';
 import { connectToStores } from '../../utils/StoreUtils';
 
-export default class MemberInsurance extends MemberCard {
+export default class MemberPensions extends MemberCard {
   render() {
     const { data } = this.state;
     const { survey, submitting } = this.props;
@@ -26,34 +26,34 @@ export default class MemberInsurance extends MemberCard {
           <div className={classNames(`avatar-${data.getIn([ 'member', 'gender' ])}`, 'member__avatar', 'append-xs-1')}></div>
 
           <h4 className='append-xs-2'>
-            <FM message={this.getIntlMessage('member.insuranceTitle')} />
+            <FM message={this.getIntlMessage('member.pensionsTitle')} />
           </h4>
 
           <div className='text-left'>
-            {data.get('member.hasLifeInsurance'.split('.'))}
+            {data.get('member.hasAccountBasedPension'.split('.'))}
             <Input type='checkbox'
-              {...this.questionProps('member.hasLifeInsurance', { checkbox: true })}
+              {...this.questionProps('member.hasAccountBasedPension', { checkbox: true })}
               labelClassName='append-xs-tiny text-normal' groupClassName='append-xs-1' />
             <Input type='text' bsSize='large'
-              {...this.questionProps('member.lifeInsuranceAmount')}
+              {...this.questionProps('member.accountBasedPensionAmount')}
               className='input-lg' labelClassName='append-xs-tiny text-normal' groupClassName='append-xs-1' />
-            <SelectQuestion {...this.questionProps('member.lifeInsuranceHeldAt')} />
+            <SelectQuestion {...this.questionProps('member.accountBasedPensionInterval')} />
 
             <Input type='checkbox'
-              {...this.questionProps('member.hasDisablement', { checkbox: true })}
+              {...this.questionProps('member.hasTransitionToRetirementPension', { checkbox: true })}
               labelClassName='append-xs-tiny text-normal' groupClassName='append-xs-1' />
             <Input type='text' bsSize='large'
-              {...this.questionProps('member.disablementAmount')}
+              {...this.questionProps('member.transitionToRetirementAmount')}
               className='input-lg' labelClassName='append-xs-tiny text-normal' groupClassName='append-xs-1' />
-            <SelectQuestion {...this.questionProps('member.disablementHeldAt')} />
+            <SelectQuestion {...this.questionProps('member.transitionToRetirementInterval')} />
 
             <Input type='checkbox'
-              {...this.questionProps('member.hasIncomeProtection', { checkbox: true })}
+              {...this.questionProps('member.hasOtherPension', { checkbox: true })}
               labelClassName='append-xs-tiny text-normal' groupClassName='append-xs-1' />
             <Input type='text' bsSize='large'
-              {...this.questionProps('member.incomeProtectionAmount')}
+              {...this.questionProps('member.otherPensionAmount')}
               className='input-lg' labelClassName='append-xs-tiny text-normal' groupClassName='append-xs-1' />
-            <SelectQuestion {...this.questionProps('member.incomeProtectionHeldAt')} />
+            <SelectQuestion {...this.questionProps('member.otherPensionInterval')} />
           </div>
         </div>
       </Well>
@@ -61,19 +61,19 @@ export default class MemberInsurance extends MemberCard {
   }
 }
 
-MemberInsurance.propTypes = _.assign({}, MemberCard.propTypes, {});
-MemberInsurance.defaultProps = _.assign({}, MemberCard.defaultProps, {});
+MemberPensions.propTypes = _.assign({}, MemberCard.propTypes, {});
+MemberPensions.defaultProps = _.assign({}, MemberCard.defaultProps, {});
 
-MemberInsurance.schema = {
+MemberPensions.schema = {
   member: {
-    lifeInsuranceAmount: Joi.number().label('This field').when('hasLifeInsurance', { is: true, then: Joi.required() }),
-    lifeInsuranceHeldAt: Joi.string().label('This field').when('hasLifeInsurance', { is: true, then: Joi.required() }),
+    accountBasedPensionAmount: Joi.number().label('This field').when('hasAccountBasedPension', { is: true, then: Joi.required() }),
+    accountBasedPensionInterval: Joi.string().label('This field').when('hasAccountBasedPension', { is: true, then: Joi.required() }),
 
-    disablementAmount: Joi.number().label('This field').when('hasDisablement', { is: true, then: Joi.required() }),
-    disablementHeldAt: Joi.string().label('This field').when('hasDisablement', { is: true, then: Joi.required() }),
+    transitionToRetirementAmount: Joi.number().label('This field').when('hasTransitionToRetirementPension', { is: true, then: Joi.required() }),
+    transitionToRetirementInterval: Joi.string().label('This field').when('hasTransitionToRetirementPension', { is: true, then: Joi.required() }),
 
-    incomeProtectionAmount: Joi.number().label('This field').when('hasIncomeProtection', { is: true, then: Joi.required() }),
-    incomeProtectionHeldAt: Joi.string().label('This field').when('hasIncomeProtection', { is: true, then: Joi.required() }),
+    otherPensionAmount: Joi.number().label('This field').when('hasOtherPension', { is: true, then: Joi.required() }),
+    otherPensionInterval: Joi.string().label('This field').when('hasOtherPension', { is: true, then: Joi.required() }),
   },
 };
 
@@ -87,7 +87,7 @@ function getState({ params }) {
   return { survey, submitting };
 }
 
-export default connectToStores(MemberInsurance,
+export default connectToStores(MemberPensions,
   [ SurveyStore ],
   pickProps,
   getState

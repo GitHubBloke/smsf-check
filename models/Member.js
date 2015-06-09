@@ -32,6 +32,18 @@ Member.add({
   hasIncomeProtection: { type: Boolean },
   incomeProtectionAmount: { type: Number },
   incomeProtectionHeldAt: { type: String },
+
+  hasAccountBasedPension: { type: Boolean },
+  accountBasedPensionAmount: { type: Number },
+  accountBasedPensionInterval: { type: String },
+
+  hasTransitionToRetirementPension: { type: Boolean },
+  transitionToRetirementAmount: { type: Number },
+  transitionToRetirementInterval: { type: String },
+
+  hasOtherPension: { type: Boolean },
+  otherPensionAmount: { type: Number },
+  otherPensionInterval: { type: String },
 });
 
 Member.schema.set('toJSON', {

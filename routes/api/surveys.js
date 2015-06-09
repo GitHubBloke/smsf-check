@@ -67,7 +67,8 @@ export function update(req, res) {
            investmentStrategy.listedProperty, investmentStrategy.mortgages,
            investmentStrategy.other,
            estatePlanning.haveBeneficiary,
-           insurance.haveInsurance`,
+           insurance.haveInsurance,
+           pensions.havePensions`,
       }, cb);
     }],
 
