@@ -8,7 +8,7 @@ export function wrapSurvey({ requireSkippable, confirmDirtySurvey }, Component) 
   class Authenticated extends BaseComponent {
     static willTransitionTo(transition) {
       if (requireSkippable && !SurveyStore.isSkippable()) {
-        //transition.redirect('members');
+        transition.redirect('members');
       }
     }
 
