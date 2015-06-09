@@ -55,14 +55,15 @@ class MembersPage extends BasePage {
         </h3>
         <Row className='members'>
           {survey.get('members').map(this.renderMember)}
-          <Col md={12} className={(survey.get('members').size % 2 === 0) && 'clear-md clear-lg'}>
-            <Button block className='btn-dashed btn-xl text-normal members__add'
-              disabled={submitting} onClick={this._addMember}>
-              <Icon id='ios-plus-outline' size='lg' />
-              &nbsp;&nbsp;
-              <FM message={this.getIntlMessage('members.add.actionLabel')} />
-            </Button>
-          </Col>
+          {survey.get('members').length < 4 &&
+            <Col md={12} className={(survey.get('members').size % 2 === 0) && 'clear-md clear-lg'}>
+              <Button block className='btn-dashed btn-xl text-normal members__add'
+                disabled={submitting} onClick={this._addMember}>
+                <Icon id='ios-plus-outline' size='lg' />
+                &nbsp;&nbsp;
+                <FM message={this.getIntlMessage('members.add.actionLabel')} />
+              </Button>
+            </Col>}
         </Row>
         <div className='append-xs-2'>
           <div><AdviceBubble advice={this.formatMessage(this.getIntlMessage('members.smsfBasics.advice'))} /></div>
