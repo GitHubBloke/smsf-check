@@ -16,6 +16,7 @@ import AccountingPage from './pages/steps/AccountingPage';
 import InvestmentAdvicePage from './pages/steps/InvestmentAdvicePage';
 import InvestmentStrategyPage from './pages/steps/InvestmentStrategyPage';
 import EstatePlanningPage from './pages/steps/EstatePlanningPage';
+import InsurancePage from './pages/steps/InsurancePage';
 import ResultsPage from './pages/steps/ResultsPage';
 
 import PrivacyPage from './pages/PrivacyPage';
@@ -39,7 +40,7 @@ export default (
       <Route name='investment-advice' handler={InvestmentAdvicePage} />
       <Route name='investment-strategy' handler={InvestmentStrategyPage} />
       <Route name='estate-planning' handler={EstatePlanningPage} />
-      <Route name='insurance' handler={ResultsPage} />
+      <Route name='insurance' handler={InsurancePage} />
       <Route name='pensions' handler={ResultsPage} />
       <Route name='contributions' handler={ResultsPage} />
       <Route name='results' handler={ResultsPage} />

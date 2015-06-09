@@ -58,21 +58,26 @@ export default class BasePage extends Validatable {
         series={_.cloneDeep(data[group])} />;
   }
 
-  questionProps(path) {
-    let advice, options;
+  questionProps(path, { getter, setter } = {}) {
+    let placeholder, advice, options;
 
+    try { placeholder = this.formatMessage(this.getIntlMessage(`${path}.placeholder`)); } catch(e) {}
     try { advice = this.formatMessage(this.getIntlMessage(`${path}.advice`)); } catch(e) {}
     try { options = this.translatedOptions(`${path}.options`); } catch(e) {}
 
     return {
       label: this.formatMessage(this.getIntlMessage(`${path}.label`)),
-      valueLink: this.linkState(`survey.${path}`),
+      valueLink: this.linkState(`survey.${path}`, setter, getter),
       disabled: this.props.submitting,
+      placeholder,
       advice,
       options,
       ...this.getErrorProps(`survey.${path}`),
     };
   }
+
+  booleanSetModifier(v) { return v === 'true'; }
+  booleanGetModifier(v) { return v !== void 0 ? v.toString() : v; }
 }
 
 BasePage.propTypes = {};

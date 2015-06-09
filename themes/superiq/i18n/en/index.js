@@ -102,7 +102,11 @@ export default {
 
     member: {
       gender: { label: 'Gender' },
-      dateOfBirth: { label: 'Date of Birth' },
+
+      dateOfBirth: {
+        label: 'Date of Birth',
+        placeholder: 'DD / MM / YYYY',
+      },
       preRetirementAnnualIncome: { label: 'Pre-retirement Annual Income' },
       currentMemberBalance: { label: 'Current Member Balance' },
       isRetired: {
@@ -112,6 +116,7 @@ export default {
           { value: false, label: 'No' },
         ],
       },
+
       typesOfBenefits: {
         label: 'Types of benefits',
         options: [
@@ -120,7 +125,7 @@ export default {
         ],
         advice: 'What are the different types of death benefit nominations?',
       },
-      yearLastUpdated: {
+      yearBenefitLastUpdated: {
         label: 'Last updated?',
         options: _.times(20, (i) => (new Date().getFullYear() - i).toString()),
       },
@@ -144,6 +149,36 @@ export default {
         options: [
           { value: true, label: 'Yes' },
           { value: false, label: 'No' },
+        ],
+      },
+
+      hasLifeInsurance: { label: 'Life Insurance', },
+      lifeInsuranceAmount: { placeholder: '$ Amount', },
+      lifeInsuranceHeldAt: {
+        placeholder: 'Where is the insurance held?',
+        options: [
+          { value: 'option1', label: 'Option 1' },
+          { value: 'option2', label: 'Option 2' },
+        ],
+      },
+
+      hasDisablement: { label: 'Total and Permanent Disablement', },
+      disablementAmount: { placeholder: '$ Amount', },
+      disablementHeldAt: {
+        placeholder: 'Where is the insurance held?',
+        options: [
+          { value: 'option1', label: 'Option 1' },
+          { value: 'option2', label: 'Option 2' },
+        ],
+      },
+
+      hasIncomeProtection: { label: 'Income Protection', },
+      incomeProtectionAmount: { placeholder: '$ Amount', },
+      incomeProtectionHeldAt: {
+        placeholder: 'Where is the insurance held?',
+        options: [
+          { value: 'option1', label: 'Option 1' },
+          { value: 'option2', label: 'Option 2' },
         ],
       },
     },
@@ -304,6 +339,18 @@ export default {
     insurance: {
       title: 'Insurance',
       longTitle: 'Insurance',
+      advice: 'Should I hold insurance in my SMSF?',
+
+      haveInsurance: {
+        label: 'Do the members of your fund have insurance in place?',
+        options: [
+          { value: true, label: 'Yes' },
+          { value: false, label: 'No' },
+        ],
+      },
+
+      typesOfInsurance: { advice: 'What types of insurance should the members of my fund be considering?' },
+      howMuchInsurance: { advice: 'How much insurance should we have?' },
     },
 
     pensions: {

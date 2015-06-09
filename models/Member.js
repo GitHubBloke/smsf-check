@@ -9,12 +9,29 @@ const Member = new keystone.List('Member');
 Member.add({
   name: { type: String },
   gender: { type: Types.Select, options: [{ value: 'male', label: 'Male' }, { value: 'female', label: 'Female' }], default: 'male' },
+
   dateOfBirth: { type: Types.Date, format: 'DD / MM / YYYY' },
   preRetirementAnnualIncome: { type: Number },
   currentMemberBalance: { type: Number },
   isRetired: { type: Boolean },
+
+  typesOfBenefits: { type: String },
+  yearBenefitLastUpdated: { type: String },
+  beneficiary: { type: String },
   hasWill: { type: Boolean },
   hasEnduringPowersOfAttorney: { type: Boolean },
+
+  hasLifeInsurance: { type: Boolean },
+  lifeInsuranceAmount: { type: Number },
+  lifeInsuranceHeldAt: { type: String },
+
+  hasDisablement: { type: Boolean },
+  disablementAmount: { type: Number },
+  disablementHeldAt: { type: String },
+
+  hasIncomeProtection: { type: Boolean },
+  incomeProtectionAmount: { type: Number },
+  incomeProtectionHeldAt: { type: String },
 });
 
 Member.schema.set('toJSON', {

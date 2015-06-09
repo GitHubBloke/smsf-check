@@ -7,13 +7,13 @@ import SelectQuestion from '../../components/survey/SelectQuestion';
 
 import AdviceBubble from '../../components/survey/AdviceBubble';
 import BasePage from './BasePage';
-import MemberBeneficiary from '../../components/members/MemberBeneficiary';
+import MemberInsurance from '../../components/members/MemberInsurance';
 import { connectToStores } from '../../utils/StoreUtils';
 import SurveyForm from '../../components/survey/SurveyForm';
 import SurveyStore from '../../stores/SurveyStore';
 import { wrapSurvey } from '../../utils/SurveyUtils';
 
-class EstatePlanningPage extends BasePage {
+class InsurancePage extends BasePage {
   constructor(props) {
     super(props);
     this.bind('renderForm', 'renderCharts', 'renderMember');
@@ -24,7 +24,7 @@ class EstatePlanningPage extends BasePage {
       <SurveyForm {...this.props}
         renderForm={this.renderForm}
         renderCharts={this.renderCharts}
-        prevRoute='investment-strategy' nextRoute='insurance'>
+        prevRoute='estate-planning' nextRoute='pensions'>
       </SurveyForm>
     );
   }
@@ -36,19 +36,20 @@ class EstatePlanningPage extends BasePage {
     return (
       <div className='append-xs-2'>
         <div className='append-xs-2'>
-          <RadioQuestion {...this.questionProps('estatePlanning.haveBeneficiary')} />
+          <RadioQuestion {...this.questionProps('insurance.haveInsurance', { getter: this.booleanGetModifier, setter: this.booleanSetModifier })} />
         </div>
+        {data.getIn('survey.insurance.haveInsurance'.split('.'))}
 
-        {data.getIn([ 'survey', 'estatePlanning', 'haveBeneficiary' ]) === 'Yes' &&
+        {data.getIn([ 'survey', 'insurance', 'haveInsurance' ]) &&
           <Row className='members'>
             {survey.get('members').map(this.renderMember)}
           </Row>}
 
-        {data.getIn([ 'survey', 'estatePlanning', 'haveBeneficiary' ]) &&
+        {data.getIn([ 'survey', 'insurance', 'haveInsurance' ]) &&
           <div>
-            <div><AdviceBubble advice={this.formatMessage(this.getIntlMessage('estatePlanning.advice'))} /></div>
-            <div><AdviceBubble advice={this.formatMessage(this.getIntlMessage('member.typesOfBenefits.advice'))} /></div>
-            <div><AdviceBubble advice={this.formatMessage(this.getIntlMessage('member.beneficiary.advice'))} /></div>
+            <div><AdviceBubble advice={this.formatMessage(this.getIntlMessage('insurance.typesOfInsurance.advice'))} /></div>
+            <div><AdviceBubble advice={this.formatMessage(this.getIntlMessage('insurance.advice'))} /></div>
+            <div><AdviceBubble advice={this.formatMessage(this.getIntlMessage('insurance.howMuchInsurance.advice'))} /></div>
           </div>}
       </div>
     );
@@ -64,19 +65,19 @@ class EstatePlanningPage extends BasePage {
   renderMember(member, index) {
     return (
       <Col key={member.get('id')} md={12} className={(index % 2 === 0) && 'clear-md clear-lg'}>
-        <MemberBeneficiary member={member} />
+        <MemberInsurance member={member} />
       </Col>
     );
   }
 }
 
-EstatePlanningPage.propTypes = {};
-EstatePlanningPage.defaultProps = {};
+InsurancePage.propTypes = {};
+InsurancePage.defaultProps = {};
 
-EstatePlanningPage.schema = {
+InsurancePage.schema = {
   survey: {
-    estatePlanning: {
-      haveBeneficiary: Joi.string().required().label('This field'),
+    insurance: {
+      haveInsurance: Joi.bool().required().label('This field'),
     },
   },
 };
@@ -92,7 +93,7 @@ function getState({ params }) {
   return { survey, submitting, skippable };
 }
 
-export default wrapSurvey({ confirmDirtySurvey: true }, connectToStores(EstatePlanningPage,
+export default wrapSurvey({ confirmDirtySurvey: true }, connectToStores(InsurancePage,
   [ SurveyStore ],
   pickProps,
   getState

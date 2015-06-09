@@ -11,7 +11,7 @@ export default class RadioQuestion extends BaseComponent {
 
     return (
       <div className={classNames('form-group', (bsStyle === 'error') && 'has-error')}>
-        <label className='control-label append-xs-tiny text-normal'>{label}</label>
+        {label && <label className='control-label append-xs-tiny text-normal'>{label}</label>}
         <div className='form-inline'>
           <Select name={id} {...this.props} value={valueLink.value} onChange={valueLink.requestChange} className='Select--lg' />
         </div>

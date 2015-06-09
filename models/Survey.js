@@ -46,6 +46,10 @@ Survey.add({
   estatePlanning: {
     haveBeneficiary: { type: String, noedit: true },
   },
+
+  insurance: {
+    haveInsurance: { type: Boolean, noedit: true },
+  },
 });
 
 Survey.schema.set('toJSON', {

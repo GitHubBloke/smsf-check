@@ -34,17 +34,20 @@ export default class MemberCard extends Validatable {
     }
   }
 
-  questionProps(path, { getter, setter } = {}) {
+  questionProps(path, { getter, setter, checkbox } = {}) {
     const { member } = this.props;
-    let options;
+    let label, placeholder, options;
 
+    try { label = this.formatMessage(this.getIntlMessage(`${path}.label`)); } catch(e) {}
+    try { placeholder = this.formatMessage(this.getIntlMessage(`${path}.placeholder`)); } catch(e) {}
     try { options = this.translatedOptions(`${path}.options`); } catch(e) {}
 
     return {
       id: `${member.get('id') || member.get('ref')}-${path}`,
-      label: this.formatMessage(this.getIntlMessage(`${path}.label`)),
-      valueLink: this.linkState(path, setter, getter),
+      label,
+      [checkbox ? 'checkedLink' : 'valueLink']: this.linkState(path, setter, getter),
       disabled: this.props.submitting,
+      placeholder,
       options,
       ...this.getErrorProps(path),
     };
