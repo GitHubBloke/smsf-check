@@ -7,9 +7,13 @@
 .text-bold { font-weight: @font-weight-bold !important; }
 
 .link-plain {
-   color: inherit;
-   opacity: 0.75;
-   &:hover, &:active, &:focus { color: inherit; opacity: 1; }
+  color: inherit;
+  opacity: 0.75;
+  &:hover, &:active, &:focus { color: inherit; opacity: 1; }
+}
+
+.link-no-underline {
+  &:hover, &:active, &:focus { text-decoration: none; }
 }
 
 hr { border-top-width: 2px; }

@@ -34,10 +34,10 @@ export default class MemberDetails extends MemberCard {
             </label>
             <Row>
               <Col xs={10} xsOffset={2}>
-                <GenderOption gender='female' {...this.linkState('member.gender')} disabled={submitting} />
+                <GenderOption label='Female' gender='female' {...this.linkState('member.gender')} disabled={submitting} />
               </Col>
               <Col xs={10}>
-                <GenderOption gender='male' {...this.linkState('member.gender')} disabled={submitting} />
+                <GenderOption label='Male' gender='male' {...this.linkState('member.gender')} disabled={submitting} />
               </Col>
             </Row>
           </div>
