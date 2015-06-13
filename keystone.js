@@ -52,6 +52,10 @@ keystone.init(_.assign({
   'cookie secret': '5R(+[4Vaibu}i)zZ^eg:/"bR5{fGtw(JWa|qKbb:3y]M1|n{b7k{~SB*345:03y!',
 
   'theme directory': themeDir,
+
+  'financial services guide link': 'http://www.superiq.com.au/resources/SuperIQ/pdf/siq_financial_services_guide.pdf',
+  'privacy policy link': 'http://www.superiq.com.au/resources/SuperIQ/pdf/siq_privacy_policy.pdf',
+  'terms and conditions link': 'http://www.superiq.com.au/resources/SuperIQ/pdf/siq_terms_conditions.pdf',
 }, themeConfig));
 
 // Load your project's Models
@@ -80,6 +84,10 @@ keystone.set('client locals', {
   env: keystone.get('env'),
   name: keystone.get('name'),
   brand: keystone.get('brand'),
+  financialLink: keystone.get('financial services guide link'),
+  privacyLink: keystone.get('privacy policy link'),
+  termsLink: keystone.get('terms and conditions link'),
+
 });
 
 // Load your project's Routes

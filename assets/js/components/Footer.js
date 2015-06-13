@@ -24,11 +24,11 @@ class Footer extends BaseComponent {
           </small>
           <ul className='list-inline pull-sm-right small prepend-xs-1 append-xs-none'>
             <li><GeneralAdviceButton /></li>
-            <li><Link to='app' className='link-plain'><FM message={this.getIntlMessage('footer.links.guide')} /></Link></li>
+            <li><a target='_blank' href={locals.financialLink} className='link-plain'><FM message={this.getIntlMessage('footer.links.guide')} /></a></li>
             <li>&bull;</li>
-            <li><Link to='terms' className='link-plain'><FM message={this.getIntlMessage('footer.links.terms')} /></Link></li>
+            <li><a target='_blank' href={locals.termsLink} className='link-plain'><FM message={this.getIntlMessage('footer.links.terms')} /></a></li>
             <li>&bull;</li>
-            <li><Link to='privacy' className='link-plain'><FM message={this.getIntlMessage('footer.links.privacy')} /></Link></li>
+            <li><a target='_blank' href={locals.privacyLink} className='link-plain'><FM message={this.getIntlMessage('footer.links.privacy')} /></a></li>
             {signedIn &&
               [ <li key='bull'>&bull;</li>,
                 <li key='signout'><Link to='signout' className='link-plain'><FM message={this.getIntlMessage('footer.links.signOut')} /></Link></li> ]}

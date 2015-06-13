@@ -21,9 +21,6 @@ import PensionsPage from './pages/steps/PensionsPage';
 import ContributionsPage from './pages/steps/ContributionsPage';
 import ResultsPage from './pages/steps/ResultsPage';
 
-import PrivacyPage from './pages/PrivacyPage';
-import TermsPage from './pages/TermsPage';
-
 import NotFoundPage from './pages/errors/NotFoundPage';
 
 export default (
@@ -32,8 +29,6 @@ export default (
     <Route name='confirm-email' path='/confirm-email/:resetPasswordKey' handler={ConfirmEmailPage} />
     <Route name='signin' handler={SigninPage} />
     <Route name='signout' handler={SignoutPage} />
-    <Route name='terms' handler={TermsPage} />
-    <Route name='privacy' handler={PrivacyPage} />
 
     <Route handler={ToolPage}>
       <Route name='members' handler={MembersPage} />

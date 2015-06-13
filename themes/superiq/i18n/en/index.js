@@ -29,16 +29,6 @@ export default {
       }
     },
 
-    privacy: {
-      title: 'Privacy Policy',
-      heading: 'Privacy Policy',
-    },
-
-    terms: {
-      title: 'Terms of Use',
-      heading: 'Terms of Use',
-    },
-
     confirmEmail: {
       title: 'Confirm Your Email Address',
       heading: 'Begin your {name} journey',
