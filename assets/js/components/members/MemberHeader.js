@@ -1,21 +1,57 @@
+import Immutable from 'immutable';
 import React, { PropTypes } from 'react';
+import { Input } from 'react-bootstrap';
 
 import BaseComponent from '../../utils/BaseComponent';
+import Icon from '../Icon';
 
 export default class MemberHeader extends BaseComponent {
+  constructor(props) {
+    super(props);
+    this.bind('_toggleEditable');
+    this.state = { data: Immutable.fromJS({ isEditing: false, name: props.name }) };
+  }
+
   render() {
-    const { name, children } = this.props;
+    const { name, editable, children } = this.props;
+    const { data } = this.state;
+    const isEditing = data.get('isEditing');
 
     return (
       <div className='well__header member__header'>
         <div className='member__name'>
-          <h4>{name}</h4>
+          {!isEditing &&
+            <h4>
+              <a className='member__edit' onClick={this._toggleEditable}>
+                {name}
+                {editable && <Icon id='edit' />}
+              </a>
+            </h4>}
+          {isEditing &&
+            <Input ref='input' type='text' valueLink={this.linkState('name')} onBlur={this._toggleEditable}
+              bsSize='large' className='input-lg text-center' groupClassName='append-xs-none' />}
         </div>
-        {children}
+        {!isEditing && children}
       </div>
     );
   }
+
+  _toggleEditable() {
+    const { onChange } = this.props;
+    const { data } = this.state;
+    const isEditing = data.get('isEditing');
+
+    if (isEditing) { onChange(data.get('name')); }
+
+    this._setState('isEditing', !this.state.data.get('isEditing'), () => {
+      if (!isEditing) { this.refs.input.getInputDOMNode().focus(); }
+    });
+  }
 }
 
-MemberHeader.propTypes = { name: PropTypes.string.isRequired };
-MemberHeader.defaultProps = {};
+MemberHeader.propTypes = {
+  name: PropTypes.string.isRequired,
+  editable: PropTypes.bool.isRequired,
+  onChange: PropTypes.func.isRequired,
+};
+MemberHeader.defaultProps = { editable: false, onChange: () => {} };

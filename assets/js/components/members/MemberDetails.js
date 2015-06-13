@@ -15,13 +15,22 @@ import SurveyStore from '../../stores/SurveyStore';
 import { connectToStores } from '../../utils/StoreUtils';
 
 export default class MemberDetails extends MemberCard {
+  constructor(props) {
+    super(props);
+    this.bind('_updateName');
+  }
+
+  _updateName(newName) {
+    this._setState('member.name', newName);
+  }
+
   render() {
     const { data } = this.state;
     const { survey, submitting } = this.props;
 
     return (
       <Well className='text-center member append-xs-none'>
-        <MemberHeader name={data.getIn([ 'member', 'name' ])}>
+        <MemberHeader name={data.getIn([ 'member', 'name' ])} editable={true} onChange={this._updateName}>
           {survey.get('members').size > 1 && this.renderDeleteButton()}
         </MemberHeader>
 

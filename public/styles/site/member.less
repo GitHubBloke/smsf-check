@@ -12,6 +12,11 @@
   padding-bottom: @avatar-size / 2 + @well-padding;
 }
 
+.member__name {
+  .clearfix;
+  height: @input-height-large;
+}
+
 .member__avatar {
   margin-top: (@avatar-size / -2) - @well-padding;
 }
@@ -21,4 +26,17 @@
   position: absolute;
   right: @well-padding;
   top: @well-padding;
+}
+
+.member__edit {
+  cursor: pointer;
+  position: relative;
+
+  &:hover, &:focus, &:active { text-decoration: none; }
+
+  .icon {
+    left: 100%;
+    margin-left: @padding-small-horizontal;
+    position: absolute;
+  }
 }
