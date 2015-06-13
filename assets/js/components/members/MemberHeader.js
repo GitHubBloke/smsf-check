@@ -20,20 +20,32 @@ export default class MemberHeader extends BaseComponent {
     return (
       <div className='well__header member__header'>
         <div className='member__name'>
-          {!isEditing &&
-            <h4>
-              <a className='member__edit' onClick={this._toggleEditable}>
-                {name}
-                {editable && <Icon id='edit' />}
-              </a>
-            </h4>}
-          {isEditing &&
-            <Input ref='input' type='text' valueLink={this.linkState('name')} onBlur={this._toggleEditable}
-              bsSize='large' className='input-lg text-center' groupClassName='append-xs-none' />}
+          {editable ? this.renderEditable() : this.renderStatic()}
         </div>
         {!isEditing && children}
       </div>
     );
+  }
+
+  renderStatic() {
+    const { name } = this.props;
+    return <h4>{name}</h4>;
+  }
+
+  renderEditable() {
+    const { name } = this.props;
+    const { data } = this.state;
+    const isEditing = data.get('isEditing');
+
+    return !isEditing ?
+      <h4>
+        <a className='member__edit' onClick={this._toggleEditable}>
+          {name}
+          <Icon id='edit' />
+        </a>
+      </h4> :
+      <Input ref='input' type='text' valueLink={this.linkState('name')} onBlur={this._toggleEditable}
+        bsSize='large' className='input-lg text-center' groupClassName='append-xs-none' />;
   }
 
   _toggleEditable() {
