@@ -50,9 +50,11 @@ export default class Header extends BaseComponent {
 
   renderSignedOutActions() {
     return (
-      <Link to='signin' className='btn btn-primary btn-lg btn--wide navbar-btn navbar-right'>
-        <FM message={this.getIntlMessage('shared.navbar.signin.actionLabel')} />
-      </Link>
+      <div className='navbar-right'>
+        <Link to='signin' className='btn btn-primary btn-lg btn--wide navbar-btn'>
+          <FM message={this.getIntlMessage('shared.navbar.signin.actionLabel')} />
+        </Link>
+      </div>
     );
   }
 
