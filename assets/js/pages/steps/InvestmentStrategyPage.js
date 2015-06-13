@@ -81,7 +81,9 @@ class InvestmentStrategy extends BasePage {
           <h3 className='prepend-xs-none append-xs-1'>
             <FM message={this.getIntlMessage('investmentStrategy.assetAllocations.label')} />
           </h3>
-          {_.map(assetAllocations, this.renderAssetAllocation)}
+          <Row>
+            {_.map(assetAllocations, this.renderAssetAllocation)}
+          </Row>
         </Col>
       </Row>
     );
@@ -91,16 +93,14 @@ class InvestmentStrategy extends BasePage {
     const { submitting } = this.props;
 
     return (
-      <Row key={field}>
-        <Col md={12}>
-          <Input type='text' bsSize='large' addonBefore='%'
-            className='input-lg' groupClassName='append-xs-tiny'
-            placeholder={this.formatMessage(this.getIntlMessage(`investmentStrategy.assetAllocations.assets.${field}`))}
-            valueLink={this.linkState(`survey.investmentStrategy.${field}`)}
-            disabled={submitting}
-            {...this.getErrorProps(`survey.investmentStrategy.${field}`)} />
-        </Col>
-      </Row>
+      <Col key={field} md={12}>
+        <Input type='text' bsSize='large' addonBefore='%'
+          className='input-lg' groupClassName='append-xs-tiny'
+          placeholder={this.formatMessage(this.getIntlMessage(`investmentStrategy.assetAllocations.assets.${field}`))}
+          valueLink={this.linkState(`survey.investmentStrategy.${field}`)}
+          disabled={submitting}
+          {...this.getErrorProps(`survey.investmentStrategy.${field}`)} />
+      </Col>
     );
   }
 }
