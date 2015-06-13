@@ -21,12 +21,17 @@ export const pie = {
     pie: {
       depth: 30,
       dataLabels: { enabled: false },
+      showInLegend: true,
       innerSize: 130,
       size: 220,
       tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>',
       },
     }
+  },
+  legend: {
+    itemMarginBottom: 5,
+    itemStyle: { color: '#666666', fontWeight: 'normal' },
   },
 };
 
