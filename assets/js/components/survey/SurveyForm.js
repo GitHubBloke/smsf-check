@@ -20,18 +20,28 @@ import SurveyStore from '../../stores/SurveyStore';
 export default class SurveyForm extends BaseComponent {
   constructor(props) {
     super(props);
-    this.bind('_handleSubmit', '_setActiveDataSet', '_setComparisonMode', '_setComparisonMember');
+    this.bind('_handleSubmit', '_setActiveDataSet', '_setComparisonMember');
   }
 
   render() {
-    const { survey, activeDataSet, comparisonMode, comparisonMember } = this.props;
+    const { survey, activeDataSet, comparisonMember } = this.props;
 
     const memberOptions = survey.get('members').map((member, index) => {
       return {
-        label: member.get('name'),
+        label: `${this.formatMessage(this.getIntlMessage('shared.charts.compareTo.prefix'))}${member.get('name')}`,
         value: member.get('ref') || member.get('id'),
       };
     }).toJS();
+
+    memberOptions.unshift({
+      label: this.formatMessage(this.getIntlMessage('shared.charts.compareTo.all')),
+      value: null,
+    });
+
+    const dataSetOptions = [
+      { label: this.formatMessage(this.getIntlMessage('shared.charts.activeDataSet.ato')), value: 'ato' },
+      { label: this.formatMessage(this.getIntlMessage('shared.charts.activeDataSet.siq'), { name: locals.name }), value: 'siq' },
+    ];
 
     return (
       <form className='survey' noValidate autoComplete='off' onSubmit={this._handleSubmit}>
@@ -44,57 +54,21 @@ export default class SurveyForm extends BaseComponent {
                   <h3 className='text-bold text-center prepend-xs-none append-xs-1'>
                     <FM message={this.getIntlMessage('shared.charts.title')} />
                   </h3>
-                  <Row>
-                    <Col xs={22} xsOffset={1}>
-
-                      <RadioGroup className='clearfix' name='comparisonMode'
-                        value={comparisonMode} onChange={this._setComparisonMode}>
-                        <div className='radio prepend-xs-tiny'>
-                          <label className='text-normal'>
-                            <input type='radio' value='all' />&nbsp;&nbsp;
-                            <FM message={this.getIntlMessage('shared.charts.comparisonMode.all')} />
-                          </label>
-                        </div>
-                        <div className='radio'>
-                          <label className='text-normal'>
-                            <input type='radio' value='member' />&nbsp;&nbsp;
-                            <FM message={this.getIntlMessage('shared.charts.comparisonMode.member')} />
-                          </label>
-                        </div>
-                      </RadioGroup>
-
-                      <Select name='comparisonMember' options={memberOptions}
-                        clearable={false} searchable={false}
-                        value={comparisonMember && (comparisonMember.get('ref') || comparisonMember.get('id'))}
-                        onChange={this._setComparisonMember} />
-
-                    </Col>
-                  </Row>
-                </Well>
-
-                <Well bsSize='large'>
-                  <Row>
-                    <Col xs={22} xsOffset={1}>
-                      <RadioGroup name='dataSet' value={activeDataSet} onChange={this._setActiveDataSet}>
-                        <div className='radio prepend-xs-none'>
-                          <label className='text-normal'>
-                            <input type='radio' value='ato' />&nbsp;&nbsp;
-                            <FM message={this.getIntlMessage('shared.charts.activeDataSet.ato')} />
-                          </label>
-                        </div>
-                        <div className='radio append-xs-none'>
-                          <label className='text-normal'>
-                            <input type='radio' value='siq' />&nbsp;&nbsp;
-                            <FM message={this.getIntlMessage('shared.charts.activeDataSet.siq')} name={locals.name} />
-                          </label>
-                        </div>
-                      </RadioGroup>
-                    </Col>
-                  </Row>
+                  <div className='append-xs-tiny'>
+                    <Select name='comparisonMember' options={memberOptions}
+                      placeholder={this.formatMessage(this.getIntlMessage('shared.charts.compareTo.all'))}
+                      clearable={false} searchable={false}
+                      value={comparisonMember && (comparisonMember.get('ref') || comparisonMember.get('id'))}
+                      onChange={this._setComparisonMember} />
+                  </div>
+                  <Select name='dataSet' options={dataSetOptions}
+                    clearable={false} searchable={false}
+                    value={activeDataSet}
+                    onChange={this._setActiveDataSet} />
                 </Well>
 
                 <Well bsSize='large' className='well--white'>
-                  {this.props.renderCharts({ activeDataSet, comparisonMode, comparisonMember })}
+                  {this.props.renderCharts({ activeDataSet, comparisonMember })}
                 </Well>
 
               </div>
@@ -157,10 +131,6 @@ export default class SurveyForm extends BaseComponent {
     ChartsActionCreators.setActiveDataSet(dataSet);
   }
 
-  _setComparisonMode(mode) {
-    ChartsActionCreators.setComparisonMode(mode);
-  }
-
   _setComparisonMember(id) {
     const member = SurveyStore.getMember(id);
     ChartsActionCreators.setComparisonMember(member);
@@ -184,10 +154,9 @@ function pickProps({ params }) {
 function getState({ params }) {
   const survey = SurveyStore.getDirtySurvey();
   const activeDataSet = ChartsStore.getActiveDataSet();
-  const comparisonMode = ChartsStore.getComparisonMode();
   const comparisonMember = ChartsStore.getComparisonMember();
 
-  return { survey, activeDataSet, comparisonMode, comparisonMember };
+  return { survey, activeDataSet, comparisonMember };
 }
 
 export default connectToStores(SurveyForm,

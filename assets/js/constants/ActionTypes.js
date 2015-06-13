@@ -30,6 +30,5 @@ export default keyMirror({
   SURVEY_CLEAR_DIRTY: void 0,
 
   CHARTS_SET_ACTIVE_DATA_SET: void 0,
-  CHARTS_SET_COMPARISON_MODE: void 0,
   CHARTS_SET_COMPARISON_MEMBER: void 0,
 });

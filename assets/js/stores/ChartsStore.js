@@ -7,11 +7,10 @@ import AppDispatcher from '../dispatcher/AppDispatcher';
 import { createStore } from '../utils/StoreUtils';
 import locals from '../utils/locals';
 
-let activeDataSet = 'siq', comparisonMode = 'all', comparisonMember;
+let activeDataSet = 'siq', comparisonMember;
 
 const ChartsStore = createStore({
   getActiveDataSet() { return activeDataSet; },
-  getComparisonMode() { return comparisonMode; },
   getComparisonMember() { return comparisonMember; },
 });
 
@@ -48,12 +47,7 @@ ChartsStore.dispatchToken = AppDispatcher.register((payload) => {
       activeDataSet = action.activeDataSet;
       break;
 
-    case ActionTypes.CHARTS_SET_COMPARISON_MODE:
-      comparisonMode = action.comparisonMode;
-      break;
-
     case ActionTypes.CHARTS_SET_COMPARISON_MEMBER:
-      comparisonMode = 'member';
       comparisonMember = action.comparisonMember;
       break;
 

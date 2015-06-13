@@ -444,9 +444,9 @@ export default {
     shared: {
       charts: {
         title: 'Compare Members & Funds',
-        comparisonMode: {
+        compareTo: {
+          prefix: 'Compare to ',
           all: 'Compare to all members and funds',
-          member: ' Compare to members like:',
         },
         activeDataSet: {
           ato: 'Display ATO SMSF data set',
