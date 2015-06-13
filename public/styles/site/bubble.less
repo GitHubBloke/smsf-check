@@ -1,8 +1,14 @@
 .bubble {
   background: @bubble-bg;
+  cursor: pointer;
   display: inline-block;
   border: @bubble-border-width solid @bubble-border;
   border-radius: @bubble-border-radius;
   padding: @padding-large-vertical @padding-large-horizontal;
   .append-xs-tiny;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
 }
