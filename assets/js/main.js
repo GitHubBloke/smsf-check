@@ -12,5 +12,5 @@ if (locals.user) {
 
 router.run((Handler, state) => {
   React.render(<Handler {...state} {...i18n.en} />, document.getElementById('container'));
-  if (analytics) { analytics.page(); }
+  if (analytics) { analytics.page(state.path); }
 });
