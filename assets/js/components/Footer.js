@@ -1,11 +1,12 @@
 import React, { PropTypes } from 'react';
-import { Grid } from 'react-bootstrap';
+import { Button, Grid } from 'react-bootstrap';
 import { FormattedMessage as FM } from '../shims/ReactIntl';
 import { Link } from 'react-router';
 
 import AuthStore from '../stores/AuthStore';
 import BaseComponent from '../utils/BaseComponent';
 import locals from '../utils/locals';
+import GeneralAdviceButton from './GeneralAdviceButton';
 import { connectToStores } from '../utils/StoreUtils';
 
 class Footer extends BaseComponent {
@@ -22,6 +23,7 @@ class Footer extends BaseComponent {
               year={new Date().getFullYear()} brand={locals.brand} />
           </small>
           <ul className='list-inline pull-sm-right small prepend-xs-1 append-xs-none'>
+            <li><GeneralAdviceButton /></li>
             <li><Link to='app' className='link-plain'><FM message={this.getIntlMessage('footer.links.guide')} /></Link></li>
             <li>&bull;</li>
             <li><Link to='terms' className='link-plain'><FM message={this.getIntlMessage('footer.links.terms')} /></Link></li>

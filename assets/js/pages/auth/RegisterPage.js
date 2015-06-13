@@ -66,7 +66,7 @@ class RegisterPage extends Validatable {
             <Row>
               <Col md={16} mdOffset={4} className='append-xs-2'>
                 <p className='text-center small'>
-                  <FM message={this.getIntlMessage('home.adviceDisclaimer')} />
+                  <FM message={this.getIntlMessage('shared.adviceDisclaimer.text')} />
                 </p>
               </Col>
             </Row>

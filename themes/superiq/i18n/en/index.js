@@ -17,13 +17,6 @@ export default {
         greatAdvice: 'Provide as much or as little information as you like and still receive great general advice.',
         compare: 'Compare your fund to over 11,000 funds from ATO and {name} databases.',
       },
-      adviceDisclaimer:
-        `The information we share with you is general advice. We don’t take into account your objectives,
-         financial situation or needs in deciding what information to share with you. Before you act on any
-         of this information you should consider its appropriateness having regard to your objectives,
-         financial situation and needs. If we share information about financial products you should obtain a
-         copy of the relevant Product Disclosure Statement and consider the information it contains before
-         making any decision to acquire the product.`
     },
 
     footer: {
@@ -491,6 +484,19 @@ export default {
       },
 
       beforeUnload: { message: 'You have unsaved changes. If you leave before saving, your changes will be lost.' },
+
+      adviceDisclaimer: {
+        title: 'General Advice',
+        text:
+          `The information we share with you is general advice. We don’t take into account your objectives,
+           financial situation or needs in deciding what information to share with you. Before you act on any
+           of this information you should consider its appropriateness having regard to your objectives,
+           financial situation and needs. If we share information about financial products you should obtain a
+           copy of the relevant Product Disclosure Statement and consider the information it contains before
+           making any decision to acquire the product.`,
+
+         actionLabel: 'General Advice',
+      },
     },
 
   }
