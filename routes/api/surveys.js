@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import async from 'async';
 import keystone, { session } from 'keystone';
+import moment from 'moment';
 
 import logger from '../../logger';
 
@@ -25,6 +26,8 @@ export function update(req, res) {
 
       Promise.all(_.map(members, (member) => {
         return new Promise((resolve, reject) => {
+          if (member.dateOfBirth) { member.dateOfBirth = moment(member.dateOfBirth, 'DD / MM / YYYY'); }
+
           if (member.id) {
             Member.model.findById(member.id).exec((err, existingMember) => {
               if (err) { return cb(err); }
