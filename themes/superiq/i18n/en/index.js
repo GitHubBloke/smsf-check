@@ -244,19 +244,19 @@ export default {
         label: 'What type of trustee does your fund have?',
         options: [
           { value: 'individuals', label: 'Individuals as Trustee' },
-          { value: 'corporate', label: 'Corporate trustee' },
+          { value: 'corporate', label: 'Corporate Trustee' },
         ],
         advice: 'Do I have the right type of trustee?',
       },
 
       deedSupplier: {
         label: 'Who supplied the trust deed for you fund?',
-        options: [ 'Unknown', 'Freehills', 'Madgwicks', 'SuperCentral' ],
+        options: [ 'ClearDocs', 'DBA Lawyers', 'Freehills', 'Kelly & Co', 'Madgwicks', 'SuperCentral', 'TopDocs', 'Other', 'Unknown' ],
       },
 
       yearLastUpdated: {
         label: 'In which year was your trust fund last updated?',
-        options: _.times(20, (i) => (new Date().getFullYear() - i).toString()),
+        options: _.times(36, (i) => (new Date().getFullYear() - i).toString()),
         advice: 'Should I upgrade my trust deed?',
       },
     },
