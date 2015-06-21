@@ -107,20 +107,24 @@ export default {
       typesOfBenefits: {
         label: 'Types of benefits',
         options: [
-          { value: 'option1', label: 'Option 1' },
-          { value: 'option2', label: 'Option 2' },
+          { value: 'none', label: 'None' },
+          { value: 'non-binding', label: 'Non Binding' },
+          { value: 'binding-lapsing', label: 'Binding - Lapsing' },
+          { value: 'binding-non-lapsing', label: 'Binding - Non Lapsing' },
         ],
         advice: 'What are the different types of death benefit nominations?',
       },
       yearBenefitLastUpdated: {
         label: 'Last updated?',
-        options: _.times(20, (i) => (new Date().getFullYear() - i).toString()),
+        options: _.times(36, (i) => (new Date().getFullYear() - i).toString()),
       },
       beneficiary: {
         label: 'Who is the beneficiary?',
         options: [
-          { value: 'option1', label: 'Option 1' },
-          { value: 'option2', label: 'Option 2' },
+          { value: 'child', label: 'Child' },
+          { value: 'adult-child', label: 'Adult Child' },
+          { value: 'spouse', label: 'Spouse' },
+          { value: 'other', label: 'Other' },
         ],
         advice: 'Have I nominated the right beneficiaries?',
       },
