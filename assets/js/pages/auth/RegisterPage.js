@@ -126,7 +126,7 @@ class RegisterPage extends Validatable {
               <Icon id='stats-bars' size='1x' stacked className='text-inverse' />
             </IconStack>
             <div className='prepend-xs-1 append-xs-tiny'>
-              <FHM message={this.getIntlMessage('home.features.compare')} name={locals.name} />
+              <FHM message={this.getIntlMessage('home.features.compare')} brand={locals.brand} />
             </div>
           </Well>
         </Col>

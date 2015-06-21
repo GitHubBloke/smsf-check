@@ -15,7 +15,7 @@ export default {
       features: {
         safeData: 'Know your data is safe <br class="visible-md visible-lg" /> with bank-level <br class="visible-md visible-lg"/> security.',
         greatAdvice: 'Provide as much or as little information as you like and still receive great general advice.',
-        compare: 'Compare your fund to thousands of funds in {name} and ATO data on all SMSFs.',
+        compare: 'Compare your fund to thousands of funds in {brand} and ATO data on all SMSFs.',
       },
     },
 
@@ -71,9 +71,9 @@ export default {
       body:
         `<p>
            Your are about to embark on the most comprehensive comparison and health check process
-           ever available for Self Managed Super Funds. To do this we compare your SMSF data to those
-           of over thousands of funds administered on the {brand} platform as well as data supplied
-           from sources such as the Australian Taxation Office.
+           ever available for Self Managed Super Funds. To do this we compare your fund to thousands of
+           funds in the #{brand} system as well as data from sources such as the Australian Taxation
+           Office.
          </p>
          <p>
            All the way through the comparison tool we will show you the similarities and differences

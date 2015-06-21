@@ -110,10 +110,14 @@ class MembersPage extends BasePage {
               <Col md={20} mdOffset={2}>
                 <FHM message={this.getIntlMessage('welcome.body')} brand={locals.brand} />
 
-                <Button bsStyle='primary' bsSize='large' className='btn--wide prepend-xs-1 append-xs-2'
+                <Button bsStyle='primary' bsSize='large' className='btn--wide prepend-xs-1 append-xs-1'
                   onClick={this._toggleModal}>
                   <FM message={this.getIntlMessage('welcome.start.actionLabel')} />
                 </Button>
+                <hr className='append-xs-1' />
+                <p className='text-center small append-xs-2'>
+                  <FM message={this.getIntlMessage('shared.adviceDisclaimer.text')} />
+                </p>
               </Col>
             </Row>
           </Grid>
