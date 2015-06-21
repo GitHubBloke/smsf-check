@@ -26,14 +26,16 @@ class InvestmentAdvicePage extends BasePage {
   }
 
   renderForm() {
+    const { data } = this.state;
+
     return (
       <div>
         <div className='append-xs-2'>
           <RadioQuestion {...this.questionProps('investmentAdvice.whoDoesIt')} />
         </div>
-        <div className='append-xs-2'>
+        {(data.getIn([ 'survey', 'investmentAdvice', 'whoDoesIt' ]) !== 'myself') && <div className='append-xs-2'>
           <RadioQuestion {...this.questionProps('investmentAdvice.costPerYear')} />
-        </div>
+        </div>}
       </div>
     );
   }
