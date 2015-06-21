@@ -24,6 +24,7 @@ class Footer extends BaseComponent {
           </small>
           <ul className='list-inline pull-sm-right small prepend-xs-1 append-xs-none'>
             <li><GeneralAdviceButton /></li>
+            <li>&bull;</li>
             <li><a target='_blank' href={locals.financialLink} className='link-plain'><FM message={this.getIntlMessage('footer.links.guide')} /></a></li>
             <li>&bull;</li>
             <li><a target='_blank' href={locals.termsLink} className='link-plain'><FM message={this.getIntlMessage('footer.links.terms')} /></a></li>

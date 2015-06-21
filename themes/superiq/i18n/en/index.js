@@ -8,14 +8,14 @@ export default {
       hero: {
         intro:
           `Welcome to the {brand} SMSF Health Check tool, <strong>{name}</strong>.
-           Compare your current fund to thousands of others SMSFs
+           Compare your current fund to thousands of other SMSFs
            to see how your fund stacks up.`,
         signup: { actionLabel: 'Sign up' },
       },
       features: {
         safeData: 'Know your data is safe <br class="visible-md visible-lg" /> with bank-level <br class="visible-md visible-lg"/> security.',
         greatAdvice: 'Provide as much or as little information as you like and still receive great general advice.',
-        compare: 'Compare your fund to over 11,000 funds from ATO and {name} databases.',
+        compare: 'Compare your fund to thousands of funds in {name} and ATO data on all SMSFs.',
       },
     },
 
@@ -40,7 +40,7 @@ export default {
       title: 'Register',
       intro:
         `So we can remember who you are, and identify your fund, please enter the details below.<br>
-         Your information will never be used for any purposes outside of this helpful tool.`,
+         We will never provide your personal information to anyone else.`,
       submit: { actionLabel: 'Register', loadingLabel: 'Please wait...', },
       already: { note: 'Already registered?', actionLabel: 'Log In', },
       successful: `Thank you for signing up. We've sent you an email with instructions on how to log in.`,

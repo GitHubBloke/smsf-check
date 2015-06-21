@@ -1,6 +1,6 @@
 import Immutable from 'immutable';
 import React, { PropTypes } from 'react';
-import { Button, Col, Grid, Modal, OverlayMixin, Row } from 'react-bootstrap';
+import { Col, Grid, Modal, OverlayMixin, Row } from 'react-bootstrap';
 import { FormattedMessage as FM } from '../shims/ReactIntl';
 import reactMixin from 'react-mixin';
 
@@ -15,9 +15,9 @@ export default class GeneralAdviceButton extends BaseComponent {
 
   render() {
     return (
-      <Button bsSize='xsmall' bsStyle='primary' onClick={this._toggleModal}>
+      <a className='link-plain' href='#' onClick={this._toggleModal}>
         <FM message={this.getIntlMessage('shared.adviceDisclaimer.actionLabel')} />
-      </Button>
+      </a>
     );
   }
 
@@ -47,8 +47,9 @@ export default class GeneralAdviceButton extends BaseComponent {
     );
   }
 
-  _toggleModal() {
+  _toggleModal(e) {
     this._setState('isModalOpen', !this.state.data.get('isModalOpen'));
+    if (e) { e.preventDefault(); }
   }
 }
 
