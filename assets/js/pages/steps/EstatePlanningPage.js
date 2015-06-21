@@ -8,6 +8,8 @@ import SelectQuestion from '../../components/survey/SelectQuestion';
 import AdviceBubble from '../../components/survey/AdviceBubble';
 import BasePage from './BasePage';
 import MemberBeneficiary from '../../components/members/MemberBeneficiary';
+import MemberPowers from '../../components/members/MemberPowers';
+import MemberWill from '../../components/members/MemberWill';
 import { connectToStores } from '../../utils/StoreUtils';
 import SurveyForm from '../../components/survey/SurveyForm';
 import SurveyStore from '../../stores/SurveyStore';
@@ -16,7 +18,7 @@ import { wrapSurvey } from '../../utils/SurveyUtils';
 class EstatePlanningPage extends BasePage {
   constructor(props) {
     super(props);
-    this.bind('renderForm', 'renderCharts', 'renderMember');
+    this.bind('renderForm', 'renderCharts', 'renderMemberBeneficiary', 'renderMemberWill', 'renderMemberPowers');
   }
 
   render() {
@@ -34,22 +36,46 @@ class EstatePlanningPage extends BasePage {
     const { survey, submitting } = this.props;
 
     return (
-      <div className='append-xs-2'>
+      <div>
         <div className='append-xs-2'>
-          <RadioQuestion {...this.questionProps('estatePlanning.haveBeneficiary')} />
+          <div className='append-xs-2'>
+            <RadioQuestion {...this.questionProps('estatePlanning.haveBeneficiary')} />
+          </div>
+
+          {data.getIn([ 'survey', 'estatePlanning', 'haveBeneficiary' ]) === 'yes' &&
+            <Row className='members'>
+              {survey.get('members').map(this.renderMemberBeneficiary)}
+            </Row>}
+
+          {data.getIn([ 'survey', 'estatePlanning', 'haveBeneficiary' ]) !== void 0 &&
+            <div>
+              <div><AdviceBubble advice={this.formatMessage(this.getIntlMessage('estatePlanning.advice'))} /></div>
+              <div><AdviceBubble advice={this.formatMessage(this.getIntlMessage('member.typesOfBenefits.advice'))} /></div>
+              <div><AdviceBubble advice={this.formatMessage(this.getIntlMessage('member.beneficiary.advice'))} /></div>
+            </div>}
         </div>
 
-        {data.getIn([ 'survey', 'estatePlanning', 'haveBeneficiary' ]) === 'yes' &&
-          <Row className='members'>
-            {survey.get('members').map(this.renderMember)}
-          </Row>}
+        <div className='append-xs-2'>
+          <div className='append-xs-2'>
+            <RadioQuestion {...this.questionProps('estatePlanning.haveWills')} />
+          </div>
 
-        {data.getIn([ 'survey', 'estatePlanning', 'haveBeneficiary' ]) !== void 0 &&
-          <div>
-            <div><AdviceBubble advice={this.formatMessage(this.getIntlMessage('estatePlanning.advice'))} /></div>
-            <div><AdviceBubble advice={this.formatMessage(this.getIntlMessage('member.typesOfBenefits.advice'))} /></div>
-            <div><AdviceBubble advice={this.formatMessage(this.getIntlMessage('member.beneficiary.advice'))} /></div>
-          </div>}
+          {data.getIn([ 'survey', 'estatePlanning', 'haveWills' ]) === 'yes' &&
+            <Row className='members'>
+              {survey.get('members').map(this.renderMemberWill)}
+            </Row>}
+        </div>
+
+        <div className='append-xs-2'>
+          <div className='append-xs-2'>
+            <RadioQuestion {...this.questionProps('estatePlanning.havePowers')} />
+          </div>
+
+          {data.getIn([ 'survey', 'estatePlanning', 'havePowers' ]) === 'yes' &&
+            <Row className='members'>
+              {survey.get('members').map(this.renderMemberPowers)}
+            </Row>}
+        </div>
       </div>
     );
   }
@@ -61,10 +87,26 @@ class EstatePlanningPage extends BasePage {
     );
   }
 
-  renderMember(member, index) {
+  renderMemberBeneficiary(member, index) {
     return (
       <Col key={member.get('id')} md={12} className={(index % 2 === 0) && 'clear-md clear-lg'}>
         <MemberBeneficiary member={member} />
+      </Col>
+    );
+  }
+
+  renderMemberWill(member, index) {
+    return (
+      <Col key={member.get('id')} md={12} className={(index % 2 === 0) && 'clear-md clear-lg'}>
+        <MemberWill member={member} />
+      </Col>
+    );
+  }
+
+  renderMemberPowers(member, index) {
+    return (
+      <Col key={member.get('id')} md={12} className={(index % 2 === 0) && 'clear-md clear-lg'}>
+        <MemberPowers member={member} />
       </Col>
     );
   }

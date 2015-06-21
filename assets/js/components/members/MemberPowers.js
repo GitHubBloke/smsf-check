@@ -7,11 +7,11 @@ import React, { PropTypes } from 'react';
 import Icon, { IconStack } from '../Icon';
 import MemberCard from './MemberCard';
 import MemberHeader from './MemberHeader';
-import SelectQuestion from './SelectQuestion';
+import RadioQuestion from './RadioQuestion';
 import SurveyStore from '../../stores/SurveyStore';
 import { connectToStores } from '../../utils/StoreUtils';
 
-export default class MemberBeneficiary extends MemberCard {
+export default class MemberPowers extends MemberCard {
   render() {
     const { data } = this.state;
     const { survey, submitting } = this.props;
@@ -22,21 +22,19 @@ export default class MemberBeneficiary extends MemberCard {
 
         <div className='well__body'>
           <div className={classNames(`avatar-${data.getIn([ 'member', 'gender' ])}`, 'member__avatar', 'append-xs-1')}></div>
-
-          <SelectQuestion {...this.questionProps('member.typesOfBenefits')} />
-          <SelectQuestion {...this.questionProps('member.yearBenefitLastUpdated')} />
-          <SelectQuestion {...this.questionProps('member.beneficiary')} />
+          <RadioQuestion {...this.questionProps('member.hasEnduringPowersOfAttorney', { getter: this.booleanGetModifier, setter: this.booleanSetModifier })} />
         </div>
       </Well>
     );
   }
 }
 
-MemberBeneficiary.propTypes = _.assign({}, MemberCard.propTypes, {});
-MemberBeneficiary.defaultProps = _.assign({}, MemberCard.defaultProps, {});
+MemberPowers.propTypes = _.assign({}, MemberCard.propTypes, {});
+MemberPowers.defaultProps = _.assign({}, MemberCard.defaultProps, {});
 
-MemberBeneficiary.schema = {
+MemberPowers.schema = {
   member: {
+    hasEnduringPowersOfAttorney: Joi.bool().required().label('This field'),
   },
 };
 
@@ -50,7 +48,7 @@ function getState({ params }) {
   return { survey, submitting };
 }
 
-export default connectToStores(MemberBeneficiary,
+export default connectToStores(MemberPowers,
   [ SurveyStore ],
   pickProps,
   getState

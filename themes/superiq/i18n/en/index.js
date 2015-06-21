@@ -129,14 +129,14 @@ export default {
         advice: 'Have I nominated the right beneficiaries?',
       },
       hasWill: {
-        label: 'Does the member have a will?',
+        label: 'Does this member have a will?',
         options: [
           { value: true, label: 'Yes' },
           { value: false, label: 'No' },
         ],
       },
       hasEnduringPowersOfAttorney: {
-        label: 'Do the members of your Fund have Enduring Powers of Attorney?',
+        label: 'Does this member have Enduring Powers of Attorney?',
         options: [
           { value: true, label: 'Yes' },
           { value: false, label: 'No' },
@@ -426,6 +426,22 @@ export default {
 
       haveBeneficiary: {
         label: 'Do the members of your fund have death benefit nominations in place?',
+        options: [
+          { value: 'yes', label: 'Yes' },
+          { value: 'no', label: 'No' },
+        ],
+      },
+
+      haveWills: {
+        label: 'Do the members of your fund have Wills?',
+        options: [
+          { value: 'yes', label: 'Yes' },
+          { value: 'no', label: 'No' },
+        ],
+      },
+
+      havePowers: {
+        label: 'Do the members of your fund have Enduring Powers of Attorney?',
         options: [
           { value: 'yes', label: 'Yes' },
           { value: 'no', label: 'No' },

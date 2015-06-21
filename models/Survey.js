@@ -47,6 +47,8 @@ Survey.add({
 }, 'Estate Planning', {
   estatePlanning: {
     haveBeneficiary: { type: String, label: 'Members have death benefit nominations', noedit: true },
+    haveWills: { type: String, label: 'Members have wills', noedit: true },
+    havePowers: { type: String, label: 'Members have Enduring Powers of Attorney', noedit: true },
   },
 }, 'Insurance', {
   insurance: {
