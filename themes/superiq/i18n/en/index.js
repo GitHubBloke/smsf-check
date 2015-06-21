@@ -146,84 +146,138 @@ export default {
       insuranceTitle: 'Types of Insurance',
 
       hasLifeInsurance: { label: 'Life Insurance', },
-      lifeInsuranceAmount: { placeholder: '$ Amount', },
+      lifeInsuranceAmount: { placeholder: 'Amount', },
       lifeInsuranceHeldAt: {
         placeholder: 'Where is the insurance held?',
         options: [
-          { value: 'option1', label: 'Option 1' },
-          { value: 'option2', label: 'Option 2' },
+          { value: 'my-smsf', label: 'Inside my SMSF' },
+          { value: 'another-fund', label: 'Inside another Super Fund' },
+          { value: 'outside', label: 'Outside Super' },
+        ],
+      },
+      lifeInsuranceInterval: {
+        placeholder: 'Period',
+        options: [
+          { value: 'per-week', label: 'Per Week' },
+          { value: 'per-fortnight', label: 'Per Fortnight' },
+          { value: 'per-month', label: 'Per Month' },
+          { value: 'per-annum', label: 'Per Annum' },
         ],
       },
 
       hasDisablement: { label: 'Total and Permanent Disablement', },
-      disablementAmount: { placeholder: '$ Amount', },
+      disablementAmount: { placeholder: 'Amount', },
       disablementHeldAt: {
         placeholder: 'Where is the insurance held?',
         options: [
-          { value: 'option1', label: 'Option 1' },
-          { value: 'option2', label: 'Option 2' },
+          { value: 'my-smsf', label: 'Inside my SMSF' },
+          { value: 'another-fund', label: 'Inside another Super Fund' },
+          { value: 'outside', label: 'Outside Super' },
+        ],
+      },
+      disablementInterval: {
+        placeholder: 'Period',
+        options: [
+          { value: 'per-week', label: 'Per Week' },
+          { value: 'per-fortnight', label: 'Per Fortnight' },
+          { value: 'per-month', label: 'Per Month' },
+          { value: 'per-annum', label: 'Per Annum' },
         ],
       },
 
       hasIncomeProtection: { label: 'Income Protection', },
-      incomeProtectionAmount: { placeholder: '$ Amount', },
+      incomeProtectionAmount: { placeholder: 'Amount', },
       incomeProtectionHeldAt: {
         placeholder: 'Where is the insurance held?',
         options: [
-          { value: 'option1', label: 'Option 1' },
-          { value: 'option2', label: 'Option 2' },
+          { value: 'my-smsf', label: 'Inside my SMSF' },
+          { value: 'another-fund', label: 'Inside another Super Fund' },
+          { value: 'outside', label: 'Outside Super' },
+        ],
+      },
+      incomeProtectionInterval: {
+        placeholder: 'Period',
+        options: [
+          { value: 'per-week', label: 'Per Week' },
+          { value: 'per-fortnight', label: 'Per Fortnight' },
+          { value: 'per-month', label: 'Per Month' },
+          { value: 'per-annum', label: 'Per Annum' },
         ],
       },
 
       pensionsTitle: 'Types of Pensions',
 
       hasAccountBasedPension: { label: 'Account based', },
-      accountBasedPensionAmount: { placeholder: '$ Amount', },
+      accountBasedPensionAmount: { placeholder: 'Amount', },
       accountBasedPensionInterval: {
+        placeholder: 'Period',
         options: [
-          { value: 'per-week', label: 'Per week' },
+          { value: 'per-week', label: 'Per Week' },
+          { value: 'per-fortnight', label: 'Per Fortnight' },
+          { value: 'per-month', label: 'Per Month' },
+          { value: 'per-annum', label: 'Per Annum' },
         ],
       },
 
       hasTransitionToRetirementPension: { label: 'Transition to retirement', },
-      transitionToRetirementAmount: { placeholder: '$ Amount', },
+      transitionToRetirementAmount: { placeholder: 'Amount', },
       transitionToRetirementInterval: {
+        placeholder: 'Period',
         options: [
-          { value: 'per-week', label: 'Per week' },
+          { value: 'per-week', label: 'Per Week' },
+          { value: 'per-fortnight', label: 'Per Fortnight' },
+          { value: 'per-month', label: 'Per Month' },
+          { value: 'per-annum', label: 'Per Annum' },
         ],
       },
 
       hasOtherPension: { label: 'Other', },
-      otherPensionAmount: { placeholder: '$ Amount', },
+      otherPensionAmount: { placeholder: 'Amount', },
       otherPensionInterval: {
+        placeholder: 'Period',
         options: [
-          { value: 'per-week', label: 'Per week' },
+          { value: 'per-week', label: 'Per Week' },
+          { value: 'per-fortnight', label: 'Per Fortnight' },
+          { value: 'per-month', label: 'Per Month' },
+          { value: 'per-annum', label: 'Per Annum' },
         ],
       },
 
       contributionsTitle: 'Types of Contributions',
 
       hasConcessionalContribution: { label: 'Concessional', },
-      concessionalContributionAmount: { placeholder: '$ Amount', },
+      concessionalContributionAmount: { placeholder: 'Amount', },
       concessionalContributionInterval: {
+        placeholder: 'Period',
         options: [
-          { value: 'per-week', label: 'Per week' },
+          { value: 'per-week', label: 'Per Week' },
+          { value: 'per-fortnight', label: 'Per Fortnight' },
+          { value: 'per-month', label: 'Per Month' },
+          { value: 'per-annum', label: 'Per Annum' },
         ],
       },
 
       hasNonConcessionalContribution: { label: 'Non Concessional', },
-      nonConcessionalContributionAmount: { placeholder: '$ Amount', },
+      nonConcessionalContributionAmount: { placeholder: 'Amount', },
       nonConcessionalContributionInterval: {
+        placeholder: 'Period',
         options: [
-          { value: 'per-week', label: 'Per week' },
+          { value: 'per-week', label: 'Per Week' },
+          { value: 'per-fortnight', label: 'Per Fortnight' },
+          { value: 'per-month', label: 'Per Month' },
+          { value: 'per-annum', label: 'Per Annum' },
         ],
       },
 
       hasOtherContribution: { label: 'Other', },
-      otherContributionAmount: { placeholder: '$ Amount', },
+      otherContributionAmount: { placeholder: 'Amount', },
       otherContributionInterval: {
+        placeholder: 'Period',
         options: [
-          { value: 'per-week', label: 'Per week' },
+          { value: 'per-week', label: 'Per Week' },
+          { value: 'per-fortnight', label: 'Per Fortnight' },
+          { value: 'per-month', label: 'Per Month' },
+          { value: 'per-annum', label: 'Per Annum' },
         ],
       },
     },
