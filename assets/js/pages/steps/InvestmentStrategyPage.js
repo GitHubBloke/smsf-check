@@ -18,6 +18,27 @@ class InvestmentStrategy extends BasePage {
     this.bind('renderForm', 'renderCharts', 'renderAssetAllocation');
   }
 
+  componentDidUpdate() {
+    super.componentDidUpdate(...arguments);
+
+    const { data } = this.state;
+    const totalAllocations = _.sum([
+      'cashAndFixedInterest',
+      'australianEquities',
+      'internationalEquities',
+      'directProperty',
+      'internationalCashAndFixedInterest',
+      'internationalShares',
+      'listedProperty',
+      'mortgages',
+      'other',
+    ], (asset) => data.getIn([ 'survey', 'investmentStrategy', asset ]));
+
+    if (totalAllocations !== data.get('totalAllocations')) {
+      this._setState('totalAllocations', totalAllocations);
+    }
+  }
+
   render() {
     return (
       <SurveyForm {...this.props}
@@ -45,9 +66,6 @@ class InvestmentStrategy extends BasePage {
     return (
       <div>
         <div className='append-xs-2'>
-          <RadioQuestion {...this.questionProps('investmentStrategy.considerations')} />
-        </div>
-        <div className='append-xs-2'>
           <SelectQuestion {...this.questionProps('investmentStrategy.yearLastUpdated')} />
         </div>
         <div className='append-xs-2'>{this.renderAssetAllocations()}</div>
@@ -62,6 +80,7 @@ class InvestmentStrategy extends BasePage {
   renderAssetAllocations() {
     const { data } = this.state;
     const { submitting } = this.props;
+    const { help } = this.getErrorProps('totalAllocations');
 
     const assetAllocations = [
       'cashAndFixedInterest',
@@ -84,6 +103,7 @@ class InvestmentStrategy extends BasePage {
           <Row>
             {_.map(assetAllocations, this.renderAssetAllocation)}
           </Row>
+          {help && <div className='has-error'><div className='help-block' dangerouslySetInnerHTML={{ __html: help }}></div></div>}
         </Col>
       </Row>
     );
@@ -96,7 +116,8 @@ class InvestmentStrategy extends BasePage {
       <Col key={field} md={12}>
         <Input type='text' bsSize='large' addonBefore='%'
           className='input-lg' groupClassName='append-xs-tiny'
-          placeholder={this.formatMessage(this.getIntlMessage(`investmentStrategy.assetAllocations.assets.${field}`))}
+          labelClassName='text-normal'
+          label={this.formatMessage(this.getIntlMessage(`investmentStrategy.assetAllocations.assets.${field}`))}
           valueLink={this.linkState(`survey.investmentStrategy.${field}`)}
           disabled={submitting}
           {...this.getErrorProps(`survey.investmentStrategy.${field}`)} />
@@ -112,7 +133,6 @@ InvestmentStrategy.schema = {
   survey: {
     investmentStrategy: {
       hasStrategy: Joi.string().required().label('This field'),
-      considerations: Joi.string().label('This field').when('hasStrategy', { is: true, then: Joi.required() }),
       yearLastUpdated: Joi.string().label('This field').when('hasStrategy', { is: true, then: Joi.required() }),
 
       cashAndFixedInterest: Joi.number().label('This field'),
@@ -126,6 +146,8 @@ InvestmentStrategy.schema = {
       other: Joi.number().label('This field'),
     },
   },
+
+  totalAllocations: Joi.number().label('Percentage of asset allocations').options({ language: { any: { allowOnly: 'must add up to a total of 100' } } }).when('survey.investmentStrategy.hasStrategy', { is: true, then: Joi.equal(100) }),
 };
 
 function pickProps({ params }) {

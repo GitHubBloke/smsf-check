@@ -34,15 +34,15 @@ Survey.add({
   },
 }, 'Asset Allocations', {
   investmentStrategy: {
-    cashAndFixedInterest: { type: Number, label: 'Cash & fixed interest', noedit: true },
-    australianEquities: { type: Number, label: 'Australian equities', noedit: true },
-    internationalEquities: { type: Number, label: 'International equities', noedit: true },
-    directProperty: { type: Number, label: 'Direct property', noedit: true },
-    internationalCashAndFixedInterest: { type: Number, label: 'International cash & fixed interest', noedit: true },
-    internationalShares: { type: Number, label: 'International shares', noedit: true },
-    listedProperty: { type: Number, label: 'Listed property', noedit: true },
-    mortgages: { type: Number, label: 'Mortages', noedit: true },
-    other: { type: Number, label: 'Other', noedit: true },
+    cashAndFixedInterest: { type: Number, label: 'Cash & fixed interest', noedit: true, default: 0 },
+    australianEquities: { type: Number, label: 'Australian equities', noedit: true, default: 0 },
+    internationalEquities: { type: Number, label: 'International equities', noedit: true, default: 0 },
+    directProperty: { type: Number, label: 'Direct property', noedit: true, default: 0 },
+    internationalCashAndFixedInterest: { type: Number, label: 'International cash & fixed interest', noedit: true, default: 0 },
+    internationalShares: { type: Number, label: 'International shares', noedit: true, default: 0 },
+    listedProperty: { type: Number, label: 'Listed property', noedit: true, default: 0 },
+    mortgages: { type: Number, label: 'Mortages', noedit: true, default: 0 },
+    other: { type: Number, label: 'Other', noedit: true, default: 0 },
   },
 }, 'Estate Planning', {
   estatePlanning: {

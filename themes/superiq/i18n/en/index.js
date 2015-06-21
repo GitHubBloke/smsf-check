@@ -331,7 +331,7 @@ export default {
       longTitle: 'Investment Strategy',
 
       hasStrategy: {
-        label: 'Does your fund have an Investment Strategy?',
+        label: 'Does your fund have an investment strategy that considers cashflow, liquidity liabilities and tax consequences for the fund?',
         options: [
           { value: 'yes', label: 'Yes' },
           { value: 'no', label: 'No' },
@@ -339,17 +339,9 @@ export default {
         advice: 'Does my fund require an Investment Strategy?',
       },
 
-      considerations: {
-        label: 'Does your investment strategy consider the cashflow, liquidity liabilities and tax consequences of holding certain assets for the fund?',
-        options: [
-          { value: 'yes', label: 'Yes' },
-          { value: 'no', label: 'No' },
-        ],
-      },
-
       yearLastUpdated: {
         label: 'When was your investment strategy last updated?',
-        options: _.times(20, (i) => (new Date().getFullYear() - i).toString()),
+        options: _.times(36, (i) => (new Date().getFullYear() - i).toString()),
         advice: 'How frequently should I update my Investment Strategy?',
       },
 
