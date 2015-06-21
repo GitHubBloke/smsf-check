@@ -30,30 +30,38 @@ export default class MemberContributions extends MemberCard {
           </h4>
 
           <div className='text-left'>
-            {data.get('member.hasConcessionalContribution'.split('.'))}
             <Input type='checkbox'
               {...this.questionProps('member.hasConcessionalContribution', { checkbox: true })}
               labelClassName='append-xs-tiny text-normal' groupClassName='append-xs-1' />
-            <Input type='text' bsSize='large'
-              {...this.questionProps('member.concessionalContributionAmount')}
-              className='input-lg' labelClassName='append-xs-tiny text-normal' groupClassName='append-xs-1' />
-            <SelectQuestion {...this.questionProps('member.concessionalContributionInterval')} />
+            {data.getIn([ 'member', 'hasConcessionalContribution' ]) &&
+              <div>
+                <Input type='text' bsSize='large' addonBefore='$'
+                  {...this.questionProps('member.concessionalContributionAmount')}
+                  className='input-lg' labelClassName='append-xs-tiny text-normal' groupClassName='append-xs-1' />
+                <SelectQuestion {...this.questionProps('member.concessionalContributionInterval')} />
+              </div>}
 
             <Input type='checkbox'
               {...this.questionProps('member.hasNonConcessionalContribution', { checkbox: true })}
               labelClassName='append-xs-tiny text-normal' groupClassName='append-xs-1' />
-            <Input type='text' bsSize='large'
-              {...this.questionProps('member.nonConcessionalContributionAmount')}
-              className='input-lg' labelClassName='append-xs-tiny text-normal' groupClassName='append-xs-1' />
-            <SelectQuestion {...this.questionProps('member.nonConcessionalContributionInterval')} />
+            {data.getIn([ 'member', 'hasNonConcessionalContribution' ]) &&
+              <div>
+                <Input type='text' bsSize='large' addonBefore='$'
+                  {...this.questionProps('member.nonConcessionalContributionAmount')}
+                  className='input-lg' labelClassName='append-xs-tiny text-normal' groupClassName='append-xs-1' />
+                <SelectQuestion {...this.questionProps('member.nonConcessionalContributionInterval')} />
+              </div>}
 
             <Input type='checkbox'
               {...this.questionProps('member.hasOtherContribution', { checkbox: true })}
               labelClassName='append-xs-tiny text-normal' groupClassName='append-xs-1' />
-            <Input type='text' bsSize='large'
-              {...this.questionProps('member.otherContributionAmount')}
-              className='input-lg' labelClassName='append-xs-tiny text-normal' groupClassName='append-xs-1' />
-            <SelectQuestion {...this.questionProps('member.otherContributionInterval')} />
+            {data.getIn([ 'member', 'hasOtherContribution' ]) &&
+              <div>
+                <Input type='text' bsSize='large' addonBefore='$'
+                  {...this.questionProps('member.otherContributionAmount')}
+                  className='input-lg' labelClassName='append-xs-tiny text-normal' groupClassName='append-xs-1' />
+                <SelectQuestion {...this.questionProps('member.otherContributionInterval')} />
+              </div>}
           </div>
         </div>
       </Well>

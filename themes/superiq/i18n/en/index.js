@@ -471,7 +471,7 @@ export default {
       longTitle: 'Contributions',
 
       haveContributions: {
-        label: 'Are any of the members of your fund making contributions?',
+        label: 'Are any members making contributions into your SMSF?',
         options: [
           { value: 'yes', label: 'Yes' },
           { value: 'no', label: 'No' },
