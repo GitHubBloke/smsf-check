@@ -31,9 +31,9 @@ export default {
 
     confirmEmail: {
       title: 'Confirm Your Email Address',
-      heading: 'Begin your {name} journey',
-      subHeading: 'Select a password for your account below and start comparing your fund to 11,000 others.',
-      submit: { actionLabel: 'Create my {name} password', loadingLabel: 'Please wait...', },
+      heading: 'Activate your {name} account',
+      subHeading: 'Select a password for your {name} account.<br/>Your password should contain a combination of upper and lower case letters, numbers, and special characters.',
+      submit: { actionLabel: 'Create your {name} password', loadingLabel: 'Please wait...', },
     },
 
     register: {

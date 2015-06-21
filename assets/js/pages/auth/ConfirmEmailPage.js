@@ -3,7 +3,7 @@ import Joi from 'joi';
 import React, { PropTypes } from 'react';
 import { Button, Col, Grid, Input, Row, Well } from 'react-bootstrap';
 import DocumentTitle from 'react-document-title';
-import { FormattedMessage as FM } from '../../shims/ReactIntl';
+import { FormattedMessage as FM, FormattedHTMLMessage as FHM } from '../../shims/ReactIntl';
 import { Link } from 'react-router';
 
 import AuthActionCreators from '../../actions/AuthActionCreators';
@@ -50,7 +50,7 @@ class ConfirmEmailPage extends Validatable {
                     <h2 className='prepend-xs-none append-xs-1'>
                       <FM message={this.getIntlMessage('confirmEmail.heading')} name={locals.name} />
                     </h2>
-                    <p><FM message={this.getIntlMessage('confirmEmail.subHeading')} /></p>
+                    <p><FHM message={this.getIntlMessage('confirmEmail.subHeading')} name={locals.name} /></p>
                   </div>
 
                   <div className='prepend-xs-1 append-xs-1 clearfix'>
