@@ -77,14 +77,14 @@ MemberInsurance.defaultProps = _.assign({}, MemberCard.defaultProps, {});
 
 MemberInsurance.schema = {
   member: {
-    lifeInsuranceAmount: Joi.number().label('This field').when('hasLifeInsurance', { is: true, then: Joi.required() }),
-    lifeInsuranceHeldAt: Joi.string().label('This field').when('hasLifeInsurance', { is: true, then: Joi.required() }),
+    lifeInsuranceAmount: Joi.label('This field').when('hasLifeInsurance', { is: true, then: Joi.number().required() }),
+    lifeInsuranceHeldAt: Joi.label('This field').when('hasLifeInsurance', { is: true, then: Joi.string().required() }),
 
-    disablementAmount: Joi.number().label('This field').when('hasDisablement', { is: true, then: Joi.required() }),
-    disablementHeldAt: Joi.string().label('This field').when('hasDisablement', { is: true, then: Joi.required() }),
+    disablementAmount: Joi.label('This field').when('hasDisablement', { is: true, then: Joi.number().required() }),
+    disablementHeldAt: Joi.label('This field').when('hasDisablement', { is: true, then: Joi.string().required() }),
 
-    incomeProtectionAmount: Joi.number().label('This field').when('hasIncomeProtection', { is: true, then: Joi.required() }),
-    incomeProtectionHeldAt: Joi.string().label('This field').when('hasIncomeProtection', { is: true, then: Joi.required() }),
+    incomeProtectionAmount: Joi.label('This field').when('hasIncomeProtection', { is: true, then: Joi.number().required() }),
+    incomeProtectionHeldAt: Joi.label('This field').when('hasIncomeProtection', { is: true, then: Joi.string().required() }),
   },
 };
 

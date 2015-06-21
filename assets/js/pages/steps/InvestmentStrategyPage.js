@@ -133,7 +133,7 @@ InvestmentStrategy.schema = {
   survey: {
     investmentStrategy: {
       hasStrategy: Joi.string().required().label('This field'),
-      yearLastUpdated: Joi.string().label('This field').when('hasStrategy', { is: true, then: Joi.required() }),
+      yearLastUpdated: Joi.label('This field').when('hasStrategy', { is: 'yes', then: Joi.string().required() }),
 
       cashAndFixedInterest: Joi.number().label('This field'),
       australianEquities: Joi.number().label('This field'),
@@ -147,7 +147,7 @@ InvestmentStrategy.schema = {
     },
   },
 
-  totalAllocations: Joi.number().label('Percentage of asset allocations').options({ language: { any: { allowOnly: 'must add up to a total of 100' } } }).when('survey.investmentStrategy.hasStrategy', { is: true, then: Joi.equal(100) }),
+  totalAllocations: Joi.label('Percentage of asset allocations').options({ language: { any: { allowOnly: 'must add up to a total of 100' } } }).when('survey.investmentStrategy.hasStrategy', { is: 'yes', then: Joi.any().equal(100) }),
 };
 
 function pickProps({ params }) {

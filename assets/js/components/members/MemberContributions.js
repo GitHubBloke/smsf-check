@@ -66,14 +66,14 @@ MemberContributions.defaultProps = _.assign({}, MemberCard.defaultProps, {});
 
 MemberContributions.schema = {
   member: {
-    concessionalContributionAmount: Joi.number().label('This field').when('hasConcessionalContribution', { is: true, then: Joi.required() }),
-    concessionalContributionInterval: Joi.string().label('This field').when('hasConcessionalContribution', { is: true, then: Joi.required() }),
+    concessionalContributionAmount: Joi.label('This field').when('hasConcessionalContribution', { is: true, then: Joi.number().required() }),
+    concessionalContributionInterval: Joi.label('This field').when('hasConcessionalContribution', { is: true, then: Joi.string().required() }),
 
-    nonConcessionalContributionAmount: Joi.number().label('This field').when('hasNonConcessionalContribution', { is: true, then: Joi.required() }),
-    nonConcessionalContributionInterval: Joi.string().label('This field').when('hasNonConcessionalContribution', { is: true, then: Joi.required() }),
+    nonConcessionalContributionAmount: Joi.label('This field').when('hasNonConcessionalContribution', { is: true, then: Joi.number().required() }),
+    nonConcessionalContributionInterval: Joi.label('This field').when('hasNonConcessionalContribution', { is: true, then: Joi.string().required() }),
 
-    otherContributionAmount: Joi.number().label('This field').when('hasOtherContribution', { is: true, then: Joi.required() }),
-    otherContributionInterval: Joi.string().label('This field').when('hasOtherContribution', { is: true, then: Joi.required() }),
+    otherContributionAmount: Joi.label('This field').when('hasOtherContribution', { is: true, then: Joi.number().required() }),
+    otherContributionInterval: Joi.label('This field').when('hasOtherContribution', { is: true, then: Joi.string().required() }),
   },
 };
 

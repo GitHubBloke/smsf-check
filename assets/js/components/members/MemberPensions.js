@@ -30,30 +30,38 @@ export default class MemberPensions extends MemberCard {
           </h4>
 
           <div className='text-left'>
-            {data.get('member.hasAccountBasedPension'.split('.'))}
             <Input type='checkbox'
               {...this.questionProps('member.hasAccountBasedPension', { checkbox: true })}
               labelClassName='append-xs-tiny text-normal' groupClassName='append-xs-1' />
-            <Input type='text' bsSize='large'
-              {...this.questionProps('member.accountBasedPensionAmount')}
-              className='input-lg' labelClassName='append-xs-tiny text-normal' groupClassName='append-xs-1' />
-            <SelectQuestion {...this.questionProps('member.accountBasedPensionInterval')} />
+            {data.getIn([ 'member', 'hasAccountBasedPension' ]) &&
+              <div>
+                <Input type='text' bsSize='large' addonBefore='$'
+                  {...this.questionProps('member.accountBasedPensionAmount')}
+                  className='input-lg' labelClassName='append-xs-tiny text-normal' groupClassName='append-xs-1' />
+                <SelectQuestion {...this.questionProps('member.accountBasedPensionInterval')} />
+              </div>}
 
             <Input type='checkbox'
               {...this.questionProps('member.hasTransitionToRetirementPension', { checkbox: true })}
               labelClassName='append-xs-tiny text-normal' groupClassName='append-xs-1' />
-            <Input type='text' bsSize='large'
-              {...this.questionProps('member.transitionToRetirementAmount')}
-              className='input-lg' labelClassName='append-xs-tiny text-normal' groupClassName='append-xs-1' />
-            <SelectQuestion {...this.questionProps('member.transitionToRetirementInterval')} />
+            {data.getIn([ 'member', 'hasTransitionToRetirementPension' ]) &&
+              <div>
+                <Input type='text' bsSize='large' addonBefore='$'
+                  {...this.questionProps('member.transitionToRetirementAmount')}
+                  className='input-lg' labelClassName='append-xs-tiny text-normal' groupClassName='append-xs-1' />
+                <SelectQuestion {...this.questionProps('member.transitionToRetirementInterval')} />
+              </div>}
 
             <Input type='checkbox'
               {...this.questionProps('member.hasOtherPension', { checkbox: true })}
               labelClassName='append-xs-tiny text-normal' groupClassName='append-xs-1' />
-            <Input type='text' bsSize='large'
-              {...this.questionProps('member.otherPensionAmount')}
-              className='input-lg' labelClassName='append-xs-tiny text-normal' groupClassName='append-xs-1' />
-            <SelectQuestion {...this.questionProps('member.otherPensionInterval')} />
+            {data.getIn([ 'member', 'hasOtherPension' ]) &&
+              <div>
+                <Input type='text' bsSize='large' addonBefore='$'
+                  {...this.questionProps('member.otherPensionAmount')}
+                  className='input-lg' labelClassName='append-xs-tiny text-normal' groupClassName='append-xs-1' />
+                <SelectQuestion {...this.questionProps('member.otherPensionInterval')} />
+              </div>}
           </div>
         </div>
       </Well>

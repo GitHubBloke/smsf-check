@@ -455,7 +455,7 @@ export default {
       longTitle: 'Pensions',
 
       havePensions: {
-        label: 'Do the members of your fund have pensions in place?',
+        label: 'Have any of the members of your fund commenced a pension?',
         options: [
           { value: 'yes', label: 'Yes' },
           { value: 'no', label: 'No' },
