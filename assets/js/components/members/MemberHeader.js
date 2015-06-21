@@ -56,7 +56,11 @@ export default class MemberHeader extends BaseComponent {
     if (isEditing) { onChange(data.get('name')); }
 
     this._setState('isEditing', !this.state.data.get('isEditing'), () => {
-      if (!isEditing) { this.refs.input.getInputDOMNode().focus(); }
+      if (!isEditing) {
+        const dom = this.refs.input.getInputDOMNode();
+        dom.focus();
+        dom.select();
+      }
     });
   }
 }
