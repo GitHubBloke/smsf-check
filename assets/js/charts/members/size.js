@@ -6,7 +6,7 @@ import { pie, csvToSeries } from '../base';
 export default {
   config: _.merge({}, pie, {
     title: {
-      text: 'Member Size',
+      text: 'Number of Members',
       useHTML: true,
     },
   }),

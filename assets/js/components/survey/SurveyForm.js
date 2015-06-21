@@ -51,9 +51,9 @@ export default class SurveyForm extends BaseComponent {
               <div className='well-group'>
 
                 <Well bsSize='large'>
-                  <h3 className='text-bold text-center prepend-xs-none append-xs-1'>
+                  <h4 className='text-bold text-center prepend-xs-none append-xs-1'>
                     <FM message={this.getIntlMessage('shared.charts.title')} />
-                  </h3>
+                  </h4>
                   <div className='append-xs-tiny'>
                     <Select name='comparisonMember' options={memberOptions}
                       placeholder={this.formatMessage(this.getIntlMessage('shared.charts.compareTo.all'))}
