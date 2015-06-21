@@ -26,14 +26,16 @@ class AccountingPage extends BasePage {
   }
 
   renderForm() {
+    const { data } = this.state;
+
     return (
       <div>
         <div className='append-xs-2'>
           <RadioQuestion {...this.questionProps('accounting.whoDoesIt')} />
         </div>
-        <div className='append-xs-2'>
+        {(data.getIn([ 'survey', 'accounting', 'whoDoesIt' ]) !== 'myself') && <div className='append-xs-2'>
           <RadioQuestion {...this.questionProps('accounting.costPerYear')} />
-        </div>
+        </div>}
       </div>
     );
   }
