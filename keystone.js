@@ -87,7 +87,6 @@ keystone.set('client locals', {
   financialLink: keystone.get('financial services guide link'),
   privacyLink: keystone.get('privacy policy link'),
   termsLink: keystone.get('terms and conditions link'),
-
 });
 
 // Load your project's Routes
@@ -105,16 +104,17 @@ keystone.set('email locals', {
     return (keystone.get('host') || 'http://localhost:') + (keystone.get('port') || '3000');
   })(),
 
-  logo_src: '/images/logo-email.gif',
-  logo_width: 194,
-  logo_height: 76,
+  logo_src: '/images/logo@2x.png',
+  logo_width: 241,
+  logo_height: 55,
   theme: {
+    row_header_bg: '#68b125',
     email_bg: '#f9f9f9',
-    link_color: '#2697de',
+    link_color: '#68b125',
     buttons: {
       color: '#fff',
-      background_color: '#2697de',
-      border_color: '#1a7cb7',
+      background_color: '#68b125',
+      border_color: '#68b125',
     },
   },
 

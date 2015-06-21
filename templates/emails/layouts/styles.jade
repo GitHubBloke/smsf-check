@@ -6,7 +6,6 @@ style(type="text/css").
   p { padding-bottom: #{padding_base} !important; }
 
   table.table { width: 100%; }
-  table.table tr { border-bottom: 1px solid #{theme.body_border_color}; }
   table.table tr td { padding: #{padding_base} 0; }
   table.table tfoot { border-top: 2px solid #eee; }
   table.table tr.last { border-bottom: none; }
@@ -22,3 +21,6 @@ style(type="text/css").
   }
 
   h1, h2, h3, h4, h5, h6 { color: #{theme.link_color}; }
+
+  .row-header { background: #{theme.row_header_bg}; }
+  .row-body .container { border-top: none; }

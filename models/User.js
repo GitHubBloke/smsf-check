@@ -82,7 +82,7 @@ User.schema.methods.resetPassword = function(cb = () => {}) {
 
     new keystone.Email(user.isVerified ? 'reset-password' : 'confirm-email').send({
       to: user,
-      from: { name: keystone.get('brand'), email: keystone.get('siq noreply email') },
+      from: { name: keystone.get('name'), email: keystone.get('siq noreply email') },
       subject,
       user,
     }, cb);
