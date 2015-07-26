@@ -1,0 +1,20 @@
+{
+  "name": "IQ Compare",
+  "website": "http://www.superiq.com.au",
+  "repository": "https://github.com/JimmyMakesThings/smsf-check",
+  "success_url": "/",
+  "scripts": {
+  },
+  "env": {
+    "ABN_GUID": "4b09927a-0c28-443c-baa7-add97c0a56bf",
+    "APP_THEME": "superiq",
+    "NPM_CONFIG_PRODUCTION": "false"
+  },
+  "addons": [
+    "mandrill",
+    "mongolab",
+    "newrelic",
+    "papertrail",
+    "sentry"
+  ]
+}
