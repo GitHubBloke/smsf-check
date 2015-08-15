@@ -25,6 +25,7 @@ required by the server for it to run:
     MONGO_URL=xxxxxxxxxxxxxxxxx
     NEW_RELIC_LICENSE_KEY=xxxxxxxxxxxxxxxx (optional)
     NEW_RELIC_LOG=stdout (optional)
+    NPM_CONFIG_PRODUCTION=false
     PAPERTRAIL_API_TOKEN=xxxxxxxxxxxxxxxx (optional)
     SEGMENT_WRITE_KEY=xxxxxxxxxxxxxxxx (optional)
     SENTRY_DSN=https://xxxxxxxxxxxxxxxx (optional)
