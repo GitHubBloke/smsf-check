@@ -6,7 +6,6 @@
   "scripts": {
   },
   "env": {
-    "ABN_GUID": "4b09927a-0c28-443c-baa7-add97c0a56bf",
     "APP_THEME": "superiq",
     "NPM_CONFIG_PRODUCTION": "false"
   },
