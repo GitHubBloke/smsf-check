@@ -23,6 +23,8 @@ var themeConfig = require(themeDir + '/theme');
 // and documentation.
 
 keystone.init(_.assign({
+  'root': process.env.ROOT || ((keystone.get('host') || 'http://localhost') + ':' + (keystone.get('port') || '3000')),
+
   'less': 'public',
   'less middleware options': {
     preprocess: {
@@ -98,11 +100,7 @@ keystone.set('routes', require('./routes'));
 
 keystone.set('email locals', {
   utils: keystone.utils,
-  host: (function() {
-    if (keystone.get('env') === 'staging') return 'http://smsf-check.herokuapp.com';
-    if (keystone.get('env') === 'production') return 'http://www.superiq.com/smsf-check';
-    return (keystone.get('host') || 'http://localhost:') + (keystone.get('port') || '3000');
-  })(),
+  host: keystone.get('root'),
 
   logo_src: '/images/logo@2x.png',
   logo_width: 241,
