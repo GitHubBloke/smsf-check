@@ -59,7 +59,7 @@ export const column = {
     column: {
       depth: 40,
       tooltip: {
-        pointFormat: '<b>{point.y}</b>',
+        pointFormat: '{series.name}: <b>{point.y:.2f}%</b>',
       },
     },
   },
@@ -85,7 +85,7 @@ export function csvToSeries(csv, isColumn) {
       }];
 
       const total = totals[group];
-      const percentValue = (parseFloat(value) / total) * 100;
+      const percentValue = parseFloat(((parseFloat(value) / total) * 100).toFixed(2));
       series[group][0].data.push(isColumn ? percentValue : { name: line.label, y: percentValue });
     });
   });
