@@ -41,11 +41,12 @@ export default class BasePage extends Validatable {
     const survey = this.state.data.get('survey');
     const data = chart.getActiveDataset(activeDataSet, comparisonMember, survey);
 
-    return data && (
+    return data && [
       <Highcharts key={chart.config.title.text}
         config={chart.config}
-        series={_.cloneDeep(data)} />
-    );
+        series={_.cloneDeep(data)} />,
+      <hr key={`${chart.config.title.text}-hr`}/>,
+    ];
   }
 
   questionProps(path, { getter, setter } = {}) {
