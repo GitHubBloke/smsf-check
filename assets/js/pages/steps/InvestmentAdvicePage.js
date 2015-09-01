@@ -40,8 +40,12 @@ class InvestmentAdvicePage extends BasePage {
     );
   }
 
-  renderCharts() {
-    return <div></div>;
+  renderCharts(options) {
+    return (
+      <div className='charts'>
+        {this.renderChart(require('../../charts/investment-advice/provider'), options)}
+      </div>
+    );
   }
 }
 
