@@ -15,12 +15,6 @@ import SurveyForm from '../../components/survey/SurveyForm';
 import SurveyStore from '../../stores/SurveyStore';
 import { wrapSurvey } from '../../utils/SurveyUtils';
 
-const chartsConfig = {
-  age: require('../../charts/members/age'),
-  gender: require('../../charts/members/gender'),
-  size: require('../../charts/members/size'),
-};
-
 class MembersPage extends BasePage {
   constructor(props) {
     super(props);

@@ -29,7 +29,7 @@ const data = {
       min: 0,
       title: {
         text: '',
-      }
+      },
     },
   }),
 

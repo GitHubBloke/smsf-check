@@ -9,11 +9,6 @@ import SurveyForm from '../../components/survey/SurveyForm';
 import SurveyStore from '../../stores/SurveyStore';
 import { wrapSurvey } from '../../utils/SurveyUtils';
 
-const chartsConfig = {
-  trusteeType: require('../../charts/trust/trusteeType'),
-  deedSupplier: require('../../charts/trust/deedSupplier'),
-};
-
 class TrustPage extends BasePage {
   constructor(props) {
     super(props);
@@ -51,9 +46,9 @@ class TrustPage extends BasePage {
   renderCharts(options) {
     return (
       <div className='charts'>
-        {this.renderChart(require('../../charts/trust/trusteeType'), options)}
-        <hr/>
-        {this.renderChart(require('../../charts/trust/deedSupplier'), options)}
+        {this.renderChart(require('../../charts/trust/type'), options)}
+        {this.renderChart(require('../../charts/trust/deed-supplier'), options)}
+        {this.renderChart(require('../../charts/trust/deed-age'), options)}
       </div>
     );
   }

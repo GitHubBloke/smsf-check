@@ -38,7 +38,8 @@ export default class BasePage extends Validatable {
   }
 
   renderChart(chart, { activeDataSet, comparisonMember }) {
-    const data = chart.getActiveDataset(activeDataSet, comparisonMember);
+    const survey = this.state.data.get('survey');
+    const data = chart.getActiveDataset(activeDataSet, comparisonMember, survey);
 
     return data && (
       <Highcharts key={chart.config.title.text}
