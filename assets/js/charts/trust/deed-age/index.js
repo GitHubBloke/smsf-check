@@ -33,7 +33,7 @@ const data = {
     ato: {},
   },
 
-  getActiveDataset(source, member) {
+  getActiveDataset(source, member, survey) {
     const dataset = data.series[source];
 
     if (member) {
