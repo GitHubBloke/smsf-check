@@ -77,10 +77,9 @@ class MembersPage extends BasePage {
     return (
       <div className='charts'>
         {this.renderChart(require('../../charts/members/age'), options)}
-        <hr/>
         {this.renderChart(require('../../charts/members/gender'), options)}
-        <hr/>
         {this.renderChart(require('../../charts/members/size'), options)}
+        {this.renderChart(require('../../charts/members/balance'), options)}
       </div>
     );
   }

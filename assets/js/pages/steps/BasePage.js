@@ -38,24 +38,13 @@ export default class BasePage extends Validatable {
   }
 
   renderChart(chart, { activeDataSet, comparisonMember }) {
-    const data = chart.series[activeDataSet];
+    const data = chart.getActiveDataset(activeDataSet, comparisonMember);
 
-    let group = 'All';
-
-    if (comparisonMember) {
-      const age = moment().diff(moment(comparisonMember.get('dateOfBirth'), 'DD / MM / YYYY'), 'years');
-      _.each([ 25, 35, 45, 55, 65, Infinity ], (ageTopRange) => {
-        if (age < ageTopRange) {
-          group = ageTopRange.toString();
-          return false;
-        }
-      });
-    }
-
-    return data && data[group] &&
+    return data && (
       <Highcharts key={chart.config.title.text}
         config={chart.config}
-        series={_.cloneDeep(data[group])} />;
+        series={_.cloneDeep(data)} />
+    );
   }
 
   questionProps(path, { getter, setter } = {}) {

@@ -27,7 +27,7 @@ export const pie = {
       tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>',
       },
-    }
+    },
   },
   legend: {
     itemMarginBottom: 5,
@@ -35,7 +35,40 @@ export const pie = {
   },
 };
 
-export function csvToSeries(csv) {
+export const column = {
+  chart: {
+    type: 'column',
+    options3d: {
+      enabled: true,
+      alpha: 15,
+      beta: 15,
+      viewDistance: 25,
+      depth: 40
+    },
+  },
+  title: {
+    useHTML: true,
+  },
+  tooltip: {
+    borderRadius: 5,
+    borderWidth: 2,
+    shadow: false,
+    useHTML: true,
+  },
+  plotOptions: {
+    column: {
+      depth: 40,
+      tooltip: {
+        pointFormat: '<b>{point.y}</b>',
+      },
+    },
+  },
+  legend: {
+    enabled: false,
+  },
+};
+
+export function csvToSeries(csv, isColumn) {
   const series = {};
 
   _.each(csv, (line) => {
@@ -45,9 +78,33 @@ export function csvToSeries(csv) {
         data: [],
       }];
 
-      series[group][0].data.push([ line.label, parseFloat(value) ]);
+      series[group][0].data.push(isColumn ? parseFloat(value) : { name: line.label, y: parseFloat(value) });
     });
   });
 
   return series;
+}
+
+export function findGroup(value, groups) {
+  let result;
+
+  const digitise = (value) => parseInt(value.replace(/[^0-9]/g, ''));
+
+  _.each(groups, (data, rangeLabel) => {
+    if (rangeLabel.match(/\</)) {
+      const rangeValue = digitise(rangeLabel);
+      if (value < rangeValue) { result = data; return false; }
+    } else if (rangeLabel.match(/\>/)) {
+      const rangeValue = digitise(rangeLabel);
+      if (value > rangeValue) { result = data; return false; }
+    } else {
+      const range = rangeLabel.split('-').map((rangeValue) => digitise(rangeValue));
+      if (value >= range[0] && value <= range[1]) {
+        result = data;
+        return false;
+      }
+    }
+  });
+
+  return result;
 }
