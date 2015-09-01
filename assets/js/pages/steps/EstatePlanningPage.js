@@ -83,6 +83,8 @@ class EstatePlanningPage extends BasePage {
   renderCharts(options) {
     return (
       <div className='charts'>
+        {this.renderChart(require('../../charts/estate-planning/nominations'), options)}
+        {this.renderChart(require('../../charts/estate-planning/aging'), options)}
       </div>
     );
   }

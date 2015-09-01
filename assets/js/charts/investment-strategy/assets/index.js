@@ -33,7 +33,7 @@ const data = {
 
   series: {
     siq: csvToSeries(require('./siq.csv'), true),
-    ato: {},
+    ato: csvToSeries(require('./ato.csv'), true),
   },
 
   getActiveDataset(source, member, survey) {
