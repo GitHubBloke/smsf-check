@@ -23,7 +23,7 @@ const data = {
       allowDecimals: false,
       min: 0,
       title: {
-        text: '# of funds',
+        text: '',
       },
     },
   }),

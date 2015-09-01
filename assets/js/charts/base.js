@@ -70,15 +70,23 @@ export const column = {
 
 export function csvToSeries(csv, isColumn) {
   const series = {};
+  const groups = _.keys(_.omit(csv[0], 'label', ''));
+  const totals = _.reduce(groups, (memo, group) => {
+    memo[group] = _.sum(csv, (line) => line[group]);
+    return memo;
+  }, {});
 
   _.each(csv, (line) => {
-    _.each(_.omit(line, 'label'), (value, group) => {
+    const dataLine = _.omit(line, 'label', '');
+    _.each(dataLine, (value, group) => {
       series[group] = series[group] || [{
         animation: false, name: '% of total',
         data: [],
       }];
 
-      series[group][0].data.push(isColumn ? parseFloat(value) : { name: line.label, y: parseFloat(value) });
+      const total = totals[group];
+      const percentValue = (parseFloat(value) / total) * 100;
+      series[group][0].data.push(isColumn ? percentValue : { name: line.label, y: percentValue });
     });
   });
 

@@ -20,6 +20,7 @@ const data = {
         '$150 - $200k',
         '$200 - $500k',
         '$500k+',
+        'Unknown',
       ],
     },
 
@@ -27,7 +28,7 @@ const data = {
       allowDecimals: false,
       min: 0,
       title: {
-        text: '% of total',
+        text: '',
       },
     },
   }),
