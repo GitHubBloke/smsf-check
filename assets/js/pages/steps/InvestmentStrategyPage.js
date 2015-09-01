@@ -73,8 +73,13 @@ class InvestmentStrategy extends BasePage {
     );
   }
 
-  renderCharts() {
-    return <div></div>;
+  renderCharts(options) {
+    return (
+      <div className='charts'>
+        {this.renderChart(require('../../charts/investment-strategy/age'), options)}
+        {this.renderChart(require('../../charts/investment-strategy/assets'), options)}
+      </div>
+    );
   }
 
   renderAssetAllocations() {
