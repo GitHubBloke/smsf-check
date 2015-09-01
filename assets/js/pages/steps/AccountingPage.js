@@ -40,8 +40,12 @@ class AccountingPage extends BasePage {
     );
   }
 
-  renderCharts() {
-    return <div></div>;
+  renderCharts(options) {
+    return (
+      <div className='charts'>
+        {this.renderChart(require('../../charts/accounting/fees'), options)}
+      </div>
+    );
   }
 }
 

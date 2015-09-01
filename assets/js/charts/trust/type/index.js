@@ -20,10 +20,12 @@ const data = {
 
     if (member) {
       return findGroup(member.get('currentMemberBalance'), dataset);
-    } else {
+    } else if (survey) {
       const fundBalance = _.sum(survey.get('members').toJS(), (member) => parseFloat(member.currentMemberBalance));
       return findGroup(fundBalance, dataset);
     }
+
+    return dataset['All'];
   },
 };
 
