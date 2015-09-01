@@ -80,6 +80,8 @@ class MembersPage extends BasePage {
         {this.renderChart(require('../../charts/members/gender'), options)}
         {this.renderChart(require('../../charts/members/size'), options)}
         {this.renderChart(require('../../charts/members/balance'), options)}
+        {this.renderChart(require('../../charts/members/income'), options)}
+        {this.renderChart(require('../../charts/members/fund-balance'), options)}
       </div>
     );
   }
