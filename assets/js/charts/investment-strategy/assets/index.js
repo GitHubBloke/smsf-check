@@ -21,14 +21,6 @@ const data = {
         'Avg Other Percent',
       ],
     },
-
-    yAxis: {
-      allowDecimals: false,
-      min: 0,
-      title: {
-        text: '',
-      },
-    },
   }),
 
   series: {

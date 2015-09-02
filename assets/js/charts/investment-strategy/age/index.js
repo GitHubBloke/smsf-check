@@ -25,14 +25,6 @@ const data = {
         2015,
       ],
     },
-
-    yAxis: {
-      allowDecimals: false,
-      min: 0,
-      title: {
-        text: '',
-      },
-    },
   }),
 
   series: {

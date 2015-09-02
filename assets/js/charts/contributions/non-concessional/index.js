@@ -6,15 +6,22 @@ import { column, csvToSeries, findGroup } from '../../base';
 const data = {
   config: _.merge({}, column, {
     title: {
-      text: 'Death Benefit Nomination Year',
+      text: 'Non Concessional Contribitions',
       useHTML: true,
     },
 
     xAxis: {
       categories: [
-        '% of Members With Ac Based Pension',
-        '% of Members With TTR Pension',
-        '% of Members with Other Pensions',
+        '< $5k',
+        '$5 - $10k',
+        '$10 - $20k',
+        '$20 - $30k',
+        '$30 - $50k',
+        '$50 - $100k',
+        '$100 - $150k',
+        '$150 - $200k',
+        '$200 - $500k',
+        '> $500k',
       ],
     },
   }),

@@ -23,14 +23,6 @@ const data = {
         '$5,000+',
       ],
     },
-
-    yAxis: {
-      allowDecimals: false,
-      min: 0,
-      title: {
-        text: '',
-      },
-    },
   }),
 
   series: {

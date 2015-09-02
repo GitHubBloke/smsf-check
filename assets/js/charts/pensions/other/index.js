@@ -13,21 +13,13 @@ const data = {
     xAxis: {
       categories: [
         '< $100k',
-        '$100k - $500k',
+        '$100 - $500k',
         '$500k - $1M',
-        '$1M - $2M',
-        '$2M - $5M',
-        '$5M - $10M',
+        '$1 - $2M',
+        '$2 - $5M',
+        '$5 - $10M',
         '> $10M',
       ],
-    },
-
-    yAxis: {
-      allowDecimals: false,
-      min: 0,
-      title: {
-        text: '',
-      },
     },
   }),
 

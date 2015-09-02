@@ -23,14 +23,6 @@ const data = {
         '> $10M',
       ],
     },
-
-    yAxis: {
-      allowDecimals: false,
-      min: 0,
-      title: {
-        text: '',
-      },
-    },
   }),
 
   series: {

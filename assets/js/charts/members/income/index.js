@@ -23,14 +23,6 @@ const data = {
         'Unknown',
       ],
     },
-
-    yAxis: {
-      allowDecimals: false,
-      min: 0,
-      title: {
-        text: '',
-      },
-    },
   }),
 
   series: {

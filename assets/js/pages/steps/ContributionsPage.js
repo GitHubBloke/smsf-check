@@ -56,6 +56,10 @@ class ContributionsPage extends BasePage {
   renderCharts(options) {
     return (
       <div className='charts'>
+        {this.renderChart(require('../../charts/contributions/total'), options)}
+        {this.renderChart(require('../../charts/contributions/concessional'), options)}
+        {this.renderChart(require('../../charts/contributions/non-concessional'), options)}
+        {this.renderChart(require('../../charts/contributions/other'), options)}
       </div>
     );
   }

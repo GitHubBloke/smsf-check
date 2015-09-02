@@ -33,6 +33,13 @@ export const pie = {
     itemMarginBottom: 5,
     itemStyle: { color: '#666666', fontWeight: 'normal' },
   },
+  yAxis: {
+    allowDecimals: false,
+    min: 0, max: 100,
+    title: {
+      text: '',
+    },
+  },
 };
 
 export const column = {
