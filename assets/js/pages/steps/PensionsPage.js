@@ -57,6 +57,9 @@ class PensionsPage extends BasePage {
     return (
       <div className='charts'>
         {this.renderChart(require('../../charts/pensions/members'), options)}
+        {this.renderChart(require('../../charts/pensions/account'), options)}
+        {this.renderChart(require('../../charts/pensions/ttr'), options)}
+        {this.renderChart(require('../../charts/pensions/other'), options)}
       </div>
     );
   }
