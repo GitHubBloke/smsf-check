@@ -85,7 +85,7 @@ export function csvToSeries(csv, isColumn) {
       }];
 
       const total = totals[group];
-      const percentValue = parseFloat(((parseFloat(value) / total) * 100).toFixed(2));
+      const percentValue = total === 0 ? 0 : parseFloat(((parseFloat(value) / total) * 100).toFixed(2));
       series[group][0].data.push(isColumn ? percentValue : { name: line.label, y: percentValue });
     });
   });
