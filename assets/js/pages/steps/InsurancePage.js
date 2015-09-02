@@ -57,6 +57,7 @@ class InsurancePage extends BasePage {
   renderCharts(options) {
     return (
       <div className='charts'>
+        {this.renderChart(require('../../charts/insurance/within-smsf'), options)}
       </div>
     );
   }
