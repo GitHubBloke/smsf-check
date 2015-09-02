@@ -24,7 +24,8 @@ class PensionsPage extends BasePage {
       <SurveyForm {...this.props}
         renderForm={this.renderForm}
         renderCharts={this.renderCharts}
-        prevRoute='estate-planning' nextRoute='contributions'>
+        prevRoute='estate-planning' nextRoute='contributions'
+        hasAtoData={false}>
       </SurveyForm>
     );
   }

@@ -20,7 +20,9 @@ class AccountingPage extends BasePage {
       <SurveyForm {...this.props}
         renderForm={this.renderForm}
         renderCharts={this.renderCharts}
-        prevRoute='trust' nextRoute='investment-advice'>
+        prevRoute='trust' nextRoute='investment-advice'
+        canCompareMembers={false}
+        hasAtoData={false}>
       </SurveyForm>
     );
   }

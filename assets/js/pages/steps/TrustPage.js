@@ -20,7 +20,8 @@ class TrustPage extends BasePage {
       <SurveyForm {...this.props}
         renderForm={this.renderForm}
         renderCharts={this.renderCharts}
-        prevRoute='members' nextRoute='accounting'>
+        prevRoute='members' nextRoute='accounting'
+        canCompareMembers={false}>
       </SurveyForm>
     );
   }

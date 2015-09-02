@@ -37,7 +37,7 @@ const data = {
       return null;
     } else if (survey) {
       const fundBalance = _.sum(survey.get('members').toJS(), (member) => parseFloat(member.currentMemberBalance));
-      return findGroup(fundBalance, dataset);
+      return findGroup(fundBalance, dataset) || dataset['All'];
     }
 
     return dataset['All'];

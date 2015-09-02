@@ -32,10 +32,10 @@ const data = {
     const dataset = data.series[source];
 
     if (member) {
-      return findGroup(member.get('currentMemberBalance'), dataset);
+      return null;
     } else if (survey) {
       const fundBalance = _.sum(survey.get('members').toJS(), (member) => parseFloat(member.currentMemberBalance));
-      return findGroup(fundBalance, dataset);
+      return findGroup(fundBalance, dataset) || dataset['All'];
     }
 
     return dataset['All'];

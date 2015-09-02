@@ -20,7 +20,9 @@ class InvestmentAdvicePage extends BasePage {
       <SurveyForm {...this.props}
         renderForm={this.renderForm}
         renderCharts={this.renderCharts}
-        prevRoute='accounting' nextRoute='investment-strategy'>
+        prevRoute='accounting' nextRoute='investment-strategy'
+        canCompareMembers={false}
+        hasAtoData={false}>
       </SurveyForm>
     );
   }

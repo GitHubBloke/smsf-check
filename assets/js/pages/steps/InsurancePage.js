@@ -24,7 +24,8 @@ class InsurancePage extends BasePage {
       <SurveyForm {...this.props}
         renderForm={this.renderForm}
         renderCharts={this.renderCharts}
-        prevRoute='estate-planning' nextRoute='pensions'>
+        prevRoute='estate-planning' nextRoute='pensions'
+        hasAtoData={false}>
       </SurveyForm>
     );
   }

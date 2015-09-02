@@ -23,25 +23,36 @@ export default class SurveyForm extends BaseComponent {
     this.bind('_handleSubmit', '_setActiveDataSet', '_setComparisonMember');
   }
 
-  render() {
-    const { survey, activeDataSet, comparisonMember } = this.props;
+  componentWillReceiveProps(nextProps) {
+    const { activeDataSet, comparisonMember, canCompareMembers, hasSiqData, hasAtoData } = nextProps;
+    if (!canCompareMembers && comparisonMember) { this._setComparisonMember(null); }
+    if (!hasAtoData && activeDataSet === 'ato') { this._setActiveDataSet('siq'); }
+    if (!hasSiqData && activeDataSet === 'siq') { this._setActiveDataSet('ato'); }
+  }
 
-    const memberOptions = survey.get('members').map((member, index) => {
-      return {
-        label: `${this.formatMessage(this.getIntlMessage('shared.charts.compareTo.prefix'))}${member.get('name')}`,
-        value: member.get('ref') || member.get('id'),
-      };
-    }).toJS();
+  render() {
+    const { survey, activeDataSet, comparisonMember, canCompareMembers, hasSiqData, hasAtoData } = this.props;
+
+    let memberOptions = [];
+
+    if (canCompareMembers) {
+      memberOptions = survey.get('members').map((member, index) => {
+        return {
+          label: `${this.formatMessage(this.getIntlMessage('shared.charts.compareTo.prefix'))}${member.get('name')}`,
+          value: member.get('ref') || member.get('id'),
+        };
+      }).toJS();
+    }
 
     memberOptions.unshift({
       label: this.formatMessage(this.getIntlMessage('shared.charts.compareTo.all')),
-      value: null,
+      value: 'all',
     });
 
-    const dataSetOptions = [
-      { label: this.formatMessage(this.getIntlMessage('shared.charts.activeDataSet.ato')), value: 'ato' },
-      { label: this.formatMessage(this.getIntlMessage('shared.charts.activeDataSet.siq'), { name: locals.name }), value: 'siq' },
-    ];
+    const dataSetOptions = _.compact([
+      hasAtoData && { label: this.formatMessage(this.getIntlMessage('shared.charts.activeDataSet.ato')), value: 'ato' },
+      hasSiqData && { label: this.formatMessage(this.getIntlMessage('shared.charts.activeDataSet.siq'), { name: locals.name }), value: 'siq' },
+    ]);
 
     return (
       <form className='survey' noValidate autoComplete='off' onSubmit={this._handleSubmit}>
@@ -56,9 +67,8 @@ export default class SurveyForm extends BaseComponent {
                   </h4>
                   <div className='append-xs-tiny'>
                     <Select name='comparisonMember' options={memberOptions}
-                      placeholder={this.formatMessage(this.getIntlMessage('shared.charts.compareTo.all'))}
                       clearable={false} searchable={false}
-                      value={comparisonMember && (comparisonMember.get('ref') || comparisonMember.get('id'))}
+                      value={comparisonMember ? (comparisonMember.get('ref') || comparisonMember.get('id')) : 'all'}
                       onChange={this._setComparisonMember} />
                   </div>
                   <Select name='dataSet' options={dataSetOptions}
@@ -143,9 +153,16 @@ SurveyForm.propTypes = {
   skippable: PropTypes.bool.isRequired,
   prevRoute: PropTypes.string,
   nextRoute: PropTypes.string,
+  canCompareMembers: PropTypes.bool.isRequired,
+  hasSiqData: PropTypes.bool.isRequired,
+  hasAtoData: PropTypes.bool.isRequired,
 };
 
-SurveyForm.defaultProps = {};
+SurveyForm.defaultProps = {
+  canCompareMembers: true,
+  hasSiqData: true,
+  hasAtoData: true,
+};
 
 function pickProps({ params }) {
   return { params };

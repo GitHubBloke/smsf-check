@@ -24,7 +24,8 @@ class ContributionsPage extends BasePage {
       <SurveyForm {...this.props}
         renderForm={this.renderForm}
         renderCharts={this.renderCharts}
-        prevRoute='pensions' nextRoute='results'>
+        prevRoute='pensions' nextRoute='results'
+        hasAtoData={false}>
       </SurveyForm>
     );
   }
