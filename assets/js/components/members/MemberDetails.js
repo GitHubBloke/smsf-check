@@ -6,6 +6,7 @@ import { Button, Col, Input, Row, Well } from 'react-bootstrap';
 import React, { PropTypes } from 'react';
 import { FormattedMessage as FM } from '../../shims/ReactIntl';
 
+import BlurInput from '../BlurInput';
 import GenderOption from './GenderOption';
 import Icon, { IconStack } from '../Icon';
 import MemberCard from './MemberCard';
@@ -51,16 +52,16 @@ export default class MemberDetails extends MemberCard {
             </Row>
           </div>
 
-          <Input type='text' bsSize='large'
+          <BlurInput type='text' bsSize='large'
             {...this.questionProps('member.dateOfBirth', { setter: this._sanitizeDate })}
             className='input-lg' labelClassName='append-xs-tiny text-normal' groupClassName='append-xs-1' />
 
-          <Input type='text' bsSize='large'
+          <BlurInput type='text' bsSize='large'
             {...this.questionProps('member.preRetirementAnnualIncome')}
             className='input-lg' labelClassName='append-xs-tiny text-normal' groupClassName='append-xs-1'
             addonBefore='$' />
 
-          <Input type='text' bsSize='large'
+          <BlurInput type='text' bsSize='large'
             {...this.questionProps('member.currentMemberBalance')}
             className='input-lg' labelClassName='append-xs-tiny text-normal' groupClassName='append-xs-1'
             addonBefore='$' />

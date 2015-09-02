@@ -34,7 +34,7 @@ export default class MemberCard extends Validatable {
     }
   }
 
-  questionProps(path, { getter, setter, checkbox } = {}) {
+  questionProps(path, { getter, setter, checkbox, changeOnBlur } = {}) {
     const { member } = this.props;
     let label, placeholder, options;
 
@@ -42,15 +42,18 @@ export default class MemberCard extends Validatable {
     try { placeholder = this.formatMessage(this.getIntlMessage(`${path}.placeholder`)); } catch(e) {}
     try { options = this.translatedOptions(`${path}.options`); } catch(e) {}
 
-    return {
+    const props = {
       id: `${member.get('id') || member.get('ref')}-${path}`,
       label,
-      [checkbox ? 'checkedLink' : 'valueLink']: this.linkState(path, setter, getter),
       disabled: this.props.submitting,
       placeholder,
       options,
       ...this.getErrorProps(path),
     };
+
+    props[checkbox ? 'checkedLink' : 'valueLink'] = this.linkState(path, setter, getter);
+
+    return props;
   }
 
   booleanSetModifier(v) { return v === 'true'; }
